@@ -24,23 +24,24 @@ export function renderFeedbackFollowUpEmail(
   const copy =
     current === "es"
       ? {
-          subject: `Seguimiento de feedback de Petdex: ${vars.kindLabel}`,
-          intro: "Hay un nuevo seguimiento en un hilo de feedback de Petdex.",
+          subject: `Seguimiento de feedback de AgentPets: ${vars.kindLabel}`,
+          intro:
+            "Hay un nuevo seguimiento en un hilo de feedback de AgentPets.",
           original: `Original (${vars.kindLabel}, ${vars.statusLabel}):`,
           reply: "Respuesta del usuario:",
           open: `Abrir hilo: ${vars.threadUrl}`,
         }
       : current === "zh"
         ? {
-            subject: `Petdex 反馈跟进：${vars.kindLabel}`, // fixme:zh
-            intro: "有一条新的 Petdex 反馈跟进。", // fixme:zh
+            subject: `AgentPets 反馈跟进：${vars.kindLabel}`, // fixme:zh
+            intro: "有一条新的 AgentPets 反馈跟进。", // fixme:zh
             original: `原始反馈（${vars.kindLabel}，${vars.statusLabel}）：`, // fixme:zh
             reply: "用户回复：", // fixme:zh
             open: `打开线程：${vars.threadUrl}`, // fixme:zh
           }
         : {
-            subject: `Petdex feedback follow-up: ${vars.kindLabel}`,
-            intro: "New follow-up on a Petdex feedback thread.",
+            subject: `AgentPets feedback follow-up: ${vars.kindLabel}`,
+            intro: "New follow-up on an AgentPets feedback thread.",
             original: `Original (${vars.kindLabel}, ${vars.statusLabel}):`,
             reply: "User reply:",
             open: `Open thread: ${vars.threadUrl}`,

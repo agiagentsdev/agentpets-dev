@@ -226,7 +226,7 @@ function AlbumProgress({
       <p className="mt-2 text-sm leading-6 text-muted-2">
         {catchProgress.caught === 0
           ? "You have not liked any pets yet, catch them with the heart button"
-          : "Liked pets count toward your personal Petdex album progress."}
+          : "Liked pets count toward your personal AgentPets album progress."}
       </p>
     </section>
   );
@@ -695,9 +695,9 @@ function EmptyState() {
       </header>
       <div className="rounded-3xl border border-dashed border-border-base bg-surface/70 p-10">
         <p className="text-base leading-7 text-muted-2">
-          Send your first animated companion to Petdex. Submissions go through a
-          quick review and land here while they wait. Once approved they show up
-          on your public profile too.
+          Send your first animated companion to AgentPets. Submissions go
+          through a quick review and land here while they wait. Once approved
+          they show up on your public profile too.
         </p>
         <Link
           href="/submit"

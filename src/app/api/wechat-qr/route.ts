@@ -76,7 +76,7 @@ export async function GET(): Promise<Response> {
     headers: {
       "content-type": contentType,
       "cache-control": CACHE_HEADER,
-      "x-petdex-qr-source": "aliyun-signed",
+      "x-agentpets-qr-source": "aliyun-signed",
     },
   });
 }

@@ -64,7 +64,7 @@ export function ProfileAnnouncementModal() {
       }`}
       role="dialog"
       aria-modal="true"
-      aria-label="Petdex profiles announcement"
+      aria-label="AgentPets profiles announcement"
     >
       <button
         type="button"
@@ -127,7 +127,7 @@ export function ProfileAnnouncementModal() {
             You have your own profile now
           </h2>
           <p className="text-sm leading-6 text-muted-2">
-            Every Petdex creator gets a public page with all their approved
+            Every AgentPets creator gets a public page with all their approved
             pets, an avatar, links, and an optional pinned favorite. Drop the
             URL in your bio.
           </p>

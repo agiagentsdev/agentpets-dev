@@ -24,8 +24,7 @@ async function emailUser(
     const email = u.primaryEmailAddress?.emailAddress;
     if (!email) return;
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const from =
-      process.env.RESEND_FROM ?? "Petdex <petdex@updates.railly.dev>";
+    const from = process.env.RESEND_FROM ?? "AgentPets <hello@agentpets.dev>";
     await resend.emails.send({
       from,
       to: email,

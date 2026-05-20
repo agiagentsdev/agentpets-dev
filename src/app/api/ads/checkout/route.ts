@@ -69,7 +69,7 @@ export async function POST(req: Request): Promise<Response> {
           currency: "usd",
           unit_amount: campaign.priceCents,
           product_data: {
-            name: `Petdex sponsored card - ${campaign.packageViews.toLocaleString()} impressions`,
+            name: `AgentPets sponsored card - ${campaign.packageViews.toLocaleString()} impressions`,
             description: campaign.title,
           },
         },

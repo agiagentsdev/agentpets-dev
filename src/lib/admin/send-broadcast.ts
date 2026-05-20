@@ -36,7 +36,7 @@ const SLEEP_MS = 110; // ~9 sends/sec, safe under Resend default cap
 
 export async function sendBroadcast(opts: SendOptions): Promise<SendResult> {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM ?? "Petdex <hello@agentpets.dev>";
+  const from = process.env.RESEND_FROM ?? "AgentPets <hello@agentpets.dev>";
   if (!apiKey) {
     throw new Error("RESEND_API_KEY missing");
   }

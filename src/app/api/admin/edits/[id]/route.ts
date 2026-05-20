@@ -139,7 +139,7 @@ export async function PATCH(
       try {
         const resend = new Resend(process.env.RESEND_API_KEY);
         const from =
-          process.env.RESEND_FROM ?? "Petdex <petdex@updates.railly.dev>";
+          process.env.RESEND_FROM ?? "AgentPets <hello@agentpets.dev>";
         const locale = await getPreferredLocaleForUser(updated.ownerId);
         const email = renderEditApprovedEmail(locale, {
           petName: updated.displayName,
@@ -208,8 +208,7 @@ export async function PATCH(
   if (process.env.RESEND_API_KEY && toEmail) {
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      const from =
-        process.env.RESEND_FROM ?? "Petdex <petdex@updates.railly.dev>";
+      const from = process.env.RESEND_FROM ?? "AgentPets <hello@agentpets.dev>";
       const locale = await getPreferredLocaleForUser(updated.ownerId);
       const email = renderEditRejectedEmail(locale, {
         petName: updated.displayName,

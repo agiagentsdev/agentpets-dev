@@ -81,7 +81,7 @@ export function SaveAsSticker({ slug, displayName }: Props) {
   }
 
   function downloadPack() {
-    downloadFile(wastickersUrl, `${slug}-petdex-stickers.zip`);
+    downloadFile(wastickersUrl, `${slug}-agentpets-stickers.zip`);
   }
 
   async function copyToClipboard() {

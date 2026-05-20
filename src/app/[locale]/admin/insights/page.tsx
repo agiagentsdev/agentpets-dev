@@ -27,7 +27,7 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Insights | Petdex admin",
+  title: "Insights | AgentPets admin",
   robots: { index: false, follow: false },
 };
 

@@ -268,8 +268,7 @@ async function notifySubmissionOwner(row: SubmittedPet): Promise<void> {
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const from =
-      process.env.RESEND_FROM ?? "Petdex <petdex@updates.railly.dev>";
+    const from = process.env.RESEND_FROM ?? "AgentPets <hello@agentpets.dev>";
     const { getPreferredLocaleForUser } = await import("@/lib/user-locale");
     const locale = await getPreferredLocaleForUser(row.ownerId);
 

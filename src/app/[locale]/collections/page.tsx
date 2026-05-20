@@ -68,7 +68,7 @@ export default async function CollectionsPage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Petdex collections",
+    name: "AgentPets collections",
     url: `${SITE_URL}/collections`,
     mainEntity: {
       "@type": "ItemList",

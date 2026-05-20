@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 /**
  * Coarse platform detection for client-side rendering decisions.
- * Used by the /download CTA and the per-pet "Open in Petdex"
+ * Used by the /download CTA and the per-pet "Open in AgentPets"
  * button so we don't show a macOS-binary download to a Linux user.
  *
  * Returns "unknown" during SSR / first paint so the calling

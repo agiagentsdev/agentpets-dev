@@ -31,7 +31,7 @@ export function DesktopAnnouncementModal({
       }`}
       role="dialog"
       aria-modal="true"
-      aria-label="Petdex new feature announcement"
+      aria-label="AgentPets new feature announcement"
     >
       <button
         type="button"

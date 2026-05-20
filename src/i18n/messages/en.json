@@ -296,8 +296,8 @@
     },
     "create": {
       "metadata": {
-        "title": "Create a AgentPets ad campaign",
-        "description": "Build a AgentPets sponsored card, choose a prepaid impression package, and continue to Stripe checkout."
+        "title": "Create an AgentPets ad campaign",
+        "description": "Build an AgentPets sponsored card, choose a prepaid impression package, and continue to Stripe checkout."
       },
       "eyebrow": "Campaign setup",
       "title": "Create your sponsored card.",
@@ -968,7 +968,7 @@
     "categories": {
       "desktopCompanion": {
         "label": "Desktop companions",
-        "description": "Apps that put a AgentPets pet on your desktop."
+        "description": "Apps that put an AgentPets pet on your desktop."
       },
       "wellness": {
         "label": "Wellness & focus",
@@ -1132,7 +1132,7 @@
         },
         "origin": {
           "q": "Where do the pets come from?",
-          "a": "Most pets are submitted by the community through the website or the agentpets CLI. A handful are featured curated entries hand-picked from Crafter Station. Every pet is reviewed by an admin before it goes live in the gallery."
+          "a": "Most pets are submitted by the community through the website or the AgentPets CLI. A handful are featured curated entries that seed the gallery. Every pet is reviewed by an admin before it goes live."
         },
         "submit": {
           "q": "Can I submit my own pet?",
@@ -1140,7 +1140,7 @@
         },
         "openSource": {
           "q": "Are AgentPets pets free and open source?",
-          "a": "Every pet on AgentPets is free to install and use. Pets keep credit to their original authors. The AgentPets platform itself (CLI + site) is open source under the Crafter Station umbrella."
+          "a": "Every pet on AgentPets is free to install and use. Pets keep credit to their original authors. The AgentPets platform itself (CLI + site) is open source."
         },
         "taxonomy": {
           "q": "What's a vibe? What's a kind?",
@@ -1148,7 +1148,7 @@
         },
         "money": {
           "q": "How does AgentPets make money?",
-          "a": "It doesn't. AgentPets is a community project run by Crafter Station. Storage and DB are absorbed by the platform team. No ads, no upsells, no telemetry beyond standard analytics on which pets get installed."
+          "a": "AgentPets is built as a developer community product. Storage and database costs are handled by the platform, and product analytics stay focused on install and gallery usage."
         }
       }
     },

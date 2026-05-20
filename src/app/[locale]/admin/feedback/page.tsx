@@ -18,7 +18,7 @@ import { AdminFeedbackActions } from "@/components/admin-feedback-actions";
 import { AdminFeedbackFilters } from "@/components/admin-feedback-filters";
 
 export const metadata = {
-  title: "Petdex Admin · Feedback",
+  title: "AgentPets Admin · Feedback",
   robots: { index: false, follow: false },
 };
 
@@ -238,13 +238,13 @@ export default async function AdminFeedbackPage({
             const replyEmail = r.email ?? info?.primaryEmail ?? null;
             const subjectExcerpt = r.message.slice(0, 50).replace(/\s+/g, " ");
             const mailtoBody = encodeURIComponent(
-              `Hey,\n\nThanks for the ${r.kind} on Petdex.\n\n> ${r.message
+              `Hey,\n\nThanks for the ${r.kind} on AgentPets.\n\n> ${r.message
                 .split("\n")
                 .map((l) => l)
                 .join("\n> ")}\n\n— Hunter`,
             );
             const mailtoSubject = encodeURIComponent(
-              `Re: your Petdex feedback: ${subjectExcerpt}${r.message.length > 50 ? "…" : ""}`,
+              `Re: your AgentPets feedback: ${subjectExcerpt}${r.message.length > 50 ? "…" : ""}`,
             );
             const mailtoHref = replyEmail
               ? `mailto:${replyEmail}?subject=${mailtoSubject}&body=${mailtoBody}`

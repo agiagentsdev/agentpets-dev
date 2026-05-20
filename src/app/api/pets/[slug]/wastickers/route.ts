@@ -33,15 +33,15 @@ import { isAllowedAssetUrl } from "@/lib/url-allowlist";
 export const runtime = "nodejs";
 
 const CACHE_HEADER = "public, max-age=86400, s-maxage=604800";
-const PUBLISHER = "Petdex";
+const PUBLISHER = "AgentPets";
 const PUBLISHER_WEBSITE = "https://agentpets.dev";
-const PUBLISHER_EMAIL = "hello@crafter.run";
+const PUBLISHER_EMAIL = "hello@agentpets.dev";
 
 // Apple iMessage / WhatsApp iOS share the same identifier namespace.
-// We prefix with 'petdex.' to avoid collisions with other apps using
+// We prefix with 'agentpets.' to avoid collisions with other apps using
 // the same pet slug.
 function packIdentifier(slug: string) {
-  return `petdex.${slug}`;
+  return `agentpets.${slug}`;
 }
 
 function clientKey(req: Request): string {
@@ -143,7 +143,7 @@ export async function GET(
 
   const manifest = {
     identifier: packIdentifier(slug),
-    name: `${pet.displayName} · Petdex`,
+    name: `${pet.displayName} · AgentPets`,
     publisher: PUBLISHER,
     tray_image_file: "tray.png",
     publisher_email: PUBLISHER_EMAIL,
@@ -177,10 +177,10 @@ export async function GET(
     status: 200,
     headers: {
       "content-type": "application/zip",
-      "content-disposition": `attachment; filename="${slug}-petdex-stickers.zip"`,
+      "content-disposition": `attachment; filename="${slug}-agentpets-stickers.zip"`,
       "cache-control": CACHE_HEADER,
-      "x-petdex-pack-id": packIdentifier(slug),
-      "x-petdex-pack-stickers": String(stickerBufs.length),
+      "x-agentpets-pack-id": packIdentifier(slug),
+      "x-agentpets-pack-stickers": String(stickerBufs.length),
     },
   });
 }

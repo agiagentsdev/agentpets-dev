@@ -14,7 +14,7 @@ export const runtime = "nodejs";
 // drops the DB row, every cross-table reference, and the R2 assets.
 // The slug becomes available for someone else to reuse.
 //
-// Used by the "Remove from Petdex" entry in the per-card action menu
+// Used by the "Remove from AgentPets" entry in the per-card action menu
 // when the viewer is the pet's owner. Mirrors the admin DELETE in
 // /api/admin/[id] but is keyed by slug (the menu has the slug, not
 // the pet id) and gated on owner_id rather than admin status.

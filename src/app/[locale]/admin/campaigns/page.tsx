@@ -14,7 +14,7 @@ import type { Locale } from "@/i18n/config";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Petdex Admin · Campaigns",
+  title: "AgentPets Admin · Campaigns",
   robots: { index: false, follow: false },
 };
 

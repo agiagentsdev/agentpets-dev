@@ -8,7 +8,7 @@ import {
 import { localizePath } from "@/i18n/config";
 
 export const metadata = {
-  title: "Mailing | Petdex Admin",
+  title: "Mailing | AgentPets Admin",
   robots: { index: false, follow: false },
 };
 

@@ -29,7 +29,7 @@ export function renderDesktopLaunchEmail(
   const copy =
     current === "es"
       ? {
-          subject: "Petdex Desktop ya está aquí",
+          subject: "AgentPets Desktop ya está aquí",
           headline: "Tu mascota, junto a tu agente.",
           intro:
             "La app de macOS narra cada tool call de tu agente con bubbles cortos.",
@@ -39,7 +39,7 @@ export function renderDesktopLaunchEmail(
         }
       : current === "zh"
         ? {
-            subject: "Petdex Desktop 上线了",
+            subject: "AgentPets Desktop 上线了",
             headline: "你的宠物，陪在 agent 旁。",
             intro: "macOS 桌面应用，用短气泡叙述 agent 的每次工具调用。",
             ctaPrimary: "下载 macOS 版",
@@ -47,7 +47,7 @@ export function renderDesktopLaunchEmail(
             tagline: "macOS Apple Silicon · Windows + Linux 即将推出",
           }
         : {
-            subject: "Petdex Desktop is here",
+            subject: "AgentPets Desktop is here",
             headline: "Your pet, by your agent.",
             intro:
               "The macOS app narrates every tool call your agent makes with short bubbles.",
@@ -99,7 +99,7 @@ export function renderDesktopLaunchEmail(
         <img src="${ICON_URL}" alt="" width="48" height="48" style="display:block;width:48px;height:48px;border-radius:12px;border:1px solid ${BRAND_TINT};box-shadow:0 4px 12px rgba(82,102,234,0.15);" />
       </td>
       <td style="vertical-align:middle;">
-        <span style="display:block;color:#0a0a0a;font-size:18px;font-weight:700;letter-spacing:-0.01em;line-height:1;">Petdex Desktop</span>
+        <span style="display:block;color:#0a0a0a;font-size:18px;font-weight:700;letter-spacing:-0.01em;line-height:1;">AgentPets Desktop</span>
       </td>
     </tr>
   </table>`;

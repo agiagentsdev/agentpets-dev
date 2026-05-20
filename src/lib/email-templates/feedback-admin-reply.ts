@@ -24,21 +24,21 @@ export function renderFeedbackAdminReplyEmail(
   const copy =
     current === "es"
       ? {
-          subject: "Hunter respondió a tus comentarios de Petdex",
-          intro: "Hunter respondió a tus comentarios en Petdex:",
+          subject: "Hunter respondió a tus comentarios de AgentPets",
+          intro: "Hunter respondió a tus comentarios en AgentPets:",
           reply: "Respuesta:",
           continue: `Sigue el hilo aquí: ${threadUrl}`,
         }
       : current === "zh"
         ? {
-            subject: "Hunter 回复了你的 Petdex 反馈", // fixme:zh
-            intro: "Hunter 回复了你在 Petdex 上的反馈：", // fixme:zh
+            subject: "Hunter 回复了你的 AgentPets 反馈", // fixme:zh
+            intro: "Hunter 回复了你在 AgentPets 上的反馈：", // fixme:zh
             reply: "回复：", // fixme:zh
             continue: `继续查看这个讨论：${threadUrl}`, // fixme:zh
           }
         : {
-            subject: "Hunter replied to your Petdex feedback",
-            intro: "Hunter replied to your feedback on Petdex:",
+            subject: "Hunter replied to your AgentPets feedback",
+            intro: "Hunter replied to your feedback on AgentPets:",
             reply: "Reply:",
             continue: `Continue the thread: ${threadUrl}`,
           };

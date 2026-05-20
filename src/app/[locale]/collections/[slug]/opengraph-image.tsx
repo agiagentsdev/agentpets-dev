@@ -16,7 +16,7 @@ import { defaultLocale, hasLocale } from "@/i18n/config";
 export const runtime = "nodejs";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
-export const alt = "Petdex collection preview";
+export const alt = "AgentPets collection preview";
 // 24h ISR for the same reason the per-pet OG caches: every Discord /
 // Slack / X unfurl was re-running sharp + 6 sprite fetches before
 // this. See per-pet opengraph-image.tsx.
@@ -103,8 +103,8 @@ export default async function Image({
             fontWeight: 600,
           }}
         >
-          <PetdexMark size={44} />
-          <span>Petdex</span>
+          <AgentPetsMark size={44} />
+          <span>AgentPets</span>
         </div>
         <div
           style={{
@@ -294,7 +294,7 @@ async function loadFirstFrameAsDataUrl(url: string): Promise<string | null> {
   }
 }
 
-function PetdexMark({ size }: { size: number }) {
+function AgentPetsMark({ size }: { size: number }) {
   return (
     <svg
       aria-hidden="true"
@@ -343,7 +343,7 @@ function petdexFallback() {
           "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
       }}
     >
-      Petdex
+      AgentPets
     </div>,
     { ...size },
   );

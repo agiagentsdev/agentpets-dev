@@ -11,7 +11,7 @@ import { AdminCandidateActions } from "@/components/admin-candidate-actions";
 import { AdminRequestActions } from "@/components/admin-request-actions";
 
 export const metadata = {
-  title: "Petdex Admin · Requests",
+  title: "AgentPets Admin · Requests",
   robots: { index: false, follow: false },
 };
 

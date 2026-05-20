@@ -82,7 +82,7 @@ export function validateSubmission(
         status: 400,
         error: "invalid_asset_url",
         field,
-        message: `${field} must be hosted on the petdex R2 bucket.`,
+        message: `${field} must be hosted on the AgentPets R2 bucket.`,
       };
     }
   }

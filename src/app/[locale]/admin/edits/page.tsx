@@ -7,7 +7,7 @@ import { db, schema } from "@/lib/db/client";
 import { AdminEditActions } from "@/components/admin-edit-actions";
 
 export const metadata = {
-  title: "Petdex Admin · Edits",
+  title: "AgentPets Admin · Edits",
   robots: { index: false, follow: false },
 };
 

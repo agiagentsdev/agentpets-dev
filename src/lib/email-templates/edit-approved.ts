@@ -34,7 +34,7 @@ export function renderEditApprovedEmail(
             intro: `Your edit to "${vars.petName}" was approved.`,
           };
 
-  const text = [copy.intro, "", `Page: ${pageUrl}`, "", "Petdex"].join("\n");
+  const text = [copy.intro, "", `Page: ${pageUrl}`, "", "AgentPets"].join("\n");
   const html = wrapEmail(copy.subject, [p(copy.intro), p(`Page: ${pageUrl}`)]);
 
   return { subject: copy.subject, html, text };

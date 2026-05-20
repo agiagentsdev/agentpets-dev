@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata = {
-  title: "Petdex Admin · Manifest",
+  title: "AgentPets Admin · Manifest",
   robots: { index: false, follow: false },
 };
 

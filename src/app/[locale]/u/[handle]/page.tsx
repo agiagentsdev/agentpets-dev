@@ -68,21 +68,21 @@ export async function generateMetadata({ params }: PageProps) {
   // /en/u/<handle>/opengraph-image with 307 which scrapers drop.
   const ogImage = `${SITE_URL}/u/${publicHandle}/opengraph-image`;
   return {
-    title: `${displayName} on Petdex`,
+    title: `${displayName} on AgentPets`,
     description: `Pets created by ${displayName} for Codex.`,
     alternates: buildLocaleAlternates(
       `/u/${publicHandle}`,
       hasLocale(locale) ? locale : undefined,
     ),
     openGraph: {
-      title: `${displayName} on Petdex`,
+      title: `${displayName} on AgentPets`,
       description: `Animated Codex pets created by ${displayName}.`,
       url: `${SITE_URL}/u/${publicHandle}`,
       images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${displayName} on Petdex`,
+      title: `${displayName} on AgentPets`,
       description: `Animated Codex pets created by ${displayName}.`,
       images: [ogImage],
     },
@@ -257,7 +257,7 @@ export default async function UserProfilePage({ params }: PageProps) {
     0,
   );
 
-  // Admins get a "Creator of Petdex" badge instead of a numeric rank,
+  // Admins get a "Creator of AgentPets" badge instead of a numeric rank,
   // since they're filtered out of the leaderboard. For everyone else
   // we look up their rank by approved-pet count and only render the
   // badge when they're inside the top 50.
@@ -335,10 +335,10 @@ export default async function UserProfilePage({ params }: PageProps) {
                 {isOwnerAdmin ? (
                   <span
                     className="inline-flex items-center gap-1 rounded-full bg-brand px-2 py-0.5 font-mono text-[10px] tracking-[0.15em] text-white uppercase"
-                    title="One of the people who built Petdex"
+                    title="One of the people who built AgentPets"
                   >
                     <Trophy className="size-3" />
-                    {t("creatorOfPetdex")}
+                    {t("creatorOfAgentPets")}
                   </span>
                 ) : rank ? (
                   <Link

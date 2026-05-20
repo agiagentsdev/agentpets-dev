@@ -32,7 +32,7 @@ export function posixInstallScript(pet: ResolvedPet): string {
   const safeExt = spriteExt === "png" ? "png" : "webp";
   return [
     "#!/bin/sh",
-    "# Petdex installer",
+    "# AgentPets installer",
     `# https://agentpets.dev/pets/${safeSlug}`,
     "",
     "set -e",
@@ -63,7 +63,7 @@ export function powershellInstallScript(pet: ResolvedPet): string {
   const safeExt = spriteExt === "png" ? "png" : "webp";
   const displayNameText = singleLine(displayName);
   return [
-    "# Petdex installer",
+    "# AgentPets installer",
     `# https://agentpets.dev/pets/${safeSlug}`,
     "",
     "$ErrorActionPreference = 'Stop'",
@@ -91,7 +91,7 @@ export function posixNotFoundScript(slug: string): string {
   const safe = String(slug).replace(/[^a-z0-9-]/g, "");
   return [
     "#!/bin/sh",
-    `echo "Pet '${safe}' not found in Petdex." >&2`,
+    `echo "Pet '${safe}' not found in AgentPets." >&2`,
     'echo "Browse pets at https://agentpets.dev" >&2',
     "exit 1",
     "",
@@ -101,7 +101,7 @@ export function posixNotFoundScript(slug: string): string {
 export function powershellNotFoundScript(slug: string): string {
   const safe = String(slug).replace(/[^a-z0-9-]/g, "");
   return [
-    `Write-Error "Pet '${safe}' not found in Petdex."`,
+    `Write-Error "Pet '${safe}' not found in AgentPets."`,
     'Write-Error "Browse pets at https://agentpets.dev"',
     "exit 1",
     "",

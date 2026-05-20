@@ -24,8 +24,8 @@ export function renderSubmissionApprovedEmail(
   const copy =
     current === "es"
       ? {
-          subject: `${vars.petName} ya está en Petdex`,
-          intro: `${vars.petName} ya está publicada en Petdex.`,
+          subject: `${vars.petName} ya está en AgentPets`,
+          intro: `${vars.petName} ya está publicada en AgentPets.`,
           install: "Comando de instalación",
           actions: [
             "Ajusta el nombre, la descripción o las etiquetas desde la página de la mascota.",
@@ -35,8 +35,8 @@ export function renderSubmissionApprovedEmail(
         }
       : current === "zh"
         ? {
-            subject: `${vars.petName} 已在 Petdex 上线`, // fixme:zh
-            intro: `${vars.petName} 刚刚在 Petdex 上线。`, // fixme:zh
+            subject: `${vars.petName} 已在 AgentPets 上线`, // fixme:zh
+            intro: `${vars.petName} 刚刚在 AgentPets 上线。`, // fixme:zh
             install: "安装命令", // fixme:zh
             actions: [
               "在宠物页面调整名称、描述或标签。",
@@ -45,8 +45,8 @@ export function renderSubmissionApprovedEmail(
             ], // fixme:zh
           }
         : {
-            subject: `${vars.petName} is live on Petdex`,
-            intro: `${vars.petName} just went live on Petdex.`,
+            subject: `${vars.petName} is live on AgentPets`,
+            intro: `${vars.petName} just went live on AgentPets.`,
             install: "Install command",
             actions: [
               "Tweak the name, description or tags from the pet page.",
@@ -67,7 +67,7 @@ export function renderSubmissionApprovedEmail(
     "",
     `Profile: ${homeUrl}`,
     "",
-    "Petdex",
+    "AgentPets",
   ].join("\n");
 
   const html = wrapEmail(copy.subject, [

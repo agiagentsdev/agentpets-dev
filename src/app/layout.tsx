@@ -6,10 +6,10 @@ const SITE_URL = "https://agentpets.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  applicationName: "Petdex",
-  authors: [{ name: "Crafter Station", url: "https://crafter.run" }],
-  creator: "Crafter Station",
-  publisher: "Crafter Station",
+  applicationName: "AgentPets",
+  authors: [{ name: "AgentPets", url: "https://agentpets.dev" }],
+  creator: "AgentPets",
+  publisher: "AgentPets",
   alternates: {
     canonical: "/",
   },

@@ -27,7 +27,7 @@ const SITE_URL = "https://agentpets.dev";
 // (/en/download/opengraph-image) and next-intl rewrites that with a
 // 307. Most social scrapers (Discord, X) do not follow OG redirects
 // and silently fall back to the parent layout's image, so unfurls
-// would show the generic Petdex card instead of the desktop hero.
+// would show the generic AgentPets card instead of the desktop hero.
 // Pin the URL to the locale-stripped path the same way per-collection
 // metadata does.
 const OG_IMAGE = `${SITE_URL}/download/opengraph-image`;
@@ -42,15 +42,15 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   return {
-    title: "Download Petdex Desktop",
+    title: "Download AgentPets Desktop",
     description:
-      "Download Petdex Desktop for macOS. Your pet, floating beside every coding agent.",
+      "Download AgentPets Desktop for macOS. Your pet, floating beside every coding agent.",
     alternates: buildLocaleAlternates(
       "/download",
       hasLocale(locale) ? locale : undefined,
     ),
     openGraph: {
-      title: "Petdex Desktop",
+      title: "AgentPets Desktop",
       description:
         "Your pet, floating beside every coding agent. macOS native.",
       url: `${SITE_URL}/download`,
@@ -58,7 +58,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Petdex Desktop",
+      title: "AgentPets Desktop",
       description: "Your pet, floating beside every coding agent.",
       images: [OG_IMAGE],
     },
@@ -158,7 +158,7 @@ export default async function DownloadPage({
           <div className="relative size-40 drop-shadow-2xl md:size-64">
             <Image
               src="/brand/petdex-desktop-icon.png"
-              alt="Petdex Desktop"
+              alt="AgentPets Desktop"
               fill
               className="object-contain"
               priority

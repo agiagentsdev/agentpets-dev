@@ -43,7 +43,7 @@ function WechatQrImage({ className }: { className?: string }) {
       )}
       <Image
         src={WECHAT_QR_URL}
-        alt="Petdex 微信群二维码"
+        alt="AgentPets 微信群二维码"
         width={320}
         height={320}
         unoptimized
@@ -93,7 +93,7 @@ export function WechatCommunityDialog({
       <DialogContent className="gap-5 p-5 sm:max-w-md">
         <DialogHeader className="pr-8">
           <DialogTitle className="text-lg font-semibold tracking-tight">
-            加入 Petdex 微信群
+            加入 AgentPets 微信群
           </DialogTitle>
           <DialogDescription className="text-sm leading-6">
             微信扫码加入中文社区，交流 Codex pet 创作、提交和反馈。
@@ -115,7 +115,7 @@ export function WechatCommunityQrCard() {
     <div className="mt-8 max-w-sm rounded-3xl border border-[#07C160]/20 bg-[#07C160]/8 p-4 shadow-sm backdrop-blur">
       <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#07C160]">
         <WeChatIcon className="size-4" />
-        加入 Petdex 微信群
+        加入 AgentPets 微信群
       </div>
       <WechatQrImage className="border-[#07C160]/20" />
       <p className="mt-3 text-xs leading-5 text-muted-2">

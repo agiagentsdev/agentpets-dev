@@ -1,7 +1,7 @@
 import { listSubscribers } from "@/lib/admin/mailing-queries";
 
 export const metadata = {
-  title: "Subscribers | Petdex Admin",
+  title: "Subscribers | AgentPets Admin",
   robots: { index: false, follow: false },
 };
 

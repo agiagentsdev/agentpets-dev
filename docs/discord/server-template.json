@@ -1,9 +1,9 @@
 {
-  "$schema": "https://petdex.crafter.run/discord/server-template.schema.json",
-  "_comment": "Source of truth for the Petdex Community Discord server. Apply via the discord-mcp tools using docs/discord/apply-template.md as the prompt. Categories render top-to-bottom in the order listed; channels in each category render top-to-bottom in the order listed.",
+  "$schema": "https://agentpets.dev/discord/server-template.schema.json",
+  "_comment": "Source of truth for the AgentPets Community Discord server. Apply via the discord-mcp tools using docs/discord/apply-template.md as the prompt. Categories render top-to-bottom in the order listed; channels in each category render top-to-bottom in the order listed.",
 
   "guild": {
-    "name": "Petdex Community",
+    "name": "AgentPets Community",
     "iconPath": "public/brand/discord-icon.png",
     "description": "Animated pixel pets for the Codex CLI. Where creators ship, collectors trade, and the Pokédex grows.",
     "rulesAcceptanceRequired": true,
@@ -13,7 +13,7 @@
 
   "roles": [
     {
-      "name": "Petdex Team",
+      "name": "AgentPets Team",
       "color": "#5266EA",
       "hoist": true,
       "mentionable": false,
@@ -67,7 +67,7 @@
       "_comment": "Default role granted after passing #welcome onboarding (rules accept). Required to send messages anywhere."
     },
     {
-      "name": "Petdex Bot",
+      "name": "AgentPets Bot",
       "color": "#5266EA",
       "hoist": false,
       "mentionable": false,
@@ -115,7 +115,7 @@
         {
           "name": "showcase",
           "type": "text",
-          "topic": "Every approved pet lands here, posted by Petdex Bot. React, riff, vibe.",
+          "topic": "Every approved pet lands here, posted by AgentPets Bot. React, riff, vibe.",
           "lockedToBot": true
         },
         {
@@ -152,7 +152,7 @@
         {
           "name": "ideas",
           "type": "text",
-          "topic": "Pet ideas the community wants to see. Synced with petdex.crafter.run/requests.",
+          "topic": "Pet ideas the community wants to see. Synced with agentpets.dev/requests.",
           "slowmode": 60
         },
         {
@@ -168,12 +168,12 @@
         {
           "name": "dev",
           "type": "text",
-          "topic": "For people extending the Codex CLI or hacking on Petdex itself."
+          "topic": "For people extending the Codex CLI or hacking on AgentPets itself."
         },
         {
           "name": "cli-feedback",
           "type": "text",
-          "topic": "Bug reports + feature requests for `npx petdex`."
+          "topic": "Bug reports + feature requests for `npx @agentpets/cli`."
         },
         {
           "name": "design",
@@ -193,7 +193,7 @@
         {
           "name": "hackathons",
           "type": "text",
-          "topic": "Petdex hackathon announcements + team-finding."
+          "topic": "AgentPets hackathon announcements + team-finding."
         }
       ]
     },
@@ -213,14 +213,14 @@
         {
           "name": "office-hours",
           "type": "voice",
-          "topic": "Open hours with Petdex Team. Drop by Fridays 4pm GMT-5."
+          "topic": "Open hours with AgentPets Team. Drop by Fridays 4pm GMT-5."
         }
       ]
     },
     {
       "name": "🔒 STAFF",
       "private": true,
-      "_comment": "Only @Petdex Team + @Petdex Bot can see this category.",
+      "_comment": "Only @AgentPets Team + @AgentPets Bot can see this category.",
       "channels": [
         {
           "name": "admin",
@@ -235,7 +235,7 @@
         {
           "name": "bot-logs",
           "type": "text",
-          "topic": "Webhook events from petdex.crafter.run + bot action audit trail.",
+          "topic": "Webhook events from agentpets.dev + bot action audit trail.",
           "lockedToBot": true
         }
       ]
@@ -246,7 +246,7 @@
     {
       "id": "auto_role_creator",
       "trigger": "petdex_pet_approved",
-      "_comment": "Bot listens to a webhook from petdex.crafter.run/api/discord/webhook (we'll wire that). Looks up the submitter's linked Discord account and grants @Creator if not already.",
+      "_comment": "Bot listens to a webhook from agentpets.dev/api/discord/webhook (we'll wire that). Looks up the submitter's linked Discord account and grants @Creator if not already.",
       "action": "assign_role",
       "role": "Creator"
     },

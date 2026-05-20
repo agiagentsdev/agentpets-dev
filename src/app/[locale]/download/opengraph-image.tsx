@@ -1,5 +1,5 @@
 // OG image for the desktop download page. Brand-consistent with the
-// rest of Petdex (cloud gradient, brand purple, mono caption) but
+// rest of AgentPets (cloud gradient, brand purple, mono caption) but
 // leans on a "your pet, floating beside your editor" framing instead
 // of a sprite grid since this page is product copy, not a pet card.
 
@@ -10,7 +10,7 @@ import { defaultLocale, hasLocale } from "@/i18n/config";
 export const runtime = "nodejs";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
-export const alt = "Petdex Desktop — your pet beside every agent";
+export const alt = "AgentPets Desktop — your pet beside every agent";
 // 24h ISR matches the rest of the OG routes. The download landing
 // copy doesn't shift often; cached unfurls are fine.
 export const revalidate = 86400;
@@ -66,8 +66,8 @@ export default async function Image({
             fontWeight: 600,
           }}
         >
-          <PetdexMark size={44} />
-          <span>Petdex</span>
+          <AgentPetsMark size={44} />
+          <span>AgentPets</span>
         </div>
         <div
           style={{
@@ -189,7 +189,7 @@ async function getOgImageCopy(locale: string) {
     };
   };
   return {
-    eyebrow: messages.ogImage?.downloadEyebrow ?? "Petdex Desktop",
+    eyebrow: messages.ogImage?.downloadEyebrow ?? "AgentPets Desktop",
     title: messages.ogImage?.downloadTitle ?? "Your pet, beside every agent",
     subtitle:
       messages.ogImage?.downloadSubtitle ??
@@ -197,7 +197,7 @@ async function getOgImageCopy(locale: string) {
   };
 }
 
-function PetdexMark({ size }: { size: number }) {
+function AgentPetsMark({ size }: { size: number }) {
   return (
     <svg
       aria-hidden="true"

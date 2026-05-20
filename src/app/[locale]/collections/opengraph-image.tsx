@@ -14,7 +14,7 @@ import { defaultLocale, hasLocale } from "@/i18n/config";
 export const runtime = "nodejs";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
-export const alt = "Petdex featured collections";
+export const alt = "AgentPets featured collections";
 // 24h ISR. Featured collections rotate slowly (curator picks them by
 // hand). The unfurl bots that hit this path are by far the noisiest
 // thing on the Vercel bill, and the rendered PNG is identical for
@@ -92,8 +92,8 @@ export default async function Image({
             fontWeight: 600,
           }}
         >
-          <PetdexMark size={44} />
-          <span>Petdex</span>
+          <AgentPetsMark size={44} />
+          <span>AgentPets</span>
         </div>
         <div
           style={{
@@ -236,7 +236,7 @@ async function loadFirstFrameAsDataUrl(url: string): Promise<string | null> {
   }
 }
 
-function PetdexMark({ size }: { size: number }) {
+function AgentPetsMark({ size }: { size: number }) {
   return (
     <svg
       aria-hidden="true"

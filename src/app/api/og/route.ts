@@ -49,9 +49,9 @@ export async function GET(req: Request): Promise<Response> {
     headers: {
       "content-type": "image/png",
       "cache-control": CACHE_HEADER,
-      "x-petdex-og-variant": asset.filename,
-      "x-petdex-og-width": String(asset.width),
-      "x-petdex-og-height": String(asset.height),
+      "x-agentpets-og-variant": asset.filename,
+      "x-agentpets-og-width": String(asset.width),
+      "x-agentpets-og-height": String(asset.height),
       // Hint to caches/CDN that we vary the response by client UA so
       // mainland WeChat previews don't get the desktop variant from a
       // shared cache layer (and vice versa).

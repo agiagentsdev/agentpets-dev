@@ -162,8 +162,7 @@ export async function POST(
   if (process.env.RESEND_API_KEY) {
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      const from =
-        process.env.RESEND_FROM ?? "Petdex <petdex@updates.railly.dev>";
+      const from = process.env.RESEND_FROM ?? "AgentPets <hello@agentpets.dev>";
 
       if (adminCaller) {
         // Admin replied → notify the original author.

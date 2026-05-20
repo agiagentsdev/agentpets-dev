@@ -22,7 +22,7 @@ const ALL_STEPS: Step[] = [
     selector:
       'a[href="#gallery"], a[href="/#gallery"], a[href="/api/manifest"]',
     eyebrow: "What's new",
-    title: "Petdex is now an index, not a list",
+    title: "AgentPets is now an index, not a list",
     body: "Browse 100+ animated companions, filter by vibe or kind, share any pet with one click. We'll show you the new bits in 30 seconds.",
     placement: "bottom",
   },
@@ -222,7 +222,7 @@ export function OnboardingTour({ onClose }: OnboardingTourProps) {
       <div
         ref={tooltipRef}
         role="dialog"
-        aria-label="Petdex feature tour"
+        aria-label="AgentPets feature tour"
         style={tooltipStyle}
         className="z-[60] w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-3xl border border-border-base bg-surface shadow-2xl shadow-blue-950/25"
       >

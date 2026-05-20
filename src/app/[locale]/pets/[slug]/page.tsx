@@ -309,12 +309,12 @@ export default async function PetPage({ params }: PageProps) {
 
             {/* Right column: identity + CTAs + meta. Order is intentional:
                 eyebrow → name → description → primary CTA (Open in
-                Petdex) → secondary CTA (install command) → quick
+                AgentPets) → secondary CTA (install command) → quick
                 actions (like/sound/menu + stats) → tags → collections. */}
             <header className="flex flex-col gap-5">
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
                 <p className="font-mono text-xs tracking-[0.22em] text-brand uppercase">
-                  {pet.featured ? "Featured" : "Petdex entry"}
+                  {pet.featured ? "Featured" : "AgentPets entry"}
                 </p>
                 {currentDexNumber != null ? (
                   <p className="font-mono text-xs tracking-[0.22em] text-muted-3 uppercase">
@@ -451,7 +451,7 @@ export default async function PetPage({ params }: PageProps) {
         {/* Full install guide. CLI + Curl tabs, platform-specific
             terminal instructions, "Activate in Codex" steps. Lives
             under the state viewer so it doesn't crowd the hero where
-            the primary CTA (Open in Petdex Desktop) plus a compact
+            the primary CTA (Open in AgentPets Desktop) plus a compact
             one-line npx command already cover the common path. */}
         <div id="install" className="scroll-mt-24">
           <InstallCommand slug={pet.slug} displayName={pet.displayName} />

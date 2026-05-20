@@ -980,7 +980,7 @@ function buildIssueUrl(
 ): string {
   const title = parsed?.displayName
     ? `[Submit fail] ${parsed.displayName}`
-    : "[Submit fail] Petdex upload";
+    : "[Submit fail] AgentPets upload";
   const description = parsed?.description?.trim();
   const sizeText = parsed?.spritesheetWidth
     ? `${parsed.spritesheetWidth}×${parsed.spritesheetHeight}`

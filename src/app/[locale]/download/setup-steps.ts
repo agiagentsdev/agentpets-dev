@@ -1,11 +1,11 @@
 /**
  * Setup-step list for the /download page.
  *
- * Now that Petdex.app ships as a signed + notarized .dmg and the CLI
+ * Now that AgentPets.app ships as a signed + notarized .dmg and the CLI
  * resolves the binary from /Applications automatically, the install
  * flow collapses to a single command:
  *
- *   1. (already done) Drag Petdex.app to /Applications via the .dmg
+ *   1. (already done) Drag AgentPets.app to /Applications via the .dmg
  *   2. `npx @agentpets/cli@latest init`   ← wires hooks + wakes the mascot
  *   *. `npx @agentpets/cli@latest install <slug>` (optional, when /pets/<slug>
  *       sent the user here with ?next=install/<slug>)

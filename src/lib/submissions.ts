@@ -128,7 +128,7 @@ export async function persistSubmission(
           zipUrl: body.zipUrl,
         });
         await resend.emails.send({
-          from: "Petdex <petdex@notifications.crafter.run>",
+          from: "AgentPets <hello@agentpets.dev>",
           to: ownerNotify,
           subject: email.subject.replace(body.displayName, safeName),
           html: email.html,

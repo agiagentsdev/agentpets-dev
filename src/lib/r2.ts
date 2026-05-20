@@ -8,7 +8,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 const ACCOUNT_ID = process.env.R2_ACCOUNT_ID;
 const ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID;
 const SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY;
-const BUCKET = process.env.R2_BUCKET ?? "petdex-pets";
+const BUCKET = process.env.R2_BUCKET ?? "agentpets-pets";
 const PUBLIC_BASE =
   process.env.R2_PUBLIC_BASE ??
   "https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev";

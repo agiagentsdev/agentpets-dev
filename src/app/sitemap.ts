@@ -6,6 +6,7 @@ import {
   buildAbsoluteUrl,
 } from "@/lib/locale-routing";
 import { getAllApprovedPets } from "@/lib/pets";
+import { seoAgentPages } from "@/lib/seo-agent-pages";
 import { PET_KINDS, PET_VIBES } from "@/lib/types";
 
 export const revalidate = 86400;
@@ -101,6 +102,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.6,
     },
+    ...Object.keys(seoAgentPages).map((pathname) => ({
+      pathname: `/${pathname}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: pathname === "ai-coding-pets" ? 0.85 : 0.75,
+    })),
     {
       pathname: "/legal/takedown",
       lastModified: now,

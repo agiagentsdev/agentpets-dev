@@ -163,6 +163,41 @@ export default async function AboutPage({
           </p>
         </div>
 
+        <div className="rounded-3xl border border-border-base bg-surface p-6">
+          <p className="font-mono text-[11px] tracking-[0.22em] text-brand uppercase">
+            Independent product
+          </p>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+            AgentPets is an independent MIT-based product, not a claim over the
+            original Petdex community.
+          </h2>
+          <p className="mt-4 text-base leading-7 text-muted-2">
+            AgentPets keeps compatibility with the open pet package format and
+            may read Petdex-compatible gallery data while building its own
+            domain, CLI, creator flow, curated collections, and multi-agent
+            runtime support. Pet assets remain owned by their submitters and
+            underlying IP holders.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            <Link
+              href={siteConfig.upstreamRepoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-9 items-center rounded-full border border-border-base bg-background px-3 text-sm text-muted-2 transition hover:border-border-strong"
+            >
+              Original Petdex repo
+            </Link>
+            <Link
+              href={siteConfig.repoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-9 items-center rounded-full border border-border-base bg-background px-3 text-sm text-muted-2 transition hover:border-border-strong"
+            >
+              AgentPets repo
+            </Link>
+          </div>
+        </div>
+
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             {t("faq.title")}

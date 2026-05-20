@@ -1,4 +1,4 @@
-# Petdex Community Discord setup
+# AgentPets Community Discord setup
 
 End-to-end checklist. Total time: ~10 min once you have the bot token.
 
@@ -12,13 +12,13 @@ End-to-end checklist. Total time: ~10 min once you have the bot token.
 ## 2. Invite the bot to your server
 
 1. Create the server first if you haven't: open Discord → "+" → Create
-   My Own → For me and my friends → name it "Petdex Community".
+   My Own → For me and my friends → name it "AgentPets Community".
 2. Open Discord Settings → Advanced → enable **Developer Mode**.
 3. In the Developer Portal, go to **OAuth2 → URL Generator**.
 4. Scopes: `bot`, `applications.commands`.
 5. Bot permissions: `Administrator` (we'll trim these once the server
    is built. For the initial template apply we want full access).
-6. Copy the generated URL, open it in your browser, pick "Petdex
+6. Copy the generated URL, open it in your browser, pick "AgentPets
    Community" from the dropdown, authorize.
 
 ## 3. Boot the MCP server
@@ -48,7 +48,7 @@ claude mcp list
 
 ## 5. Get your guild ID + put it in .env
 
-In Discord, right-click the **Petdex Community** server icon → "Copy
+In Discord, right-click the **AgentPets Community** server icon → "Copy
 Server ID". Paste it into `~/Programming/oss/discord-mcp/.env.petdex`
 as `DISCORD_GUILD_ID=...`, then restart:
 
@@ -59,7 +59,7 @@ cd ~/Programming/oss/discord-mcp
 
 ## 6. Apply the server template
 
-In a Claude Code session inside the petdex repo, paste the contents of
+In a Claude Code session inside the agentpets repo, paste the contents of
 `docs/discord/apply-template.md` as a single message. Claude will read
 the JSON spec and call the discord-mcp tools to create everything:
 roles, categories, channels, permission overrides.
@@ -86,9 +86,9 @@ Things the MCP can't do. Finish these in the Discord UI:
     make pets" is picked (the bot also auto-grants when an approved
     pet lands)
 - Server Settings → Overview → upload `public/brand/discord-icon.png`
-  if the MCP didn't (the petdex repo has it).
+  if the MCP didn't (the agentpets repo has it).
 
-## 8. Wire the webhook from petdex.crafter.run
+## 8. Wire the webhook from agentpets.dev
 
 Once the server is up, we'll add a webhook handler at
 `/api/discord/webhook` that the petdex backend hits on:

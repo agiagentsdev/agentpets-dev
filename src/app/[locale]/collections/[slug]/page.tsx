@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps) {
   // rewrites with a 307 redirect under localePrefix="as-needed". Most
   // social scrapers (Discord, X) don't follow redirects on og:image
   // and silently fall back to the parent layout's image — so unfurls
-  // showed the generic Petdex hero instead of the per-collection art.
+  // showed the generic AgentPets hero instead of the per-collection art.
   const ogImage = `${SITE_URL}/collections/${collection.slug}/opengraph-image`;
   return {
     title: `${collection.title} collection`,
@@ -49,14 +49,14 @@ export async function generateMetadata({ params }: PageProps) {
       hasLocale(locale) ? locale : undefined,
     ),
     openGraph: {
-      title: `${collection.title} on Petdex`,
+      title: `${collection.title} on AgentPets`,
       description: collection.description,
       url: `${SITE_URL}/collections/${collection.slug}`,
       images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${collection.title} on Petdex`,
+      title: `${collection.title} on AgentPets`,
       description: collection.description,
       images: [ogImage],
     },

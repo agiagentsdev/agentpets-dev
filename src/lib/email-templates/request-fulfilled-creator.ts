@@ -42,7 +42,7 @@ export function renderRequestFulfilledCreatorEmail(
             cta: `View: ${petUrl}`,
           };
 
-  const text = [copy.intro, "", copy.body, "", copy.cta, "", "Petdex"].join(
+  const text = [copy.intro, "", copy.body, "", copy.cta, "", "AgentPets"].join(
     "\n",
   );
   const html = wrapEmail(copy.subject, [

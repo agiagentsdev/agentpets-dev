@@ -42,7 +42,7 @@ export function renderEditRejectedEmail(
           };
 
   const reasonLine = vars.reason ? `Reason: ${vars.reason}` : copy.noReason;
-  const text = [copy.intro, "", reasonLine, "", copy.cta, "", "Petdex"].join(
+  const text = [copy.intro, "", reasonLine, "", copy.cta, "", "AgentPets"].join(
     "\n",
   );
   const html = wrapEmail(copy.subject, [

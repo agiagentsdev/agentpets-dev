@@ -16,7 +16,7 @@ import { defaultLocale, hasLocale } from "@/i18n/config";
 export const runtime = "nodejs";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
-export const alt = "Petdex pet preview";
+export const alt = "AgentPets pet preview";
 // Cache the rendered PNG aggressively. Pet sprites change rarely — when
 // a pet is taken down or its sprite swapped, it gets a new slug suffix,
 // so the OG path changes. Old slugs go 404. Without this, every Discord
@@ -25,7 +25,7 @@ export const alt = "Petdex pet preview";
 // Transfer combined). 24h ISR + immutable headers neutralize it.
 export const revalidate = 86400;
 
-// Petdex spritesheets are an 8-column × 9-row grid (max frames per state ×
+// AgentPets spritesheets are an 8-column × 9-row grid (max frames per state ×
 // state count). Per-frame size is 192×208 — most states use fewer than 8
 // frames; the unused tail of each row is transparent padding.
 // See src/lib/pet-states.ts.
@@ -102,8 +102,8 @@ export default async function Image({
             fontWeight: 600,
           }}
         >
-          <PetdexMark size={44} />
-          <span>Petdex</span>
+          <AgentPetsMark size={44} />
+          <span>AgentPets</span>
         </div>
         <div
           style={{
@@ -317,7 +317,7 @@ async function loadFirstFrameAsDataUrl(url: string): Promise<string | null> {
   }
 }
 
-function PetdexMark({ size }: { size: number }) {
+function AgentPetsMark({ size }: { size: number }) {
   return (
     <svg
       aria-hidden="true"
@@ -382,7 +382,7 @@ function petdexFallback() {
           "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
       }}
     >
-      Petdex
+      AgentPets
     </div>,
     { ...size },
   );

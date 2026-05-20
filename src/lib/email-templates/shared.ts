@@ -30,7 +30,7 @@ export function wrapEmail(title: string, blocks: string[]): string {
     '<div style="max-width:640px;margin:0 auto;background:#fff;border:1px solid #e7e5e4;border-radius:16px;padding:24px;">',
     `<h1 style="margin:0 0 16px;font-size:22px;line-height:1.2;">${escapeHtml(title)}</h1>`,
     ...blocks,
-    '<p style="margin:24px 0 0;color:#57534e;font-size:13px;">Petdex</p>',
+    '<p style="margin:24px 0 0;color:#57534e;font-size:13px;">AgentPets</p>',
     "</div></body></html>",
   ].join("");
 }
@@ -40,8 +40,8 @@ export function buildUnsubscribeFooter(
   unsubscribeToken: string,
 ): { html: string; text: string } {
   const url = `${SITE_URL}${localizePath(locale, "/unsubscribe")}?token=${encodeURIComponent(unsubscribeToken)}`;
-  const html = `<p style="margin:32px 0 0;padding-top:16px;border-top:1px solid #e7e5e4;color:#a8a29e;font-size:11px;line-height:1.5;">You are receiving this because you signed up for Petdex. <a href="${url}" style="color:#a8a29e;text-decoration:underline;">Unsubscribe</a></p>`;
-  const text = `\n\n---\nYou are receiving this because you signed up for Petdex.\nUnsubscribe: ${url}`;
+  const html = `<p style="margin:32px 0 0;padding-top:16px;border-top:1px solid #e7e5e4;color:#a8a29e;font-size:11px;line-height:1.5;">You are receiving this because you signed up for AgentPets. <a href="${url}" style="color:#a8a29e;text-decoration:underline;">Unsubscribe</a></p>`;
+  const text = `\n\n---\nYou are receiving this because you signed up for AgentPets.\nUnsubscribe: ${url}`;
   return { html, text };
 }
 

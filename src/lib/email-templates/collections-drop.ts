@@ -28,20 +28,20 @@ export function renderCollectionsDropEmail(
   const copy =
     current === "es"
       ? {
-          subject: "10 colecciones nuevas en Petdex. Descubre la tuya",
+          subject: "10 colecciones nuevas en AgentPets. Descubre la tuya",
           intro:
             "Acabamos de organizar todos los pets en 10 colecciones con identidad. Tu pet ya pertenece a una.",
           cta: "Ver mis colecciones",
         }
       : current === "zh"
         ? {
-            subject: "Petdex 推出 10 个全新合集，看看你的宠物属于哪一个",
+            subject: "AgentPets 推出 10 个全新合集，看看你的宠物属于哪一个",
             intro:
               "我们把所有宠物归入了 10 个有故事感的合集。你的宠物已经在其中一个里了。",
             cta: "查看我的合集",
           }
         : {
-            subject: "10 fresh collections on Petdex. Find yours",
+            subject: "10 fresh collections on AgentPets. Find yours",
             intro:
               "We just sorted every pet into 10 themed collections with real identity. Yours already belongs to one.",
             cta: "See my collections",

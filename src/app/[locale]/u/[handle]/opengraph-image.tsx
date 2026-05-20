@@ -20,7 +20,7 @@ import { isAllowedAssetUrl, isAllowedAvatarUrl } from "@/lib/url-allowlist";
 export const runtime = "nodejs";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
-export const alt = "Petdex profile preview";
+export const alt = "AgentPets profile preview";
 // 24h ISR — same reasoning as the per-pet OG. Profile bios change
 // rarely and the unfurl bots that hit this path are noisy. Cached
 // PNG saves Fluid CPU + Origin Transfer on every Discord/X share.
@@ -164,8 +164,8 @@ export default async function Image({
             fontWeight: 600,
           }}
         >
-          <PetdexMark size={44} />
-          <span>Petdex</span>
+          <AgentPetsMark size={44} />
+          <span>AgentPets</span>
         </div>
         <div
           style={{
@@ -179,7 +179,7 @@ export default async function Image({
             fontWeight: 600,
           }}
         >
-          Petdex creator
+          AgentPets creator
         </div>
       </div>
 
@@ -381,7 +381,7 @@ async function loadAvatarAsDataUrl(url: string): Promise<string | null> {
   }
 }
 
-function PetdexMark({ size }: { size: number }) {
+function AgentPetsMark({ size }: { size: number }) {
   return (
     <svg
       aria-hidden="true"
@@ -436,7 +436,7 @@ function petdexFallback() {
           "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
       }}
     >
-      Petdex
+      AgentPets
     </div>,
     { ...size },
   );

@@ -21,7 +21,7 @@ export function renderSubmissionRejectedEmail(
   const copy =
     current === "es"
       ? {
-          subject: `Tu envío a Petdex necesita cambios: ${vars.petName}`,
+          subject: `Tu envío a AgentPets necesita cambios: ${vars.petName}`,
           intro: `Hola, tu mascota "${vars.petName}" no fue aprobada en esta ronda.`,
           noReason:
             "No se indicó una razón. Si quieres, itera y vuelve a enviarla.",
@@ -29,13 +29,13 @@ export function renderSubmissionRejectedEmail(
         }
       : current === "zh"
         ? {
-            subject: `你的 Petdex 提交需要修改：${vars.petName}`, // fixme:zh
+            subject: `你的 AgentPets 提交需要修改：${vars.petName}`, // fixme:zh
             intro: `你好，你的宠物“${vars.petName}”这次没有通过审核。`, // fixme:zh
             noReason: "这次没有提供原因。你可以修改后重新提交。", // fixme:zh
             cta: `你可以在这里重新提交修订版：${submitUrl}`, // fixme:zh
           }
         : {
-            subject: `Your Petdex submission needs changes: ${vars.petName}`,
+            subject: `Your AgentPets submission needs changes: ${vars.petName}`,
             intro: `Hey, your pet "${vars.petName}" wasn't approved this round.`,
             noReason:
               "No reason was provided. Feel free to iterate and resubmit.",
@@ -43,7 +43,7 @@ export function renderSubmissionRejectedEmail(
           };
 
   const reasonLine = vars.reason ? `Reason: ${vars.reason}` : copy.noReason;
-  const text = [copy.intro, "", reasonLine, "", copy.cta, "", "Petdex"].join(
+  const text = [copy.intro, "", reasonLine, "", copy.cta, "", "AgentPets"].join(
     "\n",
   );
   const html = wrapEmail(copy.subject, [

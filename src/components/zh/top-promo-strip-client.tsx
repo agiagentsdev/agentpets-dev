@@ -99,7 +99,7 @@ export function TopPromoStripClient({ items, intervalMs = 4000 }: Props) {
     return (
       <div className={baseClasses}>
         <span className="flex items-center gap-1 text-xs font-medium text-white/70">
-          🐾 欢迎来到 Petdex Welcome
+          🐾 欢迎来到 AgentPets Welcome
           <ChevronRight className="w-3 h-3 ml-0.5" />
         </span>
       </div>

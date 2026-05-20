@@ -1,4 +1,4 @@
-# Build the Petdex Community Discord server
+# Build the AgentPets Community Discord server
 
 Copy this entire file and paste it as a single message in a Claude Code
 session **after** you've started the discord-mcp container and added it
@@ -9,7 +9,7 @@ discord-mcp tools to build everything.
 ---
 
 You have access to the discord-mcp tool set. Read
-`docs/discord/server-template.json` from the petdex repo and build the
+`docs/discord/server-template.json` from the agentpets repo and build the
 server exactly as specified. Use the discord-mcp tools. Never invent
 permissions or deviate from the JSON.
 
@@ -17,7 +17,7 @@ Steps, in order:
 
 1. Confirm the bot is in the right guild. Call `get_server_info` and
    verify the guild matches the `DISCORD_GUILD_ID` env. If the bot is
-   in a fresh empty guild named "Petdex Community", continue. If the
+   in a fresh empty guild named "AgentPets Community", continue. If the
    guild has a different name, **stop and ask** before renaming.
 
 2. Set the guild icon to `public/brand/discord-icon.png`. If the MCP
@@ -25,7 +25,7 @@ Steps, in order:
    manually in Server Settings → Overview.
 
 3. Create roles in the order listed under `roles`. Color, hoist,
-   mentionable, and permissions must match. The "Petdex Bot" role
+   mentionable, and permissions must match. The "AgentPets Bot" role
    exists already (Discord creates it on bot install). If so, just
    ensure its permissions match.
 
@@ -35,10 +35,10 @@ Steps, in order:
       announcement / voice).
    c. Apply the topic verbatim. If `slowmode` is set, configure it.
    d. If a channel is marked `lockedToBot: true`, deny @everyone
-      `SendMessages` and grant `Petdex Bot` + `Petdex Team`
+      `SendMessages` and grant `AgentPets Bot` + `AgentPets Team`
       `SendMessages` + `ManageMessages`.
    e. If a category has `private: true`, deny @everyone `ViewChannel`
-      and grant `Petdex Team` + `Petdex Bot` `ViewChannel` +
+      and grant `AgentPets Team` + `AgentPets Bot` `ViewChannel` +
       `SendMessages`.
 
 5. Verify the result by calling `list_channels` and reporting back a

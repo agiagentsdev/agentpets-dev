@@ -152,7 +152,7 @@ export async function takedownPet(
       try {
         const resend = new Resend(process.env.RESEND_API_KEY);
         const from =
-          process.env.RESEND_FROM ?? "Petdex <petdex@updates.railly.dev>";
+          process.env.RESEND_FROM ?? "AgentPets <hello@agentpets.dev>";
         const locale = await getPreferredLocaleForUser(pet.ownerId);
         const email = renderSubmissionTakedownEmail(locale, {
           petName: pet.displayName,

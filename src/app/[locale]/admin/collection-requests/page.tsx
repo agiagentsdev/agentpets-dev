@@ -8,7 +8,7 @@ import { resolveOwnerCredits } from "@/lib/owner-credit";
 import { AdminCollectionRequestActions } from "@/components/admin-collection-request-actions";
 
 export const metadata = {
-  title: "Petdex Admin · Collection requests",
+  title: "AgentPets Admin · Collection requests",
   robots: { index: false, follow: false },
 };
 

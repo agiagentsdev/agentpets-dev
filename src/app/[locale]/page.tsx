@@ -10,7 +10,7 @@ import {
 } from "@/lib/collections";
 import { getDexNumberMap } from "@/lib/dex";
 import { formatLocalizedNumber } from "@/lib/format-number";
-import { buildLocaleAlternates } from "@/lib/locale-routing";
+import { buildLocaleAlternates, withLocale } from "@/lib/locale-routing";
 import { searchPets } from "@/lib/pet-search";
 import { getFeaturedPetsWithMetrics, type PetWithMetrics } from "@/lib/pets";
 import { installCommandFor, siteConfig } from "@/lib/site-config";
@@ -72,6 +72,7 @@ export default async function Home({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const localeValue = hasLocale(locale) ? locale : "en";
   const isZh = locale === "zh";
   const t = await getTranslations("home");
 
@@ -215,6 +216,24 @@ export default async function Home({
             )}
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto grid w-full max-w-[1440px] gap-4 px-5 py-10 md:grid-cols-5 md:px-8">
+        {[
+          ["AI coding pets", "/ai-coding-pets"],
+          ["Codex pets", "/codex-pets"],
+          ["Claude Code pets", "/claude-code-pets"],
+          ["Cursor pets", "/cursor-pets"],
+          ["Gemini CLI pets", "/gemini-cli-pets"],
+        ].map(([label, href]) => (
+          <Link
+            key={href}
+            href={withLocale(href, localeValue)}
+            className="rounded-2xl border border-border-base bg-surface px-4 py-3 text-sm font-medium text-muted-2 transition hover:border-border-strong hover:text-foreground"
+          >
+            {label}
+          </Link>
+        ))}
       </section>
 
       <FeaturedCollections collections={collections} isZh={isZh} />

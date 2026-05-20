@@ -26,20 +26,20 @@ export function renderRequestFulfilledRequesterEmail(
     current === "es"
       ? {
           subject: `Tu pedido "${vars.requestQuery}" ya tiene mascota`,
-          intro: `${vars.petName} cumple tu pedido en Petdex.`,
+          intro: `${vars.petName} cumple tu pedido en AgentPets.`,
           install: "Comando de instalación",
           cta: `Página: ${petUrl}`,
         }
       : current === "zh"
         ? {
             subject: `你的请求 "${vars.requestQuery}" 已被满足`, // fixme:zh
-            intro: `${vars.petName} 满足了你在 Petdex 的请求。`, // fixme:zh
+            intro: `${vars.petName} 满足了你在 AgentPets 的请求。`, // fixme:zh
             install: "安装命令", // fixme:zh
             cta: `页面：${petUrl}`, // fixme:zh
           }
         : {
             subject: `Your request "${vars.requestQuery}" has a pet`,
-            intro: `${vars.petName} fulfills your request on Petdex.`,
+            intro: `${vars.petName} fulfills your request on AgentPets.`,
             install: "Install command",
             cta: `Page: ${petUrl}`,
           };
@@ -52,7 +52,7 @@ export function renderRequestFulfilledRequesterEmail(
     `${copy.install}:`,
     installCmd,
     "",
-    "Petdex",
+    "AgentPets",
   ].join("\n");
   const html = wrapEmail(copy.subject, [
     p(copy.intro),
