@@ -1,7 +1,6 @@
 import { execFile } from "node:child_process";
 import { mkdtemp, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import path from "node:path";
 import { promisify } from "node:util";
 
 import { PutObjectCommand } from "@aws-sdk/client-s3";
@@ -196,7 +195,7 @@ export async function processPetSound(
     };
   }
 
-  const tmpRoot = await mkdtemp(path.join(tmpdir(), "petdex-sound-"));
+  const tmpRoot = await mkdtemp(`${tmpdir()}/petdex-sound-`);
 
   try {
     let bestCandidate:
@@ -204,11 +203,8 @@ export async function processPetSound(
       | undefined;
 
     for (let attempt = 1; attempt <= MAX_RENDER_ATTEMPTS; attempt += 1) {
-      const rawPath = path.join(tmpRoot, `${pet.slug}.${attempt}.raw.mp3`);
-      const normalizedPath = path.join(
-        tmpRoot,
-        `${pet.slug}.${attempt}.sound.mp3`,
-      );
+      const rawPath = `${tmpRoot}/${pet.slug}.${attempt}.raw.mp3`;
+      const normalizedPath = `${tmpRoot}/${pet.slug}.${attempt}.sound.mp3`;
       const rawBytes = await generateElevenLabsAudio(
         brief,
         options.workerKey ?? pet.slug,

@@ -18,6 +18,7 @@ import { userIdForHandle } from "@/lib/handles";
 import { isAllowedAssetUrl, isAllowedAvatarUrl } from "@/lib/url-allowlist";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
 export const alt = "AgentPets profile preview";
