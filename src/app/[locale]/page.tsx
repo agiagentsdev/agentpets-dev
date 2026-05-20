@@ -45,7 +45,7 @@ import { hasLocale, locales } from "@/i18n/config";
 // the "caught" highlight). With a 24h ceiling and tag-based
 // invalidation on submit/feature/withdraw, the page stays fresh for
 // editorial changes without burning a function on every visit.
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export const revalidate = 86400;
 
 export async function generateMetadata({
@@ -225,6 +225,11 @@ export default async function Home({
           ["Claude Code pets", "/claude-code-pets"],
           ["Cursor pets", "/cursor-pets"],
           ["Gemini CLI pets", "/gemini-cli-pets"],
+          ["Codex pet generator", "/codex-pet-generator"],
+          ["AI agent pet gallery", "/ai-agent-pet-gallery"],
+          ["Developer pets", "/developer-pets"],
+          ["Open-source Codex pets", "/open-source-codex-pets"],
+          ["Pet builder", "/pet-builder"],
         ].map(([label, href]) => (
           <Link
             key={href}

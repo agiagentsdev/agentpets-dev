@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 6996",
+    "dev": "bun scripts/write-build-version.ts && next dev -p 6996",
     "dev:docker": "bun scripts/dev-docker.ts",
     "dev:mock": "bun scripts/dev-mock.ts",
     "docker:down": "docker compose -f docker-compose.dev.yml down || podman compose -f docker-compose.dev.yml down",

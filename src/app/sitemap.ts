@@ -10,6 +10,7 @@ import { seoAgentPages } from "@/lib/seo-agent-pages";
 import { PET_KINDS, PET_VIBES } from "@/lib/types";
 
 export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 type EntryInput = {
   pathname: string;

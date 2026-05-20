@@ -37,7 +37,8 @@ for (const key of Object.keys(stripped)) {
     key.startsWith("RESEND_") ||
     key === "DATABASE_URL" ||
     key === "OPENAI_API_KEY" ||
-    key === "ELEVENLABS_API_KEY"
+    key === "ELEVENLABS_API_KEY" ||
+    key === "PETDEX_MOCK_SKIP_DB_BOOTSTRAP"
   ) {
     delete stripped[key];
   }
@@ -50,7 +51,12 @@ const child = spawn(
   ["x", "next", "dev", "--webpack", "-p", "6996", ...process.argv.slice(2)],
   {
     stdio: "inherit",
-    env: { ...stripped, ...env, PETDEX_MOCK: "1" },
+    env: {
+      ...stripped,
+      ...env,
+      PETDEX_MOCK: "1",
+      PETDEX_MOCK_SKIP_DB_BOOTSTRAP: "0",
+    },
   },
 );
 

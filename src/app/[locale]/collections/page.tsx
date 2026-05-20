@@ -15,6 +15,7 @@ import { hasLocale } from "@/i18n/config";
 // data. 24h ceiling + revalidateTag('collection:list') from admin
 // write paths keeps the page fresh on actual changes without burning
 // a function on every visit.
+export const dynamic = "force-dynamic";
 export const revalidate = 86400;
 
 const SITE_URL = "https://agentpets.dev";

@@ -5,6 +5,9 @@ import {
 
 const slug = "ai-coding-pets" as const;
 
+export const dynamic = "force-dynamic";
+export const revalidate = 86400;
+
 export function generateMetadata({
   params,
 }: {

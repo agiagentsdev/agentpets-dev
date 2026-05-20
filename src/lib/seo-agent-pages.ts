@@ -7,9 +7,14 @@ export type SeoAgentSlug =
   | "codex-pets"
   | "claude-code-pets"
   | "cursor-pets"
-  | "gemini-cli-pets";
+  | "gemini-cli-pets"
+  | "codex-pet-generator"
+  | "ai-agent-pet-gallery"
+  | "developer-pets"
+  | "open-source-codex-pets"
+  | "pet-builder";
 
-type LocalizedText = Record<Locale, string>;
+type LocalizedText = { en: string } & Partial<Record<Locale, string>>;
 
 type SeoAgentPage = {
   slug: SeoAgentSlug;
@@ -23,6 +28,35 @@ type SeoAgentPage = {
   useCases: LocalizedText[];
   faq: { q: LocalizedText; a: LocalizedText }[];
 };
+
+function productFaq(topic: string): SeoAgentPage["faq"] {
+  return [
+    {
+      q: { en: `What is ${topic}?` },
+      a: {
+        en: `${topic} is part of AgentPets.dev, a developer-first catalog and toolchain for animated coding companions that can be installed, shared, and submitted by the community.`,
+      },
+    },
+    {
+      q: { en: "Can I submit my own pet?" },
+      a: {
+        en: "Yes. AgentPets supports the open pet.json plus spritesheet package format today, and the roadmap includes a browser pet builder for designing pets without leaving the site.",
+      },
+    },
+  ];
+}
+
+const productUseCases: LocalizedText[] = [
+  {
+    en: "Create search-focused pages around the terms developers already use when looking for Codex pets, AI coding mascots, and pet builders.",
+  },
+  {
+    en: "Give every launch post, README, tutorial, and community reply a focused page to link to instead of only sending people to the homepage.",
+  },
+  {
+    en: "Keep the product extensible: gallery, CLI, package format, builder, and multi-agent runtime support can grow without changing the URL strategy.",
+  },
+];
 
 const sharedUseCases: LocalizedText[] = [
   {
@@ -230,6 +264,86 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
     useCases: sharedUseCases,
     faq: sharedFaq,
   },
+  "codex-pet-generator": {
+    slug: "codex-pet-generator",
+    agentName: "Codex pet generator",
+    eyebrow: { en: "Codex pet generator" },
+    title: { en: "Generate and package Codex pets for your AI workspace" },
+    description: {
+      en: "AgentPets is building the generator layer for Codex pets: validate a pet.json, preview animation states, package spritesheets, and share an install command.",
+    },
+    metaTitle: { en: "Codex Pet Generator: Build Animated AI Coding Pets" },
+    metaDescription: {
+      en: "Plan, package, preview, and submit Codex pets with AgentPets. Install examples with npx @agentpets/cli and follow the roadmap for the web pet generator.",
+    },
+    commandSlug: "boba",
+    useCases: productUseCases,
+    faq: productFaq("Codex Pet Generator"),
+  },
+  "ai-agent-pet-gallery": {
+    slug: "ai-agent-pet-gallery",
+    agentName: "AI agent pet gallery",
+    eyebrow: { en: "AI agent pet gallery" },
+    title: { en: "A shareable gallery for AI agent pets" },
+    description: {
+      en: "Browse animated pets for Codex, Claude Code, Cursor, Gemini CLI, and future agent runtimes from one developer-focused gallery.",
+    },
+    metaTitle: { en: "AI Agent Pet Gallery for Developer Workflows" },
+    metaDescription: {
+      en: "Browse installable AI agent pets, copy CLI commands, preview animations, and submit your own developer mascot on AgentPets.dev.",
+    },
+    commandSlug: "boba",
+    useCases: productUseCases,
+    faq: productFaq("AI Agent Pet Gallery"),
+  },
+  "developer-pets": {
+    slug: "developer-pets",
+    agentName: "Developer pets",
+    eyebrow: { en: "Developer pets" },
+    title: { en: "Developer pets for long coding sessions" },
+    description: {
+      en: "Turn developer culture into tiny animated companions: pets for READMEs, demos, livestreams, team setups, and AI coding workflows.",
+    },
+    metaTitle: { en: "Developer Pets: Animated Mascots for Coding Sessions" },
+    metaDescription: {
+      en: "Find developer pets and animated coding mascots you can install, share, and submit. AgentPets is a gallery and CLI for AI coding companions.",
+    },
+    commandSlug: "byte-bunny",
+    useCases: productUseCases,
+    faq: productFaq("Developer Pets"),
+  },
+  "open-source-codex-pets": {
+    slug: "open-source-codex-pets",
+    agentName: "Open source Codex pets",
+    eyebrow: { en: "Open source Codex pets" },
+    title: { en: "Open-source Codex pets with attribution-first sharing" },
+    description: {
+      en: "AgentPets keeps the platform open, credits creators, and preserves compatibility with the pet package format developers can inspect and extend.",
+    },
+    metaTitle: { en: "Open Source Codex Pets and AI Coding Companions" },
+    metaDescription: {
+      en: "Browse open-source Codex pets, inspect the AgentPets platform, and share one-command installs for animated AI coding companions.",
+    },
+    commandSlug: "boba",
+    useCases: productUseCases,
+    faq: productFaq("Open Source Codex Pets"),
+  },
+  "pet-builder": {
+    slug: "pet-builder",
+    agentName: "Pet builder",
+    eyebrow: { en: "Pet builder" },
+    title: { en: "A pet builder roadmap for AI coding companions" },
+    description: {
+      en: "AgentPets is moving from gallery to creation workflow: design pets, validate spritesheets, preview animation states, export packages, and submit to the catalog.",
+    },
+    metaTitle: { en: "Pet Builder for Codex and AI Coding Agents" },
+    metaDescription: {
+      en: "Follow the AgentPets pet builder roadmap: design animated coding pets, validate pet packages, preview spritesheets, and submit them to the gallery.",
+    },
+    commandSlug: "boba",
+    useCases: productUseCases,
+    faq: productFaq("Pet Builder"),
+  },
 };
 
 export function getSeoAgentPage(slug: SeoAgentSlug) {
@@ -238,7 +352,7 @@ export function getSeoAgentPage(slug: SeoAgentSlug) {
 
 export function seoText(text: LocalizedText, locale: string): string {
   if (locale === "en" || locale === "es" || locale === "zh") {
-    return text[locale];
+    return text[locale] ?? text.en;
   }
   return text.en;
 }

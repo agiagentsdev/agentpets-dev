@@ -179,7 +179,7 @@ export default async function BuiltWithPage({
                 className="inline-flex h-11 items-center gap-2 rounded-full border border-border-base bg-surface px-4 text-sm font-medium text-muted-2 transition hover:border-border-strong"
               >
                 <GithubIcon className="size-4" />
-                {t("cta.starPetdex")}
+                {t("cta.starAgentPets")}
               </a>
             </div>
           </div>

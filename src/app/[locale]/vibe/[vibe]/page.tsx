@@ -25,8 +25,10 @@ const SITE_URL = "https://agentpets.dev";
 type Props = { params: Promise<{ locale: string; vibe: string }> };
 
 export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
+  if (process.env.PETDEX_MOCK_SKIP_DB_BOOTSTRAP === "1") return [];
   return PET_VIBES.map((vibe) => ({ vibe }));
 }
 

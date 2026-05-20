@@ -3,7 +3,7 @@ import {
   SeoAgentPage,
 } from "@/components/seo-agent-page";
 
-const slug = "claude-code-pets" as const;
+const slug = "developer-pets" as const;
 
 export const dynamic = "force-dynamic";
 export const revalidate = 86400;

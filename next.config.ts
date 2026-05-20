@@ -4,13 +4,10 @@ import type { NextConfig } from "next";
 
 import createNextIntlPlugin from "next-intl/plugin";
 
-import { ensureBuildVersionFiles } from "./scripts/build-version";
-
 const IS_MOCK = process.env.PETDEX_MOCK === "1";
 const IS_MOCK_AUTH = IS_MOCK || process.env.PETDEX_MOCK_AUTH === "1";
 
 const DEFAULT_R2_PUBLIC_HOST = "pub-94495283df974cfea5e98d6a9e3fa462.r2.dev";
-ensureBuildVersionFiles();
 
 function r2PublicHost(): string {
   if (!process.env.R2_PUBLIC_BASE) return DEFAULT_R2_PUBLIC_HOST;

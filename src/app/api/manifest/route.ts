@@ -4,6 +4,7 @@ import { logManifestFetch } from "@/lib/manifest-telemetry";
 import { getApprovedPetsForManifest } from "@/lib/pets";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 // Cache the slim manifest at the edge for 5 minutes with a 1h
 // stale-while-revalidate window. Pet listings turn over slowly and the
 // CLI hits this endpoint on every `petdex list` / `petdex install`

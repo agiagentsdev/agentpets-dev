@@ -60,6 +60,7 @@ type DexNavPet = {
 };
 
 export async function generateStaticParams() {
+  if (process.env.PETDEX_MOCK_SKIP_DB_BOOTSTRAP === "1") return [];
   const slugs = await getStaticPetSlugs();
   return slugs.map((slug) => ({ slug }));
 }

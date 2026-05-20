@@ -14,6 +14,21 @@ import { getMockDb, mockDbReady } from "../mock/db";
 import * as schema from "./schema";
 
 type DrizzleDb = ReturnType<typeof drizzleNeon<typeof schema>>;
+const SKIP_MOCK_DB_BOOTSTRAP =
+  IS_MOCK && process.env.PETDEX_MOCK_SKIP_DB_BOOTSTRAP === "1";
+
+function buildSkippedMockDb(): DrizzleDb {
+  return new Proxy(
+    {},
+    {
+      get() {
+        throw new Error(
+          "PETDEX_MOCK_SKIP_DB_BOOTSTRAP=1 prevented mock DB startup. Mark DB-backed pages dynamic or run without this flag.",
+        );
+      },
+    },
+  ) as DrizzleDb;
+}
 
 function isLocalUrl(url: string): boolean {
   try {
@@ -31,6 +46,9 @@ function isLocalUrl(url: string): boolean {
 
 function buildClient(): DrizzleDb {
   if (IS_MOCK) {
+    if (SKIP_MOCK_DB_BOOTSTRAP) {
+      return buildSkippedMockDb();
+    }
     return getMockDb().db as unknown as DrizzleDb;
   }
 
@@ -68,7 +86,7 @@ function buildClient(): DrizzleDb {
 // Block on PGlite bootstrap+seed at module load time so any page
 // running queries on first render finds the schema in place. In
 // production this is a no-op.
-if (IS_MOCK) {
+if (IS_MOCK && !SKIP_MOCK_DB_BOOTSTRAP) {
   await mockDbReady();
 }
 

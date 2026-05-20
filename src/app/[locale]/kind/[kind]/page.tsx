@@ -16,8 +16,10 @@ const SITE_URL = "https://agentpets.dev";
 type Props = { params: Promise<{ kind: string; locale: string }> };
 
 export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
+  if (process.env.PETDEX_MOCK_SKIP_DB_BOOTSTRAP === "1") return [];
   return PET_KINDS.map((kind) => ({ kind }));
 }
 
