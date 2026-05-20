@@ -61,8 +61,16 @@ type DexNavPet = {
 
 export async function generateStaticParams() {
   if (process.env.PETDEX_MOCK_SKIP_DB_BOOTSTRAP === "1") return [];
-  const slugs = await getStaticPetSlugs();
-  return slugs.map((slug) => ({ slug }));
+  try {
+    const slugs = await getStaticPetSlugs();
+    return slugs.map((slug) => ({ slug }));
+  } catch (error) {
+    console.warn(
+      "[pets] skipped static pet generation; database is not ready:",
+      error instanceof Error ? error.message : String(error),
+    );
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: PageProps) {
