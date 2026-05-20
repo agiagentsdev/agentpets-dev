@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 
 import { buildLocaleAlternates, withLocale } from "@/lib/locale-routing";
 import { getApprovedPetCount } from "@/lib/pets";
+import { installCommandFor, siteConfig } from "@/lib/site-config";
 
 import { CommandLine } from "@/components/command-line";
 import { JsonLd } from "@/components/json-ld";
@@ -11,8 +12,6 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 import { hasLocale } from "@/i18n/config";
-
-const SITE_URL = "https://petdex.crafter.run";
 
 export const revalidate = 3600;
 
@@ -34,7 +33,7 @@ export async function generateMetadata({
     openGraph: {
       title: t("ogTitle"),
       description: t("ogDescription"),
-      url: `${SITE_URL}/about`,
+      url: `${siteConfig.url}/about`,
       type: "website",
     },
   };
@@ -74,9 +73,9 @@ export default async function AboutPage({
       "@context": "https://schema.org",
       "@type": "AboutPage",
       name: t("metadata.ogTitle"),
-      url: `${SITE_URL}/about`,
+      url: `${siteConfig.url}/about`,
       description: t("metadata.ogDescription"),
-      isPartOf: { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
+      isPartOf: { "@type": "WebSite", "@id": `${siteConfig.url}/#website` },
     },
     {
       "@context": "https://schema.org",
@@ -112,7 +111,7 @@ export default async function AboutPage({
               })}
             </p>
             <CommandLine
-              command="npx petdex install boba"
+              command={installCommandFor("boba")}
               source="about-hero"
               className="mt-5 w-full max-w-sm"
             />

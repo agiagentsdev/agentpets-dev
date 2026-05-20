@@ -22,7 +22,7 @@ import { hasLocale } from "@/i18n/config";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = "https://petdex.crafter.run";
+const SITE_URL = "https://agentpets.dev";
 
 type PageProps = { params: Promise<{ slug: string; locale: string }> };
 

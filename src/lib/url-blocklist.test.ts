@@ -152,7 +152,7 @@ describe("containsUrl — allowlisted legit domains", () => {
 
   it("crafter.run passes (own brand)", () => {
     expect(
-      containsUrl(["description", "more at petdex.crafter.run"]),
+      containsUrl(["description", "more at agentpets.dev"]),
     ).toBeNull();
   });
 

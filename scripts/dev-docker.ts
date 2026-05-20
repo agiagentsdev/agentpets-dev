@@ -384,10 +384,14 @@ async function main() {
   }
 
   console.log("[dev:docker] starting next dev (turbopack)");
-  const child = spawn("bun", ["x", "next", "dev", ...process.argv.slice(2)], {
-    stdio: "inherit",
-    env,
-  });
+  const child = spawn(
+    "bun",
+    ["x", "next", "dev", "-p", "6996", ...process.argv.slice(2)],
+    {
+      stdio: "inherit",
+      env,
+    },
+  );
 
   // Forward signals to the child and remove the generated Next overlay.
   // Containers stay up by default — they're cheap and the next dev:docker

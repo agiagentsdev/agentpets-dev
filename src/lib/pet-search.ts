@@ -385,7 +385,7 @@ function orderForSort(
       // orderings; the same visitor gets a stable order for the life
       // of their cookie. Falls back to alpha when no seed is supplied
       // (e.g. cookies disabled, server-side debug calls).
-      // See https://github.com/crafter-station/petdex/issues/82
+      // See https://github.com/agiagentsdev/agentpets-dev/issues/82
       if (shuffleSeed) {
         return [
           desc(schema.submittedPets.featured),

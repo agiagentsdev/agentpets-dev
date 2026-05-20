@@ -393,7 +393,7 @@ export function PetSubmitForm() {
       // Serialize the three R2 PUTs instead of Promise.all-ing them.
       // Three concurrent uploads of 2-3MB sprites saturate flaky / mobile
       // links and one of them aborts mid-flight. The reports in
-      // crafter-station/petdex#22-#51 all hit "Failed to fetch" on the
+      // agiagentsdev/agentpets-dev#22-#51 all hit "Failed to fetch" on the
       // parallel upload path. Sequential is slower but completes.
       const slots: Array<{
         role: "petjson" | "sprite" | "zip";
@@ -1017,7 +1017,7 @@ function buildIssueUrl(
     body,
     labels: "submit-fallback",
   });
-  return `https://github.com/crafter-station/petdex/issues/new?${params.toString()}`;
+  return `https://github.com/agiagentsdev/agentpets-dev/issues/new?${params.toString()}`;
 }
 
 // Resolve a DataTransfer to a flat FileList-like array. If the user dropped a

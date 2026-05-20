@@ -6,6 +6,8 @@ import { useState } from "react";
 import { ArrowRight, Palette } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
+import { installCommandFor } from "@/lib/site-config";
+
 import { CodexLogo } from "@/components/codex-logo";
 import { CodexThemeDialog } from "@/components/codex-theme-dialog";
 import { CommandLine } from "@/components/command-line";
@@ -24,7 +26,7 @@ type InstallCommandCompactProps = {
  * install guide sits underneath. The verbose tutorial (Curl tab,
  * Terminal.app instructions, "Activate in Codex") lives under the
  * state viewer below the hero so it does not compete with the primary
- * "Open in Petdex Desktop" CTA above.
+ * "Open in AgentPets Desktop" CTA above.
  */
 export function InstallCommandCompact({
   slug,
@@ -38,7 +40,7 @@ export function InstallCommandCompact({
     <div className="flex flex-col gap-2">
       <div className="grid items-stretch gap-2 md:grid-cols-[1fr_auto]">
         <CommandLine
-          command={`npx petdex install ${slug}`}
+          command={installCommandFor(slug)}
           source="pet-hero-compact"
           className="!h-12 w-full !rounded-2xl !px-4 !text-[13px]"
         />

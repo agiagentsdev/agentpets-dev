@@ -7,6 +7,7 @@ import Link from "next/link";
 import { getLocale } from "next-intl/server";
 
 import type { PetWithMetrics } from "@/lib/pets";
+import { installCommandFor } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 import { CommandLine } from "@/components/command-line";
@@ -36,7 +37,7 @@ export async function FacetPage({
   related,
 }: FacetPageProps) {
   const locale = await getLocale();
-  const cmd = `npx petdex install ${exampleSlug ?? pets[0]?.slug ?? "boba"}`;
+  const cmd = installCommandFor(exampleSlug ?? pets[0]?.slug ?? "boba");
 
   return (
     <main className="min-h-dvh bg-background text-foreground">

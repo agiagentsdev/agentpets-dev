@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { siteConfig } from "@/lib/site-config";
+
 type PetdexLogoProps = {
   href?: string;
   showWordmark?: boolean;
@@ -13,13 +15,15 @@ export function PetdexLogo({
   showWordmark = true,
   className = "",
   markClassName = "size-10",
-  ariaLabel = "Petdex home",
+  ariaLabel = `${siteConfig.name} home`,
 }: PetdexLogoProps) {
   const content = (
     <>
       <PetdexMark className={markClassName} />
       {showWordmark ? (
-        <span className="text-xl font-semibold tracking-normal">Petdex</span>
+        <span className="text-xl font-semibold tracking-normal">
+          {siteConfig.name}
+        </span>
       ) : null}
     </>
   );
@@ -48,15 +52,15 @@ function PetdexMark({ className }: { className?: string }) {
     >
       <defs>
         <linearGradient
-          id="petdex-body"
+          id="agentpets-body"
           x1="8"
           y1="8"
           x2="56"
           y2="56"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#3847f5" />
-          <stop offset="1" stopColor="#1a1d2e" />
+          <stop stopColor="#0ea5e9" />
+          <stop offset="1" stopColor="#111827" />
         </linearGradient>
       </defs>
 
@@ -65,16 +69,19 @@ function PetdexMark({ className }: { className?: string }) {
         y="4"
         width="56"
         height="56"
-        rx="16"
-        fill="url(#petdex-body)"
+        rx="14"
+        fill="url(#agentpets-body)"
       />
 
       <g fill="#ffffff">
-        <rect x="22" y="20" width="6" height="6" />
-        <rect x="36" y="20" width="6" height="6" />
-        <rect x="16" y="26" width="6" height="18" />
-        <rect x="42" y="26" width="6" height="18" />
-        <rect x="22" y="38" width="20" height="6" />
+        <rect x="18" y="18" width="28" height="22" rx="4" />
+        <rect x="14" y="24" width="5" height="10" />
+        <rect x="45" y="24" width="5" height="10" />
+        <rect x="23" y="25" width="5" height="5" fill="#111827" />
+        <rect x="36" y="25" width="5" height="5" fill="#111827" />
+        <rect x="27" y="34" width="10" height="3" fill="#111827" />
+        <rect x="25" y="43" width="4" height="7" />
+        <rect x="35" y="43" width="4" height="7" />
       </g>
     </svg>
   );

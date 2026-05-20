@@ -101,7 +101,7 @@ var F = Number(process.env.PETDEX_PORT ?? 7777),
   p = H.join(f.homedir(), ".petdex", "version"),
   Nz = H.join(C, "sidecar.log"),
   Cz = 65536,
-  Oz = "https://api.github.com/repos/crafter-station/petdex/releases",
+  Oz = "https://api.github.com/repos/agiagentsdev/agentpets-dev/releases",
   i = 30,
   Lz = 5,
   xz = "desktop-v",
@@ -147,7 +147,7 @@ function Dz() {
 var s = H.join(f.homedir(), ".petdex", "telemetry.json"),
   bz =
     process.env.PETDEX_TELEMETRY_URL ??
-    "https://petdex.crafter.run/api/telemetry/event",
+    "https://agentpets.dev/api/telemetry/event",
   n = !1;
 function qz() {
   if (process.env.PETDEX_TELEMETRY === "0") return null;

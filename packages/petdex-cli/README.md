@@ -2,9 +2,9 @@
 
 The Petdex CLI: browse, install, and submit animated pets for [OpenAI Codex](https://openai.com/codex) from your terminal.
 
-- **Gallery & docs:** <https://petdex.crafter.run>
-- **Repo:** <https://github.com/crafter-station/petdex>
-- **Hatch a new pet:** <https://petdex.crafter.run/create>
+- **Gallery & docs:** <https://agentpets.dev>
+- **Repo:** <https://github.com/agiagentsdev/agentpets-dev>
+- **Hatch a new pet:** <https://agentpets.dev/create>
 
 ## Install
 
@@ -99,7 +99,7 @@ This CLI distributes pets. It does not generate them. To create one:
 4. Codex generates the spritesheet and animations into `~/.codex/pets/<slug>/`.
 5. Submit it: `petdex submit ~/.codex/pets/<slug>`.
 
-The full step-by-step (with tips on what makes a great pet) lives at <https://petdex.crafter.run/create>.
+The full step-by-step (with tips on what makes a great pet) lives at <https://agentpets.dev/create>.
 
 ## Failure modes
 
@@ -107,7 +107,7 @@ The full step-by-step (with tips on what makes a great pet) lives at <https://pe
 | --- | --- | --- |
 | `Not signed in` | No tokens or session expired | `petdex login` |
 | `presign 401` | Bearer rejected by Clerk userinfo | `petdex logout && petdex login` |
-| `presign 429` | 10/24h rate limit hit | Wait 24h or open a [submit-fallback issue](https://github.com/crafter-station/petdex/issues/new?labels=submit-fallback) |
+| `presign 429` | 10/24h rate limit hit | Wait 24h or open a [submit-fallback issue](https://github.com/agiagentsdev/agentpets-dev/issues/new?labels=submit-fallback) |
 | `register 400 invalid_spritesheet` | Sprite < 256×256 | Regenerate with bigger dims (recommend 1536×1872) |
 | `register 400 missing_field` | Folder missing `pet.json` or `spritesheet.{webp,png}` | Inspect folder contents, re-export from Codex if needed |
 | `R2 PUT 403` | Presigned URL expired (60s TTL) | Retry the failed submission. CLI auto-presigns fresh URLs |
@@ -122,7 +122,7 @@ install path is just `fetch a JSON manifest, write two files to
 | --- | --- | --- |
 | Hangs at `Need to install the following packages: petdex@x` | `npx`'s own confirmation prompt, not a hang. Press `y` or auto-confirm | `npx -y petdex install <slug>` |
 | `npm ERR! engine Unsupported engine` | Node < 20 | Upgrade Node to 20+ (`nvm install 20` is the easiest path) |
-| `manifest fetch 5xx` / network timeout | Slow connection or corporate/national firewall blocking `petdex.crafter.run` | Set a proxy: `HTTPS_PROXY=http://your.proxy:port npx petdex install <slug>` |
+| `manifest fetch 5xx` / network timeout | Slow connection or corporate/national firewall blocking `agentpets.dev` | Set a proxy: `HTTPS_PROXY=http://your.proxy:port npx @agentpets/cli install <slug>` |
 | `EACCES: permission denied … ~/.codex/pets/` | Pets dir owned by another user | `sudo chown -R "$USER" ~/.codex` or remove the dir and retry |
 | Windows: `'sh' is not recognized` | CLI version older than 0.1.1 piped through `curl … \| sh` | Upgrade: `npm i -g petdex@latest` or `npx petdex@latest install <slug>` |
 
@@ -134,4 +134,4 @@ dependencies", it's almost always npm's own progress bar for the
 
 ## License
 
-MIT, same as the [Petdex repo](https://github.com/crafter-station/petdex).
+MIT, same as the [Petdex repo](https://github.com/agiagentsdev/agentpets-dev).

@@ -20,7 +20,7 @@ function curatedSort(pets: PetWithMetrics[]): PetWithMetrics[] {
   });
 }
 
-const SITE_URL = "https://petdex.crafter.run";
+const SITE_URL = "https://agentpets.dev";
 
 type Props = { params: Promise<{ locale: string; vibe: string }> };
 

@@ -10,7 +10,7 @@ import { SiteHeader } from "@/components/site-header";
 
 import { hasLocale } from "@/i18n/config";
 
-const SITE_URL = "https://petdex.crafter.run";
+const SITE_URL = "https://agentpets.dev";
 const PREVIEW_BACKGROUND = {
   light: "bg-[#f7f8ff]",
   dark: "bg-[#12141f]",
@@ -125,7 +125,7 @@ export default async function BrandPage() {
                 </a>
               </div>
               <a
-                href="https://github.com/crafter-station/petdex/tree/main/public/brand"
+                href="https://github.com/agiagentsdev/agentpets-dev/tree/main/public/brand"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex h-11 items-center gap-2 rounded-full border border-border-base bg-surface px-5 text-sm font-medium text-foreground transition hover:border-border-strong"

@@ -24,7 +24,7 @@ import {
 import { hasLocale } from "@/i18n/config";
 
 export const dynamic = "force-static";
-const SITE_URL = "https://petdex.crafter.run";
+const SITE_URL = "https://agentpets.dev";
 const WECHAT_COMMUNITY_ENABLED =
   process.env.NEXT_PUBLIC_WECHAT_COMMUNITY_ENABLED === "1";
 
@@ -123,7 +123,7 @@ export default async function CommunityPage({ params }: PageProps) {
                 </DiscordLink>
               ) : null}
               <a
-                href="https://github.com/crafter-station/petdex"
+                href="https://github.com/agiagentsdev/agentpets-dev"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex h-11 items-center rounded-full border border-border-base bg-surface px-4 text-sm font-medium text-muted-2 transition hover:border-border-strong"

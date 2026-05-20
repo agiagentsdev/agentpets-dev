@@ -11,7 +11,7 @@
 //
 // We send the manifest as 'contents.json' at the ZIP root; sticker apps
 // look for either name. Stickers are 512x512 animated WebP, ≤500KB each.
-// Pack metadata advertises petdex.crafter.run as publisher website so the
+// Pack metadata advertises agentpets.dev as publisher website so the
 // brand surfaces inside the user's sticker library.
 
 import { NextResponse } from "next/server";
@@ -34,7 +34,7 @@ export const runtime = "nodejs";
 
 const CACHE_HEADER = "public, max-age=86400, s-maxage=604800";
 const PUBLISHER = "Petdex";
-const PUBLISHER_WEBSITE = "https://petdex.crafter.run";
+const PUBLISHER_WEBSITE = "https://agentpets.dev";
 const PUBLISHER_EMAIL = "hello@crafter.run";
 
 // Apple iMessage / WhatsApp iOS share the same identifier namespace.

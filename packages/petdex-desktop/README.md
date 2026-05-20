@@ -48,7 +48,7 @@ You need:
 - macOS (Linux/Windows not wired up yet)
 - Zig 0.16
 - At least one pet installed under `~/.petdex/pets/<slug>/` or
-  `~/.codex/pets/<slug>/` (run `npx petdex install boba` if you don't
+  `~/.codex/pets/<slug>/` (run `npx @agentpets/cli install boba` if you don't
   have any yet)
 
 ## How it works

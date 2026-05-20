@@ -4,7 +4,7 @@
 // client sent in the request body.
 
 const ISSUER =
-  process.env.CLERK_CLI_ISSUER ?? "https://clerk.petdex.crafter.run";
+  process.env.CLERK_CLI_ISSUER ?? "https://clerk.agentpets.dev";
 
 export type CliPrincipal = {
   userId: string;

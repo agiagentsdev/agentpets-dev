@@ -13,6 +13,7 @@ import { formatLocalizedNumber } from "@/lib/format-number";
 import { buildLocaleAlternates } from "@/lib/locale-routing";
 import { searchPets } from "@/lib/pet-search";
 import { getFeaturedPetsWithMetrics, type PetWithMetrics } from "@/lib/pets";
+import { installCommandFor, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 import { CollectionActionMenu } from "@/components/collection-action-menu";
@@ -60,7 +61,6 @@ export async function generateMetadata({
     ),
   };
 }
-const SITE_URL = "https://petdex.crafter.run";
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -109,20 +109,20 @@ export default async function Home({
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "@id": `${SITE_URL}/#website`,
-      name: "Petdex",
-      url: `${SITE_URL}/`,
+      "@id": `${siteConfig.url}/#website`,
+      name: siteConfig.name,
+      url: `${siteConfig.url}/`,
       description: t("jsonLdDescription"),
       publisher: {
         "@type": "Organization",
-        name: "Crafter Station",
-        url: "https://crafter.run",
+        name: siteConfig.name,
+        url: siteConfig.url,
       },
       potentialAction: {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: `${SITE_URL}/?q={search_term_string}#gallery`,
+          urlTemplate: `${siteConfig.url}/?q={search_term_string}#gallery`,
         },
         "query-input": "required name=search_term_string",
       },
@@ -135,7 +135,7 @@ export default async function Home({
       itemListElement: heroPets.map((pet, i) => ({
         "@type": "ListItem",
         position: i + 1,
-        url: `${SITE_URL}/pets/${pet.slug}`,
+        url: `${siteConfig.url}/pets/${pet.slug}`,
         name: pet.displayName,
       })),
     },
@@ -168,7 +168,7 @@ export default async function Home({
             </p>
             <div className="mt-5 flex w-full flex-col items-stretch justify-center gap-2 sm:flex-row sm:items-center">
               <CommandLine
-                command="npx petdex install boba"
+                command={installCommandFor("boba")}
                 source="hero"
                 className="w-full sm:w-auto"
               />

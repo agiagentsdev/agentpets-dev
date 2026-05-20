@@ -34,7 +34,7 @@ import pc from "picocolors";
 // streak of web/sidecar releases between desktop tags would otherwise
 // hide the latest desktop release behind page 1.
 const RELEASES_API_BASE =
-  "https://api.github.com/repos/crafter-station/petdex/releases";
+  "https://api.github.com/repos/agiagentsdev/agentpets-dev/releases";
 const RELEASES_PAGE_SIZE = 30;
 // Cap the search at 5 pages = 150 releases. Anything older than that
 // is almost certainly stale anyway, and searching forever would burn
@@ -94,7 +94,7 @@ export function desktopBinPath(): string {
   // Returning the first that exists lets `petdex up`, `petdex update`,
   // and `petdex desktop start` find the binary regardless of how the
   // user installed it. Net effect: DMG-only installs no longer need a
-  // follow-up `npx petdex install desktop` to make the CLI commands
+  // follow-up `npx @agentpets/cli install desktop` to make the CLI commands
   // work.
   const ext = nodePlatform() === "win32" ? ".exe" : "";
   if (nodePlatform() === "darwin") {
@@ -599,7 +599,7 @@ export type RunInstallDesktopResult = {
 // (404 page, facet pages). Easy to swap if we later want to make
 // this configurable per-release.
 const DEFAULT_PET_SLUG = "boba";
-const PETDEX_URL = process.env.PETDEX_URL ?? "https://petdex.crafter.run";
+const PETDEX_URL = process.env.PETDEX_URL ?? "https://agentpets.dev";
 
 // Hosts we trust for serving pet assets (spritesheet + pet.json).
 // Mirrored from src/lib/url-allowlist.ts (the server-side validation

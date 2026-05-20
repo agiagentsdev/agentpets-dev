@@ -11,7 +11,7 @@
 // Keeping Set-Cookie off the home HTML response lets ISR/CDN caches share
 // that page, while the API response can stay private and visitor-specific.
 //
-// Issue: https://github.com/crafter-station/petdex/issues/82
+// Issue: https://github.com/agiagentsdev/agentpets-dev/issues/82
 
 import { randomBytes } from "node:crypto";
 

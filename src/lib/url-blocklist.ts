@@ -73,7 +73,7 @@ const LEGIT_DOMAINS: ReadonlySet<string> = new Set([
   "v0.dev",
   "v0.app",
   "crafter.run",
-  "petdex.crafter.run",
+  "agentpets.dev",
   "codex.com",
   "openai.com",
   "anthropic.com",

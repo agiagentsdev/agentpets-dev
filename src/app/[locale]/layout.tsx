@@ -21,6 +21,7 @@ import { TopPromoStrip } from "@/components/zh/top-promo-strip";
 import { ZhLayoutSpacer } from "@/components/zh/zh-layout-spacer";
 
 import { hasLocale, locales } from "@/i18n/config";
+import { siteConfig } from "@/lib/site-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,8 +37,6 @@ type Props = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 };
-
-const SITE_URL = "https://petdex.crafter.run";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -70,16 +69,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       t("keywords.developerMascot"),
       t("keywords.terminalPet"),
       t("keywords.codexCompanion"),
-      t("keywords.petdex"),
+      t("keywords.agentpets"),
+      t("keywords.agentPets"),
+      t("keywords.aiCodingPets"),
+      t("keywords.claudeCodePets"),
+      t("keywords.cursorPets"),
+      t("keywords.geminiCliPets"),
     ],
     openGraph: {
       title: t("ogTitle"),
       description: t("description"),
-      url: SITE_URL,
-      siteName: "Petdex",
+      url: siteConfig.url,
+      siteName: siteConfig.name,
       type: "website",
       images: [
-        { url: `${SITE_URL}/api/og`, width: 1200, height: 630, alt: "Petdex" },
+        {
+          url: `${siteConfig.url}/api/og`,
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name,
+        },
       ],
     },
     twitter: {
@@ -87,7 +96,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t("twitterTitle"),
       description: t("description"),
       images: ["/og-twitter.png"],
-      creator: "@raillyhugo",
     },
   };
 }

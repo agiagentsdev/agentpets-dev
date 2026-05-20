@@ -147,7 +147,7 @@ export default async function Image({
           }}
         >
           <span style={{ color: "#a8a29e" }}>$</span>
-          <span>npx petdex install</span>
+          <span>npx @agentpets/cli install</span>
         </div>
       </div>
 
@@ -170,7 +170,7 @@ export default async function Image({
             textTransform: "uppercase",
           }}
         >
-          petdex.crafter.run/download
+          agentpets.dev/download
         </div>
       </div>
     </div>,

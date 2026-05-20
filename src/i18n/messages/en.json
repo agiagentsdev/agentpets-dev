@@ -1,19 +1,19 @@
 {
   "common": {
-    "brand": "Petdex",
+    "brand": "AgentPets",
     "codexCli": "Codex",
     "submitPet": "Submit a pet",
     "browseGallery": "Browse gallery",
     "github": "GitHub",
-    "petdexHome": "Petdex home"
+    "agentpetsHome": "AgentPets home"
   },
   "metadata": {
     "root": {
-      "titleDefault": "Petdex: Animated companions for Codex",
-      "titleTemplate": "%s | Petdex",
-      "description": "Petdex is the public gallery of animated companions for Codex. Browse open-source companions, preview their animations, and install one with a single command.",
-      "ogTitle": "Petdex: Animated companions for Codex",
-      "twitterTitle": "Petdex: Animated companions for Codex",
+      "titleDefault": "AgentPets: Animated companions for AI coding agents",
+      "titleTemplate": "%s | AgentPets",
+      "description": "AgentPets is a clean developer gallery of animated companions for Codex, Claude Code, Cursor, Gemini CLI, and AI coding workflows. Browse pets, preview animations, and install one with a single command.",
+      "ogTitle": "AgentPets: Animated companions for AI coding agents",
+      "twitterTitle": "AgentPets: Animated companions for AI coding agents",
       "keywords": {
         "codexPet": "Codex pet",
         "codexCliPet": "Codex pet",
@@ -23,7 +23,12 @@
         "developerMascot": "developer mascot",
         "terminalPet": "terminal pet",
         "codexCompanion": "Codex companion",
-        "petdex": "petdex"
+        "agentpets": "agentpets",
+        "agentPets": "AgentPets",
+        "aiCodingPets": "AI coding pets",
+        "claudeCodePets": "Claude Code pets",
+        "cursorPets": "Cursor pets",
+        "geminiCliPets": "Gemini CLI pets"
       }
     }
   },
@@ -46,8 +51,8 @@
     "submitCta": "Submit",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "githubRepoAria": "Petdex on GitHub",
-    "githubRepoAriaWithStars": "Petdex on GitHub, {stars} stars",
+    "githubRepoAria": "AgentPets on GitHub",
+    "githubRepoAriaWithStars": "AgentPets on GitHub, {stars} stars",
     "browse": "Browse",
     "browseDesc": "Discover pets, creators, and curated collections",
     "collectionsDesc": "Featured character sets: South Park, Pokémon, more",
@@ -58,13 +63,13 @@
     "build": "Build",
     "buildDesc": "Make and ship your own pixel pet",
     "createDesc": "Hatch a pet with Codex skill, 5 min from idea to sprite",
-    "submitDesc": "Drop your pet folder so Petdex hosts it for everyone",
-    "docsDesc": "Install the Petdex CLI and ship pets via npm",
+    "submitDesc": "Drop your pet folder so AgentPets hosts it for everyone",
+    "docsDesc": "Install the AgentPets CLI and ship pets via npm",
     "earn": "Earn",
     "earnDesc": "Manage campaigns, impressions, and click stats",
     "advertiseDesc": "Reach devs installing AI tools via sponsored cards",
-    "builtWith": "Built with Petdex",
-    "builtWithDesc": "Apps the community is shipping on the Petdex format",
+    "builtWith": "Built with AgentPets",
+    "builtWithDesc": "Apps the community is shipping on the AgentPets format",
     "communityDesc": "Discord server with shipping channels and voice rooms",
     "takedown": "Takedown",
     "takedownDesc": "Report a pet that uses your work",
@@ -92,7 +97,7 @@
     "title": "Theme: {label}"
   },
   "footer": {
-    "rightsNotice": "Pets are user-submitted fan art. Petdex does not claim rights to any underlying IP.",
+    "rightsNotice": "Pets are user-submitted fan art. AgentPets does not claim rights to any underlying IP.",
     "topCreators": "Creators",
     "takedown": "Takedown",
     "advertise": "Advertise",
@@ -103,11 +108,11 @@
     "sponsorAria": "Sponsor on GitHub"
   },
   "home": {
-    "eyebrow": "The Codex pet index",
-    "title": "Petdex",
-    "tagline": "The public gallery of animated companions for <brand>Codex</brand>. Browse {totalPets}+ open-source companions, preview their states, and install one with a single command.",
-    "heroCommand": "npx petdex install boba",
-    "downloadCta": "Get Petdex Desktop",
+    "eyebrow": "Animated companions for AI coding agents",
+    "title": "AgentPets",
+    "tagline": "The developer gallery of animated companions for <brand>Codex, Claude Code, Cursor, Gemini CLI, and agent workflows</brand>. Browse {totalPets}+ companions, preview their states, and install one with a single command.",
+    "heroCommand": "npx @agentpets/cli install boba",
+    "downloadCta": "Get AgentPets Desktop",
     "submitCta": "Submit",
     "browseGallery": "Browse gallery",
     "joinDiscord": "Join the Discord",
@@ -125,8 +130,8 @@
       "viewAria": "View {name}",
       "spriteAlt": "{name} surprise pet"
     },
-    "jsonLdDescription": "Public gallery of animated companions for Codex. Install one with a single command.",
-    "jsonLdFeaturedPets": "Featured Codex pets",
+    "jsonLdDescription": "Developer gallery of animated companions for AI coding agents. Install one with a single command.",
+    "jsonLdFeaturedPets": "Featured AI coding pets",
     "featuredCollections": {
       "eyebrow": "Featured collections",
       "title": "Featured collections worth installing",
@@ -136,12 +141,12 @@
   },
   "community": {
     "metadata": {
-      "title": "Petdex Community",
-      "description": "Join creators, collectors, and the Petdex team for featured creator spotlights, work-in-progress feedback, and weekly builds."
+      "title": "AgentPets Community",
+      "description": "Join creators, collectors, and the AgentPets team for featured creator spotlights, work-in-progress feedback, and weekly builds."
     },
-    "eyebrow": "Petdex Community",
+    "eyebrow": "AgentPets Community",
     "title": "Build pixel pets in good company",
-    "description": "The Petdex Community brings together creators, collectors, and the team behind the gallery. Get WIP feedback, follow weekly builds, and meet featured creators.",
+    "description": "The AgentPets Community brings together creators, collectors, and the team behind the gallery. Get WIP feedback, follow weekly builds, and meet featured creators.",
     "joinDiscord": "Join the Discord",
     "joinWeChat": "Join WeChat",
     "starGithub": "Star on GitHub",
@@ -160,7 +165,7 @@
       },
       "voice": {
         "title": "Voice rooms that are not dead",
-        "body": "Co-working for silent focus, pixel-jam for live sprite-art collabs, and office-hours with the Petdex team Fridays at 4pm GMT-5."
+        "body": "Co-working for silent focus, pixel-jam for live sprite-art collabs, and office-hours with the AgentPets team Fridays at 4pm GMT-5."
       }
     },
     "rules": {
@@ -172,7 +177,7 @@
         "critique": "Critique sprites, not creators. Honest, kind, specific.",
         "languages": "English, Spanish, and Chinese channels welcome. Pick yours.",
         "ip": "Pet IP belongs to the original creator. Credit always.",
-        "modlog": "Petdex Team mod log is public in #bot-logs. No secrets."
+        "modlog": "AgentPets Team mod log is public in #bot-logs. No secrets."
       }
     }
   },
@@ -196,13 +201,13 @@
   },
   "advertise": {
     "metadata": {
-      "title": "Advertise on Petdex",
-      "description": "Reach developers who discover and install new AI and developer tools through Petdex sponsored cards."
+      "title": "Advertise on AgentPets",
+      "description": "Reach developers who discover and install new AI and developer tools through AgentPets sponsored cards."
     },
-    "eyebrow": "Petdex ads",
+    "eyebrow": "AgentPets ads",
     "hero": {
       "title": "Put your dev tool in front of builders who try new things.",
-      "body": "Petdex has a growing audience of developers browsing Codex companions and developer culture. They already try CLI tools, AI workflows, and subscription products, making this a focused place to introduce AI and developer tools."
+      "body": "AgentPets has a growing audience of developers browsing Codex companions and developer culture. They already try CLI tools, AI workflows, and subscription products, making this a focused place to introduce AI and developer tools."
     },
     "heroCards": {
       "starting": "Starting at $50",
@@ -228,7 +233,7 @@
     "sections": {
       "audience": {
         "title": "A developer-first audience",
-        "body": "Petdex visitors are developers and AI-tool users browsing a catalog built around Codex. They are comfortable installing tools and evaluating paid subscriptions."
+        "body": "AgentPets visitors are developers and AI-tool users browsing a catalog built around Codex. They are comfortable installing tools and evaluating paid subscriptions."
       },
       "placement": {
         "title": "Subtle sponsored cards",
@@ -252,28 +257,28 @@
     },
     "legal": {
       "eyebrow": "Legal notice",
-      "title": "Petdex can remove ads that do not fit the community.",
-      "body": "We reserve the right to pause, delete, or refuse any ad that does not align with Petdex policies, community expectations, or product quality standards. Removed ads are not reimbursed."
+      "title": "AgentPets can remove ads that do not fit the community.",
+      "body": "We reserve the right to pause, delete, or refuse any ad that does not align with AgentPets policies, community expectations, or product quality standards. Removed ads are not reimbursed."
     },
     "form": {
       "companyName": "Company name",
       "contactEmail": "Contact email",
       "title": "Ad title",
       "description": "Description",
-      "creativeDisclosure": "Your ad title, image, and description will appear in the sponsored card shown in the Petdex feed.",
+      "creativeDisclosure": "Your ad title, image, and description will appear in the sponsored card shown in the AgentPets feed.",
       "destinationUrl": "Destination URL",
       "image": "Ad image",
       "imageCta": "Upload PNG, JPG, or WebP creative",
       "imageHelp": "Max 10 MB. Use a clean product image, logo card, or screenshot.",
       "previewTitle": "Ad preview",
-      "previewHelp": "This is how your sponsored card will appear in the Petdex feed. Links are disabled while previewing.",
+      "previewHelp": "This is how your sponsored card will appear in the AgentPets feed. Links are disabled while previewing.",
       "previewFallbackTitle": "Your ad title",
       "previewFallbackDescription": "A short description of your product will appear here.",
       "package": "Choose your campaign size",
       "pricingTrust": "We only count viewable impressions: 50%+ of the ad visible for 2 seconds.",
       "utmTitle": "Custom UTM settings",
-      "utmHelp": "Optional. If left blank, Petdex adds utm_source=petdex to the ad link.",
-      "legalAccept": "I accept that Petdex may pause or delete ads that do not align with its policies, and that those removals are not reimbursed.",
+      "utmHelp": "Optional. If left blank, AgentPets adds utm_source=agentpets to the ad link.",
+      "legalAccept": "I accept that AgentPets may pause or delete ads that do not align with its policies, and that those removals are not reimbursed.",
       "signIn": "Sign in to submit an ad",
       "submit": "Continue to Stripe checkout",
       "status": {
@@ -291,21 +296,21 @@
     },
     "create": {
       "metadata": {
-        "title": "Create a Petdex ad campaign",
-        "description": "Build a Petdex sponsored card, choose a prepaid impression package, and continue to Stripe checkout."
+        "title": "Create a AgentPets ad campaign",
+        "description": "Build a AgentPets sponsored card, choose a prepaid impression package, and continue to Stripe checkout."
       },
       "eyebrow": "Campaign setup",
       "title": "Create your sponsored card.",
-      "body": "Add the creative, destination, tracking, and prepaid impression package for your Petdex campaign.",
+      "body": "Add the creative, destination, tracking, and prepaid impression package for your AgentPets campaign.",
       "backToLanding": "Back to advertising",
       "help": {
         "creative": {
           "title": "Use a clear creative",
-          "body": "A logo card, product screenshot, or simple product visual works best in the Petdex feed."
+          "body": "A logo card, product screenshot, or simple product visual works best in the AgentPets feed."
         },
         "review": {
           "title": "Keep it community-safe",
-          "body": "Ads remain subject to Petdex policies and can be removed if they mislead or harm the community."
+          "body": "Ads remain subject to AgentPets policies and can be removed if they mislead or harm the community."
         },
         "billing": {
           "title": "Checkout is prepaid",
@@ -320,11 +325,11 @@
     },
     "dashboard": {
       "metadata": {
-        "title": "Ad dashboard | Petdex",
-        "description": "Review your Petdex ad campaigns, spend, status, and prepaid impression delivery."
+        "title": "Ad dashboard | AgentPets",
+        "description": "Review your AgentPets ad campaigns, spend, status, and prepaid impression delivery."
       },
       "eyebrow": "Advertiser dashboard",
-      "title": "Your Petdex campaigns",
+      "title": "Your AgentPets campaigns",
       "body": "Track campaign status, prepaid impression delivery, and remaining inventory for every sponsored card you have submitted.",
       "newCampaign": "Buy another campaign",
       "editCreative": "Edit creative",
@@ -332,7 +337,7 @@
       "destination": "Destination URL",
       "created": "Created {date}",
       "activated": "Activated {date}",
-      "removedFallback": "This campaign was removed because it did not align with Petdex policies.",
+      "removedFallback": "This campaign was removed because it did not align with AgentPets policies.",
       "checkout": {
         "successTitle": "Payment received",
         "successBody": "Stripe is confirming the payment. Your campaign will start automatically once the webhook activates it."
@@ -362,7 +367,7 @@
       },
       "edit": {
         "title": "Edit campaign",
-        "body": "Change the creative, destination, or tracking fields. Active campaign edits go live immediately and remain subject to Petdex ad policies.",
+        "body": "Change the creative, destination, or tracking fields. Active campaign edits go live immediately and remain subject to AgentPets ad policies.",
         "titleLabel": "Ad title",
         "descriptionLabel": "Description",
         "destinationUrlLabel": "Destination URL",
@@ -379,22 +384,22 @@
         "delivery": "Delivery",
         "deliveryBody": "{served} of {total} impressions served.",
         "metadata": {
-          "title": "Edit ad campaign | Petdex",
-          "description": "Update your Petdex sponsored card creative, destination, and tracking fields."
+          "title": "Edit ad campaign | AgentPets",
+          "description": "Update your AgentPets sponsored card creative, destination, and tracking fields."
         },
         "notEditable": {
           "title": "This campaign cannot be edited",
           "body": "Deleted or removed campaigns cannot be changed. Create a new campaign if you want to run a new sponsored card."
         },
         "utmTitle": "Custom UTM settings",
-        "utmHelp": "Leave fields blank to clear them. If utm_source is blank, Petdex adds utm_source=petdex to clicks.",
+        "utmHelp": "Leave fields blank to clear them. If utm_source is blank, AgentPets adds utm_source=agentpets to clicks.",
         "errors": {
           "imageTooLarge": "Image must be 10 MB or smaller.",
           "nothingChanged": "Change at least one field before saving.",
           "submitFailed": "Could not update the campaign.",
           "uploadFailed": "Image upload failed.",
           "network": "Network error. Try again.",
-          "imageInvalid": "Upload a valid Petdex ad image.",
+          "imageInvalid": "Upload a valid AgentPets ad image.",
           "destinationInvalid": "Enter a valid HTTPS destination URL.",
           "titleRequired": "Add an ad title.",
           "descriptionRequired": "Add an ad description."
@@ -429,7 +434,7 @@
       "other": "Other"
     },
     "placeholders": {
-      "suggestion": "What would make Petdex better?",
+      "suggestion": "What would make AgentPets better?",
       "bug": "What broke? Include steps if you can.",
       "praise": "Tell us what you liked.",
       "other": "What's on your mind?"
@@ -446,7 +451,7 @@
   },
   "admin": {
     "metadata": {
-      "title": "Petdex Admin"
+      "title": "AgentPets Admin"
     },
     "tabs": {
       "ariaLabel": "Admin sections",
@@ -560,8 +565,8 @@
         "all": "All"
       },
       "mailto": {
-        "bodyIntro": "Thanks for the {kind} on Petdex",
-        "subject": "Re: your Petdex feedback: {excerpt}"
+        "bodyIntro": "Thanks for the {kind} on AgentPets",
+        "subject": "Re: your AgentPets feedback: {excerpt}"
       }
     },
     "feedbackActions": {
@@ -664,7 +669,7 @@
     "telemetry": {
       "eyebrow": "Telemetry",
       "title": "CLI usage telemetry",
-      "description": "Anonymous install volume, OS distribution, and agent adoption from petdex CLI users.",
+      "description": "Anonymous install volume, OS distribution, and agent adoption from agentpets CLI users.",
       "stats": {
         "totalInstalls": "Total installs",
         "weeklyActive": "Weekly active installs",
@@ -691,12 +696,12 @@
   },
   "submit": {
     "metadata": {
-      "title": "Submit a pet | Petdex",
-      "description": "Upload and validate a Codex pet package for Petdex."
+      "title": "Submit a pet | AgentPets",
+      "description": "Upload and validate a Codex pet package for AgentPets."
     },
     "eyebrow": "Submit",
-    "title": "Add your pet to Petdex",
-    "body": "Share a Codex-compatible animated pet package. Petdex checks the files locally, previews the sprite, and prepares the submission.",
+    "title": "Add your pet to AgentPets",
+    "body": "Share a Codex-compatible animated pet package. AgentPets checks the files locally, previews the sprite, and prepares the submission.",
     "createCta": "Don't have a pet yet? Hatch one in Codex",
     "legalPrefix": "By submitting, you confirm you have rights to the artwork or are creating fan content. Rights holders can request removal via our",
     "legalLink": "takedown notice",
@@ -717,7 +722,7 @@
         "title": "Submission check",
         "reading": "Reading package...",
         "ready": "Looks ready to submit.",
-        "empty": "Packages stay local until you confirm. Petdex checks the manifest and sprite dimensions before upload."
+        "empty": "Packages stay local until you confirm. AgentPets checks the manifest and sprite dimensions before upload."
       },
       "path": {
         "prefix": "Pet assets live in",
@@ -782,7 +787,7 @@
         "folderMissingPetJson": "Folder is missing pet.json.",
         "folderMissingSpritesheet": "Folder is missing spritesheet.webp (or .png). Found: {present}",
         "dropPetFolderOrZip": "Drop a pet folder or a .zip file.",
-        "allPetsBundle": "This looks like the all-pets bundle (petdex-approved.zip). Submit a single pet folder or its individual zip instead.",
+        "allPetsBundle": "This looks like the all-pets bundle (agentpets-approved.zip). Submit a single pet folder or its individual zip instead.",
         "zipMissingPetJson": "Missing pet.json at zip root.",
         "zipMissingSpritesheet": "Missing spritesheet.webp (or .png) at zip root. Found: {present}",
         "invalidJson": "pet.json is not valid JSON.",
@@ -794,7 +799,7 @@
   "requests": {
     "metadata": {
       "title": "Pet requests",
-      "description": "Vote on pets the community wants to see in Petdex. Most-upvoted requests get prioritized."
+      "description": "Vote on pets the community wants to see in AgentPets. Most-upvoted requests get prioritized."
     },
     "eyebrow": "Community wishlist",
     "title": "Pets people are asking for",
@@ -868,8 +873,8 @@
   },
   "create": {
     "metadata": {
-      "title": "Create a pet | Petdex",
-      "description": "Hatch your own Codex pet in 5 minutes, then share it on Petdex."
+      "title": "Create a pet | AgentPets",
+      "description": "Hatch your own Codex pet in 5 minutes, then share it on AgentPets."
     },
     "eyebrow": "Make your own",
     "title": "Hatch a pet in Codex",
@@ -897,10 +902,10 @@
         "tipAfter": "afterwards to wake or tuck it away."
       },
       "share": {
-        "title": "Share it on Petdex",
+        "title": "Share it on AgentPets",
         "beforePath": "The pet lives at",
         "beforeLink": ". Drag that folder (or its zip) to",
-        "afterLink": "and Petdex hosts it for everyone to install with one curl."
+        "afterLink": "and AgentPets hosts it for everyone to install with one curl."
       }
     },
     "guide": {
@@ -939,17 +944,17 @@
     "creator": {
       "title": "Web pet creator",
       "soon": "Soon",
-      "body": "A browser-native studio so you can sketch, animate, and preview your pet without ever leaving Petdex. No Codex tokens required. Sign in to get notified when it lands."
+      "body": "A browser-native studio so you can sketch, animate, and preview your pet without ever leaving AgentPets. No Codex tokens required. Sign in to get notified when it lands."
     }
   },
   "builtWith": {
     "metadata": {
-      "titleTemplate": "Built with Petdex: {total} community projects",
-      "description": "{total} open-source projects building on top of Petdex: desktop companions, wellness apps, wearables, SDKs, and pet creators."
+      "titleTemplate": "Built with AgentPets: {total} community projects",
+      "description": "{total} open-source projects building on top of AgentPets: desktop companions, wellness apps, wearables, SDKs, and pet creators."
     },
-    "eyebrow": "Built with Petdex",
-    "title": "Apps the community is shipping on Petdex",
-    "subtitle": "{total} open-source projects pull from the Petdex gallery, API, or pet format. Wellness apps, wearables, SDKs, and creators. Curated, evidence-required, no vibes.",
+    "eyebrow": "Built with AgentPets",
+    "title": "Apps the community is shipping on AgentPets",
+    "subtitle": "{total} open-source projects pull from the AgentPets gallery, API, or pet format. Wellness apps, wearables, SDKs, and creators. Curated, evidence-required, no vibes.",
     "stats": {
       "stars": "{total} combined stars",
       "projects": "{total} projects",
@@ -957,39 +962,39 @@
     },
     "cta": {
       "submit": "Submit your project",
-      "starPetdex": "Star Petdex"
+      "starAgentPets": "Star AgentPets"
     },
     "categoryCount": "{count}",
     "categories": {
       "desktopCompanion": {
         "label": "Desktop companions",
-        "description": "Apps that put a Petdex pet on your desktop."
+        "description": "Apps that put a AgentPets pet on your desktop."
       },
       "wellness": {
         "label": "Wellness & focus",
-        "description": "Pomodoros, breaks, and focus tools that use Petdex pets as their on-screen character."
+        "description": "Pomodoros, breaks, and focus tools that use AgentPets pets as their on-screen character."
       },
       "wearable": {
         "label": "Wearable",
-        "description": "Petdex pets running on Apple Watch, Garmin, and other wearables."
+        "description": "AgentPets pets running on Apple Watch, Garmin, and other wearables."
       },
       "sdk": {
         "label": "SDKs & runtimes",
-        "description": "Libraries and runtimes that wrap the Petdex API or pet format for other platforms."
+        "description": "Libraries and runtimes that wrap the AgentPets API or pet format for other platforms."
       },
       "bundled": {
         "label": "Bundled in larger apps",
-        "description": "Petdex pets shipped as a feature of bigger products."
+        "description": "AgentPets pets shipped as a feature of bigger products."
       },
       "petCreator": {
         "label": "Pet creators",
-        "description": "Solo creators distributing original pets in Petdex package format."
+        "description": "Solo creators distributing original pets in AgentPets package format."
       }
     },
     "submit": {
       "eyebrow": "How to get listed",
-      "title": "Ship something with Petdex, then submit",
-      "step1": "Build something that pulls from the Petdex gallery, API, or pet format with explicit attribution.",
+      "title": "Ship something with AgentPets, then submit",
+      "step1": "Build something that pulls from the AgentPets gallery, API, or pet format with explicit attribution.",
       "step2": "Open a GitHub issue using the \"Add my project to /built-with\" template.",
       "step3": "Provide an evidence quote (README link or code path proving the integration).",
       "step4": "We review, take a 1280x720 screenshot, and merge.",
@@ -1002,18 +1007,18 @@
   },
   "brand": {
     "metadata": {
-      "title": "Petdex brand kit",
-      "description": "Download Petdex logos, icons, color tokens, and usage notes for press, projects, and community posts.",
-      "ogTitle": "Petdex brand kit"
+      "title": "AgentPets brand kit",
+      "description": "Download AgentPets logos, icons, color tokens, and usage notes for press, projects, and community posts.",
+      "ogTitle": "AgentPets brand kit"
     },
     "eyebrow": "Brand kit",
     "hero": {
-      "title": "Use Petdex clearly and consistently.",
-      "body": "Download official marks for launch posts, app integrations, community projects, and docs that reference Petdex.",
+      "title": "Use AgentPets clearly and consistently.",
+      "body": "Download official marks for launch posts, app integrations, community projects, and docs that reference AgentPets.",
       "primaryCtaSvg": "Download SVG",
       "primaryCtaPng": "PNG",
       "secondaryCta": "View on GitHub",
-      "iconAlt": "Petdex desktop app icon"
+      "iconAlt": "AgentPets desktop app icon"
     },
     "assets": {
       "eyebrow": "Downloads",
@@ -1029,24 +1034,24 @@
       },
       "items": {
         "mark": {
-          "title": "Petdex mark",
+          "title": "AgentPets mark",
           "description": "The primary symbol for compact layouts, avatars, favicons, and badges.",
-          "alt": "Petdex mark"
+          "alt": "AgentPets mark"
         },
         "wordmark": {
-          "title": "Petdex wordmark light",
+          "title": "AgentPets wordmark light",
           "description": "Use on light or warm neutral backgrounds when the name needs to be readable without surrounding context.",
-          "alt": "Petdex wordmark"
+          "alt": "AgentPets wordmark"
         },
         "wordmarkDark": {
-          "title": "Petdex wordmark dark",
+          "title": "AgentPets wordmark dark",
           "description": "Use on dark backgrounds, screenshots, and launch graphics where the black wordmark loses contrast.",
-          "alt": "Petdex wordmark for dark backgrounds"
+          "alt": "AgentPets wordmark for dark backgrounds"
         },
         "desktopIcon": {
           "title": "Desktop icon",
-          "description": "Rounded app icon for Petdex Desktop references, press cards, and launch graphics.",
-          "alt": "Petdex desktop icon"
+          "description": "Rounded app icon for AgentPets Desktop references, press cards, and launch graphics.",
+          "alt": "AgentPets desktop icon"
         }
       }
     },
@@ -1057,19 +1062,19 @@
         "title": "Do",
         "item1": "Keep enough clear space around the mark.",
         "item2": "Use the original files without redrawing the shapes.",
-        "item3": "Pair Petdex with clear attribution when featuring community pets."
+        "item3": "Pair AgentPets with clear attribution when featuring community pets."
       },
       "dont": {
         "title": "Don't",
         "item1": "Stretch, rotate, skew, or recolor the logo arbitrarily.",
         "item2": "Place the mark on low-contrast or visually noisy backgrounds.",
-        "item3": "Use Petdex branding to imply official approval of unrelated products."
+        "item3": "Use AgentPets branding to imply official approval of unrelated products."
       }
     },
     "system": {
       "eyebrow": "Design system",
       "title": "Colors and type",
-      "body": "Petdex uses cool app surfaces, purple-blue brand accents, and Geist type to feel like a useful tool with a tiny bit of creature energy.",
+      "body": "AgentPets uses cool app surfaces, purple-blue brand accents, and Geist type to feel like a useful tool with a tiny bit of creature energy.",
       "colors": {
         "brand": "Brand",
         "brandDeep": "Brand deep",
@@ -1085,20 +1090,20 @@
   },
   "about": {
     "metadata": {
-      "title": "About Petdex: Animated companions for Codex",
-      "description": "Petdex is an open-source gallery of animated companions for Codex. Browse the catalog, install with one command, or submit your own.",
-      "ogTitle": "About Petdex",
+      "title": "About AgentPets: Animated companions for Codex",
+      "description": "AgentPets is an open-source gallery of animated companions for Codex. Browse the catalog, install with one command, or submit your own.",
+      "ogTitle": "About AgentPets",
       "ogDescription": "An open-source gallery of animated companions for Codex."
     },
     "eyebrow": "About",
     "hero": {
-      "title": "Petdex is the index of Codex pets",
+      "title": "AgentPets is the index of Codex pets",
       "body": "An open-source gallery of {totalPets}+ animated companions for <strong>Codex</strong>. Install one with a single command and ship with company."
     },
     "sections": {
       "what": {
-        "title": "What Petdex is",
-        "body1": "Petdex is a public, open-source registry. Every entry is a pet pack: a tiny bundle of metadata and pixel art that Codex knows how to display while you work. Think of it as a Pokédex for app companions.",
+        "title": "What AgentPets is",
+        "body1": "AgentPets is a public, open-source registry. Every entry is a pet pack: a tiny bundle of metadata and pixel art that Codex knows how to display while you work. Think of it as a Pokédex for app companions.",
         "body2": {
           "beforeCozy": "The platform takes the guesswork out: there's a CLI for installing and submitting, a tagged gallery so finding the right companion doesn't require scrolling, and per-vibe collections like",
           "cozyLabel": "cozy pets",
@@ -1123,27 +1128,27 @@
         },
         "install": {
           "q": "How do I install a pet?",
-          "a": "From the gallery page or any pet detail page, copy the install command (looks like `npx petdex install boba`) and paste it into your terminal. The CLI fetches the pet from R2, drops it under ~/.codex/pets/<slug>/, and tells Codex to use it. Works on macOS, Linux, and Windows (via PowerShell)."
+          "a": "From the gallery page or any pet detail page, copy the install command (looks like `npx @agentpets/cli install boba`) and paste it into your terminal. The CLI fetches the pet from R2, drops it under ~/.codex/pets/<slug>/, and tells Codex to use it. Works on macOS, Linux, and Windows (via PowerShell)."
         },
         "origin": {
           "q": "Where do the pets come from?",
-          "a": "Most pets are submitted by the community through the website or the petdex CLI. A handful are featured curated entries hand-picked from Crafter Station. Every pet is reviewed by an admin before it goes live in the gallery."
+          "a": "Most pets are submitted by the community through the website or the agentpets CLI. A handful are featured curated entries hand-picked from Crafter Station. Every pet is reviewed by an admin before it goes live in the gallery."
         },
         "submit": {
           "q": "Can I submit my own pet?",
-          "a": "Yes. Sign in with the petdex CLI (npx petdex login) and run `npx petdex submit ./my-pet/`. The CLI uploads the assets to R2 and queues the submission for review. You can also submit through the website at /submit. All you need is a pet.json file and a 9-state spritesheet."
+          "a": "Yes. Sign in with the agentpets CLI (npx @agentpets/cli login) and run `npx @agentpets/cli submit ./my-pet/`. The CLI uploads the assets to R2 and queues the submission for review. You can also submit through the website at /submit. All you need is a pet.json file and a 9-state spritesheet."
         },
         "openSource": {
-          "q": "Are Petdex pets free and open source?",
-          "a": "Every pet on Petdex is free to install and use. Pets keep credit to their original authors. The Petdex platform itself (CLI + site) is open source under the Crafter Station umbrella."
+          "q": "Are AgentPets pets free and open source?",
+          "a": "Every pet on AgentPets is free to install and use. Pets keep credit to their original authors. The AgentPets platform itself (CLI + site) is open source under the Crafter Station umbrella."
         },
         "taxonomy": {
           "q": "What's a vibe? What's a kind?",
           "a": "Each pet is tagged with a kind (creature, object, character) and one to three vibes (cozy, playful, focused, mystical, …). These power the gallery filters and the per-vibe / per-kind landing pages so you can find a companion that matches your mood without scrolling 70+ entries."
         },
         "money": {
-          "q": "How does Petdex make money?",
-          "a": "It doesn't. Petdex is a community project run by Crafter Station. Storage and DB are absorbed by the platform team. No ads, no upsells, no telemetry beyond standard analytics on which pets get installed."
+          "q": "How does AgentPets make money?",
+          "a": "It doesn't. AgentPets is a community project run by Crafter Station. Storage and DB are absorbed by the platform team. No ads, no upsells, no telemetry beyond standard analytics on which pets get installed."
         }
       }
     },
@@ -1164,7 +1169,7 @@
   "myPets": {
     "metadata": {
       "title": "My submissions",
-      "description": "Track the status of every pet you've sent to Petdex, customize your profile, and edit live entries."
+      "description": "Track the status of every pet you've sent to AgentPets, customize your profile, and edit live entries."
     },
     "edit": {
       "confirmWithdraw": "Withdraw this edit? Current approved values stay live.",
@@ -1214,11 +1219,11 @@
   "myFeedback": {
     "metadata": {
       "title": "My feedback",
-      "description": "Threads with the Petdex team about feedback you've shared."
+      "description": "Threads with the AgentPets team about feedback you've shared."
     },
     "eyebrow": "Threads",
     "title": "My feedback",
-    "subtitle": "Conversations with the Petdex team about feedback you've sent.",
+    "subtitle": "Conversations with the AgentPets team about feedback you've sent.",
     "empty": "You haven't sent any feedback yet. Use the Feedback button to share thoughts.",
     "emptyFiltered": "No threads in this view.",
     "badges": {
@@ -1254,7 +1259,7 @@
     "caughtWandering": "Caught wandering: {name}",
     "browsePets": "Browse {count}+ pets",
     "browseGallery": "Browse the gallery",
-    "about": "About Petdex",
+    "about": "About AgentPets",
     "submit": "Submit a pet",
     "featuredEyebrow": "Try a featured one",
     "featuredTitle": "Pets that are definitely here",
@@ -1263,11 +1268,11 @@
   },
   "leaderboard": {
     "metadata": {
-      "title": "Petdex leaderboard",
-      "description": "Top creators on Petdex: most pets approved, most loved, most installed."
+      "title": "AgentPets leaderboard",
+      "description": "Top creators on AgentPets: most pets approved, most loved, most installed."
     },
     "eyebrow": "Top creators",
-    "title": "Petdex leaderboard",
+    "title": "AgentPets leaderboard",
     "subtitle": "The artists shipping the most pets, getting the most love, and landing the most installs. Updated live.",
     "categoryAria": "Leaderboard category",
     "secondaryStats": {
@@ -1354,7 +1359,7 @@
     "shareToX": "Share to X",
     "shareToLinkedIn": "Share to LinkedIn",
     "more": "More…",
-    "shareText": "Check out {name}'s Codex pet collection on Petdex"
+    "shareText": "Check out {name}'s Codex pet collection on AgentPets"
   },
   "petActions": {
     "moreActions": "More actions for {name}",
@@ -1364,7 +1369,7 @@
     "takedownDialog": {
       "eyebrow": "Legal · Takedown",
       "title": "Report a pet",
-      "body": "Petdex hosts user-submitted fan-art pixel pets. We don't claim rights to the underlying IP of any character a community member chose to interpret. If you're a rights holder or authorized representative and want a pet removed, the fastest path is a GitHub issue.",
+      "body": "AgentPets hosts user-submitted fan-art pixel pets. We don't claim rights to the underlying IP of any character a community member chose to interpret. If you're a rights holder or authorized representative and want a pet removed, the fastest path is a GitHub issue.",
       "howItWorks": "How it works",
       "step1": "Open a takedown request with the button below.",
       "step2": "Tell us which pet and your relationship to the IP.",
@@ -1372,7 +1377,7 @@
       "step4": "Approved takedowns remove the pet from the gallery and installer endpoints.",
       "nonIp": "Non-IP issues such as broken sprites or wrong descriptions should use a regular issue instead.",
       "prefillLabel": "This request will prefill:",
-      "confirmation": "By submitting to Petdex you confirm you have rights to the artwork or are creating fan content. Petdex acts on good-faith takedown requests.",
+      "confirmation": "By submitting to AgentPets you confirm you have rights to the artwork or are creating fan content. AgentPets acts on good-faith takedown requests.",
       "cancel": "Cancel",
       "openRequest": "Open takedown request"
     },
@@ -1387,7 +1392,7 @@
     "shareToLinkedIn": "Share to LinkedIn",
     "more": "More…",
     "downloadZip": "Download ZIP",
-    "removeFromPetdex": "Remove from Petdex",
+    "removeFromAgentPets": "Remove from AgentPets",
     "removing": "Removing…",
     "withdrawSubmission": "Withdraw submission",
     "withdrawing": "Withdrawing…",
@@ -1466,7 +1471,7 @@
   },
   "download": {
     "eyebrow": "Desktop app",
-    "title": "Petdex Desktop",
+    "title": "AgentPets Desktop",
     "subtitle": "Your pet, floating beside every coding agent.",
     "hero": {
       "downloadCta": "Download for macOS",
@@ -1532,17 +1537,17 @@
     "docsLink": "Read the docs",
     "pendingPet": {
       "eyebrow": "Almost there.",
-      "messageBefore": "Install Petdex Desktop to test",
+      "messageBefore": "Install AgentPets Desktop to test",
       "messageAfter": "in 1 click.",
       "hint": "macOS only for now"
     }
   },
-  "openInPetdex": {
+  "openInAgentPets": {
     "eyebrow": "macOS desktop app",
-    "label": "Open in Petdex Desktop",
+    "label": "Open in AgentPets Desktop",
     "subtitle": "Float this pet beside your coding agent",
-    "opening": "Opening Petdex...",
-    "ariaLabel": "Open {slug} in Petdex Desktop"
+    "opening": "Opening AgentPets...",
+    "ariaLabel": "Open {slug} in AgentPets Desktop"
   },
   "installCompact": {
     "seeGuide": "See full install guide",
@@ -1551,16 +1556,16 @@
   },
   "desktopAnnouncement": {
     "eyebrow": "New · Desktop App",
-    "title": "Petdex now floats beside your coding agent",
+    "title": "AgentPets now floats beside your coding agent",
     "description": "Drop a pet on your screen that reacts to every Claude, Codex, Gemini, or OpenCode tool call. Frameless, always on top, drags with momentum.",
     "platforms": "macOS today. Linux and Windows soon.",
     "downloadCta": "Download",
     "seeHowCta": "See how it works"
   },
   "githubStar": {
-    "eyebrow": "Open source · Petdex",
-    "title": "Help Petdex grow. Star us on GitHub",
-    "description": "Petdex is fully open source. Every star helps more pet creators find the project, and gives us cover to keep shipping freely (sounds, leaderboard, the upcoming web pet studio).",
+    "eyebrow": "Open source · AgentPets",
+    "title": "Help AgentPets grow. Star us on GitHub",
+    "description": "AgentPets is fully open source. Every star helps more pet creators find the project, and gives us cover to keep shipping freely (sounds, leaderboard, the upcoming web pet studio).",
     "note": "Takes ten seconds. No account required if you already have GitHub.",
     "starCta": "Star on GitHub",
     "laterCta": "Later"
@@ -1571,19 +1576,19 @@
   },
   "buildUpdate": {
     "title": "New version available",
-    "body": "Refresh to use the latest Petdex.",
+    "body": "Refresh to use the latest AgentPets.",
     "later": "Later",
     "refresh": "Refresh"
   },
   "collectionsPage": {
     "metadata": {
       "title": "Featured collections",
-      "description": "Browse Petdex collections by franchise, category, or theme. Search, sort, and filter to find your set."
+      "description": "Browse AgentPets collections by franchise, category, or theme. Search, sort, and filter to find your set."
     },
     "hero": {
       "eyebrow": "Featured collections",
       "title": "Find your set, install in one line",
-      "description": "{count, plural, =1 {1 collection} other {# collections}} from across the Petdex catalog. Browse by franchise, category, or themed mood."
+      "description": "{count, plural, =1 {1 collection} other {# collections}} from across the AgentPets catalog. Browse by franchise, category, or themed mood."
     }
   },
   "collectionsBrowser": {
@@ -1619,8 +1624,8 @@
     }
   },
   "profile": {
-    "creatorBadge": "Petdex creator",
-    "creatorOfPetdex": "Creator of Petdex",
+    "creatorBadge": "AgentPets creator",
+    "creatorOfAgentPets": "Creator of AgentPets",
     "yourAlbum": "YOUR ALBUM: {caught}/{total} ({pct}%)",
     "editProfile": "Edit profile",
     "petsTab": "Pets",
@@ -1714,8 +1719,8 @@
   "collectionActionMenu": {
     "moreActions": "More actions for {title}",
     "closeMenu": "Close menu",
-    "openInPetdex": "Open in Petdex Desktop",
-    "openInPetdexDesc": "Installs the whole collection",
+    "openInAgentPets": "Open in AgentPets Desktop",
+    "openInAgentPetsDesc": "Installs the whole collection",
     "openInCodex": "Open in Codex",
     "openInCodexDesc": "Codex Desktop runs the install",
     "copyInstallAll": "Copy install all",
@@ -1726,16 +1731,16 @@
     "viewCollection": "View collection",
     "installHint": "{count, plural, =1 {1 pet} other {# pets}}",
     "installHintTruncated": "{shown} of {total} pets · paste rest manually",
-    "shareXText": "{title} pet collection on Petdex - install with one line"
+    "shareXText": "{title} pet collection on AgentPets - install with one line"
   },
   "takedownPage": {
     "metadata": {
-      "title": "Takedown | Petdex",
+      "title": "Takedown | AgentPets",
       "description": "How to report a pet that infringes your rights."
     },
     "eyebrow": "Legal · Takedown",
     "title": "Report a pet",
-    "intro": "Petdex hosts user-submitted fan-art pixel pets. We don't claim rights to the underlying IP of any character a community member chose to interpret. If you're a rights holder or authorized representative and want a pet removed, the fastest path is a GitHub issue.",
+    "intro": "AgentPets hosts user-submitted fan-art pixel pets. We don't claim rights to the underlying IP of any character a community member chose to interpret. If you're a rights holder or authorized representative and want a pet removed, the fastest path is a GitHub issue.",
     "howItWorks": "How it works",
     "steps": {
       "open": "Open a takedown request with the link below.",
@@ -1747,12 +1752,12 @@
     "emailLink": "email",
     "nonIpAfter": ".",
     "openRequest": "Open takedown request",
-    "confirmation": "By submitting to Petdex you confirm you have rights to the artwork or are creating fan content. Petdex acts on good-faith takedown requests."
+    "confirmation": "By submitting to AgentPets you confirm you have rights to the artwork or are creating fan content. AgentPets acts on good-faith takedown requests."
   },
   "unsubscribePage": {
     "metadata": {
-      "title": "Unsubscribe | Petdex",
-      "description": "Manage your Petdex email preferences."
+      "title": "Unsubscribe | AgentPets",
+      "description": "Manage your AgentPets email preferences."
     },
     "eyebrow": "Email · Preferences",
     "title": "Unsubscribe",
@@ -1760,9 +1765,9 @@
     "invalidBody": "We couldn't find that unsubscribe token. It may be expired or malformed. If you keep getting emails you don't want, reply to the latest one and we'll remove you manually.",
     "form": {
       "account": "Account",
-      "unsubscribedTitle": "You're unsubscribed from Petdex updates.",
+      "unsubscribedTitle": "You're unsubscribed from AgentPets updates.",
       "unsubscribedBody": "You'll still receive required notifications when your pet is approved, your edits are reviewed, or someone replies to your feedback.",
-      "subscribedTitle": "Stop receiving Petdex updates?",
+      "subscribedTitle": "Stop receiving AgentPets updates?",
       "subscribedBody": "We send occasional curated updates: new collections, pet drops, and community moments. Required emails such as review results and feedback replies are not affected.",
       "working": "Working…",
       "resubscribe": "Resubscribe",
@@ -1772,12 +1777,12 @@
   },
   "telemetryPage": {
     "metadata": {
-      "title": "Telemetry | Petdex",
-      "description": "What petdex CLI telemetry collects and how to opt out."
+      "title": "Telemetry | AgentPets",
+      "description": "What agentpets CLI telemetry collects and how to opt out."
     },
     "eyebrow": "Legal · Telemetry",
     "title": "CLI telemetry",
-    "intro": "The petdex CLI collects anonymous usage statistics to help us understand install volume, supported platforms, and which coding agents people wire up. This page explains exactly what is collected and how to opt out.",
+    "intro": "The agentpets CLI collects anonymous usage statistics to help us understand install volume, supported platforms, and which coding agents people wire up. This page explains exactly what is collected and how to opt out.",
     "collectTitle": "What we collect",
     "table": {
       "field": "Field",
@@ -1785,13 +1790,13 @@
       "description": "Description"
     },
     "fields": {
-      "installId": "Random ID generated on first run and stored at <code>~/.petdex/telemetry.json</code>. Never linked to your account, email, or any other identity.",
+      "installId": "Random ID generated on first run and stored at <code>~/.agentpets/telemetry.json</code>. Never linked to your account, email, or any other identity.",
       "event": "Which lifecycle step fired: <code>cli_install_desktop_success</code>, <code>cli_hooks_install_success</code>, <code>cli_desktop_start_success</code>, or <code>desktop_first_state_received</code>. The desktop sidecar emits the last one once per session when a hook first reaches the mascot.",
-      "cliVersion": "Version of the petdex CLI package, for example <code>0.1.4</code>.",
+      "cliVersion": "Version of the agentpets CLI package, for example <code>0.1.4</code>.",
       "binaryVersion": "Version of the desktop binary that was installed, for example <code>0.1.4</code>. Only sent on <code>cli_install_desktop_success</code>.",
       "os": "Operating system: <code>darwin</code>, <code>linux</code>, or <code>win32</code>.",
       "arch": "CPU architecture: <code>arm64</code> or <code>x64</code>.",
-      "agents": "Which coding agents were wired up during <code>petdex hooks install</code>, for example <code>[\"claude-code\", \"codex\"]</code>. Only sent on <code>cli_hooks_install_success</code>.",
+      "agents": "Which coding agents were wired up during <code>agentpets hooks install</code>, for example <code>[\"claude-code\", \"codex\"]</code>. Only sent on <code>cli_hooks_install_success</code>.",
       "state": "Sprite animation state the first hook triggered, for example <code>running</code>, <code>idle</code>, or <code>waving</code>. Only sent on <code>desktop_first_state_received</code>.",
       "agentSource": "Optional self-reported label of the agent that fired the first hook, for example <code>claude-code</code>. Capped at 64 characters and only sent if the hook command included it.",
       "country": "Two-letter ISO country code inferred from your IP by Vercel edge infrastructure. The raw IP is never stored."
@@ -1805,7 +1810,7 @@
       "pets": "Any data from the pets you install or submit."
     },
     "optOutTitle": "How to opt out",
-    "optOutIntro": "Telemetry is on by default but can be turned off at any time. Settings are stored at <code>~/.petdex/telemetry.json</code> and persist across CLI updates.",
+    "optOutIntro": "Telemetry is on by default but can be turned off at any time. Settings are stored at <code>~/.agentpets/telemetry.json</code> and persist across CLI updates.",
     "codeComments": {
       "disable": "# Disable telemetry",
       "enable": "# Re-enable",
@@ -1922,9 +1927,9 @@
   },
   "docsPage": {
     "metadata": {
-      "title": "Docs · Petdex",
-      "description": "How to install, distribute, and automate Codex pets with the Petdex CLI.",
-      "ogTitle": "Petdex CLI · Docs"
+      "title": "Docs · AgentPets",
+      "description": "How to install, distribute, and automate Codex pets with the AgentPets CLI.",
+      "ogTitle": "AgentPets CLI · Docs"
     },
     "nav": {
       "getStarted": "Get started",
@@ -1944,10 +1949,10 @@
       "contribute": "Contribute"
     },
     "hero": {
-      "eyebrow": "Petdex CLI · v0.1",
+      "eyebrow": "AgentPets CLI · v0.1",
       "title": "Docs",
-      "description": "The Petdex CLI lets you install, browse, and submit Codex pets from your terminal. Authentication uses OAuth 2.0 + PKCE through Clerk, and tokens persist in your OS keychain.",
-      "npmCta": "npmjs.com/petdex",
+      "description": "The AgentPets CLI lets you install, browse, and submit Codex pets from your terminal. Authentication uses OAuth 2.0 + PKCE through Clerk, and tokens persist in your OS keychain.",
+      "npmCta": "npmjs.com/agentpets",
       "repoCta": "Repo"
     },
     "sections": {
@@ -1955,7 +1960,7 @@
         "title": "Quick start",
         "intro": "Install a curated pet into your Codex setup with one command. No account required to install. Sign in only when you submit.",
         "afterCommand": "The CLI fetches the pet pack and drops it into <code>~/.codex/pets/boba/</code>. To activate it inside Codex go to <strong>Settings → Appearance → Pets</strong> and click <strong>Select</strong>. Use <code>/pet</code> inside Codex to wake or tuck it away.",
-        "callout": "Don't have a pet idea yet? <link>Hatch your own</link> with the Codex Hatch Pet skill, then come back to <code>petdex submit</code>."
+        "callout": "Don't have a pet idea yet? <link>Hatch your own</link> with the Codex Hatch Pet skill, then come back to <code>agentpets submit</code>."
       },
       "install": {
         "title": "Install",
@@ -1964,60 +1969,60 @@
         "casualBody": "Use <code>npx</code>. No setup, package is cached after first run.",
         "powerTitle": "Power user",
         "powerBody": "Install globally for instant invocation and easier muscle memory.",
-        "persistence": "<strong>Auth persistence is identical in both.</strong> Tokens live in your OS keychain (macOS Keychain, Windows Credential Manager, Linux Secret Service) under the service name <code>petdex-cli</code>. Even if npx clears its package cache, your session survives."
+        "persistence": "<strong>Auth persistence is identical in both.</strong> Tokens live in your OS keychain (macOS Keychain, Windows Credential Manager, Linux Secret Service) under the service name <code>agentpets-cli</code>. Even if npx clears its package cache, your session survives."
       },
       "authenticate": {
         "title": "Authenticate",
         "intro": "Sign in once, then any command that needs auth, such as submit, works seamlessly.",
-        "flow": "The flow is OAuth 2.0 + PKCE: the CLI opens your browser, you sign in with Clerk on <code>accounts.petdex.crafter.run</code>, and the browser redirects to a one-shot localhost listener with the authorization code. The CLI exchanges it for a token set and stores it in the keychain. No secrets touch disk.",
+        "flow": "The flow is OAuth 2.0 + PKCE: the CLI opens your browser, you sign in with Clerk on <code>accounts.agentpets.dev</code>, and the browser redirects to a one-shot localhost listener with the authorization code. The CLI exchanges it for a token set and stores it in the keychain. No secrets touch disk.",
         "otherCommands": "Other auth commands:"
       },
       "commands": {
         "title": "Commands",
         "intro": "The CLI covers the full lifecycle: discover, install, hatch, publish, plus the desktop app and agent hooks. All commands accept <code>--help</code>.",
         "listBody": "Print every approved pet with credit. Useful for discovery before installing.",
-        "installBody": "Drop a pet into <code>~/.codex/pets/{petName}/</code>. Equivalent to <code>curl -sSf https://petdex.crafter.run/install/{petName} | sh</code>.",
+        "installBody": "Drop a pet into <code>~/.codex/pets/{petName}/</code>. Equivalent to <code>curl -sSf https://agentpets.dev/install/{petName} | sh</code>.",
         "submitIntro": "Publish your pet(s) to the gallery. The CLI accepts three shapes:",
-        "submitSingle": "<strong>Single folder</strong>: <code>petdex submit ~/.codex/pets/boba</code>",
-        "submitZip": "<strong>Single zip</strong>: <code>petdex submit ~/Downloads/boba.zip</code>",
-        "submitBulk": "<strong>Bulk</strong>: <code>petdex submit ~/.codex/pets</code>: every direct subfolder is treated as its own pet",
+        "submitSingle": "<strong>Single folder</strong>: <code>agentpets submit ~/.codex/pets/boba</code>",
+        "submitZip": "<strong>Single zip</strong>: <code>agentpets submit ~/Downloads/boba.zip</code>",
+        "submitBulk": "<strong>Bulk</strong>: <code>agentpets submit ~/.codex/pets</code>: every direct subfolder is treated as its own pet",
         "bulkNote": "Bulk mode shows a progress spinner per pet and a final summary of failures. Slugs auto-deduplicate so you will not hit a slug-taken bounce.",
         "authBody": "See the Authenticate section above.",
-        "installSyntax": "petdex install {petName}",
-        "submitSyntax": "petdex submit {path}"
+        "installSyntax": "agentpets install {petName}",
+        "submitSyntax": "agentpets submit {path}"
       },
       "desktop": {
         "title": "Desktop app",
-        "intro": "Petdex Desktop is a floating mascot that lives on top of your workspace and reacts to your coding agent tool calls. macOS today, Linux and Windows soon. See <download>/download</download> for the visual tour.",
-        "installDesktopBody": "Fetches the latest binary from GitHub Releases for your platform and drops it at <code>~/.petdex/bin/petdex-desktop</code>. The CLI strips the macOS quarantine attribute so the app opens without a Gatekeeper prompt.",
+        "intro": "AgentPets Desktop is a floating mascot that lives on top of your workspace and reacts to your coding agent tool calls. macOS today, Linux and Windows soon. See <download>/download</download> for the visual tour.",
+        "installDesktopBody": "Fetches the latest binary from GitHub Releases for your platform and drops it at <code>~/.agentpets/bin/agentpets-desktop</code>. The CLI strips the macOS quarantine attribute so the app opens without a Gatekeeper prompt.",
         "hooksInstallBody": "Wires the desktop app into your coding agents so the pet animates as you work. Picks the agents present on your machine and writes hooks for each:",
         "hookEvents": "Tool events map to pet states: <code>tool.before</code> → <code>running</code>, <code>tool.after</code> → <code>idle</code>, <code>session.end</code> → <code>waving</code>, <code>session.error</code> → <code>failed</code>. Each hook POSTs to the local sidecar at <code>http://127.0.0.1:7777/state</code>.",
-        "desktopManageBody": "Manage the running pet. <code>start</code> spawns it detached (PID at <code>~/.petdex/desktop.pid</code>, log at <code>~/.petdex/desktop.log</code>). <code>stop</code> sends SIGTERM. <code>status</code> reports running, stopped, or stale.",
-        "toggleBody": "One-shot wake/sleep for the mascot. <code>up</code> enables hooks AND launches the desktop. <code>down</code> disables hooks AND stops the desktop. <code>toggle</code> flips between them based on current state. That is what the <code>/petdex</code> slash command runs from inside your agent.",
+        "desktopManageBody": "Manage the running pet. <code>start</code> spawns it detached (PID at <code>~/.agentpets/desktop.pid</code>, log at <code>~/.agentpets/desktop.log</code>). <code>stop</code> sends SIGTERM. <code>status</code> reports running, stopped, or stale.",
+        "toggleBody": "One-shot wake/sleep for the mascot. <code>up</code> enables hooks AND launches the desktop. <code>down</code> disables hooks AND stops the desktop. <code>toggle</code> flips between them based on current state. That is what the <code>/agentpets</code> slash command runs from inside your agent.",
         "slashTitleSuffix": "(slash command)",
-        "slashBody": "Once <code>petdex hooks install</code> has run, every supported agent (Claude Code, Codex, Gemini, OpenCode) gets a <code>/petdex</code> command in its picker. Type it inside the agent and the mascot wakes or sleeps without leaving the chat:",
-        "slashToggle": "<code>/petdex</code>: toggle (wake if asleep, sleep if awake)",
-        "slashUp": "<code>/petdex up</code>: force-wake",
-        "slashDown": "<code>/petdex down</code>: force-sleep",
-        "slashStatus": "<code>/petdex status</code>: show whether hooks are enabled",
-        "slashDoctor": "<code>/petdex doctor</code>: diagnose install + agent wiring",
+        "slashBody": "Once <code>agentpets hooks install</code> has run, every supported agent (Claude Code, Codex, Gemini, OpenCode) gets a <code>/agentpets</code> command in its picker. Type it inside the agent and the mascot wakes or sleeps without leaving the chat:",
+        "slashToggle": "<code>/agentpets</code>: toggle (wake if asleep, sleep if awake)",
+        "slashUp": "<code>/agentpets up</code>: force-wake",
+        "slashDown": "<code>/agentpets down</code>: force-sleep",
+        "slashStatus": "<code>/agentpets status</code>: show whether hooks are enabled",
+        "slashDoctor": "<code>/agentpets doctor</code>: diagnose install + agent wiring",
         "killSwitchSuffix": "(kill-switch)",
-        "hooksKillBody": "Even with hooks installed, you can pause them without touching your agent settings. <code>petdex hooks off</code> drops a flag file at <code>~/.petdex/runtime/hooks-disabled</code>; every installed hook checks for it first and exits 0 immediately. <code>petdex hooks on</code> removes the file. Useful when a sidecar has gone weird and you do not want stray curls in your agent log.",
-        "uninstallBody": "Reverses <code>hooks install</code>: removes the petdex entries from each agent config (preserving your own hooks), deletes the <code>/petdex</code> slash command files, and removes the OpenCode plugin. Pass <code>--remove-token</code> to also drop the auth token at <code>~/.petdex/runtime/update-token</code>.",
+        "hooksKillBody": "Even with hooks installed, you can pause them without touching your agent settings. <code>agentpets hooks off</code> drops a flag file at <code>~/.agentpets/runtime/hooks-disabled</code>; every installed hook checks for it first and exits 0 immediately. <code>agentpets hooks on</code> removes the file. Useful when a sidecar has gone weird and you do not want stray curls in your agent log.",
+        "uninstallBody": "Reverses <code>hooks install</code>: removes the agentpets entries from each agent config (preserving your own hooks), deletes the <code>/agentpets</code> slash command files, and removes the OpenCode plugin. Pass <code>--remove-token</code> to also drop the auth token at <code>~/.agentpets/runtime/update-token</code>.",
         "doctorBody": "Diagnostic. Verifies binary, sidecar bundle, sidecar reachability, pid file format, token mode, kill-switch state, hooks installed in each agent, Codex <code>codex_hooks</code> feature flag, and usable pet count. Each failed check ships an actionable hint.",
         "updateBody": "Compares your installed version against the latest GitHub Release tag and downloads it if newer. If the desktop app was running, it stops it, swaps the binary, and restarts. Pass <code>--force</code> to re-download the same version.",
-        "sidecarCallout": "The sidecar is a local HTTP server on port <code>7777</code>. Anything that can <code>curl</code> + read the per-session token at <code>~/.petdex/runtime/update-token</code> can drive the pet. The token rotates every sidecar boot and lives at mode <code>0600</code>, so only your user can read it. Browsers and remote sites cannot:",
-        "manageSyntax": "petdex desktop {desktopAction}"
+        "sidecarCallout": "The sidecar is a local HTTP server on port <code>7777</code>. Anything that can <code>curl</code> + read the per-session token at <code>~/.agentpets/runtime/update-token</code> can drive the pet. The token rotates every sidecar boot and lives at mode <code>0600</code>, so only your user can read it. Browsers and remote sites cannot:",
+        "manageSyntax": "agentpets desktop {desktopAction}"
       },
       "distribute": {
         "title": "Distribute your pets",
         "intro": "Once you have hatched a pet inside Codex, sharing it takes one command. Here's the full lifecycle:",
         "create": "<strong>Create.</strong> In Codex Desktop, install the <strong>Hatch Pet</strong> skill and run <code>/pet</code>. Codex generates the spritesheet and pet.json into <code>~/.codex/pets/{petName}/</code>. Full tutorial at <create>/create</create>.",
-        "signIn": "<strong>Sign in.</strong> <code>npx petdex login</code> if you have not.",
-        "submit": "<strong>Submit.</strong> <code>npx petdex submit ~/.codex/pets/{petName}</code>. Or bulk all at once with the parent dir.",
+        "signIn": "<strong>Sign in.</strong> <code>npx @agentpets/cli login</code> if you have not.",
+        "submit": "<strong>Submit.</strong> <code>npx @agentpets/cli submit ~/.codex/pets/{petName}</code>. Or bulk all at once with the parent dir.",
         "review": "<strong>Wait for review.</strong> Submissions land as “pending” in the admin queue. You will receive a Resend email when approved or rejected (if rejected, the reason is included).",
-        "install": "<strong>Anyone can install your pet.</strong> Once approved, share <code>npx petdex install {yourPetName}</code> with anyone. They get your pet in their <code>~/.codex/pets/</code> instantly.",
-        "callout": "Pets are user-submitted fan art. Petdex does not claim rights to underlying IP. If you are a rights holder requesting a takedown, see <takedown>/legal/takedown</takedown>."
+        "install": "<strong>Anyone can install your pet.</strong> Once approved, share <code>npx @agentpets/cli install {yourPetName}</code> with anyone. They get your pet in their <code>~/.codex/pets/</code> instantly.",
+        "callout": "Pets are user-submitted fan art. AgentPets does not claim rights to underlying IP. If you are a rights holder requesting a takedown, see <takedown>/legal/takedown</takedown>."
       },
       "validation": {
         "title": "Validation rules",
@@ -2065,22 +2070,22 @@
       },
       "agents": {
         "title": "Agent-first usage (Skill)",
-        "intro": "Petdex ships a Claude Code / Codex / Cursor compatible <strong>skill</strong> at <code>.claude/skills/petdex/SKILL.md</code>. Compatible agents load it automatically and learn <em>when</em> and <em>how</em> to call the CLI on your behalf.",
+        "intro": "AgentPets ships a Claude Code / Codex / Cursor compatible <strong>skill</strong> at <code>.claude/skills/agentpets/SKILL.md</code>. Compatible agents load it automatically and learn <em>when</em> and <em>how</em> to call the CLI on your behalf.",
         "enablesTitle": "What this enables",
-        "enableCozy": "Say <em>“install something cozy for my Codex”</em> in any agent tool. It runs <code>petdex list</code>, suggests Boba/Boxcat, installs your pick, and reminds you to activate via <strong>Settings → Appearance → Pets</strong>.",
-        "enableShare": "Say <em>“share all my pets”</em>. Agent runs <code>petdex login</code> if needed, then <code>petdex submit ~/.codex/pets</code>, surfaces the bulk summary.",
-        "enableMake": "Say <em>“how do I make my own?”</em>. Agent walks you through Codex Desktop → Hatch Pet skill → <code>/pet</code> → <code>petdex submit</code>.",
+        "enableCozy": "Say <em>“install something cozy for my Codex”</em> in any agent tool. It runs <code>agentpets list</code>, suggests Boba/Boxcat, installs your pick, and reminds you to activate via <strong>Settings → Appearance → Pets</strong>.",
+        "enableShare": "Say <em>“share all my pets”</em>. Agent runs <code>agentpets login</code> if needed, then <code>agentpets submit ~/.codex/pets</code>, surfaces the bulk summary.",
+        "enableMake": "Say <em>“how do I make my own?”</em>. Agent walks you through Codex Desktop → Hatch Pet skill → <code>/pet</code> → <code>agentpets submit</code>.",
         "enableTitle": "How to enable it",
         "enableIntro": "If you use Claude Code, save the skill globally so every project has it:",
         "enableOther": "Other agent tools can load the same SKILL.md from the repo. The file is plain markdown. No agent-specific syntax beyond <code>allowed-tools</code>.",
         "buildTitle": "Build your own skill on top",
-        "buildBody": "The CLI is the executable surface; the skill is the cognitive one. If you build a derivative skill (for example, one that auto-tags new pets or curates a daily digest), you can use the Petdex skill as a reference. Read it directly:"
+        "buildBody": "The CLI is the executable surface; the skill is the cognitive one. If you build a derivative skill (for example, one that auto-tags new pets or curates a daily digest), you can use the AgentPets skill as a reference. Read it directly:"
       },
       "config": {
         "title": "Configuration",
         "intro": "The CLI ships with sensible defaults pointing at production. You only need to override env vars if you are testing against a non-production deployment.",
-        "petdexUrl": "<code>PETDEX_URL</code>: base URL, default <code>https://petdex.crafter.run</code>",
-        "clerkIssuer": "<code>CLERK_ISSUER</code>: OAuth issuer, default <code>https://clerk.petdex.crafter.run</code>",
+        "agentpetsUrl": "<code>PETDEX_URL</code>: base URL, default <code>https://agentpets.dev</code>",
+        "clerkIssuer": "<code>CLERK_ISSUER</code>: OAuth issuer, default <code>https://clerk.agentpets.dev</code>",
         "clerkClientId": "<code>CLERK_OAUTH_CLIENT_ID</code>: public client id (baked into the CLI binary)"
       },
       "contribute": {
@@ -2089,7 +2094,7 @@
         "issuesBefore": "Bug reports and feature requests:",
         "issueLink": "open an issue",
         "sponsorBefore": "Sponsor on",
-        "sponsorAfter": "if Petdex saves you time."
+        "sponsorAfter": "if AgentPets saves you time."
       }
     },
     "placeholders": {

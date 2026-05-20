@@ -13,7 +13,9 @@
 // the running deployment, and localhost for local dev.
 
 const SITE_HOSTS = new Set<string>([
-  "petdex.crafter.run",
+  "agentpets.dev",
+  "www.agentpets.dev",
+  "localhost:6996",
   "localhost:3000",
   "localhost",
 ]);

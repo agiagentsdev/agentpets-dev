@@ -13,9 +13,9 @@ import { SiteHeader } from "@/components/site-header";
 
 import { hasLocale } from "@/i18n/config";
 
-const NPM_URL = "https://www.npmjs.com/package/petdex";
-const REPO_URL = "https://github.com/crafter-station/petdex";
-const SKILL_URL = `${REPO_URL}/blob/main/.claude/skills/petdex/SKILL.md`;
+const NPM_URL = "https://www.npmjs.com/package/@agentpets/cli";
+const REPO_URL = "https://github.com/agiagentsdev/agentpets-dev";
+const SKILL_URL = `${REPO_URL}/blob/main/.claude/skills/agentpets/SKILL.md`;
 const DOC_SECTIONS = [
   ["quick-start", "quickStart"],
   ["install", "install"],
@@ -144,7 +144,7 @@ export default async function DocsPage({
           <Section id="quick-start" title={t("sections.quickStart.title")}>
             <p>{t("sections.quickStart.intro")}</p>
             <CommandLine
-              command="npx petdex install boba"
+              command="npx @agentpets/cli install boba"
               source="docs-quickstart"
               className="w-full max-w-xl"
             />
@@ -181,7 +181,7 @@ export default async function DocsPage({
               })}
             </p>
             <CommandLine
-              command="npx petdex install boba"
+              command="npx @agentpets/cli install boba"
               source="docs-install-npx"
               className="w-full max-w-xl"
             />
@@ -191,7 +191,7 @@ export default async function DocsPage({
             </h3>
             <p>{t("sections.install.powerBody")}</p>
             <CommandLine
-              command="npm install -g petdex"
+              command="npm install -g @agentpets/cli"
               source="docs-install-global"
               className="w-full max-w-xl"
             />
@@ -207,7 +207,7 @@ export default async function DocsPage({
           <Section id="authenticate" title={t("sections.authenticate.title")}>
             <p>{t("sections.authenticate.intro")}</p>
             <CommandLine
-              command="npx petdex login"
+              command="npx @agentpets/cli login"
               source="docs-auth-login"
               className="w-full max-w-xl"
             />
@@ -216,12 +216,12 @@ export default async function DocsPage({
             </p>
             <p>{t("sections.authenticate.otherCommands")}</p>
             <CommandLine
-              command="npx petdex whoami"
+              command="npx @agentpets/cli whoami"
               source="docs-auth-whoami"
               className="w-full max-w-xl"
             />
             <CommandLine
-              command="npx petdex logout"
+              command="npx @agentpets/cli logout"
               source="docs-auth-logout"
               className="w-full max-w-xl"
             />
@@ -231,11 +231,11 @@ export default async function DocsPage({
             <p>{t.rich("sections.commands.intro", rich)}</p>
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex list</code>
+              <code>agentpets list</code>
             </h3>
             <p>{t("sections.commands.listBody")}</p>
             <CommandLine
-              command="npx petdex list"
+              command="npx @agentpets/cli list"
               source="docs-cmd-list"
               className="w-full max-w-xl"
             />
@@ -245,7 +245,7 @@ export default async function DocsPage({
             </h3>
             <p>{t.rich("sections.commands.installBody", rich)}</p>
             <CommandLine
-              command="npx petdex install kebo"
+              command="npx @agentpets/cli install kebo"
               source="docs-cmd-install"
               className="w-full max-w-xl"
             />
@@ -262,7 +262,7 @@ export default async function DocsPage({
             <p>{t("sections.commands.bulkNote")}</p>
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex login / logout / whoami</code>
+              <code>agentpets login / logout / whoami</code>
             </h3>
             <p>{t("sections.commands.authBody")}</p>
           </Section>
@@ -283,17 +283,17 @@ export default async function DocsPage({
             </p>
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex install desktop</code>
+              <code>agentpets install desktop</code>
             </h3>
             <p>{t.rich("sections.desktop.installDesktopBody", rich)}</p>
             <CommandLine
-              command="npx petdex install desktop"
+              command="npx @agentpets/cli install desktop"
               source="docs-desktop-install"
               className="w-full max-w-xl"
             />
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex hooks install</code>
+              <code>agentpets hooks install</code>
             </h3>
             <p>{t("sections.desktop.hooksInstallBody")}</p>
             <ul className="ml-6 list-disc space-y-1 text-muted-2">
@@ -310,38 +310,38 @@ export default async function DocsPage({
               </li>
               <li>
                 <strong>OpenCode</strong>:{" "}
-                <code>~/.config/opencode/plugins/petdex.js</code>
+                <code>~/.config/opencode/plugins/agentpets.js</code>
               </li>
             </ul>
             <p>{t.rich("sections.desktop.hookEvents", rich)}</p>
             <CommandLine
-              command="npx petdex hooks install"
+              command="npx @agentpets/cli hooks install"
               source="docs-desktop-hooks"
               className="w-full max-w-xl"
             />
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex desktop &lt;start | stop | status&gt;</code>
+              <code>agentpets desktop &lt;start | stop | status&gt;</code>
             </h3>
             <p>{t.rich("sections.desktop.desktopManageBody", rich)}</p>
             <CommandLine
-              command="npx petdex desktop start"
+              command="npx @agentpets/cli desktop start"
               source="docs-desktop-start"
               className="w-full max-w-xl"
             />
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex up / down / toggle</code>
+              <code>agentpets up / down / toggle</code>
             </h3>
             <p>{t.rich("sections.desktop.toggleBody", rich)}</p>
             <CommandLine
-              command="npx petdex toggle"
+              command="npx @agentpets/cli toggle"
               source="docs-desktop-toggle"
               className="w-full max-w-xl"
             />
 
             <h3 className="mt-6 font-semibold">
-              <code>/petdex</code> {t("sections.desktop.slashTitleSuffix")}
+              <code>/agentpets</code> {t("sections.desktop.slashTitleSuffix")}
             </h3>
             <p>{t.rich("sections.desktop.slashBody", rich)}</p>
             <ul className="ml-6 list-disc space-y-1 text-muted-2">
@@ -353,41 +353,42 @@ export default async function DocsPage({
             </ul>
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex hooks</code> {t("sections.desktop.killSwitchSuffix")}
+              <code>agentpets hooks</code>{" "}
+              {t("sections.desktop.killSwitchSuffix")}
             </h3>
             <p>{t.rich("sections.desktop.hooksKillBody", rich)}</p>
             <CommandLine
-              command="npx petdex hooks toggle"
+              command="npx @agentpets/cli hooks toggle"
               source="docs-hooks-toggle"
               className="w-full max-w-xl"
             />
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex hooks uninstall</code>
+              <code>agentpets hooks uninstall</code>
             </h3>
             <p>{t.rich("sections.desktop.uninstallBody", rich)}</p>
             <CommandLine
-              command="npx petdex hooks uninstall"
+              command="npx @agentpets/cli hooks uninstall"
               source="docs-hooks-uninstall"
               className="w-full max-w-xl"
             />
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex doctor</code>
+              <code>agentpets doctor</code>
             </h3>
             <p>{t.rich("sections.desktop.doctorBody", rich)}</p>
             <CommandLine
-              command="npx petdex doctor"
+              command="npx @agentpets/cli doctor"
               source="docs-doctor"
               className="w-full max-w-xl"
             />
 
             <h3 className="mt-6 font-semibold">
-              <code>petdex update</code>
+              <code>agentpets update</code>
             </h3>
             <p>{t.rich("sections.desktop.updateBody", rich)}</p>
             <CommandLine
-              command="npx petdex update"
+              command="npx @agentpets/cli update"
               source="docs-desktop-update"
               className="w-full max-w-xl"
             />
@@ -396,10 +397,10 @@ export default async function DocsPage({
               {t.rich("sections.desktop.sidecarCallout", rich)}
               <pre className="mt-3 overflow-x-auto rounded-lg bg-surface-muted p-3 font-mono text-xs leading-relaxed">
                 {[
-                  `T="$(cat "$HOME/.petdex/runtime/update-token")"`,
+                  `T="$(cat "$HOME/.agentpets/runtime/update-token")"`,
                   `curl -X POST http://127.0.0.1:7777/state \\`,
                   `  -H "Content-Type: application/json" \\`,
-                  `  -H "X-Petdex-Update-Token: $T" \\`,
+                  `  -H "X-AgentPets-Update-Token: $T" \\`,
                   `  --data-raw '{"state":"waving"}'`,
                 ].join("\n")}
               </pre>
@@ -469,15 +470,16 @@ export default async function DocsPage({
                   <Tr
                     sym={t("sections.failure.rows.notSignedIn.symptom")}
                     cause={t("sections.failure.rows.notSignedIn.cause")}
-                    fix={<code>petdex login</code>}
+                    fix={<code>agentpets login</code>}
                   />
                   <Tr
                     sym="presign 401"
                     cause={t("sections.failure.rows.presign401.cause")}
                     fix={
                       <>
-                        <code>petdex logout</code> {t("sections.failure.then")}{" "}
-                        <code>petdex login</code>
+                        <code>agentpets logout</code>{" "}
+                        {t("sections.failure.then")}{" "}
+                        <code>agentpets login</code>
                       </>
                     }
                   />
@@ -535,7 +537,7 @@ export default async function DocsPage({
             </h3>
             <p>{t("sections.agents.enableIntro")}</p>
             <CommandLine
-              command={`mkdir -p ~/.claude/skills/petdex && curl -sSf ${SKILL_URL.replace("/blob/", "/raw/")} -o ~/.claude/skills/petdex/SKILL.md`}
+              command={`mkdir -p ~/.claude/skills/agentpets && curl -sSf ${SKILL_URL.replace("/blob/", "/raw/")} -o ~/.claude/skills/agentpets/SKILL.md`}
               source="docs-agents-install"
               className="w-full max-w-xl"
             />
@@ -553,7 +555,7 @@ export default async function DocsPage({
                 className="inline-flex items-center gap-1.5 font-medium underline underline-offset-4"
               >
                 <GithubIcon className="size-4" />
-                .claude/skills/petdex/SKILL.md
+                .claude/skills/agentpets/SKILL.md
               </a>
             </p>
           </Section>
@@ -561,7 +563,7 @@ export default async function DocsPage({
           <Section id="config" title={t("sections.config.title")}>
             <p>{t("sections.config.intro")}</p>
             <ul className="ml-6 list-disc space-y-1 text-muted-2">
-              <li>{t.rich("sections.config.petdexUrl", rich)}</li>
+              <li>{t.rich("sections.config.agentpetsUrl", rich)}</li>
               <li>{t.rich("sections.config.clerkIssuer", rich)}</li>
               <li>{t.rich("sections.config.clerkClientId", rich)}</li>
             </ul>
@@ -579,7 +581,7 @@ export default async function DocsPage({
                     rel="noreferrer"
                     className="font-medium underline underline-offset-4"
                   >
-                    crafter-station/petdex
+                    agiagentsdev/agentpets-dev
                   </a>
                 </span>
               </li>

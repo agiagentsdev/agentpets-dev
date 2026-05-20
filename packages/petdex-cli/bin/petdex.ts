@@ -38,8 +38,8 @@ import {
 } from "../src/telemetry.js";
 
 // ─── config ────────────────────────────────────────────────────────────────
-const PETDEX_URL = process.env.PETDEX_URL ?? "https://petdex.crafter.run";
-const FALLBACK_ISSUER = "https://clerk.petdex.crafter.run";
+const PETDEX_URL = process.env.PETDEX_URL ?? "https://agentpets.dev";
+const FALLBACK_ISSUER = "https://clerk.agentpets.dev";
 const FALLBACK_CLIENT_ID = "LcThwEayl6KAA1Qm";
 const DEFAULT_SCOPES = ["profile", "email", "openid", "offline_access"];
 
@@ -1193,7 +1193,7 @@ function translateLoginError(message: string): string {
       "Clerk OAuth rejected this CLI build (invalid_client).",
       "This usually means your installed CLI is out of date. Try:",
       "  npm cache clean --force && npx -y petdex@latest login",
-      "If it still fails: https://github.com/crafter-station/petdex/issues",
+      "If it still fails: https://github.com/agiagentsdev/agentpets-dev/issues",
     ].join("\n");
   }
   if (
@@ -1211,7 +1211,7 @@ function translateLoginError(message: string): string {
       "Clerk OAuth rejected the local callback URL.",
       "The petdex OAuth Application needs http://127.0.0.1 in its allowed",
       "redirect URLs. Please file an issue:",
-      "  https://github.com/crafter-station/petdex/issues",
+      "  https://github.com/agiagentsdev/agentpets-dev/issues",
     ].join("\n");
   }
   return message;
@@ -1437,7 +1437,7 @@ function cmdHooksKillswitch(sub: "toggle" | "on" | "off" | "status"): void {
   }
 }
 
-// One-shot first-run setup. The petdex.crafter.run/download landing
+// One-shot first-run setup. The agentpets.dev/download landing
 // tells users to drag the DMG into Applications and then run this,
 // so init has to be idempotent across both layouts:
 //
@@ -1476,7 +1476,7 @@ async function cmdInit(): Promise<void> {
     );
     console.log(
       pc.dim(
-        `  (For the proper macOS app icon, download the DMG from ${pc.cyan("https://petdex.crafter.run/download")} instead.)`,
+        `  (For the proper macOS app icon, download the DMG from ${pc.cyan("https://agentpets.dev/download")} instead.)`,
       ),
     );
     console.log("");
@@ -1488,7 +1488,7 @@ async function cmdInit(): Promise<void> {
       );
       console.error(
         pc.dim(
-          `  You can still proceed by downloading the DMG: ${pc.cyan("https://petdex.crafter.run/download")}`,
+          `  You can still proceed by downloading the DMG: ${pc.cyan("https://agentpets.dev/download")}`,
         ),
       );
       // Hooks install is still useful even if desktop didn't land,

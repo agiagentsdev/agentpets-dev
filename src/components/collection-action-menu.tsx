@@ -22,10 +22,10 @@ import {
   isMacDesktop,
   openPetdexDeepLink,
 } from "@/lib/petdex-desktop-link";
+import { installCommandFor, siteConfig } from "@/lib/site-config";
 
 import { CodexLogo } from "@/components/codex-logo";
 
-const SITE_URL = "https://petdex.crafter.run";
 // Cap on the install command length. Beyond this we truncate with a
 // hint so the user can paste the rest manually instead of getting a
 // 4 KB clipboard payload that some shells reject.
@@ -86,17 +86,17 @@ export function CollectionActionMenu({ collection }: Props) {
   const slugs = collection.pets.map((p) => p.slug);
   const truncated = slugs.length > MAX_SLUGS_IN_COMMAND;
   const installSlugs = truncated ? slugs.slice(0, MAX_SLUGS_IN_COMMAND) : slugs;
-  const installCmd = `npx petdex install ${installSlugs.join(" ")}`;
+  const installCmd = installCommandFor(installSlugs.join(" "));
   const petdexInstallUrl = buildPetdexInstallUrl(installSlugs);
   const downloadHref = `/${locale}/download?next=${encodeURIComponent(buildDownloadInstallNext(installSlugs))}`;
-  const collectionUrl = `${SITE_URL}/collections/${collection.slug}`;
+  const collectionUrl = `${siteConfig.url}/collections/${collection.slug}`;
   const installHint = truncated
     ? t("installHintTruncated", {
         shown: installSlugs.length,
         total: slugs.length,
       })
     : t("installHint", { count: slugs.length });
-  const openInPetdexDesc = truncated ? installHint : t("openInPetdexDesc");
+  const openInPetdexDesc = truncated ? installHint : t("openInAgentPetsDesc");
 
   const copyText = async (text: string, kind: Exclude<Copied, null>) => {
     try {
@@ -206,7 +206,7 @@ export function CollectionActionMenu({ collection }: Props) {
             {slugs.length > 0 ? (
               <li>
                 <a
-                  href={`codex://new?prompt=${encodeURIComponent(`Install this Petdex collection by running: ${installCmd}`)}`}
+                  href={`codex://new?prompt=${encodeURIComponent(`Install this AgentPets collection by running: ${installCmd}`)}`}
                   onClick={() => setOpen(false)}
                   className="flex items-center gap-2.5 px-3 py-2 text-sm text-muted-2 transition hover:bg-surface-muted hover:text-foreground"
                 >

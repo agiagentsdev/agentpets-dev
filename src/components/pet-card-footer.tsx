@@ -9,6 +9,7 @@ import { Download, Heart, Loader2, Share2, TerminalSquare } from "lucide-react";
 import { useLocale } from "next-intl";
 
 import { formatLocalizedNumber } from "@/lib/format-number";
+import { installCommandFor } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 import { PetSoundButton } from "@/components/pet-sound-button";
@@ -88,7 +89,7 @@ function PetCardFooterImpl({
     async (e: React.MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      const cmd = `npx petdex install ${slug}`;
+      const cmd = installCommandFor(slug);
       try {
         await navigator.clipboard.writeText(cmd);
         setCopied(true);

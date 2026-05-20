@@ -250,7 +250,7 @@ export default async function Image({
           }}
         >
           <span style={{ color: "#7a8dff", marginRight: 16 }}>$</span>
-          npx petdex install {pet.slug}
+          npx @agentpets/cli install {pet.slug}
         </div>
         <div
           style={{
@@ -262,7 +262,7 @@ export default async function Image({
             textTransform: "uppercase",
           }}
         >
-          petdex.crafter.run
+          agentpets.dev
         </div>
       </div>
     </div>,

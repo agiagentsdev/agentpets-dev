@@ -297,7 +297,7 @@ export default async function Image({
               textTransform: "uppercase",
             }}
           >
-            {petCount} {petCount === 1 ? "pet" : "pets"} · petdex.crafter.run
+            {petCount} {petCount === 1 ? "pet" : "pets"} · agentpets.dev
           </div>
         </div>
       </div>

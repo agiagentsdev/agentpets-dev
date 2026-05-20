@@ -100,7 +100,7 @@ export function ProfileAnnouncementModal() {
                 Live at
               </p>
               <p className="font-mono text-sm tracking-[0.04em] text-stone-900 dark:text-stone-100">
-                petdex.crafter.run/u/{handle}
+                agentpets.dev/u/{handle}
               </p>
             </div>
           </div>

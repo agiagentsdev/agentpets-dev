@@ -1,22 +1,22 @@
 {
   "common": {
-    "brand": "Petdex",
+    "brand": "AgentPets",
     "codexCli": "Codex",
     "submitPet": "提交宠物",
     "submitPet__fixme": true,
     "browseGallery": "浏览图库",
     "browseGallery__fixme": true,
     "github": "GitHub",
-    "petdexHome": "Petdex 首页"
+    "agentpetsHome": "AgentPets 首页"
   },
   "metadata": {
     "root": {
-      "titleDefault": "Petdex: 适用于 Codex 的动画伙伴",
-      "titleTemplate": "%s | Petdex",
-      "description": "Petdex 是 Codex 动画宠物的公开图库。你可以浏览开源宠物、预览动画状态，并用一条命令安装到本地。",
+      "titleDefault": "AgentPets: 适用于 Codex 的动画伙伴",
+      "titleTemplate": "%s | AgentPets",
+      "description": "AgentPets 是 Codex 动画宠物的公开图库。你可以浏览开源宠物、预览动画状态，并用一条命令安装到本地。",
       "description__fixme": true,
-      "ogTitle": "Petdex: 适用于 Codex 的动画伙伴",
-      "twitterTitle": "Petdex: 适用于 Codex 的动画伙伴",
+      "ogTitle": "AgentPets: 适用于 Codex 的动画伙伴",
+      "twitterTitle": "AgentPets: 适用于 Codex 的动画伙伴",
       "keywords": {
         "codexPet": "Codex 宠物",
         "codexCliPet": "Codex 宠物",
@@ -26,7 +26,12 @@
         "developerMascot": "开发者吉祥物",
         "terminalPet": "终端宠物",
         "codexCompanion": "Codex 伙伴",
-        "petdex": "petdex"
+        "agentpets": "agentpets",
+        "agentPets": "AgentPets",
+        "aiCodingPets": "AI coding pets",
+        "claudeCodePets": "Claude Code pets",
+        "cursorPets": "Cursor pets",
+        "geminiCliPets": "Gemini CLI pets"
       }
     }
   },
@@ -49,8 +54,8 @@
     "submitCta": "提交",
     "openMenu": "打开菜单",
     "closeMenu": "关闭菜单",
-    "githubRepoAria": "GitHub 上的 Petdex",
-    "githubRepoAriaWithStars": "GitHub 上的 Petdex，{stars} 颗星",
+    "githubRepoAria": "GitHub 上的 AgentPets",
+    "githubRepoAriaWithStars": "GitHub 上的 AgentPets，{stars} 颗星",
     "browse": "浏览",
     "browseDesc": "发现宠物、创作者和精选合集",
     "collectionsDesc": "精选角色、主题和系列合集",
@@ -61,13 +66,13 @@
     "build": "创作",
     "buildDesc": "制作并发布你的像素宠物",
     "createDesc": "用 Codex skill 孵化宠物，从想法到精灵图Sprite 只要几分钟",
-    "submitDesc": "上传文件夹，Petdex 为所有人托管",
-    "docsDesc": "安装 Petdex CLI，用 npm 分发宠物",
+    "submitDesc": "上传文件夹，AgentPets 为所有人托管",
+    "docsDesc": "安装 AgentPets CLI，用 npm 分发宠物",
     "earn": "推广",
     "earnDesc": "管理广告活动、展示和点击数据",
     "advertiseDesc": "通过赞助卡片触达安装 AI 工具的开发者",
-    "builtWith": "Petdex 案例",
-    "builtWithDesc": "社区基于 Petdex 格式发布的应用",
+    "builtWith": "AgentPets 案例",
+    "builtWithDesc": "社区基于 AgentPets 格式发布的应用",
     "communityDesc": "中文入口、Discord 频道和创作交流",
     "takedown": "下架请求",
     "takedownDesc": "举报使用你作品的宠物",
@@ -95,7 +100,7 @@
     "title": "主题：{label}"
   },
   "footer": {
-    "rightsNotice": "宠物是用户提交的同人作品。Petdex 不主张拥有任何底层知识产权。",
+    "rightsNotice": "宠物是用户提交的同人作品。AgentPets 不主张拥有任何底层知识产权。",
     "topCreators": "创作者",
     "takedown": "下架请求",
     "advertise": "投放广告 Advertise",
@@ -108,11 +113,11 @@
   "home": {
     "eyebrow": "Codex 宠物索引",
     "eyebrow__fixme": true,
-    "title": "Petdex",
+    "title": "AgentPets",
     "tagline": "<brand>Codex</brand> 的公共动画宠物图库。浏览 {totalPets}+ 个开源伙伴，预览它们的动画状态，并用一条命令安装。",
     "tagline__fixme": true,
-    "heroCommand": "npx petdex install boba",
-    "downloadCta": "下载 Petdex Desktop",
+    "heroCommand": "npx @agentpets/cli install boba",
+    "downloadCta": "下载 AgentPets Desktop",
     "submitCta": "提交",
     "submitCta__fixme": true,
     "browseGallery": "浏览图库",
@@ -153,12 +158,12 @@
   },
   "community": {
     "metadata": {
-      "title": "Petdex 中文社区",
-      "description": "加入 Petdex 中文社区，和创作者、收藏者、维护者一起交流宠物创作、提交反馈和每周更新。"
+      "title": "AgentPets 中文社区",
+      "description": "加入 AgentPets 中文社区，和创作者、收藏者、维护者一起交流宠物创作、提交反馈和每周更新。"
     },
-    "eyebrow": "Petdex 中文社区",
+    "eyebrow": "AgentPets 中文社区",
     "title": "一起创作 Codex 像素宠物",
-    "description": "这里是 Petdex 的中文社区。你可以交流宠物创作、提交问题、查看每周更新，也可以认识正在制作新宠物和合集的创作者。",
+    "description": "这里是 AgentPets 的中文社区。你可以交流宠物创作、提交问题、查看每周更新，也可以认识正在制作新宠物和合集的创作者。",
     "joinDiscord": "加入 Discord",
     "joinWeChat": "加入微信群",
     "starGithub": "在 GitHub 点星",
@@ -189,7 +194,7 @@
         "critique": "评价作品，不攻击创作者。反馈要诚实、友善、具体。",
         "languages": "欢迎使用中文、英文或西班牙语交流。",
         "ip": "宠物 IP 属于原创作者。引用和二创请保留署名。",
-        "modlog": "Petdex Team 的审核记录会公开保留，敏感信息不会公开。"
+        "modlog": "AgentPets Team 的审核记录会公开保留，敏感信息不会公开。"
       }
     }
   },
@@ -213,13 +218,13 @@
   },
   "advertise": {
     "metadata": {
-      "title": "在 Petdex 投放广告",
-      "description": "通过 Petdex 赞助卡片触达正在发现并安装 AI 与开发者工具的开发者。"
+      "title": "在 AgentPets 投放广告",
+      "description": "通过 AgentPets 赞助卡片触达正在发现并安装 AI 与开发者工具的开发者。"
     },
-    "eyebrow": "Petdex 广告",
+    "eyebrow": "AgentPets 广告",
     "hero": {
       "title": "把你的开发者工具展示给愿意尝试新工具的 builders。",
-      "body": "Petdex 正在吸引越来越多浏览 Codex 伙伴和开发者文化的开发者。他们已经习惯尝试 CLI 工具、AI 工作流和订阅产品，因此这里适合介绍 AI 与开发者工具。"
+      "body": "AgentPets 正在吸引越来越多浏览 Codex 伙伴和开发者文化的开发者。他们已经习惯尝试 CLI 工具、AI 工作流和订阅产品，因此这里适合介绍 AI 与开发者工具。"
     },
     "heroCards": {
       "starting": "$50 起",
@@ -245,7 +250,7 @@
     "sections": {
       "audience": {
         "title": "开发者优先的受众",
-        "body": "Petdex 访客是开发者和 AI 工具用户，他们正在浏览围绕 Codex 构建的目录，愿意安装工具并评估付费订阅。"
+        "body": "AgentPets 访客是开发者和 AI 工具用户，他们正在浏览围绕 Codex 构建的目录，愿意安装工具并评估付费订阅。"
       },
       "placement": {
         "title": "克制的赞助卡片",
@@ -269,28 +274,28 @@
     },
     "legal": {
       "eyebrow": "法律提示",
-      "title": "Petdex 可以移除不符合社区预期的广告。",
-      "body": "我们保留暂停、删除或拒绝任何不符合 Petdex 政策、社区预期或产品质量标准的广告的权利。被移除的广告不予退款。"
+      "title": "AgentPets 可以移除不符合社区预期的广告。",
+      "body": "我们保留暂停、删除或拒绝任何不符合 AgentPets 政策、社区预期或产品质量标准的广告的权利。被移除的广告不予退款。"
     },
     "form": {
       "companyName": "公司名称",
       "contactEmail": "联系邮箱",
       "title": "广告标题",
       "description": "描述",
-      "creativeDisclosure": "你的广告标题、图片和描述会显示在 Petdex 信息流中的赞助卡片里。",
+      "creativeDisclosure": "你的广告标题、图片和描述会显示在 AgentPets 信息流中的赞助卡片里。",
       "destinationUrl": "目标 URL",
       "image": "广告图片",
       "imageCta": "上传 PNG、JPG 或 WebP 素材",
       "imageHelp": "最大 10 MB。建议使用清晰的产品图、Logo 卡片或截图。",
       "previewTitle": "广告预览",
-      "previewHelp": "你的赞助卡片会以这种形式显示在 Petdex 信息流中。预览时链接已禁用。",
+      "previewHelp": "你的赞助卡片会以这种形式显示在 AgentPets 信息流中。预览时链接已禁用。",
       "previewFallbackTitle": "你的广告标题",
       "previewFallbackDescription": "这里会显示你的产品简介。",
       "package": "选择广告系列规模",
       "pricingTrust": "我们只计算可见曝光：广告 50% 以上区域连续可见 2 秒。",
       "utmTitle": "自定义 UTM 设置",
-      "utmHelp": "可选。如果留空，Petdex 会向广告链接添加 utm_source=petdex。",
-      "legalAccept": "我接受 Petdex 可以暂停或删除不符合政策的广告，并且此类删除不予退款。",
+      "utmHelp": "可选。如果留空，AgentPets 会向广告链接添加 utm_source=agentpets。",
+      "legalAccept": "我接受 AgentPets 可以暂停或删除不符合政策的广告，并且此类删除不予退款。",
       "signIn": "登录后提交广告",
       "submit": "继续到 Stripe checkout",
       "status": {
@@ -308,21 +313,21 @@
     },
     "create": {
       "metadata": {
-        "title": "创建 Petdex 广告系列",
-        "description": "制作 Petdex 赞助卡片，选择预付曝光套餐，并继续到 Stripe checkout。"
+        "title": "创建 AgentPets 广告系列",
+        "description": "制作 AgentPets 赞助卡片，选择预付曝光套餐，并继续到 Stripe checkout。"
       },
       "eyebrow": "广告系列设置",
       "title": "创建你的赞助卡片。",
-      "body": "为你的 Petdex 广告系列添加素材、目标地址、跟踪字段和预付曝光套餐。",
+      "body": "为你的 AgentPets 广告系列添加素材、目标地址、跟踪字段和预付曝光套餐。",
       "backToLanding": "返回广告介绍",
       "help": {
         "creative": {
           "title": "使用清晰素材",
-          "body": "Logo 卡片、产品截图或简洁的产品视觉在 Petdex 信息流中效果最好。"
+          "body": "Logo 卡片、产品截图或简洁的产品视觉在 AgentPets 信息流中效果最好。"
         },
         "review": {
           "title": "保持社区安全",
-          "body": "广告仍需遵守 Petdex 政策；误导或伤害社区的广告可能会被移除。"
+          "body": "广告仍需遵守 AgentPets 政策；误导或伤害社区的广告可能会被移除。"
         },
         "billing": {
           "title": "Checkout 为预付费",
@@ -337,11 +342,11 @@
     },
     "dashboard": {
       "metadata": {
-        "title": "广告仪表盘 | Petdex",
-        "description": "查看你的 Petdex 广告系列、花费、状态和预付曝光交付情况。"
+        "title": "广告仪表盘 | AgentPets",
+        "description": "查看你的 AgentPets 广告系列、花费、状态和预付曝光交付情况。"
       },
       "eyebrow": "广告主仪表盘",
-      "title": "你的 Petdex 广告系列",
+      "title": "你的 AgentPets 广告系列",
       "body": "跟踪每张赞助卡片的状态、预付曝光交付和剩余库存。",
       "newCampaign": "购买另一个广告系列",
       "editCreative": "编辑素材",
@@ -349,7 +354,7 @@
       "destination": "目标 URL",
       "created": "创建于 {date}",
       "activated": "激活于 {date}",
-      "removedFallback": "该广告系列因不符合 Petdex 政策而被移除。",
+      "removedFallback": "该广告系列因不符合 AgentPets 政策而被移除。",
       "checkout": {
         "successTitle": "已收到付款",
         "successBody": "Stripe 正在确认付款。Webhook 激活后，你的广告会自动开始投放。"
@@ -379,7 +384,7 @@
       },
       "edit": {
         "title": "编辑广告系列",
-        "body": "更改素材、目标地址或跟踪字段。活跃广告系列的修改会立即生效，并且仍需遵守 Petdex 广告政策。",
+        "body": "更改素材、目标地址或跟踪字段。活跃广告系列的修改会立即生效，并且仍需遵守 AgentPets 广告政策。",
         "titleLabel": "广告标题",
         "descriptionLabel": "描述",
         "destinationUrlLabel": "目标 URL",
@@ -396,22 +401,22 @@
         "delivery": "交付进度",
         "deliveryBody": "已交付 {served} / {total} 次曝光。",
         "metadata": {
-          "title": "编辑广告系列 | Petdex",
-          "description": "更新你的 Petdex 赞助卡片素材、目标地址和跟踪字段。"
+          "title": "编辑广告系列 | AgentPets",
+          "description": "更新你的 AgentPets 赞助卡片素材、目标地址和跟踪字段。"
         },
         "notEditable": {
           "title": "该广告系列无法编辑",
           "body": "已删除或已移除的广告系列不能更改。如果要运行新的赞助卡片，请创建新的广告系列。"
         },
         "utmTitle": "自定义 UTM 设置",
-        "utmHelp": "留空可清除字段。如果 utm_source 为空，Petdex 会为点击添加 utm_source=petdex。",
+        "utmHelp": "留空可清除字段。如果 utm_source 为空，AgentPets 会为点击添加 utm_source=agentpets。",
         "errors": {
           "imageTooLarge": "图片必须小于或等于 10 MB。",
           "nothingChanged": "保存前请至少更改一个字段。",
           "submitFailed": "无法更新广告系列。",
           "uploadFailed": "图片上传失败。",
           "network": "网络错误。请重试。",
-          "imageInvalid": "请上传有效的 Petdex 广告图片。",
+          "imageInvalid": "请上传有效的 AgentPets 广告图片。",
           "destinationInvalid": "请输入有效的 HTTPS 目标 URL。",
           "titleRequired": "请填写广告标题。",
           "descriptionRequired": "请填写广告描述。"
@@ -446,7 +451,7 @@
       "other": "其他"
     },
     "placeholders": {
-      "suggestion": "什么会让 Petdex 更好？",
+      "suggestion": "什么会让 AgentPets 更好？",
       "bug": "哪里坏了？如果可以，请附上步骤。",
       "praise": "告诉我们你喜欢什么。",
       "other": "你在想什么？"
@@ -463,7 +468,7 @@
   },
   "admin": {
     "metadata": {
-      "title": "Petdex 管理后台"
+      "title": "AgentPets 管理后台"
     },
     "tabs": {
       "ariaLabel": "管理分区",
@@ -578,8 +583,8 @@
         "all": "全部"
       },
       "mailto": {
-        "bodyIntro": "感谢你在 Petdex 提交 {kind}",
-        "subject": "Re: 你的 Petdex 反馈：{excerpt}"
+        "bodyIntro": "感谢你在 AgentPets 提交 {kind}",
+        "subject": "Re: 你的 AgentPets 反馈：{excerpt}"
       }
     },
     "feedbackActions": {
@@ -685,7 +690,7 @@
       "__fixme": true,
       "eyebrow": "Telemetry",
       "title": "CLI usage telemetry",
-      "description": "Anonymous install volume, OS distribution, and agent adoption from petdex CLI users.",
+      "description": "Anonymous install volume, OS distribution, and agent adoption from agentpets CLI users.",
       "stats": {
         "totalInstalls": "Total installs",
         "weeklyActive": "Weekly active installs",
@@ -712,13 +717,13 @@
   },
   "submit": {
     "metadata": {
-      "title": "提交宠物 | Petdex",
-      "description": "为 Petdex 上传并验证一个 Codex 宠物包。",
+      "title": "提交宠物 | AgentPets",
+      "description": "为 AgentPets 上传并验证一个 Codex 宠物包。",
       "description__fixme": true
     },
     "eyebrow": "提交",
-    "title": "把你的宠物加入 Petdex",
-    "body": "分享一个兼容 Codex 的动画宠物包。Petdex 会在本地检查文件、预览精灵图Sprite，并准备提交。",
+    "title": "把你的宠物加入 AgentPets",
+    "body": "分享一个兼容 Codex 的动画宠物包。AgentPets 会在本地检查文件、预览精灵图Sprite，并准备提交。",
     "body__fixme": true,
     "createCta": "还没有宠物？去 Codex 里孵化一只",
     "createCta__fixme": true,
@@ -742,7 +747,7 @@
         "title": "提交检查",
         "reading": "正在读取包...",
         "ready": "可以提交了。",
-        "empty": "在你确认前，包会一直保留在本地。Petdex 会在上传前检查 manifest 和精灵图Sprite 尺寸。"
+        "empty": "在你确认前，包会一直保留在本地。AgentPets 会在上传前检查 manifest 和精灵图Sprite 尺寸。"
       },
       "path": {
         "prefix": "宠物资源位于",
@@ -807,7 +812,7 @@
         "folderMissingPetJson": "文件夹缺少 pet.json。",
         "folderMissingSpritesheet": "文件夹缺少精灵图集文件 spritesheet.webp（或 .png）。找到的文件：{present}",
         "dropPetFolderOrZip": "请拖入宠物文件夹或 .zip 文件。",
-        "allPetsBundle": "这看起来像全部宠物包（petdex-approved.zip）。请提交单个宠物文件夹或它自己的 zip。",
+        "allPetsBundle": "这看起来像全部宠物包（agentpets-approved.zip）。请提交单个宠物文件夹或它自己的 zip。",
         "zipMissingPetJson": "zip 根目录缺少 pet.json。",
         "zipMissingSpritesheet": "zip 根目录缺少精灵图集文件 spritesheet.webp（或 .png）。找到的文件：{present}",
         "invalidJson": "pet.json 不是有效的 JSON。",
@@ -819,7 +824,7 @@
   "requests": {
     "metadata": {
       "title": "宠物请求",
-      "description": "为社区想在 Petdex 里看到的宠物投票。得票最高的请求会被优先处理。",
+      "description": "为社区想在 AgentPets 里看到的宠物投票。得票最高的请求会被优先处理。",
       "description__fixme": true
     },
     "eyebrow": "社区愿望单",
@@ -926,9 +931,9 @@
   },
   "create": {
     "metadata": {
-      "title": "创建一只宠物 | Petdex",
+      "title": "创建一只宠物 | AgentPets",
       "title__fixme": true,
-      "description": "5 分钟孵化你自己的 Codex 宠物，然后把它分享到 Petdex。",
+      "description": "5 分钟孵化你自己的 Codex 宠物，然后把它分享到 AgentPets。",
       "description__fixme": true
     },
     "eyebrow": "自己做一只",
@@ -967,11 +972,11 @@
         "tipAfter__fixme": true
       },
       "share": {
-        "title": "分享到 Petdex",
+        "title": "分享到 AgentPets",
         "title__fixme": true,
         "beforePath": "宠物文件位于",
         "beforeLink": "。把这个文件夹（或它的 zip）拖到",
-        "afterLink": "，Petdex 就会托管它，方便所有人用一条 curl 安装。",
+        "afterLink": "，AgentPets 就会托管它，方便所有人用一条 curl 安装。",
         "afterLink__fixme": true
       }
     },
@@ -1028,18 +1033,18 @@
       "title__fixme": true,
       "soon": "即将推出",
       "soon__fixme": true,
-      "body": "一个原生浏览器工作室，让你不用离开 Petdex 就能草绘、制作动画并预览宠物，而且不需要 Codex tokens。登录后可在上线时收到通知。",
+      "body": "一个原生浏览器工作室，让你不用离开 AgentPets 就能草绘、制作动画并预览宠物，而且不需要 Codex tokens。登录后可在上线时收到通知。",
       "body__fixme": true
     }
   },
   "builtWith": {
     "metadata": {
-      "titleTemplate": "用 Petdex 构建：{total} 个社区项目",
-      "description": "{total} 个基于 Petdex 构建的开源项目：桌面伙伴、专注工具、可穿戴设备、SDK 和 pet 创作者。"
+      "titleTemplate": "用 AgentPets 构建：{total} 个社区项目",
+      "description": "{total} 个基于 AgentPets 构建的开源项目：桌面伙伴、专注工具、可穿戴设备、SDK 和 pet 创作者。"
     },
-    "eyebrow": "用 Petdex 构建",
-    "title": "社区正在 Petdex 上发布的应用",
-    "subtitle": "{total} 个开源项目使用 Petdex 的图库、API 或 pet 格式。专注工具、可穿戴设备、SDK 和创作者。精选、有证据、不靠感觉。",
+    "eyebrow": "用 AgentPets 构建",
+    "title": "社区正在 AgentPets 上发布的应用",
+    "subtitle": "{total} 个开源项目使用 AgentPets 的图库、API 或 pet 格式。专注工具、可穿戴设备、SDK 和创作者。精选、有证据、不靠感觉。",
     "stats": {
       "stars": "总计 {total} stars",
       "projects": "{total} 个项目",
@@ -1047,39 +1052,39 @@
     },
     "cta": {
       "submit": "提交你的项目",
-      "starPetdex": "为 Petdex 加星"
+      "starAgentPets": "为 AgentPets 加星"
     },
     "categoryCount": "{count}",
     "categories": {
       "desktopCompanion": {
         "label": "桌面伙伴",
-        "description": "把 Petdex pet 放到桌面上的应用。"
+        "description": "把 AgentPets pet 放到桌面上的应用。"
       },
       "wellness": {
         "label": "专注与休息",
-        "description": "用 Petdex pet 作为屏幕角色的番茄钟、休息和专注工具。"
+        "description": "用 AgentPets pet 作为屏幕角色的番茄钟、休息和专注工具。"
       },
       "wearable": {
         "label": "可穿戴",
-        "description": "在 Apple Watch、Garmin 等可穿戴设备上运行的 Petdex pet。"
+        "description": "在 Apple Watch、Garmin 等可穿戴设备上运行的 AgentPets pet。"
       },
       "sdk": {
         "label": "SDK 与运行时",
-        "description": "为其他平台封装 Petdex API 或 pet 格式的库和运行时。"
+        "description": "为其他平台封装 AgentPets API 或 pet 格式的库和运行时。"
       },
       "bundled": {
         "label": "嵌入更大的应用",
-        "description": "作为更大产品功能的一部分发布的 Petdex pet。"
+        "description": "作为更大产品功能的一部分发布的 AgentPets pet。"
       },
       "petCreator": {
         "label": "Pet 创作者",
-        "description": "以 Petdex 包格式分发原创 pet 的独立创作者。"
+        "description": "以 AgentPets 包格式分发原创 pet 的独立创作者。"
       }
     },
     "submit": {
       "eyebrow": "如何上榜",
-      "title": "用 Petdex 做点东西，然后提交",
-      "step1": "构建一个使用 Petdex 图库、API 或 pet 格式并明确署名的项目。",
+      "title": "用 AgentPets 做点东西，然后提交",
+      "step1": "构建一个使用 AgentPets 图库、API 或 pet 格式并明确署名的项目。",
       "step2": "用 \"Add my project to /built-with\" 模板开一个 GitHub issue。",
       "step3": "提供证据引文（README 链接或代码路径，证明集成）。",
       "step4": "我们审核、截取 1280x720 截图并合并。",
@@ -1092,19 +1097,19 @@
   },
   "brand": {
     "metadata": {
-      "title": "Petdex 品牌工具包",
+      "title": "AgentPets 品牌工具包",
       "title__fixme": true,
-      "description": "下载 Petdex 的 logo、图标、颜色 token 和使用说明，可用于媒体、项目和社区帖子。",
+      "description": "下载 AgentPets 的 logo、图标、颜色 token 和使用说明，可用于媒体、项目和社区帖子。",
       "description__fixme": true,
-      "ogTitle": "Petdex 品牌工具包",
+      "ogTitle": "AgentPets 品牌工具包",
       "ogTitle__fixme": true
     },
     "eyebrow": "品牌工具包",
     "eyebrow__fixme": true,
     "hero": {
-      "title": "清晰、一致地使用 Petdex。",
+      "title": "清晰、一致地使用 AgentPets。",
       "title__fixme": true,
-      "body": "下载官方品牌素材，用于发布帖、应用集成、社区项目以及提到 Petdex 的文档。",
+      "body": "下载官方品牌素材，用于发布帖、应用集成、社区项目以及提到 AgentPets 的文档。",
       "body__fixme": true,
       "primaryCtaSvg": "下载 SVG",
       "primaryCtaSvg__fixme": true,
@@ -1112,7 +1117,7 @@
       "primaryCtaPng__fixme": true,
       "secondaryCta": "在 GitHub 查看",
       "secondaryCta__fixme": true,
-      "iconAlt": "Petdex 桌面应用图标",
+      "iconAlt": "AgentPets 桌面应用图标",
       "iconAlt__fixme": true
     },
     "assets": {
@@ -1134,35 +1139,35 @@
       },
       "items": {
         "mark": {
-          "title": "Petdex 标志",
+          "title": "AgentPets 标志",
           "title__fixme": true,
           "description": "适合紧凑布局、头像、favicon 和徽章的主要符号。",
           "description__fixme": true,
-          "alt": "Petdex 标志",
+          "alt": "AgentPets 标志",
           "alt__fixme": true
         },
         "wordmark": {
-          "title": "Petdex 浅色字标",
+          "title": "AgentPets 浅色字标",
           "title__fixme": true,
           "description": "在浅色或暖中性背景上使用，适合需要名称独立可读的场景。",
           "description__fixme": true,
-          "alt": "Petdex 字标",
+          "alt": "AgentPets 字标",
           "alt__fixme": true
         },
         "wordmarkDark": {
-          "title": "Petdex 深色字标",
+          "title": "AgentPets 深色字标",
           "title__fixme": true,
           "description": "在深色背景、截图和发布图中使用，避免黑色字标对比度不足。",
           "description__fixme": true,
-          "alt": "用于深色背景的 Petdex 字标",
+          "alt": "用于深色背景的 AgentPets 字标",
           "alt__fixme": true
         },
         "desktopIcon": {
           "title": "桌面图标",
           "title__fixme": true,
-          "description": "用于 Petdex Desktop 说明、媒体卡片和发布图形的圆角应用图标。",
+          "description": "用于 AgentPets Desktop 说明、媒体卡片和发布图形的圆角应用图标。",
           "description__fixme": true,
-          "alt": "Petdex 桌面图标",
+          "alt": "AgentPets 桌面图标",
           "alt__fixme": true
         }
       }
@@ -1179,7 +1184,7 @@
         "item1__fixme": true,
         "item2": "使用原始文件，不要重新绘制形状。",
         "item2__fixme": true,
-        "item3": "展示社区宠物时，请为 Petdex 提供清晰署名。",
+        "item3": "展示社区宠物时，请为 AgentPets 提供清晰署名。",
         "item3__fixme": true
       },
       "dont": {
@@ -1189,7 +1194,7 @@
         "item1__fixme": true,
         "item2": "不要把标志放在低对比度或视觉噪声很强的背景上。",
         "item2__fixme": true,
-        "item3": "不要用 Petdex 品牌暗示对无关产品的官方认可。",
+        "item3": "不要用 AgentPets 品牌暗示对无关产品的官方认可。",
         "item3__fixme": true
       }
     },
@@ -1198,7 +1203,7 @@
       "eyebrow__fixme": true,
       "title": "颜色和字体",
       "title__fixme": true,
-      "body": "Petdex 使用冷调应用底色、紫蓝色品牌强调色和 Geist 字体，让它像一个实用工具，同时带一点小宠物的能量。",
+      "body": "AgentPets 使用冷调应用底色、紫蓝色品牌强调色和 Geist 字体，让它像一个实用工具，同时带一点小宠物的能量。",
       "body__fixme": true,
       "colors": {
         "brand": "品牌色",
@@ -1222,29 +1227,29 @@
   },
   "about": {
     "metadata": {
-      "title": "关于 Petdex：Codex 的宠物库",
+      "title": "关于 AgentPets：Codex 的宠物库",
       "title__fixme": true,
-      "description": "Petdex 是面向 Codex 的开源数字宠物库。你可以浏览宠物、用一条命令安装，也可以提交自己的作品。",
+      "description": "AgentPets 是面向 Codex 的开源数字宠物库。你可以浏览宠物、用一条命令安装，也可以提交自己的作品。",
       "description__fixme": true,
-      "ogTitle": "关于 Petdex",
+      "ogTitle": "关于 AgentPets",
       "ogDescription": "面向 Codex 的开源数字宠物库。",
       "ogDescription__fixme": true
     },
     "eyebrow": "关于",
     "hero": {
-      "title": "Petdex 是 Codex 的宠物库",
+      "title": "AgentPets 是 Codex 的宠物库",
       "title__fixme": true,
       "body": "面向 <strong>Codex</strong> 的开源数字宠物库，收录了 {totalPets}+ 只宠物。复制一条命令就能安装，让宠物陪你一起工作。",
       "body__fixme": true
     },
     "sections": {
       "what": {
-        "title": "Petdex 是什么",
+        "title": "AgentPets 是什么",
         "title__fixme": true,
-        "body1": "Petdex 是一个公开、开源的宠物库。每条记录都是一个宠物包：包含元数据和像素图，Codex 会在你工作时显示对应动画。你可以把它理解成 Codex 宠物版的宝可梦图鉴。",
+        "body1": "AgentPets 是一个公开、开源的宠物库。每条记录都是一个宠物包：包含元数据和像素图，Codex 会在你工作时显示对应动画。你可以把它理解成 Codex 宠物版的宝可梦图鉴。",
         "body1__fixme": true,
         "body2": {
-          "beforeCozy": "Petdex 把安装、提交和筛选流程都整理好了：CLI 负责安装和提交，带标签的图库方便你快速找到合适的宠物，也可以按风格浏览，比如",
+          "beforeCozy": "AgentPets 把安装、提交和筛选流程都整理好了：CLI 负责安装和提交，带标签的图库方便你快速找到合适的宠物，也可以按风格浏览，比如",
           "beforeCozy__fixme": true,
           "cozyLabel": "舒适系宠物",
           "cozyLabel__fixme": true,
@@ -1279,25 +1284,25 @@
         "install": {
           "q": "我该怎么安装宠物？",
           "q__fixme": true,
-          "a": "在图库页或任意宠物详情页复制安装命令（形如 `npx petdex install boba`），然后粘贴到终端。CLI 会从 R2 拉取宠物，放到 ~/.codex/pets/<宠物名>/ 下，并告诉 Codex 使用它。支持 macOS、Linux 和 Windows（通过 PowerShell）。",
+          "a": "在图库页或任意宠物详情页复制安装命令（形如 `npx @agentpets/cli install boba`），然后粘贴到终端。CLI 会从 R2 拉取宠物，放到 ~/.codex/pets/<宠物名>/ 下，并告诉 Codex 使用它。支持 macOS、Linux 和 Windows（通过 PowerShell）。",
           "a__fixme": true
         },
         "origin": {
           "q": "这些宠物来自哪里？",
           "q__fixme": true,
-          "a": "大多数宠物来自社区通过网站或 petdex CLI 的提交。少数是 Crafter Station 精选的推荐条目。每只宠物都会先经过管理员审核，之后才会出现在图库里。",
+          "a": "大多数宠物来自社区通过网站或 agentpets CLI 的提交。少数是 Crafter Station 精选的推荐条目。每只宠物都会先经过管理员审核，之后才会出现在图库里。",
           "a__fixme": true
         },
         "submit": {
           "q": "我可以提交自己的宠物吗？",
           "q__fixme": true,
-          "a": "可以。先用 petdex CLI 登录（`npx petdex login`），再运行 `npx petdex submit ./my-pet/`，CLI 会把资源上传到 R2，并把提交加入审核队列。你也可以通过网站的 /submit 页面提交。你只需要一个 pet.json 文件和一张 9 状态精灵图集 Spritesheet。",
+          "a": "可以。先用 agentpets CLI 登录（`npx @agentpets/cli login`），再运行 `npx @agentpets/cli submit ./my-pet/`，CLI 会把资源上传到 R2，并把提交加入审核队列。你也可以通过网站的 /submit 页面提交。你只需要一个 pet.json 文件和一张 9 状态精灵图集 Spritesheet。",
           "a__fixme": true
         },
         "openSource": {
-          "q": "Petdex 宠物是免费且开源的吗？",
+          "q": "AgentPets 宠物是免费且开源的吗？",
           "q__fixme": true,
-          "a": "Petdex 上的每只宠物都可以免费安装和使用。宠物会保留原作者署名。Petdex 平台本身（CLI + 网站）也在 Crafter Station 体系下开源。",
+          "a": "AgentPets 上的每只宠物都可以免费安装和使用。宠物会保留原作者署名。AgentPets 平台本身（CLI + 网站）也在 Crafter Station 体系下开源。",
           "a__fixme": true
         },
         "taxonomy": {
@@ -1307,9 +1312,9 @@
           "a__fixme": true
         },
         "money": {
-          "q": "Petdex 怎么赚钱？",
+          "q": "AgentPets 怎么赚钱？",
           "q__fixme": true,
-          "a": "它不赚钱。Petdex 是 Crafter Station 运营的社区项目。存储和数据库成本由平台团队承担：没有广告、没有加购，也没有超出标准分析范围的额外遥测；我们只看哪些宠物被安装。",
+          "a": "它不赚钱。AgentPets 是 Crafter Station 运营的社区项目。存储和数据库成本由平台团队承担：没有广告、没有加购，也没有超出标准分析范围的额外遥测；我们只看哪些宠物被安装。",
           "a__fixme": true
         }
       }
@@ -1332,7 +1337,7 @@
   "myPets": {
     "metadata": {
       "title": "我的提交",
-      "description": "跟踪你发往 Petdex 的每只宠物状态，自定义个人资料，并编辑已上线条目。",
+      "description": "跟踪你发往 AgentPets 的每只宠物状态，自定义个人资料，并编辑已上线条目。",
       "description__fixme": true
     },
     "edit": {
@@ -1388,13 +1393,13 @@
   "myFeedback": {
     "metadata": {
       "title": "我的反馈",
-      "description": "你与 Petdex 团队围绕已提交反馈展开的对话。",
+      "description": "你与 AgentPets 团队围绕已提交反馈展开的对话。",
       "description__fixme": true
     },
     "eyebrow": "线程",
     "eyebrow__fixme": true,
     "title": "我的反馈",
-    "subtitle": "你和 Petdex 团队围绕已发送反馈的对话。",
+    "subtitle": "你和 AgentPets 团队围绕已发送反馈的对话。",
     "subtitle__fixme": true,
     "empty": "你还没有发送任何反馈。使用 Feedback 按钮分享你的想法。",
     "empty__fixme": true,
@@ -1436,7 +1441,7 @@
     "caughtWandering": "游荡时抓到：{name}",
     "browsePets": "浏览 {count}+ 只宠物",
     "browseGallery": "浏览图库",
-    "about": "关于 Petdex",
+    "about": "关于 AgentPets",
     "submit": "提交宠物",
     "featuredEyebrow": "试试精选宠物",
     "featuredTitle": "这些宠物肯定还在",
@@ -1445,12 +1450,12 @@
   },
   "leaderboard": {
     "metadata": {
-      "title": "Petdex 排行榜",
-      "description": "Petdex 上的顶级创作者：获批宠物最多、最受喜爱、安装量最高。",
+      "title": "AgentPets 排行榜",
+      "description": "AgentPets 上的顶级创作者：获批宠物最多、最受喜爱、安装量最高。",
       "description__fixme": true
     },
     "eyebrow": "热门创作者",
-    "title": "Petdex 排行榜",
+    "title": "AgentPets 排行榜",
     "subtitle": "发布宠物最多、最受喜爱、安装量最高的创作者。实时更新。",
     "categoryAria": "排行榜分类",
     "secondaryStats": {
@@ -1537,7 +1542,7 @@
     "shareToX": "分享到 X",
     "shareToLinkedIn": "分享到 LinkedIn",
     "more": "更多…",
-    "shareText": "看看 {name} 在 Petdex 上的 Codex 宠物合集"
+    "shareText": "看看 {name} 在 AgentPets 上的 Codex 宠物合集"
   },
   "petActions": {
     "moreActions": "{name} 的更多操作",
@@ -1548,7 +1553,7 @@
     "takedownDialog": {
       "eyebrow": "法律 · 下架",
       "title": "举报宠物",
-      "body": "Petdex 托管用户提交的同人像素宠物。我们不主张拥有社区成员选择演绎的任何角色底层知识产权。如果你是权利人或授权代表，并希望移除某只宠物，最快方式是提交 GitHub issue。",
+      "body": "AgentPets 托管用户提交的同人像素宠物。我们不主张拥有社区成员选择演绎的任何角色底层知识产权。如果你是权利人或授权代表，并希望移除某只宠物，最快方式是提交 GitHub issue。",
       "howItWorks": "处理方式",
       "step1": "点击下方按钮打开下架请求。",
       "step2": "告诉我们是哪只宠物，以及你与相关 IP 的关系。",
@@ -1556,7 +1561,7 @@
       "step4": "审核通过后，宠物会从图库和安装接口中移除。",
       "nonIp": "非 IP 问题，例如精灵图Sprite 损坏或描述错误，请改用普通 issue。",
       "prefillLabel": "本次请求会自动带上：",
-      "confirmation": "向 Petdex 提交内容即表示你确认自己拥有相关作品权利，或正在创作同人内容。Petdex 会处理善意下架请求。",
+      "confirmation": "向 AgentPets 提交内容即表示你确认自己拥有相关作品权利，或正在创作同人内容。AgentPets 会处理善意下架请求。",
       "cancel": "取消",
       "openRequest": "打开下架请求"
     },
@@ -1572,7 +1577,7 @@
     "shareToLinkedIn": "分享到 LinkedIn",
     "more": "更多…",
     "downloadZip": "下载 ZIP",
-    "removeFromPetdex": "从 Petdex 删除",
+    "removeFromAgentPets": "从 AgentPets 删除",
     "removing": "删除中…",
     "withdrawSubmission": "撤回提交",
     "withdrawing": "撤回中…",
@@ -1663,7 +1668,7 @@
   "download": {
     "eyebrow": "桌面应用",
     "eyebrow__fixme": true,
-    "title": "Petdex Desktop",
+    "title": "AgentPets Desktop",
     "subtitle": "你的宠物，漂浮在每个 Agent 身旁。",
     "subtitle__fixme": true,
     "hero": {
@@ -1762,7 +1767,7 @@
     "pendingPet": {
       "eyebrow": "马上就好。",
       "eyebrow__fixme": true,
-      "messageBefore": "安装 Petdex Desktop 即可一键测试",
+      "messageBefore": "安装 AgentPets Desktop 即可一键测试",
       "messageBefore__fixme": true,
       "messageAfter": "。",
       "messageAfter__fixme": true,
@@ -1770,16 +1775,16 @@
       "hint__fixme": true
     }
   },
-  "openInPetdex": {
+  "openInAgentPets": {
     "eyebrow": "macOS 桌面应用",
     "eyebrow__fixme": true,
-    "label": "在 Petdex Desktop 中打开",
+    "label": "在 AgentPets Desktop 中打开",
     "label__fixme": true,
     "subtitle": "让这只宠物漂浮在你的 Agent 旁",
     "subtitle__fixme": true,
-    "opening": "正在打开 Petdex...",
+    "opening": "正在打开 AgentPets...",
     "opening__fixme": true,
-    "ariaLabel": "在 Petdex Desktop 中打开 {slug}",
+    "ariaLabel": "在 AgentPets Desktop 中打开 {slug}",
     "ariaLabel__fixme": true
   },
   "installCompact": {
@@ -1790,16 +1795,16 @@
   },
   "desktopAnnouncement": {
     "eyebrow": "新功能 · 桌面应用",
-    "title": "Petdex 现在可以悬浮在你的 Agent 旁",
+    "title": "AgentPets 现在可以悬浮在你的 Agent 旁",
     "description": "把一只宠物放在屏幕上，它会响应 Claude、Codex、Gemini 或 OpenCode 的每次工具调用。无边框，始终置顶，可惯性拖动。",
     "platforms": "今日支持 macOS，Linux 和 Windows 即将推出。",
     "downloadCta": "下载",
     "seeHowCta": "了解工作原理"
   },
   "githubStar": {
-    "eyebrow": "开源 · Petdex",
-    "title": "帮助 Petdex 成长。在 GitHub 上加星",
-    "description": "Petdex 完全开源。每一颗星都能帮助更多宠物创作者发现这个项目，并让我们有动力继续自由发布新功能（音效、排行榜、即将推出的网页宠物工作室）。",
+    "eyebrow": "开源 · AgentPets",
+    "title": "帮助 AgentPets 成长。在 GitHub 上加星",
+    "description": "AgentPets 完全开源。每一颗星都能帮助更多宠物创作者发现这个项目，并让我们有动力继续自由发布新功能（音效、排行榜、即将推出的网页宠物工作室）。",
     "note": "只需十秒。如果你已有 GitHub 账号，无需额外注册。",
     "starCta": "在 GitHub 上加星",
     "laterCta": "稍后"
@@ -1817,12 +1822,12 @@
   "collectionsPage": {
     "metadata": {
       "title": "精选合集",
-      "description": "按系列、类别或主题浏览 Petdex 合集。搜索、排序和筛选，找到你的一套。"
+      "description": "按系列、类别或主题浏览 AgentPets 合集。搜索、排序和筛选，找到你的一套。"
     },
     "hero": {
       "eyebrow": "精选合集 Featured collections",
       "title": "找到你的一套，一行命令安装",
-      "description": "Petdex 目录中的 {count} 个合集。按系列、类别或主题浏览。"
+      "description": "AgentPets 目录中的 {count} 个合集。按系列、类别或主题浏览。"
     }
   },
   "collectionsBrowser": {
@@ -1858,8 +1863,8 @@
     }
   },
   "profile": {
-    "creatorBadge": "Petdex 创作者",
-    "creatorOfPetdex": "Petdex 创作者",
+    "creatorBadge": "AgentPets 创作者",
+    "creatorOfAgentPets": "AgentPets 创作者",
     "yourAlbum": "你的图鉴：{caught}/{total}（{pct}%）",
     "editProfile": "编辑资料",
     "petsTab": "宠物",
@@ -1953,8 +1958,8 @@
   "collectionActionMenu": {
     "moreActions": "{title} 的更多操作",
     "closeMenu": "关闭菜单",
-    "openInPetdex": "在 Petdex Desktop 中打开",
-    "openInPetdexDesc": "安装整个合集",
+    "openInAgentPets": "在 AgentPets Desktop 中打开",
+    "openInAgentPetsDesc": "安装整个合集",
     "openInCodex": "在 Codex 中打开",
     "openInCodexDesc": "由 Codex Desktop 执行安装",
     "copyInstallAll": "复制全部安装命令",
@@ -1965,16 +1970,16 @@
     "viewCollection": "查看合集",
     "installHint": "{count} 个宠物",
     "installHintTruncated": "{shown} / {total} 个宠物 · 手动粘贴剩余",
-    "shareXText": "Petdex 上的 {title} 合集 - 一行命令安装"
+    "shareXText": "AgentPets 上的 {title} 合集 - 一行命令安装"
   },
   "takedownPage": {
     "metadata": {
-      "title": "下架请求 | Petdex",
+      "title": "下架请求 | AgentPets",
       "description": "如果某只宠物侵犯了你的权利，可以这样申请下架。"
     },
     "eyebrow": "法务合规 · 下架请求",
     "title": "举报宠物",
-    "intro": "Petdex 托管的是用户提交的同人像素宠物。我们不主张拥有这些角色背后的知识产权。如果你是权利人或授权代表，希望移除某只宠物，最快的方式是提交 GitHub issue。",
+    "intro": "AgentPets 托管的是用户提交的同人像素宠物。我们不主张拥有这些角色背后的知识产权。如果你是权利人或授权代表，希望移除某只宠物，最快的方式是提交 GitHub issue。",
     "howItWorks": "处理流程",
     "steps": {
       "open": "点击下方链接创建下架请求。",
@@ -1986,12 +1991,12 @@
     "emailLink": "邮件",
     "nonIpAfter": "联系我们。",
     "openRequest": "打开下架请求",
-    "confirmation": "向 Petdex 提交作品即表示你确认自己拥有相应权利，或是在创作同人内容。Petdex 会认真处理善意的下架请求。"
+    "confirmation": "向 AgentPets 提交作品即表示你确认自己拥有相应权利，或是在创作同人内容。AgentPets 会认真处理善意的下架请求。"
   },
   "unsubscribePage": {
     "metadata": {
-      "title": "取消订阅 | Petdex",
-      "description": "管理你的 Petdex 邮件偏好。"
+      "title": "取消订阅 | AgentPets",
+      "description": "管理你的 AgentPets 邮件偏好。"
     },
     "eyebrow": "邮件 · 偏好设置",
     "title": "取消订阅",
@@ -1999,9 +2004,9 @@
     "invalidBody": "我们找不到对应的取消订阅 token。它可能已经过期，也可能格式不对。如果你之后还收到不想要的邮件，直接回复最近一封，我们会手动帮你移除。",
     "form": {
       "account": "账号",
-      "unsubscribedTitle": "你已经退订 Petdex 更新。",
+      "unsubscribedTitle": "你已经退订 AgentPets 更新。",
       "unsubscribedBody": "宠物通过审核、编辑结果、反馈回复这类必要通知仍会发送。",
-      "subscribedTitle": "不再接收 Petdex 更新？",
+      "subscribedTitle": "不再接收 AgentPets 更新？",
       "subscribedBody": "我们偶尔会发一些精选内容：新合集、宠物上新、社区动态。宠物审核和反馈回复等必要邮件不受影响。",
       "working": "处理中…",
       "resubscribe": "重新订阅",
@@ -2011,12 +2016,12 @@
   },
   "telemetryPage": {
     "metadata": {
-      "title": "数据收集说明 | Petdex",
-      "description": "了解 petdex CLI 会收集哪些匿名数据，以及如何关闭。"
+      "title": "数据收集说明 | AgentPets",
+      "description": "了解 agentpets CLI 会收集哪些匿名数据，以及如何关闭。"
     },
     "eyebrow": "法务合规 · 数据收集",
     "title": "CLI 数据收集",
-    "intro": "petdex CLI 会收集匿名使用统计，帮助我们了解安装量、平台分布，以及大家接入了哪些 Agent。下面列出具体字段，也说明如何关闭。",
+    "intro": "agentpets CLI 会收集匿名使用统计，帮助我们了解安装量、平台分布，以及大家接入了哪些 Agent。下面列出具体字段，也说明如何关闭。",
     "collectTitle": "会收集哪些数据",
     "table": {
       "field": "字段",
@@ -2024,13 +2029,13 @@
       "description": "说明"
     },
     "fields": {
-      "installId": "首次运行时生成的随机 ID，保存在 <code>~/.petdex/telemetry.json</code>。它不会关联你的账号、邮箱或其他身份信息。",
+      "installId": "首次运行时生成的随机 ID，保存在 <code>~/.agentpets/telemetry.json</code>。它不会关联你的账号、邮箱或其他身份信息。",
       "event": "触发了哪个生命周期事件：<code>cli_install_desktop_success</code>、<code>cli_hooks_install_success</code>、<code>cli_desktop_start_success</code> 或 <code>desktop_first_state_received</code>。最后一个事件会在桌面 sidecar 每次会话首次收到 hook 时发送。",
-      "cliVersion": "petdex CLI 的版本，例如 <code>0.1.4</code>。",
+      "cliVersion": "agentpets CLI 的版本，例如 <code>0.1.4</code>。",
       "binaryVersion": "已安装的桌面端版本，例如 <code>0.1.4</code>。只会在 <code>cli_install_desktop_success</code> 时发送。",
       "os": "操作系统：<code>darwin</code>、<code>linux</code> 或 <code>win32</code>。",
       "arch": "CPU 架构：<code>arm64</code> 或 <code>x64</code>。",
-      "agents": "运行 <code>petdex hooks install</code> 时接入了哪些 Agent，例如 <code>[\"claude-code\", \"codex\"]</code>。只会在 <code>cli_hooks_install_success</code> 事件中发送。",
+      "agents": "运行 <code>agentpets hooks install</code> 时接入了哪些 Agent，例如 <code>[\"claude-code\", \"codex\"]</code>。只会在 <code>cli_hooks_install_success</code> 事件中发送。",
       "state": "第一个 hook 触发的宠物动画状态，例如 <code>running</code>、<code>idle</code> 或 <code>waving</code>。只会在 <code>desktop_first_state_received</code> 时发送。",
       "agentSource": "触发第一个 hook 的 Agent 可以附带一个来源标签，例如 <code>claude-code</code>。最多 64 个字符，并且只有 hook 命令主动带上它时才发送。",
       "country": "由 Vercel edge 根据 IP 推断出的两位国家代码。原始 IP 不会被存储。"
@@ -2044,7 +2049,7 @@
       "pets": "你安装或提交的宠物内容数据。"
     },
     "optOutTitle": "怎么关闭",
-    "optOutIntro": "数据收集默认开启，但可以随时关掉。设置会保存在 <code>~/.petdex/telemetry.json</code>，CLI 更新后也会保留。",
+    "optOutIntro": "数据收集默认开启，但可以随时关掉。设置会保存在 <code>~/.agentpets/telemetry.json</code>，CLI 更新后也会保留。",
     "codeComments": {
       "disable": "# 关闭数据收集",
       "enable": "# 重新开启",
@@ -2068,7 +2073,7 @@
       "creature": {
         "label": "动物",
         "title": "Codex 动物类宠物",
-        "intro": "动物、小怪兽和各种想象出来的小伙伴都在这里。这是 Petdex 里最大的类别，也是很多创作者的起点：水獭、水豚、狐狸，还有一些说不上名字但很有生命力的小东西。",
+        "intro": "动物、小怪兽和各种想象出来的小伙伴都在这里。这是 AgentPets 里最大的类别，也是很多创作者的起点：水獭、水豚、狐狸，还有一些说不上名字但很有生命力的小东西。",
         "metaDescription": "Codex 动物类动画像素宠物：水獭、水豚、狐狸等，一条命令即可安装。"
       },
       "object": {
@@ -2106,7 +2111,7 @@
       "cheerful": {
         "label": "开朗",
         "title": "开朗系 Codex 宠物",
-        "intro": "Petdex 里的乐观派。配色明亮、表情轻快，待机时也像是在认真欢迎你打开终端。",
+        "intro": "AgentPets 里的乐观派。配色明亮、表情轻快，待机时也像是在认真欢迎你打开终端。",
         "metaDescription": "开朗的 Codex 宠物。明亮、带笑、一条命令即可安装。"
       },
       "focused": {
@@ -2161,9 +2166,9 @@
   },
   "docsPage": {
     "metadata": {
-      "title": "文档 · Petdex",
-      "description": "用 Petdex CLI 安装、提交和分发 Codex 宠物。",
-      "ogTitle": "Petdex CLI · 文档"
+      "title": "文档 · AgentPets",
+      "description": "用 AgentPets CLI 安装、提交和分发 Codex 宠物。",
+      "ogTitle": "AgentPets CLI · 文档"
     },
     "nav": {
       "getStarted": "开始",
@@ -2183,10 +2188,10 @@
       "contribute": "参与贡献"
     },
     "hero": {
-      "eyebrow": "Petdex CLI · v0.1",
+      "eyebrow": "AgentPets CLI · v0.1",
       "title": "文档",
-      "description": "Petdex CLI 可以直接在终端里安装、浏览和提交 Codex 宠物。登录走 Clerk 的 OAuth 2.0 + PKCE，token 会保存在系统钥匙串里。",
-      "npmCta": "npmjs.com/petdex",
+      "description": "AgentPets CLI 可以直接在终端里安装、浏览和提交 Codex 宠物。登录走 Clerk 的 OAuth 2.0 + PKCE，token 会保存在系统钥匙串里。",
+      "npmCta": "npmjs.com/agentpets",
       "repoCta": "仓库"
     },
     "sections": {
@@ -2194,7 +2199,7 @@
         "title": "快速开始",
         "intro": "一条命令就能把精选宠物装进 Codex。安装不需要账号，只有提交作品时才需要登录。",
         "afterCommand": "CLI 会拉取宠物包，并放到 <code>~/.codex/pets/boba/</code>。要在 Codex 里启用它，打开 <strong>Settings → Appearance → Pets</strong>，然后点击 <strong>Select</strong>。在 Codex 里使用 <code>/pet</code> 可以让宠物 wake 或 sleep。",
-        "callout": "还没有宠物点子？先用 Codex Hatch Pet skill <link>孵化一只</link>，再回来运行 <code>petdex submit</code>。"
+        "callout": "还没有宠物点子？先用 Codex Hatch Pet skill <link>孵化一只</link>，再回来运行 <code>agentpets submit</code>。"
       },
       "install": {
         "title": "安装",
@@ -2203,60 +2208,60 @@
         "casualBody": "直接用 <code>npx</code>。无需提前配置，第一次运行后包会被缓存。",
         "powerTitle": "全局安装",
         "powerBody": "全局安装后可以立即调用，也更适合长期高频使用。",
-        "persistence": "<strong>两种方式的登录持久化完全一样。</strong>Token 会保存在系统钥匙串里（macOS Keychain、Windows Credential Manager、Linux Secret Service），服务名是 <code>petdex-cli</code>。即使 npx 清掉了包缓存，你的登录状态也还在。"
+        "persistence": "<strong>两种方式的登录持久化完全一样。</strong>Token 会保存在系统钥匙串里（macOS Keychain、Windows Credential Manager、Linux Secret Service），服务名是 <code>agentpets-cli</code>。即使 npx 清掉了包缓存，你的登录状态也还在。"
       },
       "authenticate": {
         "title": "登录",
         "intro": "登录一次之后，submit 这类需要身份的命令就能直接运行。",
-        "flow": "登录流程使用 OAuth 2.0 + PKCE：CLI 会打开浏览器，你在 <code>accounts.petdex.crafter.run</code> 通过 Clerk 登录，浏览器再把授权码回传给一次性的 localhost listener。CLI 会用授权码换取 token，并保存到系统钥匙串。密钥不会明文落盘。",
+        "flow": "登录流程使用 OAuth 2.0 + PKCE：CLI 会打开浏览器，你在 <code>accounts.agentpets.dev</code> 通过 Clerk 登录，浏览器再把授权码回传给一次性的 localhost listener。CLI 会用授权码换取 token，并保存到系统钥匙串。密钥不会明文落盘。",
         "otherCommands": "其它登录相关命令："
       },
       "commands": {
         "title": "命令",
         "intro": "CLI 覆盖完整流程：发现、安装、孵化、发布，以及桌面应用和 Agent hooks。所有命令都支持 <code>--help</code>。",
         "listBody": "列出所有已通过审核的宠物和署名信息。安装前用它来浏览很方便。",
-        "installBody": "把宠物放到 <code>~/.codex/pets/{petName}/</code>。效果等同于 <code>curl -sSf https://petdex.crafter.run/install/{petName} | sh</code>。",
+        "installBody": "把宠物放到 <code>~/.codex/pets/{petName}/</code>。效果等同于 <code>curl -sSf https://agentpets.dev/install/{petName} | sh</code>。",
         "submitIntro": "把你的宠物发布到图库。CLI 支持三种提交形式：",
-        "submitSingle": "<strong>单个文件夹</strong>：<code>petdex submit ~/.codex/pets/boba</code>",
-        "submitZip": "<strong>单个 zip</strong>：<code>petdex submit ~/Downloads/boba.zip</code>",
-        "submitBulk": "<strong>批量提交</strong>：<code>petdex submit ~/.codex/pets</code>，每个直接子文件夹都会作为一只宠物提交",
+        "submitSingle": "<strong>单个文件夹</strong>：<code>agentpets submit ~/.codex/pets/boba</code>",
+        "submitZip": "<strong>单个 zip</strong>：<code>agentpets submit ~/Downloads/boba.zip</code>",
+        "submitBulk": "<strong>批量提交</strong>：<code>agentpets submit ~/.codex/pets</code>，每个直接子文件夹都会作为一只宠物提交",
         "bulkNote": "批量模式会为每只宠物显示进度，并在最后汇总失败项。宠物名会自动去重，不会因为名称已存在而提交失败。",
         "authBody": "见上面的“登录”部分。",
-        "installSyntax": "petdex install {petName}",
-        "submitSyntax": "petdex submit {path}"
+        "installSyntax": "agentpets install {petName}",
+        "submitSyntax": "agentpets submit {path}"
       },
       "desktop": {
         "title": "桌面应用",
-        "intro": "Petdex Desktop 是一个漂浮在工作区上的桌面宠物，会根据 Agent 的工具调用做出反应。目前支持 macOS，Linux 和 Windows 稍后支持。视觉介绍见 <download>/download</download>。",
-        "installDesktopBody": "从 GitHub Releases 拉取适合当前平台的最新二进制文件，并放到 <code>~/.petdex/bin/petdex-desktop</code>。CLI 会移除 macOS quarantine 属性，让应用打开时不再触发 Gatekeeper 提示。",
+        "intro": "AgentPets Desktop 是一个漂浮在工作区上的桌面宠物，会根据 Agent 的工具调用做出反应。目前支持 macOS，Linux 和 Windows 稍后支持。视觉介绍见 <download>/download</download>。",
+        "installDesktopBody": "从 GitHub Releases 拉取适合当前平台的最新二进制文件，并放到 <code>~/.agentpets/bin/agentpets-desktop</code>。CLI 会移除 macOS quarantine 属性，让应用打开时不再触发 Gatekeeper 提示。",
         "hooksInstallBody": "把桌面应用接入你的 Agent，让宠物在你工作时摇摆。CLI 会识别本机已有的 Agent，并分别写入 hooks：",
         "hookEvents": "工具事件会映射到宠物状态：<code>tool.before</code> → <code>running</code>，<code>tool.after</code> → <code>idle</code>，<code>session.end</code> → <code>waving</code>，<code>session.error</code> → <code>failed</code>。每个 hook 都会 POST 到本地 sidecar：<code>http://127.0.0.1:7777/state</code>。",
-        "desktopManageBody": "管理正在运行的宠物。<code>start</code> 会以 detached 方式启动（PID 在 <code>~/.petdex/desktop.pid</code>，日志在 <code>~/.petdex/desktop.log</code>）。<code>stop</code> 发送 SIGTERM。<code>status</code> 显示 running、stopped 或 stale。",
-        "toggleBody": "一次性切换桌面宠物的 wake 或 sleep 状态。<code>up</code> 会启用 hooks 并启动 desktop；<code>down</code> 会禁用 hooks 并停止 desktop；<code>toggle</code> 根据当前状态切换。这也是你在 Agent 里运行 <code>/petdex</code> 时触发的命令。",
+        "desktopManageBody": "管理正在运行的宠物。<code>start</code> 会以 detached 方式启动（PID 在 <code>~/.agentpets/desktop.pid</code>，日志在 <code>~/.agentpets/desktop.log</code>）。<code>stop</code> 发送 SIGTERM。<code>status</code> 显示 running、stopped 或 stale。",
+        "toggleBody": "一次性切换桌面宠物的 wake 或 sleep 状态。<code>up</code> 会启用 hooks 并启动 desktop；<code>down</code> 会禁用 hooks 并停止 desktop；<code>toggle</code> 根据当前状态切换。这也是你在 Agent 里运行 <code>/agentpets</code> 时触发的命令。",
         "slashTitleSuffix": "（斜杠命令）",
-        "slashBody": "运行过 <code>petdex hooks install</code> 后，每个受支持的 Agent（Claude Code、Codex、Gemini、OpenCode）都会获得 <code>/petdex</code> 命令。你可以在 Agent 里直接输入它，让宠物 wake 或 sleep，不需要离开当前对话：",
-        "slashToggle": "<code>/petdex</code>：切换状态（sleep 时切到 wake，wake 时切到 sleep）",
-        "slashUp": "<code>/petdex up</code>：切到 wake 状态",
-        "slashDown": "<code>/petdex down</code>：切到 sleep 状态",
-        "slashStatus": "<code>/petdex status</code>：查看 hooks 是否启用",
-        "slashDoctor": "<code>/petdex doctor</code>：诊断安装和 Agent 接入状态",
+        "slashBody": "运行过 <code>agentpets hooks install</code> 后，每个受支持的 Agent（Claude Code、Codex、Gemini、OpenCode）都会获得 <code>/agentpets</code> 命令。你可以在 Agent 里直接输入它，让宠物 wake 或 sleep，不需要离开当前对话：",
+        "slashToggle": "<code>/agentpets</code>：切换状态（sleep 时切到 wake，wake 时切到 sleep）",
+        "slashUp": "<code>/agentpets up</code>：切到 wake 状态",
+        "slashDown": "<code>/agentpets down</code>：切到 sleep 状态",
+        "slashStatus": "<code>/agentpets status</code>：查看 hooks 是否启用",
+        "slashDoctor": "<code>/agentpets doctor</code>：诊断安装和 Agent 接入状态",
         "killSwitchSuffix": "（开关）",
-        "hooksKillBody": "即使已经安装 hooks，也可以暂停它们，而不必改动 Agent 配置。<code>petdex hooks off</code> 会在 <code>~/.petdex/runtime/hooks-disabled</code> 写入一个标记文件；所有已安装 hook 都会先检查它，命中后直接退出 0。<code>petdex hooks on</code> 会删除这个文件。适合 sidecar 异常时临时停用。",
-        "uninstallBody": "撤销 <code>hooks install</code>：从每个 Agent 配置中移除 petdex 项（保留你自己的 hooks），删除 <code>/petdex</code> 斜杠命令文件，并移除 OpenCode 插件。传入 <code>--remove-token</code> 还会删除 <code>~/.petdex/runtime/update-token</code> 里的 auth token。",
+        "hooksKillBody": "即使已经安装 hooks，也可以暂停它们，而不必改动 Agent 配置。<code>agentpets hooks off</code> 会在 <code>~/.agentpets/runtime/hooks-disabled</code> 写入一个标记文件；所有已安装 hook 都会先检查它，命中后直接退出 0。<code>agentpets hooks on</code> 会删除这个文件。适合 sidecar 异常时临时停用。",
+        "uninstallBody": "撤销 <code>hooks install</code>：从每个 Agent 配置中移除 agentpets 项（保留你自己的 hooks），删除 <code>/agentpets</code> 斜杠命令文件，并移除 OpenCode 插件。传入 <code>--remove-token</code> 还会删除 <code>~/.agentpets/runtime/update-token</code> 里的 auth token。",
         "doctorBody": "诊断命令。会检查二进制文件、sidecar bundle、sidecar 可达性、pid 文件格式、token 权限、kill-switch 状态、各 Agent 是否安装 hooks、Codex 的 <code>codex_hooks</code> feature flag，以及可用宠物数量。每个失败项都会给出可执行的提示。",
         "updateBody": "比较本机已安装版本和最新 GitHub Release tag，如果有更新就下载。若桌面应用正在运行，会先停止、替换二进制，再重新启动。传入 <code>--force</code> 可以重新下载同一版本。",
-        "sidecarCallout": "Sidecar 是运行在本机 <code>7777</code> 端口的 HTTP server。任何能 <code>curl</code> 并读取每次会话 token（<code>~/.petdex/runtime/update-token</code>）的程序都能驱动宠物。这个 token 每次 sidecar 启动都会轮换，文件权限是 <code>0600</code>，只有当前用户能读；浏览器和远程网站不能直接访问：",
-        "manageSyntax": "petdex desktop {desktopAction}"
+        "sidecarCallout": "Sidecar 是运行在本机 <code>7777</code> 端口的 HTTP server。任何能 <code>curl</code> 并读取每次会话 token（<code>~/.agentpets/runtime/update-token</code>）的程序都能驱动宠物。这个 token 每次 sidecar 启动都会轮换，文件权限是 <code>0600</code>，只有当前用户能读；浏览器和远程网站不能直接访问：",
+        "manageSyntax": "agentpets desktop {desktopAction}"
       },
       "distribute": {
         "title": "分享上架你的宠物",
         "intro": "在 Codex 里孵化好宠物之后，一条命令就能分享出去。完整流程如下：",
         "create": "<strong>创建。</strong>在 Codex Desktop 里安装 <strong>Hatch Pet</strong> skill，然后运行 <code>/pet</code>。Codex 会把精灵图集 Spritesheet 和 pet.json 生成到 <code>~/.codex/pets/{petName}/</code>。完整教程见 <create>/create</create>。",
-        "signIn": "<strong>登录。</strong>如果还没登录，先运行 <code>npx petdex login</code>。",
-        "submit": "<strong>提交。</strong><code>npx petdex submit ~/.codex/pets/{petName}</code>。也可以直接提交父目录来批量提交。",
+        "signIn": "<strong>登录。</strong>如果还没登录，先运行 <code>npx @agentpets/cli login</code>。",
+        "submit": "<strong>提交。</strong><code>npx @agentpets/cli submit ~/.codex/pets/{petName}</code>。也可以直接提交父目录来批量提交。",
         "review": "<strong>等待审核。</strong>提交会进入 admin queue，状态为“pending”。通过或拒绝后你会收到 Resend 邮件；如果被拒绝，邮件里会包含原因。",
-        "install": "<strong>任何人都能安装你的宠物。</strong>审核通过后，把 <code>npx petdex install {yourPetName}</code> 分享给别人即可。对方会立刻把宠物安装到自己的 <code>~/.codex/pets/</code>。",
-        "callout": "Petdex 上的宠物由用户提交，可能包含同人创作内容。Petdex 不会对任何第三方底层知识产权主张权属、所有权或相关权益。如果你是权利人或授权代表，希望申请下架，请查看 <takedown>/legal/takedown</takedown>。"
+        "install": "<strong>任何人都能安装你的宠物。</strong>审核通过后，把 <code>npx @agentpets/cli install {yourPetName}</code> 分享给别人即可。对方会立刻把宠物安装到自己的 <code>~/.codex/pets/</code>。",
+        "callout": "AgentPets 上的宠物由用户提交，可能包含同人创作内容。AgentPets 不会对任何第三方底层知识产权主张权属、所有权或相关权益。如果你是权利人或授权代表，希望申请下架，请查看 <takedown>/legal/takedown</takedown>。"
       },
       "validation": {
         "title": "校验规则",
@@ -2304,22 +2309,22 @@
       },
       "agents": {
         "title": "适用于 Agent 的用法（Skill）",
-        "intro": "Petdex 提供兼容 Claude Code / Codex / Cursor 的 <strong>skill</strong>：<code>.claude/skills/petdex/SKILL.md</code>。兼容的 Agent 会自动加载它，并学会在什么场景、用什么方式替你调用 CLI。",
+        "intro": "AgentPets 提供兼容 Claude Code / Codex / Cursor 的 <strong>skill</strong>：<code>.claude/skills/agentpets/SKILL.md</code>。兼容的 Agent 会自动加载它，并学会在什么场景、用什么方式替你调用 CLI。",
         "enablesTitle": "它能做什么",
-        "enableCozy": "你可以在任意 Agent 工具里说 <em>“给我的 Codex 装一个舒服点的宠物”</em>。它会运行 <code>petdex list</code>，推荐 Boba/Boxcat，安装你选中的宠物，并提醒你到 <strong>Settings → Appearance → Pets</strong> 启用。",
-        "enableShare": "你可以说 <em>“把我的所有宠物分享出去”</em>。Agent 会在需要时运行 <code>petdex login</code>，再执行 <code>petdex submit ~/.codex/pets</code>，最后展示批量提交摘要。",
-        "enableMake": "你可以问 <em>“我怎么做自己的宠物？”</em>。Agent 会带你走完整流程：Codex Desktop → Hatch Pet skill → <code>/pet</code> → <code>petdex submit</code>。",
+        "enableCozy": "你可以在任意 Agent 工具里说 <em>“给我的 Codex 装一个舒服点的宠物”</em>。它会运行 <code>agentpets list</code>，推荐 Boba/Boxcat，安装你选中的宠物，并提醒你到 <strong>Settings → Appearance → Pets</strong> 启用。",
+        "enableShare": "你可以说 <em>“把我的所有宠物分享出去”</em>。Agent 会在需要时运行 <code>agentpets login</code>，再执行 <code>agentpets submit ~/.codex/pets</code>，最后展示批量提交摘要。",
+        "enableMake": "你可以问 <em>“我怎么做自己的宠物？”</em>。Agent 会带你走完整流程：Codex Desktop → Hatch Pet skill → <code>/pet</code> → <code>agentpets submit</code>。",
         "enableTitle": "如何启用",
         "enableIntro": "如果你使用 Claude Code，可以把这个 skill 保存到全局，让每个项目都能使用：",
         "enableOther": "其它 Agent 工具也可以从仓库加载同一个 SKILL.md。这个文件是普通 Markdown；除了 <code>allowed-tools</code> 之外，没有 Agent 专属语法。",
         "buildTitle": "定制化自己的 skill",
-        "buildBody": "CLI 是可执行的操作入口，skill 是给 Agent 理解任务的认知入口。如果你想做派生 skill（例如自动给新宠物打标签，或生成每日精选），可以把 Petdex skill 当作参考。直接阅读："
+        "buildBody": "CLI 是可执行的操作入口，skill 是给 Agent 理解任务的认知入口。如果你想做派生 skill（例如自动给新宠物打标签，或生成每日精选），可以把 AgentPets skill 当作参考。直接阅读："
       },
       "config": {
         "title": "配置",
         "intro": "CLI 内置了指向生产环境的默认配置。只有在测试非生产部署时，才需要覆盖环境变量。",
-        "petdexUrl": "<code>PETDEX_URL</code>：基础 URL，默认 <code>https://petdex.crafter.run</code>",
-        "clerkIssuer": "<code>CLERK_ISSUER</code>：OAuth issuer，默认 <code>https://clerk.petdex.crafter.run</code>",
+        "agentpetsUrl": "<code>PETDEX_URL</code>：基础 URL，默认 <code>https://agentpets.dev</code>",
+        "clerkIssuer": "<code>CLERK_ISSUER</code>：OAuth issuer，默认 <code>https://clerk.agentpets.dev</code>",
         "clerkClientId": "<code>CLERK_OAUTH_CLIENT_ID</code>：公开 client id（内置在 CLI 二进制文件里）"
       },
       "contribute": {
@@ -2327,7 +2332,7 @@
         "prBefore": "欢迎给这里提 PR：",
         "issuesBefore": "Bug 报告和功能请求：",
         "issueLink": "创建 issue",
-        "sponsorBefore": "如果 Petdex 确实帮你省了时间，也欢迎通过",
+        "sponsorBefore": "如果 AgentPets 确实帮你省了时间，也欢迎通过",
         "sponsorAfter": "支持项目。"
       }
     },

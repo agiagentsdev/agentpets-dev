@@ -183,7 +183,7 @@ export function SiteHeader({ hideSubmitCta = false }: SiteHeaderProps) {
           <div className="flex min-w-0 items-center gap-4 lg:gap-6">
             <PetdexLogo
               href={href("/")}
-              ariaLabel={common("petdexHome")}
+              ariaLabel={common("agentpetsHome")}
               markClassName={cn(
                 "transition-[width,height] duration-200",
                 scrolled ? "size-7" : "size-8 sm:size-10",
@@ -300,7 +300,7 @@ export function SiteHeader({ hideSubmitCta = false }: SiteHeaderProps) {
             className="absolute inset-0"
           />
           <div className="flex items-center justify-between gap-3 px-5 pt-5 pb-3">
-            <PetdexLogo href={href("/")} ariaLabel={common("petdexHome")} />
+            <PetdexLogo href={href("/")} ariaLabel={common("agentpetsHome")} />
             <Button
               type="button"
               variant="petdex-pill"

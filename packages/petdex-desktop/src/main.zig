@@ -655,7 +655,7 @@ const html_tail =
     \\  // Layer 1 autoupdate: read update.json (written by the sidecar's
     \\  // periodic GH releases poll) and render a notification card. A
     \\  // single click POSTs to the sidecar's /update endpoint, which
-    \\  // spawns `npx petdex update --silent`. We keep this DOM lightweight
+    \\  // spawns `npx @agentpets/cli update --silent`. We keep this DOM lightweight
     \\  // — a fixed-position card, no animations.
     \\  let lastUpdateStatus = '';
     \\  let updateCard = null;
@@ -749,7 +749,7 @@ const html_tail =
     \\    initCard.style.cssText = 'position:fixed;left:6px;right:6px;bottom:6px;padding:6px 9px;border-radius:9px;background:#ffffff;color:#111;font:600 11px system-ui,-apple-system,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,0.30);display:none;cursor:pointer;pointer-events:auto;line-height:1.25;text-align:center;';
     \\    initCard.addEventListener('click', async () => {
     \\      try {
-    \\        await navigator.clipboard.writeText('npx petdex init');
+    \\        await navigator.clipboard.writeText('npx @agentpets/cli init');
     \\      } catch (e) {}
     \\      showInitToast('Comando copiado. Pegalo en tu terminal.');
     \\    });
@@ -1473,7 +1473,7 @@ const PetdexState = struct {
     // it to finish. Used by the URL-scheme deep-link path: when the
     // user opens petdex://<slug> for a pet they don't have installed,
     // we shell out to the CLI which downloads the sprite + petJson
-    // from petdex.crafter.run, validates the host allowlist, and
+    // from agentpets.dev, validates the host allowlist, and
     // writes them under ~/.petdex/pets/<slug>. The CLI is the
     // single source of truth for install logic — replicating it in
     // zig would mean two places to keep in sync.
@@ -2862,7 +2862,7 @@ pub fn main(init: std.process.Init) !void {
     defer allocator.free(config_dir);
 
     const pets_roots = resolvePetsRoots(allocator, init.io, init.environ_map) catch |err| {
-        std.debug.print("No pets found. Install one with `npx petdex install <slug>`.\n", .{});
+        std.debug.print("No pets found. Install one with `npx @agentpets/cli install <slug>`.\n", .{});
         return err;
     };
     defer {
@@ -2870,7 +2870,7 @@ pub fn main(init: std.process.Init) !void {
         allocator.free(pets_roots);
     }
     if (pets_roots.len == 0) {
-        std.debug.print("No pets root exists. Install one with `npx petdex install <slug>`.\n", .{});
+        std.debug.print("No pets root exists. Install one with `npx @agentpets/cli install <slug>`.\n", .{});
         return error.NoPetsDirectory;
     }
 
@@ -2884,7 +2884,7 @@ pub fn main(init: std.process.Init) !void {
         pets.deinit(allocator);
     }
     if (pets.items.len == 0) {
-        std.debug.print("No pets in any root. Install one with `npx petdex install <slug>`.\n", .{});
+        std.debug.print("No pets in any root. Install one with `npx @agentpets/cli install <slug>`.\n", .{});
         return error.NoPets;
     }
 

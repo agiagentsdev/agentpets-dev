@@ -60,7 +60,7 @@
       "addedAt": "2026-05-10",
       "evidence": {
         "type": "readme",
-        "quote": "Fetches https://petdex.crafter.run/api/manifest to look up the canonical spritesheet URL.",
+        "quote": "Fetches https://agentpets.dev/api/manifest to look up the canonical spritesheet URL.",
         "url": "https://github.com/filippello/focuspal#readme"
       },
       "screenshot": "/built-with/focuspal.png"
@@ -78,7 +78,7 @@
       "addedAt": "2026-05-10",
       "evidence": {
         "type": "readme",
-        "quote": "Uses the PetDex public gallery for Codex-compatible animated pets. npx petdex install [pet]",
+        "quote": "Uses the PetDex public gallery for Codex-compatible animated pets. npx @agentpets/cli install [pet]",
         "url": "https://github.com/felipetodev/petdex-dock#readme"
       },
       "screenshot": "/built-with/petdex-dock.png"
@@ -114,7 +114,7 @@
       "addedAt": "2026-05-10",
       "evidence": {
         "type": "code",
-        "quote": "URL(string: petL(\"pet.custom.market.url\", \"https://petdex.crafter.run/zh\"))",
+        "quote": "URL(string: petL(\"pet.custom.market.url\", \"https://agentpets.dev/zh\"))",
         "url": "https://github.com/duxweb/codux/blob/main/Sources/DmuxWorkspace/UI/Pet/PetDexWindow.swift"
       },
       "screenshot": "/built-with/codux.png"
@@ -150,7 +150,7 @@
       "addedAt": "2026-05-10",
       "evidence": {
         "type": "readme",
-        "quote": "iOS デモアプリには Petdex manifest (https://petdex.crafter.run/api/manifest) から一覧を取得し、選択した pet の spritesheetUrl をアプリ内キャッシュへ保存",
+        "quote": "iOS デモアプリには Petdex manifest (https://agentpets.dev/api/manifest) から一覧を取得し、選択した pet の spritesheetUrl をアプリ内キャッシュへ保存",
         "url": "https://github.com/shiroemons/codex-pet-watch-sprite#readme"
       },
       "screenshot": "/built-with/codex-pet-watch-sprite.png"
@@ -168,7 +168,7 @@
       "addedAt": "2026-05-10",
       "evidence": {
         "type": "code",
-        "quote": "PETDEX_BASE = \"https://petdex.crafter.run\"",
+        "quote": "PETDEX_BASE = \"https://agentpets.dev\"",
         "url": "https://github.com/Mooreel/garmin-pet/blob/main/pipeline/app/petdex.py"
       },
       "screenshot": "/built-with/garmin-pet.png"
@@ -204,7 +204,7 @@
       "addedAt": "2026-05-10",
       "evidence": {
         "type": "readme",
-        "quote": "python skills/openpet-cli/scripts/openpet_cli.py import-website https://petdex.crafter.run/pets/boba",
+        "quote": "python skills/openpet-cli/scripts/openpet_cli.py import-website https://agentpets.dev/pets/boba",
         "url": "https://github.com/X-T-E-R/OpenPet#readme"
       },
       "screenshot": "/built-with/openpet.png"
@@ -222,7 +222,7 @@
       "addedAt": "2026-05-10",
       "evidence": {
         "type": "code",
-        "quote": "const MANIFEST_URL: &str = \"https://petdex.crafter.run/api/manifest\";",
+        "quote": "const MANIFEST_URL: &str = \"https://agentpets.dev/api/manifest\";",
         "url": "https://github.com/tonhowtf/omniget/blob/main/src-tauri/src/pets/download.rs"
       },
       "screenshot": "/built-with/omniget.png"
@@ -233,14 +233,14 @@
       "tagline": "Original pet pack (Aka Pilot, Homelander) distributed through the Petdex gallery.",
       "category": "pet-creator",
       "repo": "Maqiaogongmin/petdex_cute",
-      "homepage": "https://petdex.crafter.run/pets/aka-pilot",
+      "homepage": "https://agentpets.dev/pets/aka-pilot",
       "stars": 0,
       "language": null,
       "platforms": [],
       "addedAt": "2026-05-10",
       "evidence": {
         "type": "readme",
-        "quote": "请访问：https://petdex.crafter.run/pets/aka-pilot",
+        "quote": "请访问：https://agentpets.dev/pets/aka-pilot",
         "url": "https://github.com/Maqiaogongmin/petdex_cute#readme"
       },
       "screenshot": "/built-with/petdex-cute.png"
@@ -266,7 +266,7 @@
     {
       "slug": "nom",
       "name": "nom",
-      "tagline": "Shimeji-style desktop pet that eats the AI tokens you burn through Claude Code and Codex CLI. Auto-loads any pet installed via npx petdex install.",
+      "tagline": "Shimeji-style desktop pet that eats the AI tokens you burn through Claude Code and Codex CLI. Auto-loads any pet installed via npx @agentpets/cli install.",
       "category": "desktop-companion",
       "repo": "dylan-labs/nom-pet",
       "homepage": "https://github.com/dylan-labs/nom-pet/releases/latest",
@@ -276,7 +276,7 @@
       "addedAt": "2026-05-11",
       "evidence": {
         "type": "readme",
-        "quote": "Skin support: install any petdex pack with npx petdex install <slug>, then right-click 选择宠物 to switch on the fly.",
+        "quote": "Skin support: install any petdex pack with npx @agentpets/cli install <slug>, then right-click 选择宠物 to switch on the fly.",
         "url": "https://github.com/dylan-labs/nom-pet#use-a-custom-pet-skin"
       },
       "screenshot": "/built-with/nom.png"

@@ -1,5 +1,5 @@
 /**
- * Anonymous usage telemetry. Fire-and-forget POST to petdex.crafter.run.
+ * Anonymous usage telemetry. Fire-and-forget POST to agentpets.dev.
  *
  * Privacy:
  * - install_id is a random UUID v4 generated on first run, stored at
@@ -36,7 +36,7 @@ function telemetryFile(): string {
 }
 const ENDPOINT =
   process.env.PETDEX_TELEMETRY_URL ??
-  "https://petdex.crafter.run/api/telemetry/event";
+  "https://agentpets.dev/api/telemetry/event";
 const TIMEOUT_MS = 2000;
 
 type TelemetryConfig = {
@@ -185,7 +185,7 @@ export function maybeShowFirstRunNotice(): void {
       "petdex collects anonymous usage stats (install volume, OS, agents wired up).",
       "No personal data, no file contents. Disable any time:",
       "  petdex telemetry off",
-      "Details: https://petdex.crafter.run/legal/telemetry",
+      "Details: https://agentpets.dev/legal/telemetry",
       "",
     ].join("\n"),
   );

@@ -9,7 +9,7 @@ import { SiteHeader } from "@/components/site-header";
 import { hasLocale } from "@/i18n/config";
 
 const STEP_KEYS = ["open", "identify", "review", "remove"] as const;
-const REPO = "crafter-station/petdex";
+const REPO = "agiagentsdev/agentpets-dev";
 
 export async function generateMetadata({
   params,

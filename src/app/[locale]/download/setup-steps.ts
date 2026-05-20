@@ -6,10 +6,10 @@
  * flow collapses to a single command:
  *
  *   1. (already done) Drag Petdex.app to /Applications via the .dmg
- *   2. `npx petdex@latest init`   ← wires hooks + wakes the mascot
- *   *. `npx petdex@latest install <slug>` (optional, when /pets/<slug>
+ *   2. `npx @agentpets/cli@latest init`   ← wires hooks + wakes the mascot
+ *   *. `npx @agentpets/cli@latest install <slug>` (optional, when /pets/<slug>
  *       sent the user here with ?next=install/<slug>)
- *   *. `npx petdex@latest update` (dimmed, runs anytime)
+ *   *. `npx @agentpets/cli@latest update` (dimmed, runs anytime)
  *
  * `init` is the canonical first command. It runs `hooks install` (the
  * agent picker wizard) and then `up` (toggles the killswitch off and
@@ -62,13 +62,13 @@ export function buildSetupSteps(
     {
       key: "step1",
       title: t("setup.step1.title"),
-      command: "npx petdex init",
+      command: "npx @agentpets/cli init",
       hint: t("setup.step1.hint"),
     },
   ];
 
   if (pendingInstallSlugs && pendingInstallSlugs.length > 0) {
-    const installCommand = `npx petdex install ${pendingInstallSlugs.join(" ")}`;
+    const installCommand = `npx @agentpets/cli install ${pendingInstallSlugs.join(" ")}`;
     steps.push({
       key: "installPet",
       title:
@@ -88,7 +88,7 @@ export function buildSetupSteps(
   steps.push({
     key: "stayUpdated",
     title: t("setup.stayUpdated.title"),
-    command: "npx petdex update",
+    command: "npx @agentpets/cli update",
     hint: t("setup.stayUpdated.hint"),
     dimmed: true,
   });

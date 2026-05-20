@@ -6,7 +6,7 @@
 //   2. Even if it were public, sending the browser to an external host
 //      requires whitelisting it in CSP img-src, leaks visit data to
 //      Tencent / Aliyun, and depends on Henry never flipping the ACL.
-//   3. With a proxy the browser only ever talks to petdex.crafter.run,
+//   3. With a proxy the browser only ever talks to agentpets.dev,
 //      and we serve the bytes signed via the RAM user that already has
 //      oss:GetObject scope.
 //

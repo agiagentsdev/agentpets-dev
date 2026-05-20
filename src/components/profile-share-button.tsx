@@ -13,7 +13,7 @@ import { Check, X as CloseIcon, Link2, Share2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { createPortal } from "react-dom";
 
-const SITE_URL = "https://petdex.crafter.run";
+const SITE_URL = "https://agentpets.dev";
 
 type Props = {
   /** Public handle without leading @ — used to build the URL. */

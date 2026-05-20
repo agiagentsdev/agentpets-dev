@@ -47,7 +47,7 @@ for (const key of Object.keys(stripped)) {
 // the webpack dev server which resolves them correctly.
 const child = spawn(
   "bun",
-  ["x", "next", "dev", "--webpack", ...process.argv.slice(2)],
+  ["x", "next", "dev", "--webpack", "-p", "6996", ...process.argv.slice(2)],
   {
     stdio: "inherit",
     env: { ...stripped, ...env, PETDEX_MOCK: "1" },

@@ -231,7 +231,7 @@ export default async function Image({
             textTransform: "uppercase",
           }}
         >
-          petdex.crafter.run/collections/{collection.slug}
+          agentpets.dev/collections/{collection.slug}
         </div>
       </div>
     </div>,

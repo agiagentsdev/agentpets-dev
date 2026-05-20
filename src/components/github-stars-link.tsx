@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { siteConfig } from "@/lib/site-config";
+
 import { GithubIcon } from "@/components/github-icon";
 import { Button } from "@/components/ui/button";
 
-const REPO_API = "https://api.github.com/repos/crafter-station/petdex";
-const CACHE_KEY = "petdex_gh_stars_v1";
+const REPO_API = `https://api.github.com/repos/${siteConfig.repoSlug}`;
+const CACHE_KEY = "agentpets_gh_stars_v1";
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
 type Cache = { count: number; ts: number };
@@ -92,7 +94,7 @@ export function GithubStarsLink({
       render={
         // biome-ignore lint/a11y/useAnchorContent: children are injected by Button via render prop merging
         <a
-          href="https://github.com/crafter-station/petdex"
+          href={siteConfig.repoUrl}
           target="_blank"
           rel="noreferrer"
           aria-label={

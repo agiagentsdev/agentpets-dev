@@ -18,17 +18,17 @@ type CommandLineProps = {
   /**
    * If provided, render a Codex deep-link button next to the copy
    * affordance. The seed prompt is wrapped as
-   * `Install this Petdex pet by running: <command>` so Codex Desktop
+   * `Install this AgentPets pet by running: <command>` so Codex Desktop
    * runs the install without the user needing a terminal.
    */
   codexPrompt?: string;
 };
 
 /**
- * Display says `npx petdex install desktop`, clipboard says
- * `npx petdex@latest install desktop`. Pinning to @latest in the
+ * Display says `npx @agentpets/cli install desktop`, clipboard says
+ * `npx @agentpets/cli@latest install desktop`. Pinning to @latest in the
  * copy keeps every paste resolving to the newest release without
- * cluttering the visual command. Also handles bare `petdex`
+ * cluttering the visual command. Also handles bare `agentpets`
  * (without npx) so a user copying from a globally-installed
  * snippet still gets the latest tag.
  *
@@ -37,15 +37,21 @@ type CommandLineProps = {
  */
 function pinToLatest(command: string): string {
   // Already pinned? Leave it alone.
-  if (command.includes("petdex@")) return command;
-  // npx petdex ... → npx petdex@latest ...
-  const npxMatch = command.match(/^(.*?\bnpx\s+)petdex(\b.*)$/);
-  if (npxMatch) return `${npxMatch[1]}petdex@latest${npxMatch[2]}`;
+  if (command.includes("@agentpets/cli@")) return command;
+  // npx petdex ... -> npx @agentpets/cli@latest ...
+  const scopedNpxMatch = command.match(/^(.*?\bnpx\s+)@agentpets\/cli(\b.*)$/);
+  if (scopedNpxMatch) {
+    return `${scopedNpxMatch[1]}@agentpets/cli@latest${scopedNpxMatch[2]}`;
+  }
+  const legacyNpxMatch = command.match(/^(.*?\bnpx\s+)petdex(\b.*)$/);
+  if (legacyNpxMatch) {
+    return `${legacyNpxMatch[1]}@agentpets/cli@latest${legacyNpxMatch[2]}`;
+  }
   // bare leading `petdex ...` (e.g. when the user has it on PATH)
-  // → `npx petdex@latest ...`. We add npx so the pinned form
+  // -> `npx @agentpets/cli@latest ...`. We add npx so the pinned form
   // works even without a global install.
-  const bareMatch = command.match(/^petdex(\b.*)$/);
-  if (bareMatch) return `npx petdex@latest${bareMatch[1]}`;
+  const bareMatch = command.match(/^agentpets(\b.*)$/);
+  if (bareMatch) return `npx @agentpets/cli@latest${bareMatch[1]}`;
   return command;
 }
 
@@ -143,8 +149,8 @@ export function CommandLine({
   const failed = copyState === "failed";
 
   async function handleCopy() {
-    // Display the natural `npx petdex` form, but copy the
-    // version-pinned `petdex@latest` so every paste resolves to
+    // Display the natural `npx @agentpets/cli` form, but copy the
+    // version-pinned package so every paste resolves to
     // the most recent release. Tracking still uses the visual
     // form so dashboards stay readable.
     const toCopy = pinToLatest(command);
@@ -194,7 +200,7 @@ export function CommandLine({
           </span>
         </button>
         <a
-          href={`codex://new?prompt=${encodeURIComponent(`Install this Petdex pet by running: ${pinToLatest(command)}`)}`}
+          href={`codex://new?prompt=${encodeURIComponent(`Install this AgentPets pet by running: ${pinToLatest(command)}`)}`}
           aria-label={t("openInCodexAria")}
           onClick={() =>
             track("command_line_codex_clicked", {

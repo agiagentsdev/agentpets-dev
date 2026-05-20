@@ -36,7 +36,7 @@ const SLEEP_MS = 110; // ~9 sends/sec, safe under Resend default cap
 
 export async function sendBroadcast(opts: SendOptions): Promise<SendResult> {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM ?? "Petdex <hello@petdex.crafter.run>";
+  const from = process.env.RESEND_FROM ?? "Petdex <hello@agentpets.dev>";
   if (!apiKey) {
     throw new Error("RESEND_API_KEY missing");
   }
@@ -106,7 +106,7 @@ export async function sendBroadcast(opts: SendOptions): Promise<SendResult> {
         html,
         text,
         headers: {
-          "List-Unsubscribe": `<https://petdex.crafter.run/unsubscribe?token=${encodeURIComponent(r.unsubscribeToken)}>`,
+          "List-Unsubscribe": `<https://agentpets.dev/unsubscribe?token=${encodeURIComponent(r.unsubscribeToken)}>`,
           "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
         },
       });

@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { installCommandFor, siteConfig } from "@/lib/site-config";
+
 import { CodexLogo } from "@/components/codex-logo";
 import { GithubIcon } from "@/components/github-icon";
 import {
@@ -40,9 +42,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const SITE_URL = "https://petdex.crafter.run";
-const TAKEDOWN_ISSUE_URL =
-  "https://github.com/crafter-station/petdex/issues/new";
+const TAKEDOWN_ISSUE_URL = `${siteConfig.repoUrl}/issues/new`;
 
 export type PetActionMenuPet = {
   slug: string;
@@ -195,14 +195,14 @@ export function PetActionMenu({ pet, variant = "card", ownerActions }: Props) {
   const [withdrawing, setWithdrawing] = useState(false);
   const [withdrawError, setWithdrawError] = useState<string | null>(null);
   // canDelete is fetched lazily the first time the menu opens. The
-  // public PetdexPet shape deliberately doesn't carry ownerId, so the
+  // public pet shape deliberately doesn't carry ownerId, so the
   // viewer/owner check has to round-trip. /api/pets/[slug]/can-delete
   // is auth-cookie gated and private, no-store — anonymous viewers
   // get false instantly.
   const [canDelete, setCanDelete] = useState<boolean | null>(null);
 
-  const installCmd = `npx petdex install ${pet.slug}`;
-  const pageUrl = `${SITE_URL}/pets/${pet.slug}`;
+  const installCmd = installCommandFor(pet.slug);
+  const pageUrl = `${siteConfig.url}/pets/${pet.slug}`;
 
   // Lazy ownership check. Only fires the first time the menu opens —
   // result is cached in component state. If the user signs in / out
@@ -244,7 +244,7 @@ export function PetActionMenu({ pet, variant = "card", ownerActions }: Props) {
   );
 
   const onShareX = useCallback(() => {
-    const text = `${pet.displayName}: an animated Codex pet on Petdex.\n\n${installCmd}`;
+    const text = `${pet.displayName}: an animated AI coding pet on ${siteConfig.name}.\n\n${installCmd}`;
     const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(pageUrl)}`;
     track("pet_action_share", { slug: pet.slug, target: "x" });
     window.open(url, "_blank", "noopener,noreferrer,width=560,height=540");
@@ -266,8 +266,8 @@ export function PetActionMenu({ pet, variant = "card", ownerActions }: Props) {
           share: (data: ShareData) => Promise<void>;
         }
       ).share({
-        title: `${pet.displayName} | Petdex`,
-        text: `${pet.displayName}: an animated Codex pet`,
+        title: `${pet.displayName} | ${siteConfig.name}`,
+        text: `${pet.displayName}: an animated AI coding pet`,
         url: pageUrl,
       });
       track("pet_action_share", { slug: pet.slug, target: "native" });
@@ -291,7 +291,7 @@ export function PetActionMenu({ pet, variant = "card", ownerActions }: Props) {
     // clicks wiping a pet you actually still want. Same pattern the
     // admin takedown uses.
     const typed = window.prompt(
-      `Type "${pet.slug}" to confirm. This permanently removes ${pet.displayName} from Petdex and frees the slug. The pet's files and like history are deleted.`,
+      `Type "${pet.slug}" to confirm. This permanently removes ${pet.displayName} from ${siteConfig.name} and frees the slug. The pet's files and like history are deleted.`,
     );
     if (typed === null) return;
     if (typed.trim() !== pet.slug) {
@@ -424,7 +424,7 @@ export function PetActionMenu({ pet, variant = "card", ownerActions }: Props) {
               render={
                 // biome-ignore lint/a11y/useAnchorContent: content is provided via DropdownMenuItem children (Base UI render prop pattern)
                 <a
-                  href={`codex://new?prompt=${encodeURIComponent(`Install this Petdex pet by running: ${installCmd}`)}`}
+                  href={`codex://new?prompt=${encodeURIComponent(`Install this ${siteConfig.name} pet by running: ${installCmd}`)}`}
                 />
               }
               className="flex items-center gap-2.5 px-3 py-2 text-sm text-muted-2"
@@ -587,7 +587,7 @@ export function PetActionMenu({ pet, variant = "card", ownerActions }: Props) {
                     <Trash2 className="size-4" />
                   )}
                   <span className="flex-1">
-                    {deleting ? t("removing") : t("removeFromPetdex")}
+                    {deleting ? t("removing") : t("removeFromAgentPets")}
                   </span>
                 </DropdownMenuItem>
               </>

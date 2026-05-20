@@ -76,7 +76,7 @@ export default async function NotFound() {
             {t("terminalEyebrow")}
           </p>
           <CommandLine
-            command="npx petdex install boba"
+            command="npx @agentpets/cli install boba"
             source="not-found"
             className="mt-3"
           />

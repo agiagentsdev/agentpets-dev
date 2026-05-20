@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { DiscordLink } from "@/components/discord-link";
 import { SponsorButton } from "@/components/sponsor-button";
+import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
   const t = useTranslations("footer");
@@ -38,7 +39,7 @@ export function SiteFooter() {
             {t("brand")}
           </Link>
           <a
-            href="https://github.com/crafter-station/petdex"
+            href={siteConfig.repoUrl}
             target="_blank"
             rel="noreferrer"
             className="underline underline-offset-4 transition hover:text-foreground"

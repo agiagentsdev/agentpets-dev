@@ -9,6 +9,7 @@ import { formatDexNumber, getDexEntryMap } from "@/lib/dex";
 import { buildLocaleAlternates } from "@/lib/locale-routing";
 import { resolveStoredOwnerCreditForSlug } from "@/lib/owner-credit";
 import { getPet, getStaticPetSlugs } from "@/lib/pets";
+import { siteConfig } from "@/lib/site-config";
 import { getVariantsFor } from "@/lib/variants";
 
 import { ClaimCTA } from "@/components/claim-cta";
@@ -37,8 +38,6 @@ import { StaticPetSprite } from "@/components/static-pet-sprite";
 import { SubmittedBy } from "@/components/submitted-by";
 
 import { hasLocale } from "@/i18n/config";
-
-const SITE_URL = "https://petdex.crafter.run";
 
 type PageProps = {
   params: Promise<{
@@ -76,9 +75,9 @@ export async function generateMetadata({ params }: PageProps) {
     };
   }
 
-  const title = `${pet.displayName}: Animated Codex pet`;
-  const description = `Install ${pet.displayName} for Codex: ${pet.description} One command, animated pixel art, ${pet.tags.slice(0, 3).join(" + ") || "open source"}.`;
-  const url = `${SITE_URL}/pets/${pet.slug}`;
+  const title = `${pet.displayName}: Animated AI coding pet`;
+  const description = `Install ${pet.displayName} for Codex and AI coding workflows: ${pet.description} One command, animated pixel art, ${pet.tags.slice(0, 3).join(" + ") || "developer companion"}.`;
+  const url = `${siteConfig.url}/pets/${pet.slug}`;
 
   return {
     title,
@@ -89,9 +88,12 @@ export async function generateMetadata({ params }: PageProps) {
     ),
     keywords: [
       pet.displayName,
+      `${pet.displayName} AI coding pet`,
       `${pet.displayName} Codex pet`,
       `${pet.displayName} pixel pet`,
+      "AI coding pet",
       "Codex pet",
+      "developer mascot",
       ...pet.tags.slice(0, 4),
       ...pet.vibes.slice(0, 2),
     ],
@@ -107,7 +109,7 @@ export async function generateMetadata({ params }: PageProps) {
       // generic site image.
       images: [
         {
-          url: `${SITE_URL}/pets/${pet.slug}/opengraph-image`,
+          url: `${siteConfig.url}/pets/${pet.slug}/opengraph-image`,
           width: 1200,
           height: 630,
         },
@@ -117,7 +119,7 @@ export async function generateMetadata({ params }: PageProps) {
       card: "summary_large_image",
       title,
       description,
-      images: [`${SITE_URL}/pets/${pet.slug}/opengraph-image`],
+      images: [`${siteConfig.url}/pets/${pet.slug}/opengraph-image`],
     },
   };
 }
@@ -169,7 +171,7 @@ export default async function PetPage({ params }: PageProps) {
   ]);
   const ownerCredit = ownerCreditResult?.credit ?? null;
 
-  const url = `${SITE_URL}/pets/${pet.slug}`;
+  const url = `${siteConfig.url}/pets/${pet.slug}`;
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -182,7 +184,7 @@ export default async function PetPage({ params }: PageProps) {
       keywords: [...pet.tags, ...pet.vibes].join(", "),
       genre: pet.kind,
       datePublished: pet.importedAt,
-      isPartOf: { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
+      isPartOf: { "@type": "WebSite", "@id": `${siteConfig.url}/#website` },
       ...(ownerCredit
         ? {
             creator: {
@@ -203,14 +205,14 @@ export default async function PetPage({ params }: PageProps) {
         {
           "@type": "ListItem",
           position: 1,
-          name: "Petdex",
-          item: SITE_URL,
+          name: siteConfig.name,
+          item: siteConfig.url,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Pets",
-          item: `${SITE_URL}/#gallery`,
+          item: `${siteConfig.url}/#gallery`,
         },
         {
           "@type": "ListItem",

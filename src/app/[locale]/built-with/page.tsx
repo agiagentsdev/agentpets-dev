@@ -15,11 +15,11 @@ import { SiteHeader } from "@/components/site-header";
 import builtWithData from "@/data/built-with.json";
 import { hasLocale } from "@/i18n/config";
 
-const SITE_URL = "https://petdex.crafter.run";
+const SITE_URL = "https://agentpets.dev";
 const SUBMIT_ISSUE_URL =
-  "https://github.com/crafter-station/petdex/issues/new?template=built-with.yml";
+  "https://github.com/agiagentsdev/agentpets-dev/issues/new?template=built-with.yml";
 const REGISTRY_URL =
-  "https://github.com/crafter-station/petdex/blob/main/src/data/built-with.json";
+  "https://github.com/agiagentsdev/agentpets-dev/blob/main/src/data/built-with.json";
 
 type Project = (typeof builtWithData.projects)[number];
 type CategoryKey = keyof typeof builtWithData.categories;
@@ -173,7 +173,7 @@ export default async function BuiltWithPage({
                 {t("cta.submit")}
               </Link>
               <a
-                href="https://github.com/crafter-station/petdex"
+                href="https://github.com/agiagentsdev/agentpets-dev"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex h-11 items-center gap-2 rounded-full border border-border-base bg-surface px-4 text-sm font-medium text-muted-2 transition hover:border-border-strong"

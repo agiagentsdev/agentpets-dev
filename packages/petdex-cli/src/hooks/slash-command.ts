@@ -24,7 +24,7 @@ import type { Agent } from "./agents.js";
 // persistRunningBinary during hooks install), so the slash command
 // uses that absolute path. This avoids the "petdex: command not
 // found" failure in agents whose shell doesn't have npm globals on
-// PATH (common when users install via `npx petdex init`).
+// PATH (common when users install via `npx @agentpets/cli init`).
 const PETDEX_INVOKE = `node "$HOME/.petdex/bin/petdex.js"`;
 
 const SLASH_COMMAND_BODY = `---

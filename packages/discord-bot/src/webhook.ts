@@ -1,4 +1,4 @@
-// Webhook receiver for petdex.crafter.run events. Validates the HMAC
+// Webhook receiver for agentpets.dev events. Validates the HMAC
 // signature, dispatches by `event` field, and pushes messages into
 // Discord channels via the live gateway client.
 
@@ -9,7 +9,7 @@ import { type Client, EmbedBuilder, type TextChannel } from "discord.js";
 
 const SECRET = process.env.PETDEX_WEBHOOK_SECRET;
 const PETDEX_API_BASE =
-  process.env.PETDEX_API_BASE ?? "https://petdex.crafter.run";
+  process.env.PETDEX_API_BASE ?? "https://agentpets.dev";
 
 type PetApprovedEvent = {
   event: "pet_approved";
@@ -88,7 +88,7 @@ async function postPetApproved(
         value: ev.pet.tags.slice(0, 4).join(" · ") || "—",
         inline: true,
       },
-      { name: "install", value: `\`npx petdex install ${ev.pet.slug}\`` },
+      { name: "install", value: `\`npx @agentpets/cli install ${ev.pet.slug}\`` },
     );
   await channel.send({
     content: `🎉 **${ev.pet.displayName}** just landed on Petdex — submitted by ${mention}.`,

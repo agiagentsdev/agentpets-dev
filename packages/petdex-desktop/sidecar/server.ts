@@ -54,7 +54,7 @@ const MAX_BODY_BYTES = 64 * 1024;
 // or exhaust the cap, so a long streak of web-v*/sidecar-v* releases
 // can't hide the latest desktop tag.
 const RELEASES_API_BASE =
-  "https://api.github.com/repos/crafter-station/petdex/releases";
+  "https://api.github.com/repos/agiagentsdev/agentpets-dev/releases";
 const RELEASES_PAGE_SIZE = 30;
 const RELEASES_MAX_PAGES = 5;
 const DESKTOP_TAG_PREFIX = "desktop-v";
@@ -157,7 +157,7 @@ function persistUpdateToken() {
 const TELEMETRY_FILE = join(homedir(), ".petdex", "telemetry.json");
 const TELEMETRY_ENDPOINT =
   process.env.PETDEX_TELEMETRY_URL ??
-  "https://petdex.crafter.run/api/telemetry/event";
+  "https://agentpets.dev/api/telemetry/event";
 let firstStateEmitted = false;
 
 function readTelemetryConfig(): {

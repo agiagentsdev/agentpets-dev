@@ -5,6 +5,8 @@ import { useState } from "react";
 import { ArrowRight, Star, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { siteConfig } from "@/lib/site-config";
+
 type GithubStarModalProps = {
   onClose: () => void;
 };
@@ -29,7 +31,7 @@ export function GithubStarModal({ onClose }: GithubStarModalProps) {
       }`}
       role="dialog"
       aria-modal="true"
-      aria-label="Petdex GitHub star request"
+      aria-label="AgentPets GitHub star request"
     >
       <button
         type="button"
@@ -82,7 +84,7 @@ export function GithubStarModal({ onClose }: GithubStarModalProps) {
 
           <div className="flex items-center gap-2 pt-1">
             <a
-              href="https://github.com/crafter-station/petdex"
+              href={siteConfig.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => close("cta_star")}

@@ -426,7 +426,7 @@ export function FeedbackWidget() {
 // dropping into the repo doesn't waste their typing. Truncate the body
 // to keep the URL well under the 8KB practical limit GitHub honors.
 function githubIssueUrlFor(kind: string, message: string): string {
-  const repo = "crafter-station/petdex";
+  const repo = "agiagentsdev/agentpets-dev";
   const labelMap: Record<string, string> = {
     bug: "bug",
     suggestion: "enhancement",

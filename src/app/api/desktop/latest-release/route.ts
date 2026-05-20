@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 export const revalidate = 300;
 
 const RELEASES_API_BASE =
-  "https://api.github.com/repos/crafter-station/petdex/releases";
+  "https://api.github.com/repos/agiagentsdev/agentpets-dev/releases";
 const RELEASES_PAGE_SIZE = 30;
 // Cap the search at 5 pages = 150 releases. Anything older is stale,
 // and a runaway loop would burn the GitHub API rate limit if the
@@ -20,7 +20,7 @@ const DESKTOP_TAG_PREFIX = "desktop-v";
 // desktop release yet. The releases page itself isn't ideal (it can
 // show a non-desktop release at the top) but it's strictly better
 // than 5xx-ing the user.
-const RELEASES_PAGE = "https://github.com/crafter-station/petdex/releases";
+const RELEASES_PAGE = "https://github.com/agiagentsdev/agentpets-dev/releases";
 
 // Hard-pin every redirect target to the petdex repo on github.com.
 // The html_url / browser_download_url fields on the response are
@@ -29,7 +29,7 @@ const RELEASES_PAGE = "https://github.com/crafter-station/petdex/releases";
 // and forwarding them blindly turns this endpoint into an open
 // redirect. Anything that fails the prefix check falls back to the
 // static releases page, which is always safe.
-const SAFE_URL_PREFIX = "https://github.com/crafter-station/petdex/";
+const SAFE_URL_PREFIX = "https://github.com/agiagentsdev/agentpets-dev/";
 
 function isTrustedUrl(url: string): boolean {
   return url.startsWith(SAFE_URL_PREFIX);

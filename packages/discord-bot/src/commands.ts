@@ -10,7 +10,7 @@ import {
 } from "discord.js";
 
 const PETDEX_API_BASE =
-  process.env.PETDEX_API_BASE ?? "https://petdex.crafter.run";
+  process.env.PETDEX_API_BASE ?? "https://agentpets.dev";
 
 export const commandData = [
   new SlashCommandBuilder()
@@ -75,7 +75,7 @@ export const handlers: Record<string, Handler> = {
       .setTitle(pet.displayName)
       .setURL(`${PETDEX_API_BASE}/pets/${pet.slug}`)
       .setColor(0x5266ea)
-      .setDescription(`\`npx petdex install ${pet.slug}\``)
+      .setDescription(`\`npx @agentpets/cli install ${pet.slug}\``)
       .setImage(`${PETDEX_API_BASE}/pets/${pet.slug}/opengraph-image`);
     await interaction.reply({ embeds: [embed] });
   },

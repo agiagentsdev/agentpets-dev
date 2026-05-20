@@ -254,7 +254,7 @@ describe("isSameOrigin (CSRF guard)", () => {
     require("@/lib/same-origin") as typeof import("@/lib/same-origin");
 
   function reqWith(headers: Record<string, string>): Request {
-    return new Request("https://petdex.crafter.run/api/x", {
+    return new Request("https://agentpets.dev/api/x", {
       method: "POST",
       headers,
     });
@@ -262,7 +262,7 @@ describe("isSameOrigin (CSRF guard)", () => {
 
   it("allows same-origin browser POST", () => {
     expect(
-      isSameOrigin(reqWith({ origin: "https://petdex.crafter.run" })),
+      isSameOrigin(reqWith({ origin: "https://agentpets.dev" })),
     ).toBe(true);
   });
 

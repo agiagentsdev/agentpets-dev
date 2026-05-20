@@ -6,6 +6,7 @@ import { MousePointerClick, Package, Terminal } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { CommandLine } from "@/components/command-line";
+import { installCommandFor, siteConfig } from "@/lib/site-config";
 
 type InstallCommandProps = {
   slug: string;
@@ -77,10 +78,10 @@ export function InstallCommand({ slug, displayName }: InstallCommandProps) {
   }, []);
 
   const isWin = platform === "windows";
-  const cliCmd = `npx petdex install ${slug}`;
+  const cliCmd = installCommandFor(slug);
   const shellCmd = isWin
-    ? `irm https://petdex.crafter.run/install/${slug}?platform=ps1 | iex`
-    : `curl -sSf https://petdex.crafter.run/install/${slug} | sh`;
+    ? `irm ${siteConfig.url}/install/${slug}?platform=ps1 | iex`
+    : `curl -sSf ${siteConfig.url}/install/${slug} | sh`;
   const command = tab === "cli" ? cliCmd : shellCmd;
   const shellLabel = isWin ? "PowerShell" : "Curl";
 

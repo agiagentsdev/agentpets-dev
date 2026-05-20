@@ -113,7 +113,7 @@ export function ProfileInlineEditor({
                   Edit your profile
                 </h2>
                 <p className="mt-1 text-xs text-muted-3">
-                  Lives at petdex.crafter.run/u/{handle}. Changes go live
+                  Lives at agentpets.dev/u/{handle}. Changes go live
                   instantly. No admin review.
                 </p>
               </div>

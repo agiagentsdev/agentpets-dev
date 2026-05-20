@@ -21,7 +21,7 @@ import { SiteHeader } from "@/components/site-header";
 import { hasLocale } from "@/i18n/config";
 import { buildSetupSteps, parsePendingInstallSlugs } from "./setup-steps";
 
-const SITE_URL = "https://petdex.crafter.run";
+const SITE_URL = "https://agentpets.dev";
 
 // Auto-detected /download/opengraph-image is locale-prefixed
 // (/en/download/opengraph-image) and next-intl rewrites that with a
@@ -177,7 +177,7 @@ export default async function DownloadPage({
 
           <DownloadCTA
             primaryLabel={t("hero.downloadCta")}
-            cliCommand="npx petdex init"
+            cliCommand="npx @agentpets/cli init"
             cliSubtext={t("hero.cliSubtext")}
             comingSoonLabel={t("hero.comingSoon")}
             desktopOnlyLabel={t("hero.desktopOnly")}

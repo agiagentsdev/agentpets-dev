@@ -88,12 +88,12 @@ describe("buildSetupSteps", () => {
     expect(steps.find((s) => s.key === "installPet")).toBeUndefined();
   });
 
-  test("step1 runs `npx petdex init` (the canonical first command)", () => {
+  test("step1 runs `npx @agentpets/cli init` (the canonical first command)", () => {
     const steps = buildSetupSteps(makeT(), null);
     const init = steps.find((s) => s.key === "step1");
     expect(init).toBeDefined();
     if (!init) return;
-    expect(init.command).toBe("npx petdex init");
+    expect(init.command).toBe("npx @agentpets/cli init");
     expect(init.title).toBe("T(setup.step1.title)");
     expect(init.hint).toBe("T(setup.step1.hint)");
   });
@@ -116,7 +116,7 @@ describe("buildSetupSteps", () => {
     expect(installPet.title).toBe("T(setup.installPet.title;slug=foxy)");
     // Command is verbatim — no template, no quoting needed because
     // parsePendingPet already constrains the slug to a-z0-9-.
-    expect(installPet.command).toBe("npx petdex install foxy");
+    expect(installPet.command).toBe("npx @agentpets/cli install foxy");
     expect(installPet.hint).toBe("T(setup.installPet.hint)");
   });
 
@@ -126,7 +126,7 @@ describe("buildSetupSteps", () => {
     expect(installPet).toBeDefined();
     if (!installPet) return;
     expect(installPet.title).toBe("T(setup.installPets.title;count=2)");
-    expect(installPet.command).toBe("npx petdex install foxy boba");
+    expect(installPet.command).toBe("npx @agentpets/cli install foxy boba");
     expect(installPet.hint).toBe("T(setup.installPets.hint)");
   });
 
