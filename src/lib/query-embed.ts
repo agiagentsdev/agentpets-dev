@@ -4,18 +4,14 @@
 
 import { createHash } from "node:crypto";
 
-import { Redis } from "@upstash/redis";
-
 import {
   embedTextValue,
   hasCurrentEmbeddingDimensions,
   PETDEX_EMBEDDING_MODEL,
 } from "@/lib/embeddings";
+import { getUpstashRedis } from "@/lib/upstash";
 
-const redis =
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-    ? Redis.fromEnv()
-    : null;
+const redis = getUpstashRedis();
 
 const TTL_SECONDS = 60 * 60 * 24 * 7; // 7 days
 

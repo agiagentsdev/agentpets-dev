@@ -2,20 +2,17 @@ import { NextResponse } from "next/server";
 
 import { auth } from "@clerk/nextjs/server";
 import { Ratelimit } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
 
 import { db, schema } from "@/lib/db/client";
 import { requireSameOrigin } from "@/lib/same-origin";
+import { getUpstashRedis } from "@/lib/upstash";
 
 export const runtime = "nodejs";
 
 const VALID_KINDS = new Set(["suggestion", "bug", "praise", "other"]);
 const MAX_LEN = 4000;
 
-const redis =
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-    ? Redis.fromEnv()
-    : null;
+const redis = getUpstashRedis();
 
 const ratelimit = redis
   ? new Ratelimit({

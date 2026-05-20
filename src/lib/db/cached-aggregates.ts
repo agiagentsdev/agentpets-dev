@@ -1,12 +1,9 @@
 // Upstash-backed cache for shared hot reads. Reads gracefully degrade to
 // a direct DB call when Redis isn't configured. Writes are best-effort.
 
-import { Redis } from "@upstash/redis";
+import { getUpstashRedis } from "@/lib/upstash";
 
-const redis =
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-    ? Redis.fromEnv()
-    : null;
+const redis = getUpstashRedis();
 
 type CacheOptions = {
   key: string;
