@@ -75,6 +75,15 @@ Then inspect:
 - Header/footer GitHub links point to `agiagentsdev/agentpets-dev`.
 - Main install CTA shows `npx @agentpets/cli install boba`.
 
+## Production Admin + Real Pets
+
+Use `docs/ADMIN_PRODUCTION.md` after the first successful deploy. It covers:
+
+- enabling the private Clerk-gated `/admin` area;
+- keeping VPS `DATABASE_URL` in sync with Postgres;
+- importing real Petdex public-manifest pets into AgentPets with attribution;
+- verifying the catalog and manifest after import.
+
 ## Current Local Dev
 
 The local dev port is `6996`.
