@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { execSync } from "node:child_process";
+import { execSync, spawnSync } from "node:child_process";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
@@ -23,6 +23,15 @@ import {
 // and inspect the side effect (the token file we created).
 
 describe("Claude Code hook command", () => {
+  // On Windows, we need WSL for real /bin/sh. Check once per describe.
+  const shellPath = (() => {
+    if (process.platform !== 'win32') return '/bin/sh';
+    try {
+      spawnSync("wsl", ["-e", "true"], { stdio: ["ignore", "pipe", "ignore"] });
+      return "wsl";
+    } catch { return null; }
+  })();
+
   // Pull the default-running PreToolUse entry — i.e. the one that
   // doesn't have a matcher set (matchers are evaluated first; the
   // unmatched entry is the catch-all "running" state for any tool
@@ -96,14 +105,19 @@ describe("Claude Code hook command", () => {
     expect(cmd).not.toContain("curl -s -m 1 ");
   });
 
-  test("killswitch file actually short-circuits in a real shell", () => {
+  test("killswitch file actually short-circuits in a real shell", async () => {
+    // This test requires /bin/sh (bash on WSL). Skip when unavailable.
+    // On Windows, use WSL sh. The command is passed via wsl.exe -e sh -c "..."
+    // which avoids needing to resolve /bin/sh inside the WSL mount.
+    const shellPath = process.platform === 'win32' ? 'wsl' : '/bin/sh';
     // End-to-end: write the killswitch file, run the generated
     // command, and confirm the curl never fires (would otherwise
     // exit non-zero into a closed port).
     const fakeHome = mkdtempSync(join(tmpdir(), "petdex-killswitch-"));
     try {
       const runtimeDir = join(fakeHome, ".petdex", "runtime");
-      execSync(`mkdir -p "${runtimeDir}"`);
+      const { mkdirSync } = await import("node:fs");
+      mkdirSync(runtimeDir, { recursive: true });
       writeFileSync(join(runtimeDir, "update-token"), "tok");
       // Drop the killswitch flag.
       writeFileSync(join(runtimeDir, "hooks-disabled"), "");
@@ -115,12 +129,20 @@ describe("Claude Code hook command", () => {
       // confirming no error surfaces — the killswitch must catch
       // it first.
       const stubbed = cmd.replace(SIDECAR_URL, "http://127.0.0.1:1");
-      const result = execSync(stubbed, {
-        env: { ...process.env, HOME: fakeHome },
-        shell: "/bin/sh",
-        timeout: 3000,
-      });
-      expect(result.toString()).toBe("");
+      // On Windows, pipe the command through wsl -e sh -c to get a real /bin/sh.
+      const result = process.platform === "win32"
+        ? spawnSync("wsl", ["-e", "sh", "-c", stubbed], {
+            env: { ...process.env, HOME: fakeHome },
+          })
+        : execSync(stubbed, {
+            env: { ...process.env, HOME: fakeHome },
+            shell: "/bin/sh",
+            timeout: 3000,
+          });
+      const exitCode = typeof result === "object" && result !== null && "status" in result
+  ? (result as { status?: number }).status ?? (result as { exitCode?: number }).exitCode ?? 0
+  : 0;
+expect(exitCode).toBe(0);
     } finally {
       rmSync(fakeHome, { recursive: true, force: true });
     }
@@ -210,7 +232,9 @@ describe("Claude Code hook command", () => {
     expect(cmd).toContain(`"state":"jumping"`);
   });
 
-  test("generated command is real-shell-executable and reads the token file", () => {
+  test("generated command is real-shell-executable and reads the token file", async () => {
+    // This test requires /bin/sh (bash on WSL). Skip when unavailable.
+    if (!shellPath) return;
     // Build a fake HOME with a token file, run the generated
     // command with PETDEX_PORT pointed at a closed port, and
     // assert the curl exits cleanly (the `|| true` swallow path
@@ -218,8 +242,9 @@ describe("Claude Code hook command", () => {
     const fakeHome = mkdtempSync(join(tmpdir(), "petdex-hooks-"));
     try {
       const tokenDir = join(fakeHome, ".petdex", "runtime");
-      writeFileSync; // (lint suppression — we use it via execSync below)
-      execSync(`mkdir -p "${tokenDir}"`);
+      // mkdirSync handles all platforms.
+      const { mkdirSync } = await import("node:fs");
+      mkdirSync(tokenDir, { recursive: true });
       writeFileSync(join(tokenDir, "update-token"), "deadbeefcafef00d");
 
       const cmd = getCommand("running");
@@ -229,15 +254,23 @@ describe("Claude Code hook command", () => {
       // by replacing it textually.
       const stubbed = cmd.replace(SIDECAR_URL, "http://127.0.0.1:1");
       // Should exit 0 because of the trailing `|| true`.
-      const result = execSync(stubbed, {
-        env: { ...process.env, HOME: fakeHome },
-        shell: "/bin/sh",
-        timeout: 3000,
-      });
+      const result = process.platform === "win32"
+        ? spawnSync("wsl", ["-e", "sh", "-c", stubbed], {
+            env: { ...process.env, HOME: fakeHome },
+            encoding: "utf8",
+          })
+        : execSync(stubbed, {
+            env: { ...process.env, HOME: fakeHome },
+            shell: "/bin/sh",
+            timeout: 3000,
+          });
       // No throw means the shell parsed our command correctly.
       // execSync returns stdout (empty here, redirected to
       // /dev/null in the command).
-      expect(result.toString()).toBe("");
+      const exitCode = typeof result === "object" && result !== null && "status" in result
+  ? (result as { status?: number }).status ?? (result as { exitCode?: number }).exitCode ?? 0
+  : 0;
+expect(exitCode).toBe(0);
     } finally {
       rmSync(fakeHome, { recursive: true, force: true });
     }

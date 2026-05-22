@@ -49,7 +49,7 @@ describe("waitForPortRelease", () => {
     });
     const elapsed = Date.now() - start;
     expect(free).toBe(true);
-    // Should resolve well before the timeout — give it 1s margin
+    // Should resolve well before the timeout ??? give it 1s margin
     // for slow CI but it should normally be sub-100ms.
     expect(elapsed).toBeLessThan(1_000);
   });
@@ -100,8 +100,8 @@ describe("waitForPortRelease", () => {
 // an unrelated user process after the OS recycled the pid. The defense
 // is: pid file stores `{ pid, lstart }`; before signalling we re-read
 // `ps -p <pid> -o lstart=` and bail if it doesn't match. Tests exercise
-// each branch — running, stale (legacy bare-pid format, dead pid,
-// recycled pid), stopped — without ever signalling another process.
+// each branch ??? running, stale (legacy bare-pid format, dead pid,
+// recycled pid), stopped ??? without ever signalling another process.
 
 function lstartOf(pid: number): string {
   return execFileSync("ps", ["-p", String(pid), "-o", "lstart="], {
@@ -113,7 +113,7 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
   let realHome: string | undefined;
   let tmpHome: string;
   let pidPath: string;
-  // A long-lived child we can target with our own `desktop stop` —
+  // A long-lived child we can target with our own `desktop stop` ???
   // it pretends to be petdex-desktop. Spawned with `node -e
   // 'setInterval(...)'` so it stays alive until we kill it.
   let proxyChild: ReturnType<typeof spawn> | null = null;
@@ -127,7 +127,7 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
     child.unref();
     proxyChild = child;
     if (!child.pid) throw new Error("could not spawn proxy");
-    // ps is racy right after spawn — wait until it shows up.
+    // ps is racy right after spawn ??? wait until it shows up.
     const deadline = Date.now() + 2_000;
     let lstart = "";
     while (Date.now() < deadline) {
@@ -171,8 +171,10 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
   });
 
   test("legacy bare-pid format is treated as stale, never as running", async () => {
+    // ps aux is Unix-only; skip on Windows.
+    if (process.platform === "win32") return;
     // Old version of the CLI wrote just the integer. We must NOT
-    // trust those records — without lstart we can't verify identity,
+    // trust those records ??? without lstart we can't verify identity,
     // and if the OS reused that pid, signalling it would hit an
     // unrelated process.
     writeFileSync(pidPath, String(process.pid), "utf8");
@@ -180,7 +182,7 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
     expect(status.state).toBe("stale");
     if (status.state === "stale") expect(status.pid).toBe(process.pid);
 
-    // stop() must refuse to signal — and must clear the legacy file
+    // stop() must refuse to signal ??? and must clear the legacy file
     // so future runs start clean.
     const stopRes = await stopDesktop({
       sidecarPort: 47891, // unused port in tests
@@ -194,6 +196,7 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
   });
 
   test("matching pid + lstart -> running, stop signals the right process", async () => {
+    if (process.platform === "win32") return;
     const { pid, lstart } = spawnProxy();
     writeFileSync(pidPath, JSON.stringify({ pid, lstart }), "utf8");
 
@@ -209,7 +212,7 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
     if (stopRes.ok) expect(stopRes.pid).toBe(pid);
 
     // Give the proxy a moment to die from SIGTERM, then confirm.
-    // Poll every 50ms so the loop yields back to the event loop —
+    // Poll every 50ms so the loop yields back to the event loop ???
     // a tight while() never lets the proxy's exit notification
     // process and we'd time out even when it's already dead.
     const deadline = Date.now() + 3_000;
@@ -228,8 +231,9 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
   });
 
   test("recycled pid (wrong lstart) -> stale, stop refuses to signal", async () => {
+    if (process.platform === "win32") return;
     // Spawn a proxy and grab its real lstart. Then write a record
-    // with the SAME pid but a different lstart string — this models
+    // with the SAME pid but a different lstart string ??? this models
     // "pid file says 12345 started Mon, but the live 12345 actually
     // started Wed because the OS recycled it for somebody else's
     // process".
@@ -254,7 +258,7 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
     expect(stopRes.ok).toBe(false);
     if (!stopRes.ok) expect(stopRes.reason).toMatch(/not running/);
 
-    // The proxy must STILL be alive — we refused to signal it.
+    // The proxy must STILL be alive ??? we refused to signal it.
     let stillAlive = true;
     try {
       process.kill(pid, 0);
@@ -268,7 +272,8 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
   });
 
   test("dead pid (no live process) -> stale, stop refuses to signal", async () => {
-    // Spawn, capture, kill — leaves a pid file referencing a dead pid.
+    if (process.platform === "win32") return;
+    // Spawn, capture, kill ??? leaves a pid file referencing a dead pid.
     // The next `ps` call will exit non-zero, processStartTime returns
     // null, pidMatchesRecord returns false, status === "stale".
     const { pid, lstart } = spawnProxy();
@@ -280,7 +285,7 @@ describe("desktopStatus / stopDesktop pid-identity", () => {
         // already dead
       }
     }
-    // Wait until ps no longer sees it. Poll with sleep — a tight
+    // Wait until ps no longer sees it. Poll with sleep ??? a tight
     // execFileSync loop blocks the event loop and reaper signals
     // can't be processed.
     const deadline = Date.now() + 3_000;

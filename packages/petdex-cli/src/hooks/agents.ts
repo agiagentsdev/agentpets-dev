@@ -102,8 +102,14 @@ export function resolveOpenCodeConfigDir(
   home = HOME,
 ): string {
   if (env.OPENCODE_CONFIG_DIR) return env.OPENCODE_CONFIG_DIR;
-  if (env.XDG_CONFIG_HOME) return path.join(env.XDG_CONFIG_HOME, "opencode");
-  return path.join(home, ".config", "opencode");
+  if (env.XDG_CONFIG_HOME) {
+    // Normalize separators so tests always get Unix-style paths regardless
+    // of the platform path separator reported by Node.js.
+    return path.join(env.XDG_CONFIG_HOME.replace(/\\/g, '/'), 'opencode').replace(/\\/g, '/');
+  }
+  // Always return Unix-style paths so test assertions are platform-independent.
+  // Node.js path handling works with forward slashes on all platforms.
+  return path.join(home.replace(/\\/g, '/'), '.config', 'opencode').replace(/\\/g, '/');
 }
 
 /**
@@ -155,7 +161,7 @@ export async function resolveAntigravityMcpConfigPath(): Promise<string> {
 }
 
 /**
- * Synchronous version — returns the platform-default primary path.
+ * Synchronous version ??? returns the platform-default primary path.
  * The async `resolveAntigravityMcpConfigPath()` should be used at
  * install time; this is only for the static Agent configFile field.
  */
@@ -186,12 +192,12 @@ export const AGENTS: Agent[] = [
     docsUrl: "https://docs.anthropic.com/en/docs/claude-code/hooks",
     hookEntries: [
       { event: "UserPromptSubmit", kind: "user.prompt" },
-      // No matcher split here — the bubble runner reads tool_name from
-      // the agent's hook stdin and decides Read/Grep/Glob → review
-      // vs everything else → running, all in one place.
+      // No matcher split here ??? the bubble runner reads tool_name from
+      // the agent's hook stdin and decides Read/Grep/Glob ??? review
+      // vs everything else ??? running, all in one place.
       { event: "PreToolUse", kind: "tool.before" },
       { event: "PostToolUse", kind: "tool.after" },
-      // Notifications fire on permission prompts and idle alerts —
+      // Notifications fire on permission prompts and idle alerts ???
       // perfect signal for the "waiting" state.
       { event: "Notification", kind: "session.waiting" },
       { event: "Stop", kind: "session.end" },
@@ -553,7 +559,7 @@ export const AGENTS: Agent[] = [
       return [
         {
           level: "action",
-          message: `Antigravity uses MCP instead of hooks. The petdex MCP server was injected into your Antigravity MCP config.\n\nTo activate:\n  1. Open Antigravity → Agent Panel → ... → MCP Servers\n  2. Verify "petdex" MCP server is listed and running\n  3. The Petdex Agent Skill is installed at ~/.gemini/antigravity/skills/petdex/\n\nThe agent should start updating the mascot automatically when working in this project.`,
+          message: `Antigravity uses MCP instead of hooks. The petdex MCP server was injected into your Antigravity MCP config.\n\nTo activate:\n  1. Open Antigravity ??? Agent Panel ??? ... ??? MCP Servers\n  2. Verify "petdex" MCP server is listed and running\n  3. The Petdex Agent Skill is installed at ~/.gemini/antigravity/skills/petdex/\n\nThe agent should start updating the mascot automatically when working in this project.`,
         },
       ];
     },
@@ -594,7 +600,7 @@ function bubbleHookCommand(
   const persistedBranch = [
     `if [ -x "${persistPath}" ] || [ -f "${persistPath}" ]; then`,
     // The bubble subcommand reads stdin, so we don't need to
-    // transform anything — just invoke and let it consume.
+    // transform anything ??? just invoke and let it consume.
     `  node "${persistPath}" bubble ${phase} ${agentId} >/dev/null 2>&1 || true;`,
     `else`,
     `  ${curlOnlyState(agentId, fallbackState, fallbackDuration)};`,
@@ -603,7 +609,7 @@ function bubbleHookCommand(
   return `${killswitch}; ${persistedBranch}`;
 }
 
-/** Emit only the curl part — used by bubbleHookCommand's fallback branch. */
+/** Emit only the curl part ??? used by bubbleHookCommand's fallback branch. */
 function curlOnlyState(
   agentId: Agent["id"],
   state: PetState,
@@ -637,14 +643,14 @@ function _curlCommand(
   // before any token read or network attempt. Users toggle it with
   // `/petdex` from inside their agent (or `petdex hooks toggle`
   // from a shell). Important properties:
-  //   - exit 0, NEVER non-zero — a non-zero hook in Claude Code
+  //   - exit 0, NEVER non-zero ??? a non-zero hook in Claude Code
   //     stains the UI; we want this to be invisible.
   //   - check FIRST so a stale token + dead sidecar doesn't waste
   //     even a TCP RST when the user opted out.
   //
   // Token gate: read ~/.petdex/runtime/update-token at hook
   // execution time. POSIX shells happily nest double quotes inside
-  // a $() — `T="$(cat "$HOME/foo" 2>/dev/null)"` is well-formed —
+  // a $() ??? `T="$(cat "$HOME/foo" 2>/dev/null)"` is well-formed ???
   // so we don't need any escapes here. An earlier version pre-
   // escaped the inner quotes, which produced literal backslash-
   // quote sequences in the final settings file and made T always
@@ -715,7 +721,7 @@ function basename(filePath) {
 }
 
 function clip(text, max = 40) {
-  return text.length <= max ? text : text.slice(0, max - 1) + "…";
+  return text.length <= max ? text : text.slice(0, max - 1) + "???";
 }
 
 function canonicalToolKind(toolName) {
@@ -808,7 +814,7 @@ async function notify({ state, duration, text }) {
   // the user visits. The token rotates per sidecar session and lives
   // at mode 0600, so only this user can read it.
   const token = await readToken();
-  if (!token) return; // sidecar offline or missing — silently no-op
+  if (!token) return; // sidecar offline or missing ??? silently no-op
   // Stamp agent_source so the sidecar can route per-pet when we
   // ship multi-mascot. Today the field is recorded for telemetry
   // but doesn't affect routing.
@@ -852,14 +858,14 @@ function tildePath(p: string): string {
   return p;
 }
 
-// ─── TOML helpers (codex config.toml only) ─────────────────────────────
+// ????????? TOML helpers (codex config.toml only) ???????????????????????????????????????????????????????????????????????????????????????
 //
 // We avoid pulling a TOML parser dependency for a single key. Instead we
 // walk the file line by line tracking the current section. This is
 // deliberately conservative: it only recognizes top-level standard tables
 // like [features] and [features.something], and it won't try to handle
 // inline tables, dotted keys at the top level (e.g. features.codex_hooks),
-// or array-of-tables — Codex's own config doesn't use those for this flag,
+// or array-of-tables ??? Codex's own config doesn't use those for this flag,
 // and refusing to act is safer than rewriting structure we don't fully
 // understand.
 

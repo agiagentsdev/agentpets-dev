@@ -1,0 +1,49 @@
+name: petdex-cli release
+
+on:
+  push:
+    tags:
+      - "cli-v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to release (e.g. cli-v0.4.0)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: build and publish CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout petdex
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install CLI dependencies
+        run: npm install --prefix packages/petdex-cli --include=dev
+
+      - name: Build CLI
+        run: npm run build --prefix packages/petdex-cli
+
+      - name: Pack CLI tarball
+        run: |
+          mkdir -p release
+          tarball="$(npm pack ./packages/petdex-cli --silent)"
+          mv "$tarball" release/agentpets-cli.tgz
+          ls -lh release/agentpets-cli.tgz
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag || github.ref_name }}
+          files: release/agentpets-cli.tgz
+          generate_release_notes: true

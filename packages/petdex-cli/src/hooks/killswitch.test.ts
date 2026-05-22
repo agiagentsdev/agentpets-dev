@@ -73,6 +73,12 @@ describe("killswitch", () => {
     const { statSync } = await import("node:fs");
     const stat = statSync(killswitchPath());
     // Mask out the file-type bits, leave only the perm bits.
-    expect((stat.mode & 0o777).toString(8)).toBe("600");
+    // On Windows the filesystem does not track Unix permissions; chmod
+    // writes are silently ignored and stat.mode returns 0666 regardless.
+    // The actual mode=0o600 write still succeeds -- the file is created --
+    // so this test is meaningful on Unix CI while being a no-op on Windows.
+    if (process.platform !== "win32") {
+      expect((stat.mode & 0o777).toString(8)).toBe("600");
+    }
   });
 });
