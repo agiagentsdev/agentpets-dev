@@ -21,9 +21,9 @@
 //   2. Verify clean working tree on packages/petdex-desktop/ paths
 //   3. Build sidecar bundle (server.ts -> server.js, CJS minified)
 //   4. Run scripts/build-release.sh (zig build + sign + notarize for arm64+x64)
-//   5. Verify all 5 artifacts exist
+//   5. Verify all desktop artifacts exist and pack the CLI tarball
 //   6. Create annotated tag desktop-vX.Y.Z, push to origin
-//   7. gh release create with notes + 5 assets
+//   7. gh release create with notes + release assets
 //   8. Verify /api/desktop/latest-release picks it up (probe production)
 //
 // All steps are idempotent on retry except the tag push and gh release create.
@@ -41,6 +41,7 @@ const REPO_ROOT = path.resolve(
 );
 const DESKTOP_DIR = path.join(REPO_ROOT, "packages", "petdex-desktop");
 const SIDECAR_DIR = path.join(DESKTOP_DIR, "sidecar");
+const CLI_DIR = path.join(REPO_ROOT, "packages", "petdex-cli");
 
 type Args = {
   version: string;
@@ -253,6 +254,21 @@ function buildSidecar(): void {
   }
 }
 
+function buildCliTarball(): string {
+  step("Build CLI tarball (agentpets-cli.tgz)");
+  run("npm", ["install", "--prefix", CLI_DIR, "--include=dev"]);
+  run("npm", ["run", "build", "--prefix", CLI_DIR]);
+  const packed = run("npm", ["pack", CLI_DIR, "--silent"], { cwd: REPO_ROOT });
+  const tarball = packed.stdout.trim().split(/\r?\n/).pop();
+  if (!tarball) die("npm pack did not print a tarball path");
+  const src = path.join(REPO_ROOT, tarball);
+  const dest = path.join(DESKTOP_DIR, "agentpets-cli.tgz");
+  run("mv", [src, dest]);
+  if (!existsSync(dest)) die("CLI tarball was not created");
+  console.log("  agentpets-cli.tgz");
+  return dest;
+}
+
 function preflightDetachDmgVolumes(): void {
   // hdiutil create fails with "Resource busy" when there's already a
   // /Volumes/Petdex* mount (from a previous build that didn't unmount
@@ -327,6 +343,10 @@ function verifyArtifacts(): string[] {
   run("cp", [sidecarSrc, sidecarUploadName]);
   present.push(sidecarUploadName);
   console.log(`  ✓ petdex-desktop-sidecar.js (copied from sidecar/server.js)`);
+  const cliTarball = path.join(DESKTOP_DIR, "agentpets-cli.tgz");
+  if (!existsSync(cliTarball)) die(`CLI tarball missing at ${cliTarball}`);
+  present.push(cliTarball);
+  console.log("  agentpets-cli.tgz");
   return present;
 }
 
@@ -411,6 +431,7 @@ async function main() {
   const env = resolveAppleEnv();
 
   buildSidecar();
+  buildCliTarball();
   if (!args.skipBuild) {
     preflightDetachDmgVolumes();
     buildRelease(env);

@@ -46,6 +46,8 @@ type Args = {
   url: string;
   limit?: number;
   offset: number;
+  all: boolean;
+  batchSize: number;
   featured: number;
   ownerId: string;
   ownerEmail?: string;
@@ -57,6 +59,8 @@ function parseArgs(): Args {
   const out: Args = {
     url: DEFAULT_MANIFEST_URL,
     offset: 0,
+    all: false,
+    batchSize: 100,
     featured: 0,
     ownerId:
       firstEnv("AGENTPETS_IMPORT_OWNER_ID", "PETDEX_IMPORT_OWNER_ID") ||
@@ -78,6 +82,7 @@ function parseArgs(): Args {
     };
 
     if (arg === "--url") out.url = next();
+    else if (arg === "--all") out.all = true;
     else if (arg === "--limit") out.limit = parsePositiveInt(next(), "limit");
     else if (arg.startsWith("--limit=")) {
       out.limit = parsePositiveInt(arg.slice("--limit=".length), "limit");
@@ -85,6 +90,13 @@ function parseArgs(): Args {
       out.offset = parseNonNegativeInt(next(), "offset");
     } else if (arg.startsWith("--offset=")) {
       out.offset = parseNonNegativeInt(arg.slice("--offset=".length), "offset");
+    } else if (arg === "--batch-size") {
+      out.batchSize = parsePositiveInt(next(), "batch-size");
+    } else if (arg.startsWith("--batch-size=")) {
+      out.batchSize = parsePositiveInt(
+        arg.slice("--batch-size=".length),
+        "batch-size",
+      );
     } else if (arg === "--featured") {
       out.featured = parseNonNegativeInt(next(), "featured");
     } else if (arg.startsWith("--featured=")) {
@@ -137,7 +149,9 @@ Options:
   --apply             Write to the database. Omit for dry-run.
   --url <url>         Manifest URL. Default: ${DEFAULT_MANIFEST_URL}
   --limit <n>         Import at most n pets.
+  --all               Import every pet after --offset. Overrides --limit.
   --offset <n>        Skip first n manifest pets.
+  --batch-size <n>    Print progress every n pets. Default: 100.
   --featured <n>      Mark first n imported/updated pets as featured.
   --owner-id <id>     Owner id for imported discover rows.
   --owner-email <e>   Optional owner email.
@@ -250,26 +264,43 @@ async function ensureImporterProfile(ownerId: string): Promise<void> {
     .onConflictDoNothing();
 }
 
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
+function safeSourceSlug(pet: ManifestPet): string {
+  try {
+    return normalizeSlug(pet.slug);
+  } catch {
+    return pet.slug || "(missing-slug)";
+  }
+}
+
 async function main() {
   const args = parseArgs();
   const allPets = await fetchManifest(args.url);
-  const selected = allPets.slice(
-    args.offset,
-    args.limit ? args.offset + args.limit : undefined,
-  );
+  const selected = args.all
+    ? allPets.slice(args.offset)
+    : allPets.slice(
+        args.offset,
+        args.limit ? args.offset + args.limit : undefined,
+      );
 
   let inserted = 0;
   let updated = 0;
   let skipped = 0;
   const importedSlugs: string[] = [];
+  const errors: Array<{ index: number; slug: string; reason: string }> = [];
 
   console.log("\nPetdex manifest import");
   console.log("----------------------");
   console.log(`manifest : ${args.url}`);
   console.log(`remote   : ${allPets.length} pets`);
   console.log(`selected : ${selected.length} pets`);
+  console.log(`all      : ${args.all ? "yes" : "no"}`);
   console.log(`owner    : ${args.ownerId}`);
   console.log(`featured : first ${args.featured}`);
+  console.log(`batch    : ${args.batchSize}`);
   console.log(`replace  : ${args.replace ? "yes" : "no"}`);
   console.log(`mode     : ${args.apply ? "APPLY" : "dry-run"}`);
 
@@ -284,76 +315,91 @@ async function main() {
 
   for (let i = 0; i < selected.length; i++) {
     const source = selected[i];
-    const slug = normalizeSlug(source.slug);
-    const displayName = cleanDisplayName(source.displayName);
-    const kind = normalizeKind(source.kind);
-    const submittedBy = cleanAuthor(source.submittedBy);
-    const spritesheetUrl = normalizeUrl(
-      source.spritesheetUrl,
-      "spritesheetUrl",
-    );
-    const petJsonUrl = normalizeUrl(source.petJsonUrl, "petJsonUrl");
-    const zipUrl = normalizeUrl(source.zipUrl ?? source.petJsonUrl, "zipUrl");
-    const featured = i < args.featured;
-    const now = new Date();
+    try {
+      const slug = normalizeSlug(source.slug);
+      const displayName = cleanDisplayName(source.displayName);
+      const kind = normalizeKind(source.kind);
+      const submittedBy = cleanAuthor(source.submittedBy);
+      const spritesheetUrl = normalizeUrl(
+        source.spritesheetUrl,
+        "spritesheetUrl",
+      );
+      const petJsonUrl = normalizeUrl(source.petJsonUrl, "petJsonUrl");
+      const zipUrl = normalizeUrl(source.zipUrl ?? source.petJsonUrl, "zipUrl");
+      const featured = i < args.featured;
+      const now = new Date();
 
-    const existing = args.apply
-      ? await db.query.submittedPets.findFirst({
-          where: eq(schema.submittedPets.slug, slug),
-        })
-      : null;
+      const existing = args.apply
+        ? await db.query.submittedPets.findFirst({
+            where: eq(schema.submittedPets.slug, slug),
+          })
+        : null;
 
-    if (existing && !args.replace) {
-      skipped++;
-      continue;
-    }
+      if (existing && !args.replace) {
+        skipped++;
+        continue;
+      }
 
-    importedSlugs.push(slug);
-    const values = {
-      displayName,
-      description: descriptionFor({ displayName, kind, submittedBy }),
-      spritesheetUrl,
-      petJsonUrl,
-      zipUrl,
-      kind,
-      vibes: ["developer-friendly"],
-      tags: tagsFor(kind, submittedBy),
-      featured,
-      status: "approved" as const,
-      source: "discover" as const,
-      ownerId: args.ownerId,
-      ownerEmail: args.ownerEmail ?? null,
-      creditName: submittedBy ?? "Petdex community",
-      creditUrl: creditUrlFor(slug),
-      creditImage: null,
-      approvedAt: now,
-    };
+      importedSlugs.push(slug);
+      const values = {
+        displayName,
+        description: descriptionFor({ displayName, kind, submittedBy }),
+        spritesheetUrl,
+        petJsonUrl,
+        zipUrl,
+        kind,
+        vibes: ["developer-friendly"],
+        tags: tagsFor(kind, submittedBy),
+        featured,
+        status: "approved" as const,
+        source: "discover" as const,
+        ownerId: args.ownerId,
+        ownerEmail: args.ownerEmail ?? null,
+        creditName: submittedBy ?? "Petdex community",
+        creditUrl: creditUrlFor(slug),
+        creditImage: null,
+        approvedAt: now,
+      };
 
-    if (!args.apply) {
-      inserted++;
-      continue;
-    }
+      if (!args.apply) {
+        inserted++;
+        continue;
+      }
 
-    if (existing) {
+      if (existing) {
+        await db
+          .update(schema.submittedPets)
+          .set(values)
+          .where(eq(schema.submittedPets.slug, slug));
+        updated++;
+      } else {
+        await db.insert(schema.submittedPets).values({
+          id: importIdForSlug(slug),
+          slug,
+          ...values,
+          createdAt: new Date(now.getTime() - i * 1000),
+        });
+        inserted++;
+      }
+
       await db
-        .update(schema.submittedPets)
-        .set(values)
-        .where(eq(schema.submittedPets.slug, slug));
-      updated++;
-    } else {
-      await db.insert(schema.submittedPets).values({
-        id: importIdForSlug(slug),
-        slug,
-        ...values,
-        createdAt: new Date(now.getTime() - i * 1000),
+        .insert(schema.petMetrics)
+        .values({ petSlug: slug })
+        .onConflictDoNothing();
+    } catch (error) {
+      skipped++;
+      errors.push({
+        index: args.offset + i,
+        slug: safeSourceSlug(source),
+        reason: errorMessage(error),
       });
-      inserted++;
     }
 
-    await db
-      .insert(schema.petMetrics)
-      .values({ petSlug: slug })
-      .onConflictDoNothing();
+    if ((i + 1) % args.batchSize === 0 || i === selected.length - 1) {
+      console.log(
+        `progress: ${i + 1}/${selected.length} | inserted=${inserted} updated=${updated} skipped=${skipped} errors=${errors.length}`,
+      );
+    }
   }
 
   if (args.apply && importedSlugs.length > 0) {
@@ -387,6 +433,16 @@ async function main() {
   console.log(`inserted: ${inserted}`);
   console.log(`updated : ${updated}`);
   console.log(`skipped : ${skipped}`);
+  console.log(`errors  : ${errors.length}`);
+  if (errors.length > 0) {
+    console.log("\nImport errors:");
+    for (const err of errors.slice(0, 20)) {
+      console.log(`- #${err.index} ${err.slug}: ${err.reason}`);
+    }
+    if (errors.length > 20) {
+      console.log(`...and ${errors.length - 20} more`);
+    }
+  }
   if (!args.apply) {
     console.log("\nDry run only. Re-run with --apply to write to production.");
   } else if (latest.length > 0) {

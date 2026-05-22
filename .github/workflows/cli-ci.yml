@@ -73,7 +73,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          tarball="$(find . -maxdepth 1 -name 'petdex-*.tgz' -print -quit)"
+          tarball="$(find . -maxdepth 1 -name '*agentpets-cli*.tgz' -print -quit)"
           test -n "$tarball"
           npx -y --package "$tarball" petdex --version
 
@@ -81,7 +81,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          $tarball = Get-ChildItem -Path . -Filter "petdex-*.tgz" | Select-Object -First 1
+          $tarball = Get-ChildItem -Path . -Filter "*agentpets-cli*.tgz" | Select-Object -First 1
           if (-not $tarball) {
             throw "petdex package tarball was not created"
           }

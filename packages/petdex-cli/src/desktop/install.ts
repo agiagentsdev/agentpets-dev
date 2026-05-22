@@ -94,7 +94,7 @@ export function desktopBinPath(): string {
   // Returning the first that exists lets `petdex up`, `petdex update`,
   // and `petdex desktop start` find the binary regardless of how the
   // user installed it. Net effect: DMG-only installs no longer need a
-  // follow-up `npx @agentpets/cli install desktop` to make the CLI commands
+  // follow-up `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install desktop` to make the CLI commands
   // work.
   const ext = nodePlatform() === "win32" ? ".exe" : "";
   if (nodePlatform() === "darwin") {

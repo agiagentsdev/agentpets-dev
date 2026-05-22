@@ -88,6 +88,12 @@ export async function getSitemapEntries(
         priority: 0.75,
       },
       {
+        pathname: "/developers",
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 0.8,
+      },
+      {
         pathname: "/pet-builder",
         lastModified: now,
         changeFrequency: "weekly",
@@ -147,12 +153,14 @@ export async function getSitemapEntries(
         changeFrequency: "yearly",
         priority: 0.2,
       },
-      ...Object.keys(seoAgentPages).map((pathname) => ({
-        pathname: `/${pathname}`,
-        lastModified: now,
-        changeFrequency: "weekly" as const,
-        priority: pathname === "ai-coding-pets" ? 0.85 : 0.75,
-      })),
+      ...Object.keys(seoAgentPages)
+        .filter((pathname) => pathname !== "pet-builder")
+        .map((pathname) => ({
+          pathname: `/${pathname}`,
+          lastModified: now,
+          changeFrequency: "weekly" as const,
+          priority: pathname === "ai-coding-pets" ? 0.85 : 0.75,
+        })),
     ];
   }
 

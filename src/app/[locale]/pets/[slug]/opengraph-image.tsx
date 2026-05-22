@@ -251,7 +251,7 @@ export default async function Image({
           }}
         >
           <span style={{ color: "#7a8dff", marginRight: 16 }}>$</span>
-          npx @agentpets/cli install {pet.slug}
+          npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install {pet.slug}
         </div>
         <div
           style={{

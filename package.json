@@ -15,6 +15,7 @@
     "format": "biome check --write .",
     "generate-assets": "bun scripts/generate-assets.ts",
     "import:petdex": "bun --conditions react-server scripts/import-petdex-manifest.ts",
+    "import:petdex:all": "bun --conditions react-server scripts/import-petdex-manifest.ts --all --batch-size 100",
     "prod:check": "bun scripts/production.ts check",
     "prod:deploy": "bun scripts/production.ts deploy",
     "auto-tag": "bun scripts/auto-tag.ts",

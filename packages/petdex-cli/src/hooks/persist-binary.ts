@@ -4,13 +4,13 @@
  * with an absolute path.
  *
  * Why: hooks fire from the agent's shell, which doesn't necessarily
- * have `petdex` in PATH. Users who run `npx @agentpets/cli init` have a
+ * have `petdex` in PATH. Users who run `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init` have a
  * temporary binary that won't exist when the agent actually fires
  * the hook. We solve this by copying the running binary to a known
  * location at install time.
  *
  * The persisted copy is a SNAPSHOT: it doesn't auto-update. Users who
- * upgrade petdex (npx @agentpets/cli@latest) just re-run `petdex init` (or
+ * upgrade petdex (npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz) just re-run `petdex init` (or
  * `petdex hooks install`) to refresh the snapshot. Worse outcomes —
  * silently using a stale snapshot on `petdex update` — would surprise
  * us when behavior diverges between the running CLI and the hooks.

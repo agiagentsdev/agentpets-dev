@@ -94,6 +94,39 @@ jobs:
           name: petdex-desktop-sidecar
           path: packages/petdex-desktop/sidecar/server.js
 
+  cli:
+    name: build CLI tarball
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout petdex
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install CLI dependencies
+        run: npm install --prefix packages/petdex-cli --include=dev
+
+      - name: Build CLI
+        run: npm run build --prefix packages/petdex-cli
+
+      - name: Pack CLI tarball
+        run: |
+          mkdir -p release
+          tarball="$(npm pack ./packages/petdex-cli --silent)"
+          mv "$tarball" release/agentpets-cli.tgz
+          ls -lh release/agentpets-cli.tgz
+
+      - name: Upload CLI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentpets-cli
+          path: release/agentpets-cli.tgz
+
   build-windows:
     name: build win32-x64
     runs-on: windows-2022
@@ -141,7 +174,7 @@ jobs:
 
   release:
     name: publish github release
-    needs: [build, build-windows, sidecar]
+    needs: [build, build-windows, sidecar, cli]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -163,6 +196,9 @@ jobs:
           # Rename sidecar so the asset name is unambiguous in GH Releases.
           if [ -f artifacts/petdex-desktop-sidecar/server.js ]; then
             cp artifacts/petdex-desktop-sidecar/server.js release/petdex-desktop-sidecar.js
+          fi
+          if [ -f artifacts/agentpets-cli/agentpets-cli.tgz ]; then
+            cp artifacts/agentpets-cli/agentpets-cli.tgz release/agentpets-cli.tgz
           fi
           ls -lh release/
 

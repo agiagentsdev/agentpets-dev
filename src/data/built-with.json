@@ -78,7 +78,7 @@
       "addedAt": "2026-05-10",
       "evidence": {
         "type": "readme",
-        "quote": "Uses the PetDex public gallery for Codex-compatible animated pets. npx @agentpets/cli install [pet]",
+        "quote": "Uses the PetDex public gallery for Codex-compatible animated pets. npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install [pet]",
         "url": "https://github.com/felipetodev/petdex-dock#readme"
       },
       "screenshot": "/built-with/petdex-dock.png"
@@ -89,7 +89,7 @@
       "tagline": "Desktop pet for Claude Code with 8-level progression, AI speech bubbles, and time-aware greetings. Pulls from 1,569+ Petdex pets.",
       "category": "desktop-companion",
       "repo": "devnomad-byte/petdex-cc",
-      "homepage": "https://www.npmjs.com/package/@agentpets/cli-cc",
+      "homepage": "https://github.com/agiagentsdev/agentpets-dev-cc",
       "stars": 1,
       "language": "TypeScript",
       "platforms": ["macOS", "Windows", "Linux"],
@@ -266,7 +266,7 @@
     {
       "slug": "nom",
       "name": "nom",
-      "tagline": "Shimeji-style desktop pet that eats the AI tokens you burn through Claude Code and Codex CLI. Auto-loads any pet installed via npx @agentpets/cli install.",
+      "tagline": "Shimeji-style desktop pet that eats the AI tokens you burn through Claude Code and Codex CLI. Auto-loads any pet installed via npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install.",
       "category": "desktop-companion",
       "repo": "dylan-labs/nom-pet",
       "homepage": "https://github.com/dylan-labs/nom-pet/releases/latest",
@@ -276,7 +276,7 @@
       "addedAt": "2026-05-11",
       "evidence": {
         "type": "readme",
-        "quote": "Skin support: install any petdex pack with npx @agentpets/cli install <slug>, then right-click 选择宠物 to switch on the fly.",
+        "quote": "Skin support: install any petdex pack with npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install <slug>, then right-click 选择宠物 to switch on the fly.",
         "url": "https://github.com/dylan-labs/nom-pet#use-a-custom-pet-skin"
       },
       "screenshot": "/built-with/nom.png"

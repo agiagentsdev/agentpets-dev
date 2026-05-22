@@ -24,6 +24,7 @@ import { type PetWithMetrics, rowToPet } from "@/lib/pets";
 import { MAX_PINNED_PETS } from "@/lib/profiles";
 
 import { JsonLd } from "@/components/json-ld";
+import { CreatorShareKit } from "@/components/creator-share-kit";
 import type { Submission } from "@/components/my-pets-view";
 import { PetCard } from "@/components/pet-gallery";
 import { PetSprite } from "@/components/pet-sprite";
@@ -249,6 +250,8 @@ export default async function UserProfilePage({ params }: PageProps) {
     .map((slug) => pets.find((p) => p.slug === slug))
     .filter((p): p is PetWithMetrics => Boolean(p));
   const restPets = pets.filter((p) => !featuredSet.has(p.slug));
+  const sharePet = featuredPets[0] ?? pets[0] ?? null;
+  const profileUrl = `${SITE_URL}/u/${publicHandle}`;
 
   // Aggregate stats.
   const totalLikes = pets.reduce((acc, p) => acc + p.metrics.likeCount, 0);
@@ -488,6 +491,48 @@ export default async function UserProfilePage({ params }: PageProps) {
             </div>
           )
         ) : null}
+
+        <CreatorShareKit
+          title="Share this creator profile"
+          subtitle={
+            sharePet
+              ? "Use this creator's featured pet as a README badge or embed, and link readers back to the full creator profile."
+              : "Share this public creator profile while the first approved pet is being prepared."
+          }
+          pageUrl={profileUrl}
+          xText={`Check out ${displayName ?? `@${publicHandle}`}'s AI coding pets on AgentPets`}
+          snippets={
+            sharePet
+              ? [
+                  {
+                    id: "badge",
+                    label: "Add badge to README",
+                    description: "Markdown badge for the creator's featured pet.",
+                    value: `[![AgentPets: ${sharePet.displayName}](${SITE_URL}/api/v1/badge/${sharePet.slug})](${profileUrl})`,
+                  },
+                  {
+                    id: "embed",
+                    label: "Embed this pet",
+                    description: "Iframe card that can sit inside a launch page or docs sidebar.",
+                    value: `<iframe src="${SITE_URL}/embed/${sharePet.slug}" width="320" height="420" title="${sharePet.displayName} on AgentPets" loading="lazy"></iframe>`,
+                  },
+                  {
+                    id: "link",
+                    label: "Creator profile link",
+                    description: "Canonical profile URL for social bios and community posts.",
+                    value: profileUrl,
+                  },
+                ]
+              : [
+                  {
+                    id: "link",
+                    label: "Creator profile link",
+                    description: "Canonical profile URL for social bios and community posts.",
+                    value: profileUrl,
+                  },
+                ]
+          }
+        />
 
         <ProfileTabs
           isOwner={isOwner}

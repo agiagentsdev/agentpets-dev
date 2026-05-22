@@ -88,6 +88,20 @@ export DATABASE_URL="$(grep '^DATABASE_URL=' /root/agentpets-secrets/database.en
   --featured 24
 ```
 
+Preview all remote pets after an offset:
+
+```bash
+cd /home/agentpets
+export DATABASE_URL="$(grep '^DATABASE_URL=' /root/agentpets-secrets/database.env | cut -d= -f2-)"
+
+/root/.bun/bin/bun --conditions react-server \
+  scripts/import-petdex-manifest.ts \
+  --all \
+  --offset 0 \
+  --batch-size 100 \
+  --featured 24
+```
+
 Apply it:
 
 ```bash
@@ -97,6 +111,22 @@ export DATABASE_URL="$(grep '^DATABASE_URL=' /root/agentpets-secrets/database.en
 /root/.bun/bin/bun --conditions react-server \
   scripts/import-petdex-manifest.ts \
   --limit 200 \
+  --featured 24 \
+  --apply
+
+sudo systemctl restart agentpets
+```
+
+Apply all available manifest pets:
+
+```bash
+cd /home/agentpets
+export DATABASE_URL="$(grep '^DATABASE_URL=' /root/agentpets-secrets/database.env | cut -d= -f2-)"
+
+/root/.bun/bin/bun --conditions react-server \
+  scripts/import-petdex-manifest.ts \
+  --all \
+  --batch-size 100 \
   --featured 24 \
   --apply
 

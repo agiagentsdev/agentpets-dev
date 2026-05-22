@@ -5,12 +5,12 @@ Install, list, submit, and manage animated developer pets from your terminal.
 - Gallery: <https://agentpets.dev>
 - Docs: <https://agentpets.dev/docs>
 - Repo: <https://github.com/agiagentsdev/agentpets-dev>
-- Package: <https://www.npmjs.com/package/@agentpets/cli>
+- Package: <https://github.com/agiagentsdev/agentpets-dev>
 
 ## Quick Start
 
 ```sh
-npx @agentpets/cli install boba
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba
 ```
 
 After installing a pet, activate it in Codex:
@@ -20,32 +20,32 @@ After installing a pet, activate it in Codex:
 ## Commands
 
 ```sh
-npx @agentpets/cli list
-npx @agentpets/cli install boba
-npx @agentpets/cli submit ~/.codex/pets/boba
-npx @agentpets/cli login
-npx @agentpets/cli whoami
-npx @agentpets/cli logout
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz list
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ~/.codex/pets/boba
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz whoami
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz logout
 ```
 
 Global install is also supported:
 
 ```sh
-npm install -g petdex
+npm install -g https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz
 agentpets install boba
 ```
 
 The package still exposes a `petdex` binary alias for compatibility with older
-snippets, but new docs should use `agentpets` or `npx @agentpets/cli`.
+snippets, but new docs should use `agentpets` or `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz`.
 
 ## Submit Flow
 
 The CLI accepts:
 
 ```sh
-npx @agentpets/cli submit ~/.codex/pets/boba
-npx @agentpets/cli submit ~/Downloads/boba.zip
-npx @agentpets/cli submit ~/.codex/pets
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ~/.codex/pets/boba
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ~/Downloads/boba.zip
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ~/.codex/pets
 ```
 
 Per pet, the CLI:
@@ -64,7 +64,7 @@ For non-production testing:
 PETDEX_URL=https://your-host.example.com \
 CLERK_ISSUER=https://clerk.your-host.example.com \
 CLERK_OAUTH_CLIENT_ID=public_client_id \
-npx @agentpets/cli login
+npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login
 ```
 
 The environment variable names retain `PETDEX_` where the inherited runtime
@@ -75,7 +75,7 @@ already uses them. Public product copy should say AgentPets.
 | Symptom | Fix |
 | --- | --- |
 | Node engine error | Use Node.js 20+. |
-| Not signed in | Run `npx @agentpets/cli login`. |
+| Not signed in | Run `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login`. |
 | Presign expired | Retry the command; URLs are short-lived by design. |
 | Permission denied in `~/.codex/pets` | Fix ownership of `~/.codex` or choose a user-writable pets directory. |
 

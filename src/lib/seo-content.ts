@@ -233,7 +233,7 @@ export const guides = [
       {
         title: "Run the install command",
         body: "The CLI downloads the pet package and places the assets into the local pet directories used by AgentPets-compatible workflows.",
-        command: "npx @agentpets/cli install boba",
+        command: "npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba",
       },
       {
         title: "Share the pet page",

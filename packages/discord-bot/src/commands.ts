@@ -75,7 +75,7 @@ export const handlers: Record<string, Handler> = {
       .setTitle(pet.displayName)
       .setURL(`${PETDEX_API_BASE}/pets/${pet.slug}`)
       .setColor(0x5266ea)
-      .setDescription(`\`npx @agentpets/cli install ${pet.slug}\``)
+      .setDescription(`\`npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install ${pet.slug}\``)
       .setImage(`${PETDEX_API_BASE}/pets/${pet.slug}/opengraph-image`);
     await interaction.reply({ embeds: [embed] });
   },

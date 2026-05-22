@@ -22,8 +22,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "bun build ./bin/petdex.ts --target=node --outfile=./dist/petdex.js --minify --external @napi-rs/keyring",
-    "postbuild": "node -e 'const f=\"./dist/petdex.js\";const fs=require(\"fs\");const c=fs.readFileSync(f,\"utf8\");if(!c.startsWith(\"#!\")){fs.writeFileSync(f,\"#!/usr/bin/env node\\n\"+c)}fs.chmodSync(f,0o755)'",
+    "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -37,6 +36,7 @@
   "devDependencies": {
     "@types/node": "^25.6.0",
     "bun-types": "^1.3.13",
+    "esbuild": "^0.27.2",
     "typescript": "^6.0.3"
   }
 }

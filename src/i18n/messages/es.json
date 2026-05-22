@@ -100,6 +100,7 @@
   },
   "footer": {
     "rightsNotice": "Las mascotas son fan art enviado por usuarios. AgentPets no reclama derechos sobre ninguna propiedad intelectual subyacente.",
+    "developers": "Developers",
     "topics": "Topics",
     "guides": "Guides",
     "topCreators": "Creadores",
@@ -115,7 +116,7 @@
     "eyebrow": "El índice de mascotas de Codex",
     "title": "AgentPets",
     "tagline": "La galería pública de compañeros animados para <brand>Codex</brand>. Explora más de {totalPets} compañeros open source, previsualiza sus estados e instala uno con un solo comando.",
-    "heroCommand": "npx @agentpets/cli install boba",
+    "heroCommand": "npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba",
     "downloadCta": "Descargar AgentPets Desktop",
     "submitCta": "Enviar",
     "browseGallery": "Ver galería",
@@ -1132,7 +1133,7 @@
         },
         "install": {
           "q": "¿Cómo instalo una mascota?",
-          "a": "Desde la galería o cualquier página de detalle, copia el comando de instalación (se ve como `npx @agentpets/cli install boba`) y pégalo en tu terminal. El CLI trae la mascota desde R2, la deja en ~/.codex/pets/<slug>/ y le dice a Codex que la use. Funciona en macOS, Linux y Windows (vía PowerShell)."
+          "a": "Desde la galería o cualquier página de detalle, copia el comando de instalación (se ve como `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba`) y pégalo en tu terminal. El CLI trae la mascota desde R2, la deja en ~/.codex/pets/<slug>/ y le dice a Codex que la use. Funciona en macOS, Linux y Windows (vía PowerShell)."
         },
         "origin": {
           "q": "¿De dónde salen las mascotas?",
@@ -1140,7 +1141,7 @@
         },
         "submit": {
           "q": "¿Puedo enviar mi propia mascota?",
-          "a": "Sí. Inicia sesión con el CLI de agentpets (`npx @agentpets/cli login`) y corre `npx @agentpets/cli submit ./my-pet/`: el CLI sube los assets a R2 y deja el envío en cola para revisión. También puedes enviarla desde la web en /submit. Solo necesitas un archivo pet.json y un spritesheet de 9 estados."
+          "a": "Sí. Inicia sesión con el CLI de agentpets (`npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login`) y corre `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ./my-pet/`: el CLI sube los assets a R2 y deja el envío en cola para revisión. También puedes enviarla desde la web en /submit. Solo necesitas un archivo pet.json y un spritesheet de 9 estados."
         },
         "openSource": {
           "q": "¿Las mascotas de AgentPets son gratis y open source?",
@@ -2022,10 +2023,10 @@
         "title": "Distribute your pets",
         "intro": "Once you have hatched a pet inside Codex, sharing it takes one command. Here's the full lifecycle:",
         "create": "<strong>Create.</strong> In Codex Desktop, install the <strong>Hatch Pet</strong> skill and run <code>/pet</code>. Codex generates the spritesheet and pet.json into <code>~/.codex/pets/{petName}/</code>. Full tutorial at <create>/create</create>.",
-        "signIn": "<strong>Sign in.</strong> <code>npx @agentpets/cli login</code> if you have not.",
-        "submit": "<strong>Submit.</strong> <code>npx @agentpets/cli submit ~/.codex/pets/{petName}</code>. Or bulk all at once with the parent dir.",
+        "signIn": "<strong>Sign in.</strong> <code>npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login</code> if you have not.",
+        "submit": "<strong>Submit.</strong> <code>npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ~/.codex/pets/{petName}</code>. Or bulk all at once with the parent dir.",
         "review": "<strong>Wait for review.</strong> Submissions land as “pending” in the admin queue. You will receive a Resend email when approved or rejected (if rejected, the reason is included).",
-        "install": "<strong>Anyone can install your pet.</strong> Once approved, share <code>npx @agentpets/cli install {yourPetName}</code> with anyone. They get your pet in their <code>~/.codex/pets/</code> instantly.",
+        "install": "<strong>Anyone can install your pet.</strong> Once approved, share <code>npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install {yourPetName}</code> with anyone. They get your pet in their <code>~/.codex/pets/</code> instantly.",
         "callout": "Pets are user-submitted fan art. AgentPets does not claim rights to underlying IP. If you are a rights holder requesting a takedown, see <takedown>/legal/takedown</takedown>."
       },
       "validation": {

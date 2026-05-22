@@ -103,6 +103,7 @@
   },
   "footer": {
     "rightsNotice": "宠物是用户提交的同人作品。AgentPets 不主张拥有任何底层知识产权。",
+    "developers": "Developers",
     "topics": "Topics",
     "guides": "Guides",
     "topCreators": "创作者",
@@ -120,7 +121,7 @@
     "title": "AgentPets",
     "tagline": "<brand>Codex</brand> 的公共动画宠物图库。浏览 {totalPets}+ 个开源伙伴，预览它们的动画状态，并用一条命令安装。",
     "tagline__fixme": true,
-    "heroCommand": "npx @agentpets/cli install boba",
+    "heroCommand": "npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba",
     "downloadCta": "下载 AgentPets Desktop",
     "submitCta": "提交",
     "submitCta__fixme": true,
@@ -1288,7 +1289,7 @@
         "install": {
           "q": "我该怎么安装宠物？",
           "q__fixme": true,
-          "a": "在图库页或任意宠物详情页复制安装命令（形如 `npx @agentpets/cli install boba`），然后粘贴到终端。CLI 会从 R2 拉取宠物，放到 ~/.codex/pets/<宠物名>/ 下，并告诉 Codex 使用它。支持 macOS、Linux 和 Windows（通过 PowerShell）。",
+          "a": "在图库页或任意宠物详情页复制安装命令（形如 `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba`），然后粘贴到终端。CLI 会从 R2 拉取宠物，放到 ~/.codex/pets/<宠物名>/ 下，并告诉 Codex 使用它。支持 macOS、Linux 和 Windows（通过 PowerShell）。",
           "a__fixme": true
         },
         "origin": {
@@ -1300,7 +1301,7 @@
         "submit": {
           "q": "我可以提交自己的宠物吗？",
           "q__fixme": true,
-          "a": "可以。先用 agentpets CLI 登录（`npx @agentpets/cli login`），再运行 `npx @agentpets/cli submit ./my-pet/`，CLI 会把资源上传到 R2，并把提交加入审核队列。你也可以通过网站的 /submit 页面提交。你只需要一个 pet.json 文件和一张 9 状态精灵图集 Spritesheet。",
+          "a": "可以。先用 agentpets CLI 登录（`npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login`），再运行 `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ./my-pet/`，CLI 会把资源上传到 R2，并把提交加入审核队列。你也可以通过网站的 /submit 页面提交。你只需要一个 pet.json 文件和一张 9 状态精灵图集 Spritesheet。",
           "a__fixme": true
         },
         "openSource": {
@@ -2261,10 +2262,10 @@
         "title": "分享上架你的宠物",
         "intro": "在 Codex 里孵化好宠物之后，一条命令就能分享出去。完整流程如下：",
         "create": "<strong>创建。</strong>在 Codex Desktop 里安装 <strong>Hatch Pet</strong> skill，然后运行 <code>/pet</code>。Codex 会把精灵图集 Spritesheet 和 pet.json 生成到 <code>~/.codex/pets/{petName}/</code>。完整教程见 <create>/create</create>。",
-        "signIn": "<strong>登录。</strong>如果还没登录，先运行 <code>npx @agentpets/cli login</code>。",
-        "submit": "<strong>提交。</strong><code>npx @agentpets/cli submit ~/.codex/pets/{petName}</code>。也可以直接提交父目录来批量提交。",
+        "signIn": "<strong>登录。</strong>如果还没登录，先运行 <code>npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login</code>。",
+        "submit": "<strong>提交。</strong><code>npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ~/.codex/pets/{petName}</code>。也可以直接提交父目录来批量提交。",
         "review": "<strong>等待审核。</strong>提交会进入 admin queue，状态为“pending”。通过或拒绝后你会收到 Resend 邮件；如果被拒绝，邮件里会包含原因。",
-        "install": "<strong>任何人都能安装你的宠物。</strong>审核通过后，把 <code>npx @agentpets/cli install {yourPetName}</code> 分享给别人即可。对方会立刻把宠物安装到自己的 <code>~/.codex/pets/</code>。",
+        "install": "<strong>任何人都能安装你的宠物。</strong>审核通过后，把 <code>npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install {yourPetName}</code> 分享给别人即可。对方会立刻把宠物安装到自己的 <code>~/.codex/pets/</code>。",
         "callout": "AgentPets 上的宠物由用户提交，可能包含同人创作内容。AgentPets 不会对任何第三方底层知识产权主张权属、所有权或相关权益。如果你是权利人或授权代表，希望申请下架，请查看 <takedown>/legal/takedown</takedown>。"
       },
       "validation": {

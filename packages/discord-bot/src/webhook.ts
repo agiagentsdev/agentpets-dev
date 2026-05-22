@@ -88,7 +88,7 @@ async function postPetApproved(
         value: ev.pet.tags.slice(0, 4).join(" · ") || "—",
         inline: true,
       },
-      { name: "install", value: `\`npx @agentpets/cli install ${ev.pet.slug}\`` },
+      { name: "install", value: `\`npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install ${ev.pet.slug}\`` },
     );
   await channel.send({
     content: `🎉 **${ev.pet.displayName}** just landed on Petdex — submitted by ${mention}.`,

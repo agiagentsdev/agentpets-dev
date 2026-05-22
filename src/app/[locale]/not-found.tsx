@@ -76,7 +76,7 @@ export default async function NotFound() {
             {t("terminalEyebrow")}
           </p>
           <CommandLine
-            command="npx @agentpets/cli install boba"
+            command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba"
             source="not-found"
             className="mt-3"
           />

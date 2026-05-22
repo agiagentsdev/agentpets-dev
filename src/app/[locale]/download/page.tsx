@@ -177,7 +177,7 @@ export default async function DownloadPage({
 
           <DownloadCTA
             primaryLabel={t("hero.downloadCta")}
-            cliCommand="npx @agentpets/cli init"
+            cliCommand="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init"
             cliSubtext={t("hero.cliSubtext")}
             comingSoonLabel={t("hero.comingSoon")}
             desktopOnlyLabel={t("hero.desktopOnly")}

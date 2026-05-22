@@ -112,7 +112,7 @@ const stateRateLimiter: RateLimiter = (() => {
 // Without this any website the user visits could fire
 // `fetch("http://127.0.0.1:7777/update", { method: "POST",
 // mode: "no-cors" })` and trigger a silent npm install of arbitrary
-// `@agentpets/cli@latest` code — CORS only blocks the response, never the
+// the GitHub-hosted AgentPets CLI code — CORS only blocks the response, never the
 // request itself.
 //
 // The token lives in memory now and only gets persisted to disk
@@ -609,7 +609,12 @@ function spawnUpdate(): void {
   }
   const child = spawn(
     npxPath,
-    ["-y", "@agentpets/cli@latest", "update", "--silent"],
+    [
+      "-y",
+      "https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz",
+      "update",
+      "--silent",
+    ],
     {
       detached: true,
       stdio: ["ignore", "pipe", "pipe"],
@@ -630,7 +635,7 @@ function spawnUpdate(): void {
       status: "error",
       message:
         err.code === "ENOENT"
-          ? "Could not run npx. Install Node.js or run: npx @agentpets/cli@latest update from a terminal."
+          ? "Could not run npx. Install Node.js or run: npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz update from a terminal."
           : `Update spawn failed: ${err.message}`,
       checkedAt: Date.now(),
     });

@@ -147,7 +147,7 @@ export default async function Image({
           }}
         >
           <span style={{ color: "#a8a29e" }}>$</span>
-          <span>npx @agentpets/cli install</span>
+          <span>npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install</span>
         </div>
       </div>
 

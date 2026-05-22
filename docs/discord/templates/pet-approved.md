@@ -12,7 +12,7 @@ bot replaces the placeholders with values from the webhook payload.
 Submitted by <@{{discordUserId}}> · catch them all at
 https://agentpets.dev/pets/{{slug}}
 
-`npx @agentpets/cli install {{slug}}`
+`npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install {{slug}}`
 
 ---
 
@@ -26,7 +26,7 @@ https://agentpets.dev/pets/{{slug}}
 - fields:
   - name: kind, value: {{kind}}, inline: true
   - name: tags, value: first 4 tags joined by " · ", inline: true
-  - name: install, value: `npx @agentpets/cli install {{slug}}`, inline: false
+  - name: install, value: `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install {{slug}}`, inline: false
 
 If the submitter doesn't have a linked Discord account yet, drop the
 `<@…>` mention and use their AgentPets display name as plain text instead.

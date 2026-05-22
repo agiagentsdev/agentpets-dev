@@ -127,7 +127,7 @@ Then inspect:
 - `robots.txt` contains `Host: https://agentpets.dev`.
 - `sitemap.xml` contains only `agentpets.dev` URLs.
 - Header/footer GitHub links point to `agiagentsdev/agentpets-dev`.
-- Main install CTA shows `npx @agentpets/cli install boba`.
+- Main install CTA shows `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba`.
 
 ## Production Admin + Real Pets
 

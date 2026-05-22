@@ -13,7 +13,7 @@ import { SiteHeader } from "@/components/site-header";
 
 import { hasLocale } from "@/i18n/config";
 
-const NPM_URL = "https://www.npmjs.com/package/@agentpets/cli";
+const NPM_URL = "https://github.com/agiagentsdev/agentpets-dev";
 const REPO_URL = "https://github.com/agiagentsdev/agentpets-dev";
 const SKILL_URL = `${REPO_URL}/blob/main/.claude/skills/agentpets/SKILL.md`;
 const DOC_SECTIONS = [
@@ -144,7 +144,7 @@ export default async function DocsPage({
           <Section id="quick-start" title={t("sections.quickStart.title")}>
             <p>{t("sections.quickStart.intro")}</p>
             <CommandLine
-              command="npx @agentpets/cli install boba"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba"
               source="docs-quickstart"
               className="w-full max-w-xl"
             />
@@ -181,7 +181,7 @@ export default async function DocsPage({
               })}
             </p>
             <CommandLine
-              command="npx @agentpets/cli install boba"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba"
               source="docs-install-npx"
               className="w-full max-w-xl"
             />
@@ -191,7 +191,7 @@ export default async function DocsPage({
             </h3>
             <p>{t("sections.install.powerBody")}</p>
             <CommandLine
-              command="npm install -g petdex"
+              command="npm install -g https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz"
               source="docs-install-global"
               className="w-full max-w-xl"
             />
@@ -207,7 +207,7 @@ export default async function DocsPage({
           <Section id="authenticate" title={t("sections.authenticate.title")}>
             <p>{t("sections.authenticate.intro")}</p>
             <CommandLine
-              command="npx @agentpets/cli login"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login"
               source="docs-auth-login"
               className="w-full max-w-xl"
             />
@@ -216,12 +216,12 @@ export default async function DocsPage({
             </p>
             <p>{t("sections.authenticate.otherCommands")}</p>
             <CommandLine
-              command="npx @agentpets/cli whoami"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz whoami"
               source="docs-auth-whoami"
               className="w-full max-w-xl"
             />
             <CommandLine
-              command="npx @agentpets/cli logout"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz logout"
               source="docs-auth-logout"
               className="w-full max-w-xl"
             />
@@ -235,7 +235,7 @@ export default async function DocsPage({
             </h3>
             <p>{t("sections.commands.listBody")}</p>
             <CommandLine
-              command="npx @agentpets/cli list"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz list"
               source="docs-cmd-list"
               className="w-full max-w-xl"
             />
@@ -245,7 +245,7 @@ export default async function DocsPage({
             </h3>
             <p>{t.rich("sections.commands.installBody", rich)}</p>
             <CommandLine
-              command="npx @agentpets/cli install kebo"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install kebo"
               source="docs-cmd-install"
               className="w-full max-w-xl"
             />
@@ -287,7 +287,7 @@ export default async function DocsPage({
             </h3>
             <p>{t.rich("sections.desktop.installDesktopBody", rich)}</p>
             <CommandLine
-              command="npx @agentpets/cli install desktop"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install desktop"
               source="docs-desktop-install"
               className="w-full max-w-xl"
             />
@@ -315,7 +315,7 @@ export default async function DocsPage({
             </ul>
             <p>{t.rich("sections.desktop.hookEvents", rich)}</p>
             <CommandLine
-              command="npx @agentpets/cli hooks install"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz hooks install"
               source="docs-desktop-hooks"
               className="w-full max-w-xl"
             />
@@ -325,7 +325,7 @@ export default async function DocsPage({
             </h3>
             <p>{t.rich("sections.desktop.desktopManageBody", rich)}</p>
             <CommandLine
-              command="npx @agentpets/cli desktop start"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz desktop start"
               source="docs-desktop-start"
               className="w-full max-w-xl"
             />
@@ -335,7 +335,7 @@ export default async function DocsPage({
             </h3>
             <p>{t.rich("sections.desktop.toggleBody", rich)}</p>
             <CommandLine
-              command="npx @agentpets/cli toggle"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz toggle"
               source="docs-desktop-toggle"
               className="w-full max-w-xl"
             />
@@ -358,7 +358,7 @@ export default async function DocsPage({
             </h3>
             <p>{t.rich("sections.desktop.hooksKillBody", rich)}</p>
             <CommandLine
-              command="npx @agentpets/cli hooks toggle"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz hooks toggle"
               source="docs-hooks-toggle"
               className="w-full max-w-xl"
             />
@@ -368,7 +368,7 @@ export default async function DocsPage({
             </h3>
             <p>{t.rich("sections.desktop.uninstallBody", rich)}</p>
             <CommandLine
-              command="npx @agentpets/cli hooks uninstall"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz hooks uninstall"
               source="docs-hooks-uninstall"
               className="w-full max-w-xl"
             />
@@ -378,7 +378,7 @@ export default async function DocsPage({
             </h3>
             <p>{t.rich("sections.desktop.doctorBody", rich)}</p>
             <CommandLine
-              command="npx @agentpets/cli doctor"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz doctor"
               source="docs-doctor"
               className="w-full max-w-xl"
             />
@@ -388,7 +388,7 @@ export default async function DocsPage({
             </h3>
             <p>{t.rich("sections.desktop.updateBody", rich)}</p>
             <CommandLine
-              command="npx @agentpets/cli update"
+              command="npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz update"
               source="docs-desktop-update"
               className="w-full max-w-xl"
             />

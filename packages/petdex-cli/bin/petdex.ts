@@ -249,14 +249,14 @@ function printHelp() {
       `    ${pc.bold("telemetry")} [on|off|status]  Manage anonymous usage telemetry`,
       "",
       `  ${c("Examples")}`,
-      `    ${dim("$")} npx @agentpets/cli init                            ${dim("# first-run setup")}`,
-      `    ${dim("$")} npx @agentpets/cli login`,
-      `    ${dim("$")} npx @agentpets/cli submit ~/.codex/pets/boba       ${dim("# single folder")}`,
-      `    ${dim("$")} npx @agentpets/cli install boba                    ${dim("# install a pet by slug")}`,
-      `    ${dim("$")} npx @agentpets/cli install boba doraemon mochi     ${dim("# install several at once")}`,
-      `    ${dim("$")} npx @agentpets/cli toggle                          ${dim("# wake or sleep the mascot")}`,
-      `    ${dim("$")} npx @agentpets/cli doctor                          ${dim("# diagnose install + agents")}`,
-      `    ${dim("$")} npx @agentpets/cli update                          ${dim("# pull the latest release")}`,
+      `    ${dim("$")} npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init                            ${dim("# first-run setup")}`,
+      `    ${dim("$")} npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login`,
+      `    ${dim("$")} npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ~/.codex/pets/boba       ${dim("# single folder")}`,
+      `    ${dim("$")} npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba                    ${dim("# install a pet by slug")}`,
+      `    ${dim("$")} npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba doraemon mochi     ${dim("# install several at once")}`,
+      `    ${dim("$")} npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz toggle                          ${dim("# wake or sleep the mascot")}`,
+      `    ${dim("$")} npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz doctor                          ${dim("# diagnose install + agents")}`,
+      `    ${dim("$")} npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz update                          ${dim("# pull the latest release")}`,
       "",
       `  ${dim("Gallery & docs:")} ${pc.underline(PETDEX_URL)}`,
       "",
@@ -276,7 +276,7 @@ async function cmdLogin() {
     const label = firstString(user.email, user.username, user.sub) ?? "unknown";
     s.stop(`${pc.green("✓ ")}Signed in as ${pc.cyan(label)}`);
     p.outro(
-      `Try ${pc.cyan("npx @agentpets/cli submit ~/.codex/pets")} to share your pets.`,
+      `Try ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit ~/.codex/pets")} to share your pets.`,
     );
   } catch (err) {
     s.stop(pc.red("× login failed"));
@@ -308,7 +308,7 @@ async function cmdWhoami() {
       "Signed in",
     );
   } catch {
-    p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
+    p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
     process.exit(1);
   }
 }
@@ -396,7 +396,7 @@ async function cmdInstall(args: string[]) {
   const first = args[0];
   if (!first) {
     p.cancel(
-      `Usage: ${pc.cyan("npx @agentpets/cli install <slug> [slug...]")} or ${pc.cyan("npx @agentpets/cli install desktop")}`,
+      `Usage: ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install <slug> [slug...]")} or ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install desktop")}`,
     );
     process.exit(1);
   }
@@ -444,7 +444,7 @@ async function cmdInstall(args: string[]) {
   if (found.length === 0) {
     s.stop(pc.red("none found"));
     p.cancel(
-      `No pets matched. Try ${pc.cyan("npx @agentpets/cli list")} to see what's available.`,
+      `No pets matched. Try ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz list")} to see what's available.`,
     );
     process.exit(1);
   }
@@ -550,7 +550,7 @@ async function cmdList() {
   });
   console.log(lines.join("\n"));
   console.log(
-    `\n${pc.dim("Install with")} ${pc.cyan("npx @agentpets/cli install <slug>")}\n${pc.dim("Browse:")} ${pc.underline(PETDEX_URL)}`,
+    `\n${pc.dim("Install with")} ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install <slug>")}\n${pc.dim("Browse:")} ${pc.underline(PETDEX_URL)}`,
   );
 }
 
@@ -558,7 +558,7 @@ async function cmdSubmit(args: string[]) {
   const positionals = args.filter((a) => !a.startsWith("--"));
   const target = positionals[0];
   if (!target) {
-    p.cancel(`Usage: ${pc.cyan("npx @agentpets/cli submit <path> [--force]")}`);
+    p.cancel(`Usage: ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit <path> [--force]")}`);
     process.exit(1);
   }
 
@@ -568,12 +568,12 @@ async function cmdSubmit(args: string[]) {
   try {
     const t = await auth.getAccessToken();
     if (!t) {
-      p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
+      p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
       process.exit(1);
     }
     token = t;
   } catch {
-    p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
+    p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
     process.exit(1);
   }
   let profileUrl = PETDEX_URL;
@@ -725,7 +725,7 @@ async function cmdEdit(args: string[]): Promise<void> {
   const slug = positionals[0];
   if (!slug) {
     p.cancel(
-      `Usage: ${pc.cyan('npx @agentpets/cli edit <slug> [--desc "..."] [--displayName "..."] [--sprite ./new.webp] [--meta ./pet.json] [--zip ./pet.zip]')}`,
+      `Usage: ${pc.cyan('npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz edit <slug> [--desc "..."] [--displayName "..."] [--sprite ./new.webp] [--meta ./pet.json] [--zip ./pet.zip]')}`,
     );
     process.exit(1);
   }
@@ -735,12 +735,12 @@ async function cmdEdit(args: string[]): Promise<void> {
   try {
     const t = await auth.getAccessToken();
     if (!t) {
-      p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
+      p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
       process.exit(1);
     }
     token = t;
   } catch {
-    p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
+    p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
     process.exit(1);
   }
 
@@ -1202,7 +1202,7 @@ function translateLoginError(message: string): string {
     return [
       "Clerk OAuth rejected this CLI build (invalid_client).",
       "This usually means your installed CLI is out of date. Try:",
-      "  npm cache clean --force && npx -y @agentpets/cli@latest login",
+      "  npm cache clean --force && npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login",
       "If it still fails: https://github.com/agiagentsdev/agentpets-dev/issues",
     ].join("\n");
   }
@@ -1213,7 +1213,7 @@ function translateLoginError(message: string): string {
     return [
       "OAuth callback was rejected by Clerk (invalid_grant).",
       "Common cause: you closed the browser before approving, or the local",
-      "callback server timed out. Try `npx @agentpets/cli login` again.",
+      "callback server timed out. Try `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login` again.",
     ].join("\n");
   }
   if (m.includes("redirect_uri") && m.includes("pre-registered")) {
@@ -1403,7 +1403,7 @@ async function cmdHooks(args: string[]) {
       console.log("");
       if (totalRefreshed === 0) {
         console.log(
-          `${pc.dim("No wired agents found. Run")} ${pc.cyan("npx @agentpets/cli init")} ${pc.dim("first.")}`,
+          `${pc.dim("No wired agents found. Run")} ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init")} ${pc.dim("first.")}`,
         );
       } else {
         console.log(
@@ -1593,7 +1593,7 @@ async function cmdUp(): Promise<void> {
     console.log(`${pc.yellow("!")} ${result.reason}`);
     console.log(
       pc.dim(
-        `  Install the binary first: ${pc.cyan("npx @agentpets/cli install desktop")}`,
+        `  Install the binary first: ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install desktop")}`,
       ),
     );
   }

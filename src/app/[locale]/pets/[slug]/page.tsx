@@ -19,6 +19,7 @@ import type { PetdexPet } from "@/lib/types";
 import { getVariantsFor } from "@/lib/variants";
 
 import { ClaimCTA } from "@/components/claim-cta";
+import { CreatorShareKit } from "@/components/creator-share-kit";
 import { InstallCommand } from "@/components/install-command";
 import { InstallCommandCompact } from "@/components/install-command-compact";
 import { JsonLd } from "@/components/json-ld";
@@ -246,6 +247,9 @@ export default async function PetPage({ params }: PageProps) {
   ];
 
   const shuffleHref = `/api/pets/random?exclude=${encodeURIComponent(pet.slug)}`;
+  const petPageUrl = `${siteConfig.url}/pets/${pet.slug}`;
+  const badgeMarkdown = `[![AgentPets: ${pet.displayName}](${siteConfig.url}/api/v1/badge/${pet.slug})](${petPageUrl})`;
+  const embedHtml = `<iframe src="${siteConfig.url}/embed/${pet.slug}" width="320" height="420" title="${pet.displayName} on AgentPets" loading="lazy"></iframe>`;
 
   return (
     <main className="min-h-dvh bg-background">
@@ -483,6 +487,33 @@ export default async function PetPage({ params }: PageProps) {
         <div id="install" className="scroll-mt-24">
           <InstallCommand slug={pet.slug} displayName={pet.displayName} />
         </div>
+
+        <CreatorShareKit
+          title={`Share ${pet.displayName}`}
+          subtitle="Add this pet to a README, embed it on a launch page, or share the install page with developers."
+          pageUrl={petPageUrl}
+          xText={`I found ${pet.displayName}, an AI coding pet on AgentPets. Install it with npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install ${pet.slug}`}
+          snippets={[
+            {
+              id: "badge",
+              label: "Add badge to README",
+              description: "Markdown badge that links back to the canonical pet page.",
+              value: badgeMarkdown,
+            },
+            {
+              id: "embed",
+              label: "Embed this pet",
+              description: "Iframe card for docs, launch pages, and creator profiles.",
+              value: embedHtml,
+            },
+            {
+              id: "link",
+              label: "Public API payload",
+              description: "JSON endpoint for custom widgets and bots.",
+              value: `${siteConfig.url}/api/v1/pets/${pet.slug}`,
+            },
+          ]}
+        />
 
         {/* Owner credit + claim CTA. Compact row that wraps cleanly on
             small screens. */}

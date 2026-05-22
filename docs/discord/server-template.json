@@ -173,7 +173,7 @@
         {
           "name": "cli-feedback",
           "type": "text",
-          "topic": "Bug reports + feature requests for `npx @agentpets/cli`."
+          "topic": "Bug reports + feature requests for `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz`."
         },
         {
           "name": "design",

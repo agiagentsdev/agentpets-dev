@@ -514,10 +514,10 @@ const html_tail =
     \\      try { rep = JSON.parse(rep); } catch (_) { rep = null; }
     \\    }
     \\    const note = (r && r.issue_note) || installReportNote(rep);
-    \\    const cmd = 'npx @agentpets/cli@latest install ' + installHint;
+    \\    const cmd = 'npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install ' + installHint;
     \\    try { window.zero.invoke('petdex.set_mascot_state', { state: 'failed' }); } catch (_) {}
     \\    let text;
-    \\    if (err === 'cli_not_persisted') text = 'Run: npx @agentpets/cli@latest init';
+    \\    if (err === 'cli_not_persisted') text = 'Run: npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init';
     \\    else if (err === 'no_home') text = 'No HOME env. Run: ' + cmd;
     \\    else if (err === 'node_not_found') text = 'Node.js not found. Install from nodejs.org or via brew install node.';
     \\    else if (err === 'abnormal_exit') text = note + 'petdex install crashed. Try terminal: ' + cmd;
@@ -655,7 +655,7 @@ const html_tail =
     \\  // Layer 1 autoupdate: read update.json (written by the sidecar's
     \\  // periodic GH releases poll) and render a notification card. A
     \\  // single click POSTs to the sidecar's /update endpoint, which
-    \\  // spawns `npx @agentpets/cli update --silent`. We keep this DOM lightweight
+    \\  // spawns `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz update --silent`. We keep this DOM lightweight
     \\  // — a fixed-position card, no animations.
     \\  let lastUpdateStatus = '';
     \\  let updateCard = null;
@@ -688,17 +688,17 @@ const html_tail =
     \\        if (r && r.ok === false) {
     \\          const code = (r.error || '');
     \\          if (code.indexOf('curl_exit_') === 0 || code === 'no_token' || code === 'token_read' || code === 'empty_token') {
-    \\            renderUpdate({ status: 'error', message: 'Sidecar offline. Run: npx @agentpets/cli@latest update' });
+    \\            renderUpdate({ status: 'error', message: 'Sidecar offline. Run: npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz update' });
     \\            return;
     \\          }
-    \\          renderUpdate({ status: 'error', message: 'Update failed (' + code + '). Run: npx @agentpets/cli@latest update' });
+    \\          renderUpdate({ status: 'error', message: 'Update failed (' + code + '). Run: npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz update' });
     \\          return;
     \\        }
     \\        renderUpdate({ status: 'running', message: 'Updating...' });
     \\      } catch (e) {
     \\        // Bridge crash. The invoke layer itself blew up — fall back
     \\        // to terminal instructions rather than a silent dead button.
-    \\        renderUpdate({ status: 'error', message: 'Update failed. Run: npx @agentpets/cli@latest update' });
+    \\        renderUpdate({ status: 'error', message: 'Update failed. Run: npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz update' });
     \\      }
     \\    });
     \\    document.body.appendChild(updateCard);
@@ -738,7 +738,7 @@ const html_tail =
     \\  setInterval(pollUpdate, 5000);
     \\  pollUpdate();
     \\  // Init banner. Shown when ~/.petdex/bin/petdex.js does not exist,
-    \\  // meaning the user launched the .app without running `npx @agentpets/cli init`.
+    \\  // meaning the user launched the .app without running `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init`.
     \\  // Takes priority over the update banner (new users need init first).
     \\  let initCard = null;
     \\  let initToastTimer = null;
@@ -749,7 +749,7 @@ const html_tail =
     \\    initCard.style.cssText = 'position:fixed;left:6px;right:6px;bottom:6px;padding:6px 9px;border-radius:9px;background:#ffffff;color:#111;font:600 11px system-ui,-apple-system,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,0.30);display:none;cursor:pointer;pointer-events:auto;line-height:1.25;text-align:center;';
     \\    initCard.addEventListener('click', async () => {
     \\      try {
-    \\        await navigator.clipboard.writeText('npx @agentpets/cli init');
+    \\        await navigator.clipboard.writeText('npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init');
     \\      } catch (e) {}
     \\      showInitToast('Comando copiado. Pegalo en tu terminal.');
     \\    });
@@ -770,7 +770,7 @@ const html_tail =
     \\    needsInitFlag = needsInit;
     \\    const card = ensureInitCard();
     \\    if (needsInit) {
-    \\      card.textContent = 'Run `npx @agentpets/cli init` to wire your agents';
+    \\      card.textContent = 'Run `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init` to wire your agents';
     \\      card.style.display = 'block';
     \\      const uc = document.getElementById('update-card');
     \\      if (uc) uc.style.display = 'none';
@@ -2862,7 +2862,7 @@ pub fn main(init: std.process.Init) !void {
     defer allocator.free(config_dir);
 
     const pets_roots = resolvePetsRoots(allocator, init.io, init.environ_map) catch |err| {
-        std.debug.print("No pets found. Install one with `npx @agentpets/cli install <slug>`.\n", .{});
+        std.debug.print("No pets found. Install one with `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install <slug>`.\n", .{});
         return err;
     };
     defer {
@@ -2870,7 +2870,7 @@ pub fn main(init: std.process.Init) !void {
         allocator.free(pets_roots);
     }
     if (pets_roots.len == 0) {
-        std.debug.print("No pets root exists. Install one with `npx @agentpets/cli install <slug>`.\n", .{});
+        std.debug.print("No pets root exists. Install one with `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install <slug>`.\n", .{});
         return error.NoPetsDirectory;
     }
 
@@ -2884,7 +2884,7 @@ pub fn main(init: std.process.Init) !void {
         pets.deinit(allocator);
     }
     if (pets.items.len == 0) {
-        std.debug.print("No pets in any root. Install one with `npx @agentpets/cli install <slug>`.\n", .{});
+        std.debug.print("No pets in any root. Install one with `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install <slug>`.\n", .{});
         return error.NoPets;
     }
 

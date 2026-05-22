@@ -15,6 +15,12 @@ export function SiteFooter() {
         <p>{t("rightsNotice")}</p>
         <div className="flex flex-wrap items-center gap-4">
           <Link
+            href="/developers"
+            className="underline underline-offset-4 transition hover:text-foreground"
+          >
+            {t("developers")}
+          </Link>
+          <Link
             href="/topics"
             className="underline underline-offset-4 transition hover:text-foreground"
           >

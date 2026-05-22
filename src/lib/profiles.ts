@@ -17,6 +17,7 @@ const RESERVED_HANDLES = new Set([
   "collections",
   "create",
   "docs",
+  "developers",
   "en",
   "es",
   "favicon.ico",

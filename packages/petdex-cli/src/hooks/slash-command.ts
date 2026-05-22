@@ -24,7 +24,7 @@ import type { Agent } from "./agents.js";
 // persistRunningBinary during hooks install), so the slash command
 // uses that absolute path. This avoids the "petdex: command not
 // found" failure in agents whose shell doesn't have npm globals on
-// PATH (common when users install via `npx @agentpets/cli init`).
+// PATH (common when users install via `npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init`).
 const PETDEX_INVOKE = `node "$HOME/.petdex/bin/petdex.js"`;
 
 const SLASH_COMMAND_BODY = `---
@@ -43,7 +43,7 @@ Run the matching command using the persisted petdex binary at \`$HOME/.petdex/bi
 
 Show the command output verbatim to the user. Don't reinterpret, don't explain. The CLI's output is already user-facing.
 
-If \`$HOME/.petdex/bin/petdex.js\` doesn't exist, the user hasn't run \`petdex hooks install\` yet. Tell them to run \`npx @agentpets/cli@latest init\` first, then retry.
+If \`$HOME/.petdex/bin/petdex.js\` doesn't exist, the user hasn't run \`petdex hooks install\` yet. Tell them to run \`npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init\` first, then retry.
 
 Arguments: \`$ARGUMENTS\`
 `;
@@ -63,7 +63,7 @@ Run the matching command using the persisted petdex binary at \`$HOME/.petdex/bi
 
 Show the command output verbatim to the user. Don't reinterpret, don't explain. The CLI's output is already user-facing.
 
-If \`$HOME/.petdex/bin/petdex.js\` doesn't exist, the user hasn't run \`petdex hooks install\` yet. Tell them to run \`npx @agentpets/cli@latest init\` first, then retry.
+If \`$HOME/.petdex/bin/petdex.js\` doesn't exist, the user hasn't run \`petdex hooks install\` yet. Tell them to run \`npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz init\` first, then retry.
 
 Arguments: \`{{args}}\`
 """

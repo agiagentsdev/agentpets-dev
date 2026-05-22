@@ -24,35 +24,26 @@ type CommandLineProps = {
   codexPrompt?: string;
 };
 
+const GITHUB_CLI =
+  "https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz";
+const GITHUB_NPX = `npx -y ${GITHUB_CLI}`;
+
 /**
- * Display says `npx @agentpets/cli install desktop`, clipboard says
- * `npx @agentpets/cli@latest install desktop`. Pinning to @latest in the
- * copy keeps every paste resolving to the newest release without
- * cluttering the visual command. Also handles bare `petdex` / `agentpets`
- * (without npx) so a user copying from a globally-installed
- * snippet still gets the latest tag.
- *
- * Only rewrites the FIRST occurrence, with no risk of accidentally
- * rewriting embedded references in flags or paths.
+ * Display and copy use the GitHub package spec. Legacy npm snippets are mapped
+ * to GitHub so old content does not keep copying a package that is not public.
  */
 function pinToLatest(command: string): string {
-  // Already pinned? Leave it alone.
-  if (command.includes("@agentpets/cli@")) return command;
-  // npx @agentpets/cli ... -> npx @agentpets/cli@latest ...
+  if (command.includes(GITHUB_CLI)) return command;
   const scopedNpxMatch = command.match(/^(.*?\bnpx\s+)@agentpets\/cli(\b.*)$/);
   if (scopedNpxMatch) {
-    return `${scopedNpxMatch[1]}@agentpets/cli@latest${scopedNpxMatch[2]}`;
+    return `${scopedNpxMatch[1]}-y ${GITHUB_CLI}${scopedNpxMatch[2]}`;
   }
-  // npx petdex ... -> npx @agentpets/cli@latest ...
   const legacyNpxMatch = command.match(/^(.*?\bnpx\s+)petdex(\b.*)$/);
   if (legacyNpxMatch) {
-    return `${legacyNpxMatch[1]}@agentpets/cli@latest${legacyNpxMatch[2]}`;
+    return `${legacyNpxMatch[1]}-y ${GITHUB_CLI}${legacyNpxMatch[2]}`;
   }
-  // bare leading `petdex ...` / `agentpets ...` (e.g. when the user has it on PATH)
-  // -> `npx @agentpets/cli@latest ...`. We add npx so the pinned form
-  // works even without a global install.
   const bareMatch = command.match(/^(?:petdex|agentpets)(\b.*)$/);
-  if (bareMatch) return `npx @agentpets/cli@latest${bareMatch[1]}`;
+  if (bareMatch) return `${GITHUB_NPX}${bareMatch[1]}`;
   return command;
 }
 
@@ -150,10 +141,7 @@ export function CommandLine({
   const failed = copyState === "failed";
 
   async function handleCopy() {
-    // Display the natural `npx @agentpets/cli` form, but copy the
-    // version-pinned package so every paste resolves to
-    // the most recent release. Tracking still uses the visual
-    // form so dashboards stay readable.
+    // Keep copied legacy snippets aligned with the GitHub install path.
     const toCopy = pinToLatest(command);
     try {
       await writeClipboard(toCopy);

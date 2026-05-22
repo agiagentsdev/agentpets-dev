@@ -5,9 +5,10 @@ export const siteConfig = {
   url: "https://agentpets.dev",
   repoUrl: "https://github.com/agiagentsdev/agentpets-dev",
   repoSlug: "agiagentsdev/agentpets-dev",
-  npmPackage: "@agentpets/cli",
+  npmPackage:
+    "https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz",
   cliName: "agentpets",
-  installCommand: "npx @agentpets/cli install",
+  installCommand: "npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install",
   supportEmail: "hello@agentpets.dev",
   upstreamName: "Petdex",
   upstreamUrl: "https://petdex.crafter.run",

@@ -229,19 +229,10 @@ async function runPostApprovalEffects(
     })();
   }
 
-  if (process.env.ELEVENLABS_API_KEY) {
-    void (async () => {
-      try {
-        const { getApprovedPetMissingSoundBySlug, processPetSound } =
-          await import("@/lib/pet-sound");
-        const pet = await getApprovedPetMissingSoundBySlug(row.slug);
-        if (!pet) return;
-        await processPetSound(pet, { workerKey: `${actor}-${row.slug}` });
-      } catch (e) {
-        console.error("sound gen failed", e);
-      }
-    })();
-  }
+  // Sound generation intentionally lives in scripts/generate-pet-sounds.ts.
+  // Keeping ffmpeg, child_process, and media temp-file work out of route
+  // bundles prevents Turbopack/NFT from tracing the whole project into
+  // admin/submit handlers during production builds.
 
   // Suggest matching open requests as candidates for admin review.
   // Background only — never blocks the approve response. Failures
