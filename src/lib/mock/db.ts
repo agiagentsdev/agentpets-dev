@@ -252,6 +252,49 @@ async function bootstrap(client: PGlite): Promise<void> {
       "created_at" timestamp with time zone NOT NULL DEFAULT now()
     )`,
     `CREATE UNIQUE INDEX IF NOT EXISTS "ad_events_dedupe_unique" ON "ad_events" ("campaign_id", "kind", "session_id", "request_id")`,
+    // ---- migration 0015: pending asset swap + edit tracking ----
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "pending_spritesheet_url" text`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "pending_pet_json_url" text`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "pending_zip_url" text`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "pending_spritesheet_width" integer`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "pending_spritesheet_height" integer`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "pending_dhash" text`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "pending_review_id" text`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "pending_auto_approved_at" timestamp with time zone`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "edit_count" integer DEFAULT 0 NOT NULL`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "last_edit_at" timestamp with time zone`,
+    // ---- migration 0016: SEO fields ----
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "seo_title" text`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "seo_description" text`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "seo_keywords" jsonb`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "seo_intro" text`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "seo_faq" jsonb`,
+    `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "seo_updated_at" timestamp with time zone`,
+    // ---- collection tables (no dedicated migration in PGlite context) ----
+    `CREATE TABLE IF NOT EXISTS "pet_collections" (
+      "id" text PRIMARY KEY NOT NULL,
+      "slug" text NOT NULL,
+      "title" text NOT NULL,
+      "description" text NOT NULL,
+      "owner_id" text,
+      "external_url" text,
+      "cover_pet_slug" text,
+      "featured" boolean DEFAULT false NOT NULL,
+      "created_at" timestamp with time zone DEFAULT now() NOT NULL,
+      "updated_at" timestamp with time zone DEFAULT now() NOT NULL
+    )`,
+    `CREATE UNIQUE INDEX IF NOT EXISTS "pet_collections_slug_unique" ON "pet_collections" USING btree ("slug")`,
+    `CREATE INDEX IF NOT EXISTS "pet_collections_featured_idx" ON "pet_collections" USING btree ("featured")`,
+    `CREATE INDEX IF NOT EXISTS "pet_collections_owner_idx" ON "pet_collections" USING btree ("owner_id")`,
+    `CREATE TABLE IF NOT EXISTS "pet_collection_items" (
+      "collection_id" text NOT NULL,
+      "pet_slug" text NOT NULL,
+      "position" integer DEFAULT 0 NOT NULL,
+      "created_at" timestamp with time zone DEFAULT now() NOT NULL,
+      PRIMARY KEY ("collection_id", "pet_slug")
+    )`,
+    `CREATE INDEX IF NOT EXISTS "pet_collection_items_slug_idx" ON "pet_collection_items" USING btree ("pet_slug")`,
+    `CREATE INDEX IF NOT EXISTS "pet_collection_items_position_idx" ON "pet_collection_items" USING btree ("collection_id", "position")`,
   ];
   for (const stmt of fixups) {
     try {
@@ -342,6 +385,85 @@ async function seed(client: PGlite): Promise<void> {
       "Mock user for local QA",
     ],
   );
+
+  // Seed pet_collections so /collections and collection detail pages render.
+  // franchise-league-of-legends mirrors the crafter-station production collection.
+  await client.query(
+    `INSERT INTO pet_collections (id, slug, title, description, owner_id, external_url, cover_pet_slug, featured, created_at, updated_at)
+     VALUES (
+       'franchise-league-of-legends',
+       'franchise-league-of-legends',
+       'League of Legends',
+       'Beloved champions from the League of Legends universe, reimagined as desktop companions for your AI coding agent.',
+       $1,
+       'https://www.leagueoflegends.com',
+       'jinx',
+       true,
+       now(),
+       now()
+     )
+     ON CONFLICT (slug) DO NOTHING`,
+    [MOCK_USER.userId],
+  );
+
+  // pet_collection_items: add realistic LoL champion slugs to the collection.
+  // These slugs show on the collection page; pages handle missing pets gracefully.
+  const franchisePets = [
+    { slug: 'jinx',          pos: 1 },
+    { slug: 'garen',         pos: 2 },
+    { slug: 'ahri',          pos: 3 },
+    { slug: 'yasuo',         pos: 4 },
+    { slug: 'lux',           pos: 5 },
+    { slug: 'zed',           pos: 6 },
+    { slug: 'miss-fortune',  pos: 7 },
+    { slug: 'teemo',         pos: 8 },
+    { slug: 'darius',        pos: 9 },
+    { slug: 'nami',          pos: 10 },
+  ];
+  for (const pet of franchisePets) {
+    await client.query(
+      `INSERT INTO pet_collection_items (collection_id, pet_slug, position, created_at)
+       VALUES ('franchise-league-of-legends', $1, $2, now())
+       ON CONFLICT (collection_id, pet_slug) DO NOTHING`,
+      [pet.slug, pet.pos],
+    );
+  }
+
+  // Also seed a sample featured collection so /collections page has browseable content.
+  await client.query(
+    `INSERT INTO pet_collections (id, slug, title, description, owner_id, featured, created_at, updated_at)
+     VALUES (
+       'franchise-animal-crossing',
+       'franchise-animal-crossing',
+       'Animal Crossing',
+       'Adorable villagers from the Animal Crossing series as pixel desktop companions.',
+       $1,
+       true,
+       now(),
+       now()
+     )
+     ON CONFLICT (slug) DO NOTHING`,
+    [MOCK_USER.userId],
+  );
+
+  const acPets = [
+    { slug: 'isabelle',   pos: 1 },
+    { slug: 'tom-nook',   pos: 2 },
+    { slug: 'blathers',   pos: 3 },
+    { slug: 'celeste',    pos: 4 },
+    { slug: 'kk-slider',  pos: 5 },
+    { slug: 'rod',        pos: 6 },
+    { slug: 'sable',      pos: 7 },
+    { slug: 'harvey',     pos: 8 },
+  ];
+  for (const pet of acPets) {
+    await client.query(
+      `INSERT INTO pet_collection_items (collection_id, pet_slug, position, created_at)
+       VALUES ('franchise-animal-crossing', $1, $2, now())
+       ON CONFLICT (collection_id, pet_slug) DO NOTHING`,
+      [pet.slug, pet.pos],
+    );
+  }
 }
 
 function mockSpritesheetDataUri(name: string, slug: string): string {
