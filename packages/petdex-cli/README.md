@@ -1,4 +1,4 @@
-# @agentpets/cli
+# petdex
 
 Install, list, submit, and manage animated developer pets from your terminal.
 
@@ -31,7 +31,7 @@ npx @agentpets/cli logout
 Global install is also supported:
 
 ```sh
-npm install -g @agentpets/cli
+npm install -g petdex
 agentpets install boba
 ```
 

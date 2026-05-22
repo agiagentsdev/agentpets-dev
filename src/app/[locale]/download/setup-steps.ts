@@ -6,7 +6,7 @@
  * flow collapses to a single command:
  *
  *   1. (already done) Drag AgentPets.app to /Applications via the .dmg
- *   2. `npx @agentpets/cli@latest init`   ← wires hooks + wakes the mascot
+ *   2. `npx @agentpets/cli@latest init`   <- wires hooks + wakes the mascot
  *   *. `npx @agentpets/cli@latest install <slug>` (optional, when /pets/<slug>
  *       sent the user here with ?next=install/<slug>)
  *   *. `npx @agentpets/cli@latest update` (dimmed, runs anytime)

@@ -18,6 +18,7 @@ import {
   invalidateAggregates,
   invalidatePetCaches,
 } from "@/lib/db/cached-aggregates";
+import { firstEnv } from "@/lib/brand-env";
 import { db, schema } from "@/lib/db/client";
 
 const DEFAULT_MANIFEST_URL = "https://petdex.crafter.run/api/manifest";
@@ -58,10 +59,12 @@ function parseArgs(): Args {
     offset: 0,
     featured: 0,
     ownerId:
-      process.env.PETDEX_IMPORT_OWNER_ID?.trim() ||
-      process.env.PETDEX_ADMIN_USER_IDS?.split(",")[0]?.trim() ||
+      firstEnv("AGENTPETS_IMPORT_OWNER_ID", "PETDEX_IMPORT_OWNER_ID") ||
+      firstEnv("AGENTPETS_ADMIN_USER_IDS", "PETDEX_ADMIN_USER_IDS")
+        ?.split(",")[0]
+        ?.trim() ||
       DEFAULT_OWNER_ID,
-    ownerEmail: process.env.PETDEX_OWNER_EMAIL?.trim() || undefined,
+    ownerEmail: firstEnv("AGENTPETS_OWNER_EMAIL", "PETDEX_OWNER_EMAIL"),
     replace: false,
     apply: false,
   };

@@ -21,6 +21,11 @@ type PatchBody = {
   displayName?: string;
   description?: string;
   slug?: string;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  seoKeywords?: string[] | string | null;
+  seoIntro?: string | null;
+  seoFaq?: Array<{ question?: string; answer?: string }> | string | null;
 };
 
 export async function PATCH(

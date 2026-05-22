@@ -61,7 +61,8 @@ export default IS_MOCK_AUTH
 export const config = {
   matcher: [
     // Skip Next.js internals + static assets + SEO files (robots, sitemap)
-    "/((?!_next|robots\\.txt|sitemap\\.xml|manifest\\.json|version\\.json|opengraph-image|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    // and root utility embeds that are intentionally locale-free.
+    "/((?!_next|embed/|robots\\.txt|sitemap\\.xml|sitemap-index\\.xml|sitemaps/|manifest\\.json|version\\.json|opengraph-image|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
     "/(api|trpc)(.*)",
   ],
 };

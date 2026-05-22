@@ -410,7 +410,7 @@ async function installForAntigravity(): Promise<void> {
     throw new Error(
       `Petdex persisted binary missing or not functional: ${PERSIST_PATH}.\n` +
         `  The mcp-server subcommand is required for Antigravity integration.\n` +
-        `  Run \`npx petdex@latest hooks install\` to persist a fresh binary, then re-run.`,
+        `  Run \`npx @agentpets/cli@latest hooks install\` to persist a fresh binary, then re-run.`,
     );
   }
 

@@ -50,6 +50,12 @@ type PetRow = Pick<
   | "tags"
   | "dominantColor"
   | "colorFamily"
+  | "seoTitle"
+  | "seoDescription"
+  | "seoKeywords"
+  | "seoIntro"
+  | "seoFaq"
+  | "seoUpdatedAt"
   | "creditName"
   | "creditUrl"
   | "creditImage"
@@ -73,6 +79,12 @@ const petColumns = {
   tags: true,
   dominantColor: true,
   colorFamily: true,
+  seoTitle: true,
+  seoDescription: true,
+  seoKeywords: true,
+  seoIntro: true,
+  seoFaq: true,
+  seoUpdatedAt: true,
   creditName: true,
   creditUrl: true,
   creditImage: true,
@@ -320,10 +332,27 @@ export function rowToPet(row: PetRow): PetdexPet {
     tags: (row.tags as string[]) ?? [],
     dominantColor: row.dominantColor,
     colorFamily: row.colorFamily as PetdexPet["colorFamily"],
+    seoTitle: row.seoTitle,
+    seoDescription: row.seoDescription,
+    seoKeywords: Array.isArray(row.seoKeywords) ? row.seoKeywords : [],
+    seoIntro: row.seoIntro,
+    seoFaq: normalizeSeoFaq(row.seoFaq),
+    seoUpdatedAt: row.seoUpdatedAt?.toISOString() ?? null,
     submittedBy,
     source: row.source,
     approvedAt: row.approvedAt?.toISOString() ?? null,
     importedAt: row.approvedAt?.toISOString() ?? row.createdAt.toISOString(),
     qa: {},
   };
+}
+
+function normalizeSeoFaq(value: PetRow["seoFaq"]): PetdexPet["seoFaq"] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => ({
+      question: typeof item?.question === "string" ? item.question.trim() : "",
+      answer: typeof item?.answer === "string" ? item.answer.trim() : "",
+    }))
+    .filter((item) => item.question && item.answer)
+    .slice(0, 8);
 }

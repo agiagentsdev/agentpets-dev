@@ -13,13 +13,13 @@ function pinToLatest(command: string): string {
   if (legacyNpxMatch) {
     return `${legacyNpxMatch[1]}@agentpets/cli@latest${legacyNpxMatch[2]}`;
   }
-  const bareMatch = command.match(/^agentpets(\b.*)$/);
+  const bareMatch = command.match(/^(?:petdex|agentpets)(\b.*)$/);
   if (bareMatch) return `npx @agentpets/cli@latest${bareMatch[1]}`;
   return command;
 }
 
 describe("pinToLatest", () => {
-  test("rewrites scoped npx commands to the latest package", () => {
+  test("rewrites npx commands to the latest package", () => {
     expect(pinToLatest("npx @agentpets/cli install desktop")).toBe(
       "npx @agentpets/cli@latest install desktop",
     );
@@ -32,14 +32,15 @@ describe("pinToLatest", () => {
   });
 
   test("rewrites bare agentpets commands to npx", () => {
+    expect(pinToLatest("petdex up")).toBe("npx @agentpets/cli@latest up");
     expect(pinToLatest("agentpets up")).toBe("npx @agentpets/cli@latest up");
     expect(pinToLatest("agentpets doctor")).toBe(
       "npx @agentpets/cli@latest doctor",
     );
   });
 
-  test("maps legacy petdex snippets to the AgentPets package", () => {
-    expect(pinToLatest("npx petdex install boba")).toBe(
+  test("maps legacy petdex snippets to the published package", () => {
+    expect(pinToLatest("npx @agentpets/cli install boba")).toBe(
       "npx @agentpets/cli@latest install boba",
     );
   });

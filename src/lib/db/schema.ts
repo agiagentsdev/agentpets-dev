@@ -70,6 +70,14 @@ export const submittedPets = pgTable(
     dominantColor: text("dominant_color"),
     colorFamily: text("color_family"),
     soundUrl: text("sound_url"),
+    seoTitle: text("seo_title"),
+    seoDescription: text("seo_description"),
+    seoKeywords: jsonb("seo_keywords").$type<string[] | null>(),
+    seoIntro: text("seo_intro"),
+    seoFaq: jsonb("seo_faq").$type<
+      Array<{ question: string; answer: string }> | null
+    >(),
+    seoUpdatedAt: timestamp("seo_updated_at", { withTimezone: true }),
     featured: boolean("featured").notNull().default(false),
     // 64-bit dHash of the first idle frame as a 16-char hex string. Used
     // for fast perceptual-similarity dedup at admin review time.

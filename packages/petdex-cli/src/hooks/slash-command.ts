@@ -43,7 +43,7 @@ Run the matching command using the persisted petdex binary at \`$HOME/.petdex/bi
 
 Show the command output verbatim to the user. Don't reinterpret, don't explain. The CLI's output is already user-facing.
 
-If \`$HOME/.petdex/bin/petdex.js\` doesn't exist, the user hasn't run \`petdex hooks install\` yet. Tell them to run \`npx petdex@latest init\` first, then retry.
+If \`$HOME/.petdex/bin/petdex.js\` doesn't exist, the user hasn't run \`petdex hooks install\` yet. Tell them to run \`npx @agentpets/cli@latest init\` first, then retry.
 
 Arguments: \`$ARGUMENTS\`
 `;
@@ -63,7 +63,7 @@ Run the matching command using the persisted petdex binary at \`$HOME/.petdex/bi
 
 Show the command output verbatim to the user. Don't reinterpret, don't explain. The CLI's output is already user-facing.
 
-If \`$HOME/.petdex/bin/petdex.js\` doesn't exist, the user hasn't run \`petdex hooks install\` yet. Tell them to run \`npx petdex@latest init\` first, then retry.
+If \`$HOME/.petdex/bin/petdex.js\` doesn't exist, the user hasn't run \`petdex hooks install\` yet. Tell them to run \`npx @agentpets/cli@latest init\` first, then retry.
 
 Arguments: \`{{args}}\`
 """

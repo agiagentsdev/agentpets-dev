@@ -8,8 +8,14 @@ import { getCollectionsContainingPet } from "@/lib/collections";
 import { formatDexNumber, getDexEntryMap } from "@/lib/dex";
 import { buildLocaleAlternates } from "@/lib/locale-routing";
 import { resolveStoredOwnerCreditForSlug } from "@/lib/owner-credit";
+import {
+  petCanonicalUrl,
+  resolvePetSeo,
+  type ResolvedPetSeo,
+} from "@/lib/pet-seo";
 import { getPet, getStaticPetSlugs } from "@/lib/pets";
 import { siteConfig } from "@/lib/site-config";
+import type { PetdexPet } from "@/lib/types";
 import { getVariantsFor } from "@/lib/variants";
 
 import { ClaimCTA } from "@/components/claim-cta";
@@ -84,9 +90,10 @@ export async function generateMetadata({ params }: PageProps) {
     };
   }
 
-  const title = `${pet.displayName}: Animated AI coding pet`;
-  const description = `Install ${pet.displayName} for Codex and AI coding workflows: ${pet.description} One command, animated pixel art, ${pet.tags.slice(0, 3).join(" + ") || "developer companion"}.`;
-  const url = `${siteConfig.url}/pets/${pet.slug}`;
+  const seo = resolvePetSeo(pet);
+  const title = seo.title;
+  const description = seo.description;
+  const url = petCanonicalUrl(pet.slug);
 
   return {
     title,
@@ -96,15 +103,7 @@ export async function generateMetadata({ params }: PageProps) {
       hasLocale(locale) ? locale : undefined,
     ),
     keywords: [
-      pet.displayName,
-      `${pet.displayName} AI coding pet`,
-      `${pet.displayName} Codex pet`,
-      `${pet.displayName} pixel pet`,
-      "AI coding pet",
-      "Codex pet",
-      "developer mascot",
-      ...pet.tags.slice(0, 4),
-      ...pet.vibes.slice(0, 2),
+      ...seo.keywords,
     ],
     openGraph: {
       title,
@@ -180,17 +179,18 @@ export default async function PetPage({ params }: PageProps) {
   ]);
   const ownerCredit = ownerCreditResult?.credit ?? null;
 
-  const url = `${siteConfig.url}/pets/${pet.slug}`;
+  const url = petCanonicalUrl(pet.slug);
+  const seo = resolvePetSeo(pet);
   const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
       "@id": `${url}#pet`,
       name: pet.displayName,
-      description: pet.description,
+      description: seo.description,
       url,
       image: pet.spritesheetPath,
-      keywords: [...pet.tags, ...pet.vibes].join(", "),
+      keywords: seo.keywords.join(", "),
       genre: pet.kind,
       datePublished: pet.importedAt,
       isPartOf: { "@type": "WebSite", "@id": `${siteConfig.url}/#website` },
@@ -230,6 +230,18 @@ export default async function PetPage({ params }: PageProps) {
           item: url,
         },
       ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: seo.faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
     },
   ];
 
@@ -457,6 +469,12 @@ export default async function PetPage({ params }: PageProps) {
             while they scroll into the state grid. */}
         <PetStateViewer src={pet.spritesheetPath} petName={pet.displayName} />
 
+        <PetSeoTemplate
+          pet={pet}
+          seo={seo}
+          collectionCount={memberOfCollections.length}
+        />
+
         {/* Full install guide. CLI + Curl tabs, platform-specific
             terminal instructions, "Activate in Codex" steps. Lives
             under the state viewer so it doesn't crowd the hero where
@@ -559,6 +577,117 @@ export default async function PetPage({ params }: PageProps) {
 
       <SiteFooter />
     </main>
+  );
+}
+
+function PetSeoTemplate({
+  pet,
+  seo,
+  collectionCount,
+}: {
+  pet: PetdexPet;
+  seo: ResolvedPetSeo;
+  collectionCount: number;
+}) {
+  const installCommand = `${siteConfig.installCommand} ${pet.slug}`;
+  const tagLine =
+    pet.tags.length > 0
+      ? pet.tags.slice(0, 4).join(", ")
+      : `${pet.kind} companion`;
+
+  return (
+    <section
+      aria-labelledby="pet-guide-title"
+      className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]"
+    >
+      <div className="rounded-2xl border border-border-base bg-surface/76 p-5 shadow-sm shadow-blue-950/5 backdrop-blur md:p-6">
+        <p className="font-mono text-[11px] tracking-[0.2em] text-brand uppercase">
+          Developer pet guide
+        </p>
+        <h2
+          id="pet-guide-title"
+          className="mt-2 text-2xl font-semibold tracking-tight text-foreground md:text-3xl"
+        >
+          Install {pet.displayName} as your AI coding companion
+        </h2>
+        <p className="mt-4 text-sm leading-7 text-muted-1 md:text-base">
+          {seo.intro}
+        </p>
+        <div className="mt-5 grid gap-3 md:grid-cols-3">
+          <SeoStat label="Install command" value={installCommand} />
+          <SeoStat label="Pet style" value={`${pet.kind} · ${tagLine}`} />
+          <SeoStat
+            label="Gallery links"
+            value={`${collectionCount} collection${collectionCount === 1 ? "" : "s"}`}
+          />
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {seo.useCases.map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-border-base bg-background/70 p-4"
+            >
+              <p className="text-sm leading-6 text-muted-2">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <aside className="space-y-4">
+        <InfoCard title="Related paths" icon={<Layers className="size-4" />}>
+          <div className="space-y-3">
+            {seo.internalLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block rounded-xl border border-border-base bg-background/70 p-3 transition hover:border-brand/35 hover:bg-background"
+              >
+                <span className="text-sm font-semibold text-foreground">
+                  {link.label}
+                </span>
+                <span className="mt-1 block text-xs leading-5 text-muted-3">
+                  {link.description}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </InfoCard>
+      </aside>
+
+      <div className="lg:col-span-2">
+        <InfoCard title="FAQ" icon={<Sparkles className="size-4" />}>
+          <div className="grid gap-3 md:grid-cols-3">
+            {seo.faq.map((item) => (
+              <details
+                key={item.question}
+                className="group rounded-2xl border border-border-base bg-background/70 p-4"
+              >
+                <summary className="cursor-pointer list-none text-sm font-semibold text-foreground">
+                  {item.question}
+                </summary>
+                <p className="mt-3 text-sm leading-6 text-muted-2">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </InfoCard>
+      </div>
+    </section>
+  );
+}
+
+function SeoStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-border-base bg-background/70 p-3">
+      <p className="font-mono text-[10px] tracking-[0.18em] text-muted-3 uppercase">
+        {label}
+      </p>
+      <p className="mt-1 break-words text-sm font-medium text-foreground">
+        {value}
+      </p>
+    </div>
   );
 }
 

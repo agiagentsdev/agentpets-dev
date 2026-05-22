@@ -99,7 +99,16 @@ export function desktopBinPath(): string {
   const ext = nodePlatform() === "win32" ? ".exe" : "";
   if (nodePlatform() === "darwin") {
     const appCandidates = [
+      "/Applications/AgentPets.app/Contents/MacOS/petdex-desktop",
       "/Applications/Petdex.app/Contents/MacOS/petdex-desktop",
+      path.join(
+        homedir(),
+        "Applications",
+        "AgentPets.app",
+        "Contents",
+        "MacOS",
+        "petdex-desktop",
+      ),
       path.join(
         homedir(),
         "Applications",
@@ -125,7 +134,17 @@ export function sidecarPath(): string {
   // sidecar-status checks find the same file the desktop actually loads.
   if (nodePlatform() === "darwin") {
     const appCandidates = [
+      "/Applications/AgentPets.app/Contents/Resources/sidecar/server.js",
       "/Applications/Petdex.app/Contents/Resources/sidecar/server.js",
+      path.join(
+        homedir(),
+        "Applications",
+        "AgentPets.app",
+        "Contents",
+        "Resources",
+        "sidecar",
+        "server.js",
+      ),
       path.join(
         homedir(),
         "Applications",
@@ -599,7 +618,8 @@ export type RunInstallDesktopResult = {
 // (404 page, facet pages). Easy to swap if we later want to make
 // this configurable per-release.
 const DEFAULT_PET_SLUG = "boba";
-const PETDEX_URL = process.env.PETDEX_URL ?? "https://agentpets.dev";
+const PETDEX_URL =
+  process.env.AGENTPETS_URL ?? process.env.PETDEX_URL ?? "https://agentpets.dev";
 
 // Hosts we trust for serving pet assets (spritesheet + pet.json).
 // Mirrored from src/lib/url-allowlist.ts (the server-side validation
@@ -636,6 +656,10 @@ export function homeDir(): string {
 }
 
 function petsRoot(): string {
+  return path.join(homeDir(), ".agentpets", "pets");
+}
+
+function legacyPetsRoot(): string {
   return path.join(homeDir(), ".petdex", "pets");
 }
 
@@ -681,7 +705,7 @@ export async function _hasAnyInstalledPetForTest(): Promise<boolean> {
 
 async function hasAnyInstalledPet(): Promise<boolean> {
   const { readdir } = await import("node:fs/promises");
-  for (const root of [petsRoot(), codexPetsRoot()]) {
+  for (const root of [petsRoot(), legacyPetsRoot(), codexPetsRoot()]) {
     let entries: string[];
     try {
       entries = await readdir(root);
@@ -785,6 +809,7 @@ async function tryInstallStarterCandidate(
   const ext = pet.spritesheetUrl.endsWith(".png") ? "png" : "webp";
   const targets = [
     path.join(petsRoot(), pet.slug),
+    path.join(legacyPetsRoot(), pet.slug),
     path.join(codexPetsRoot(), pet.slug),
   ];
 

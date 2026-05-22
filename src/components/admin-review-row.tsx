@@ -92,6 +92,17 @@ export function AdminReviewRow({
   const [displayName, setDisplayName] = useState(pet.displayName);
   const [description, setDescription] = useState(pet.description);
   const [slug, setSlug] = useState(pet.slug);
+  const [seoTitle, setSeoTitle] = useState(pet.seoTitle ?? "");
+  const [seoDescription, setSeoDescription] = useState(
+    pet.seoDescription ?? "",
+  );
+  const [seoKeywords, setSeoKeywords] = useState(
+    ((pet.seoKeywords as string[] | null) ?? []).join(", "),
+  );
+  const [seoIntro, setSeoIntro] = useState(pet.seoIntro ?? "");
+  const [seoFaqText, setSeoFaqText] = useState(() =>
+    JSON.stringify(pet.seoFaq ?? [], null, 2),
+  );
   const [editing, setEditing] = useState(false);
   const [busy, setBusy] = useState(false);
   const [reviewBusy, setReviewBusy] = useState(false);
@@ -205,6 +216,34 @@ export function AdminReviewRow({
     setBusy(true);
     setError(null);
 
+    let seoFaq: Array<{ question: string; answer: string }> | null = null;
+    try {
+      const parsed = JSON.parse(seoFaqText || "[]") as unknown;
+      if (!Array.isArray(parsed)) throw new Error("FAQ must be an array");
+      seoFaq = parsed
+        .map((item) => {
+          if (!item || typeof item !== "object") return null;
+          const record = item as Record<string, unknown>;
+          const question =
+            typeof record.question === "string" ? record.question.trim() : "";
+          const answer =
+            typeof record.answer === "string" ? record.answer.trim() : "";
+          return question && answer ? { question, answer } : null;
+        })
+        .filter(
+          (item): item is { question: string; answer: string } =>
+            item !== null,
+        );
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? `SEO FAQ JSON is invalid: ${err.message}`
+          : "SEO FAQ JSON is invalid",
+      );
+      setBusy(false);
+      return;
+    }
+
     const res = await fetch(`/api/admin/${pet.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -213,6 +252,11 @@ export function AdminReviewRow({
         displayName,
         description,
         slug,
+        seoTitle,
+        seoDescription,
+        seoKeywords,
+        seoIntro,
+        seoFaq,
       }),
     });
 
@@ -258,6 +302,11 @@ export function AdminReviewRow({
     setDisplayName(pet.displayName);
     setDescription(pet.description);
     setSlug(pet.slug);
+    setSeoTitle(pet.seoTitle ?? "");
+    setSeoDescription(pet.seoDescription ?? "");
+    setSeoKeywords(((pet.seoKeywords as string[] | null) ?? []).join(", "));
+    setSeoIntro(pet.seoIntro ?? "");
+    setSeoFaqText(JSON.stringify(pet.seoFaq ?? [], null, 2));
     setEditing(false);
     setError(null);
   }
@@ -297,6 +346,79 @@ export function AdminReviewRow({
               maxLength={280}
               className="w-full rounded-lg border border-border-base bg-surface px-3 py-1.5 text-sm text-muted-2 outline-none focus:border-border-strong"
             />
+            <div className="rounded-xl border border-border-base bg-background/60 p-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="font-mono text-[10px] tracking-[0.16em] text-brand uppercase">
+                  SEO override
+                </p>
+                <p className="text-[11px] text-muted-3">
+                  Empty fields use generated SEO copy.
+                </p>
+              </div>
+              <div className="mt-3 grid gap-2">
+                <label className="grid gap-1">
+                  <span className="text-[11px] font-medium text-muted-2">
+                    Meta title · {seoTitle.length}/70
+                  </span>
+                  <input
+                    value={seoTitle}
+                    onChange={(e) => setSeoTitle(e.target.value)}
+                    placeholder={`${displayName} AI Coding Pet for Codex`}
+                    maxLength={90}
+                    className="w-full rounded-lg border border-border-base bg-surface px-3 py-1.5 text-sm text-foreground outline-none focus:border-border-strong"
+                  />
+                </label>
+                <label className="grid gap-1">
+                  <span className="text-[11px] font-medium text-muted-2">
+                    Meta description · {seoDescription.length}/170
+                  </span>
+                  <textarea
+                    value={seoDescription}
+                    onChange={(e) => setSeoDescription(e.target.value)}
+                    placeholder="Search-result snippet. Keep the install intent clear."
+                    rows={2}
+                    maxLength={220}
+                    className="w-full rounded-lg border border-border-base bg-surface px-3 py-1.5 text-sm text-foreground outline-none focus:border-border-strong"
+                  />
+                </label>
+                <label className="grid gap-1">
+                  <span className="text-[11px] font-medium text-muted-2">
+                    Keywords
+                  </span>
+                  <input
+                    value={seoKeywords}
+                    onChange={(e) => setSeoKeywords(e.target.value)}
+                    placeholder="codex pet, ai coding pet, cursor pet"
+                    className="w-full rounded-lg border border-border-base bg-surface px-3 py-1.5 text-sm text-foreground outline-none focus:border-border-strong"
+                  />
+                </label>
+                <label className="grid gap-1">
+                  <span className="text-[11px] font-medium text-muted-2">
+                    Intro paragraph · {seoIntro.length}/700
+                  </span>
+                  <textarea
+                    value={seoIntro}
+                    onChange={(e) => setSeoIntro(e.target.value)}
+                    placeholder="Optional editorial intro for the enriched pet guide section."
+                    rows={3}
+                    maxLength={760}
+                    className="w-full rounded-lg border border-border-base bg-surface px-3 py-1.5 text-sm text-foreground outline-none focus:border-border-strong"
+                  />
+                </label>
+                <label className="grid gap-1">
+                  <span className="text-[11px] font-medium text-muted-2">
+                    FAQ JSON
+                  </span>
+                  <textarea
+                    value={seoFaqText}
+                    onChange={(e) => setSeoFaqText(e.target.value)}
+                    rows={5}
+                    spellCheck={false}
+                    className="w-full rounded-lg border border-border-base bg-surface px-3 py-1.5 font-mono text-xs text-foreground outline-none focus:border-border-strong"
+                  />
+                </label>
+              </div>
+            </div>
           </div>
         ) : (
           <>

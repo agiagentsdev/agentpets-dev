@@ -5,16 +5,22 @@
 
 import { NextResponse } from "next/server";
 
+import { firstEnv, getClerkCliIssuer } from "@/lib/brand-env";
+
 export const runtime = "nodejs";
 
-const DEFAULT_ISSUER = "https://clerk.agentpets.dev";
 const DEFAULT_CLIENT_ID = "LcThwEayl6KAA1Qm";
 const DEFAULT_SCOPES = ["profile", "email", "openid", "offline_access"];
 
 export async function GET(): Promise<Response> {
-  const issuer = process.env.CLERK_CLI_ISSUER ?? DEFAULT_ISSUER;
-  const clientId = process.env.CLERK_CLI_CLIENT_ID ?? DEFAULT_CLIENT_ID;
-  const scopes = (process.env.CLERK_CLI_SCOPES ?? DEFAULT_SCOPES.join(" "))
+  const issuer = getClerkCliIssuer();
+  const clientId =
+    firstEnv("AGENTPETS_CLERK_CLI_CLIENT_ID", "CLERK_CLI_CLIENT_ID") ??
+    DEFAULT_CLIENT_ID;
+  const scopes = (
+    firstEnv("AGENTPETS_CLERK_CLI_SCOPES", "CLERK_CLI_SCOPES") ??
+    DEFAULT_SCOPES.join(" ")
+  )
     .split(/\s+/)
     .filter(Boolean);
 

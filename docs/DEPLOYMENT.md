@@ -19,6 +19,9 @@ Set these in Vercel or your hosting provider before the first production build:
 DATABASE_URL=
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY=
+AGENTPETS_CLERK_CLI_ISSUER=https://clerk.agentpets.dev
+AGENTPETS_CLERK_CLI_CLIENT_ID=
+AGENTPETS_CLERK_CLI_SCOPES=openid profile email
 CLERK_CLI_ISSUER=https://clerk.agentpets.dev
 CLERK_CLI_CLIENT_ID=
 CLERK_CLI_SCOPES=openid profile email
@@ -29,8 +32,11 @@ R2_ACCESS_KEY_ID=
 R2_SECRET_ACCESS_KEY=
 R2_BUCKET=agentpets-pets
 R2_PUBLIC_BASE=https://assets.agentpets.dev
+AGENTPETS_URL=https://agentpets.dev
 PETDEX_URL=https://agentpets.dev
 RESEND_FROM=AgentPets <hello@agentpets.dev>
+AGENTPETS_OWNER_EMAIL=hello@agentpets.dev
+AGENTPETS_ADMIN_NOTIFY_EMAIL=hello@agentpets.dev
 PETDEX_OWNER_EMAIL=hello@agentpets.dev
 PETDEX_ADMIN_NOTIFY_EMAIL=hello@agentpets.dev
 ```
@@ -44,6 +50,54 @@ Optional launch services:
   `ELEVENLABS_API_KEY` for review/tagging/media helpers.
 
 Use `.env.example` as the full reference.
+
+`PETDEX_*` names are legacy compatibility aliases. New production env should
+prefer `AGENTPETS_*`, but keep the old names in sync until every old CLI,
+desktop, and import script is gone.
+
+## VPS Production Script
+
+For the Ubuntu + Nginx + systemd server, use the production helper instead of
+manually sourcing `.env.production`. It parses the env file safely, mirrors
+`AGENTPETS_*`/`PETDEX_*` aliases, validates the database URL, checks required
+tables/columns, builds, restarts systemd, and calls `/api/health?deep=1`.
+
+```bash
+cd /home/agentpets
+
+# Validate env + DB/schema only.
+/root/.bun/bin/bun run prod:check
+
+# Normal deploy: git pull, install, drizzle migrate, build, restart, health.
+/root/.bun/bin/bun run prod:deploy
+```
+
+For a fresh empty database where the historical migrations do not replay
+cleanly, back up first, then run schema push explicitly:
+
+```bash
+cd /home/agentpets
+/root/.bun/bin/bun run prod:deploy -- --push-schema
+```
+
+Useful flags:
+
+- `--skip-git` when code is already current.
+- `--skip-build` when only env changed.
+- `--skip-restart` when testing validation only.
+- `--service agentpets` and `--port 6996` if you rename the service or port.
+
+Public shallow health:
+
+```bash
+curl -fsS http://127.0.0.1:6996/api/health
+```
+
+Deep health with DB/schema checks:
+
+```bash
+curl -fsS http://127.0.0.1:6996/api/health?deep=1
+```
 
 ## Vercel Setup
 

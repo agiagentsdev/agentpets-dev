@@ -38,7 +38,8 @@ import {
 } from "../src/telemetry.js";
 
 // ─── config ────────────────────────────────────────────────────────────────
-const PETDEX_URL = process.env.PETDEX_URL ?? "https://agentpets.dev";
+const PETDEX_URL =
+  process.env.AGENTPETS_URL ?? process.env.PETDEX_URL ?? "https://agentpets.dev";
 const FALLBACK_ISSUER = "https://clerk.agentpets.dev";
 const FALLBACK_CLIENT_ID = "LcThwEayl6KAA1Qm";
 const DEFAULT_SCOPES = ["profile", "email", "openid", "offline_access"];
@@ -111,7 +112,7 @@ const VERSION = "0.4.0";
 
 // ─── entrypoint ────────────────────────────────────────────────────────────
 main().catch((err) => {
-  p.cancel(`petdex: ${(err as Error).message}`);
+  p.cancel(`agentpets: ${(err as Error).message}`);
   process.exit(1);
 });
 
@@ -222,10 +223,10 @@ function printHelp() {
   console.log(
     [
       "",
-      `  ${pc.bold(pc.magenta("petdex"))} ${dim(VERSION)} ${dim("Codex pet gallery CLI")}`,
+      `  ${pc.bold(pc.magenta("agentpets"))} ${dim(VERSION)} ${dim("AI coding pet CLI")}`,
       "",
       `  ${c("Usage")}`,
-      `    petdex <command> [args]`,
+      `    agentpets <command> [args]`,
       "",
       `  ${c("Commands")}`,
       `    ${pc.bold("init")}               First-run setup: wires hooks across your agents AND wakes the mascot ${pc.green("(start here)")}`,
@@ -234,28 +235,28 @@ function printHelp() {
       `    ${pc.bold("whoami")}             Show signed-in user`,
       `    ${pc.bold("submit")} <path>      Submit a pet folder, zip, or parent of pets (bulk)`,
       `    ${pc.bold("edit")} <slug>        Edit a pet you own (--desc, --displayName, --sprite, --meta, --zip)`,
-      `    ${pc.bold("install")} <slug...>  Install one or more pets into ~/.petdex/pets and ~/.codex/pets`,
-      `    ${pc.bold("install desktop")}    Install the petdex-desktop binary (alternative to the .dmg)`,
+      `    ${pc.bold("install")} <slug...>  Install pets into ~/.agentpets/pets, ~/.petdex/pets, and ~/.codex/pets`,
+      `    ${pc.bold("install desktop")}    Install AgentPets Desktop (alternative to the .dmg)`,
       `    ${pc.bold("list")}               List approved pets`,
       `    ${pc.bold("mcp-server")}          Start the MCP protocol server for Antigravity integration`,
-      `    ${pc.bold("hooks install")}      Wire petdex-desktop into your coding agents`,
+      `    ${pc.bold("hooks install")}      Wire AgentPets Desktop into your coding agents`,
       `    ${pc.bold("toggle")}             One-shot wake/sleep. Flips the mascot on or off depending on current state`,
-      `    ${pc.bold("up")}                 Force-wake the mascot. Enables hooks AND launches petdex-desktop`,
-      `    ${pc.bold("down")}               Force-sleep the mascot. Disables hooks AND stops petdex-desktop`,
-      `    ${pc.bold("desktop")} <cmd>      Manage petdex-desktop (start | stop | status)`,
-      `    ${pc.bold("update")}             Pull the latest petdex-desktop release and restart`,
+      `    ${pc.bold("up")}                 Force-wake the mascot. Enables hooks AND launches AgentPets Desktop`,
+      `    ${pc.bold("down")}               Force-sleep the mascot. Disables hooks AND stops AgentPets Desktop`,
+      `    ${pc.bold("desktop")} <cmd>      Manage AgentPets Desktop (start | stop | status)`,
+      `    ${pc.bold("update")}             Pull the latest AgentPets Desktop release and restart`,
       `    ${pc.bold("doctor")}             Diagnose install/runtime/agents and surface fixes`,
       `    ${pc.bold("telemetry")} [on|off|status]  Manage anonymous usage telemetry`,
       "",
       `  ${c("Examples")}`,
-      `    ${dim("$")} petdex init                            ${dim("# after dragging Petdex.app from the .dmg → just run this")}`,
-      `    ${dim("$")} petdex login`,
-      `    ${dim("$")} petdex submit ~/.codex/pets/boba       ${dim("# single folder")}`,
-      `    ${dim("$")} petdex install boba                    ${dim("# install a pet by slug")}`,
-      `    ${dim("$")} petdex install boba doraemon mochi     ${dim("# install several at once")}`,
-      `    ${dim("$")} petdex toggle                          ${dim("# wake or sleep the mascot")}`,
-      `    ${dim("$")} petdex doctor                          ${dim("# diagnose install + agents")}`,
-      `    ${dim("$")} petdex update                          ${dim("# pull the latest release")}`,
+      `    ${dim("$")} npx @agentpets/cli init                            ${dim("# first-run setup")}`,
+      `    ${dim("$")} npx @agentpets/cli login`,
+      `    ${dim("$")} npx @agentpets/cli submit ~/.codex/pets/boba       ${dim("# single folder")}`,
+      `    ${dim("$")} npx @agentpets/cli install boba                    ${dim("# install a pet by slug")}`,
+      `    ${dim("$")} npx @agentpets/cli install boba doraemon mochi     ${dim("# install several at once")}`,
+      `    ${dim("$")} npx @agentpets/cli toggle                          ${dim("# wake or sleep the mascot")}`,
+      `    ${dim("$")} npx @agentpets/cli doctor                          ${dim("# diagnose install + agents")}`,
+      `    ${dim("$")} npx @agentpets/cli update                          ${dim("# pull the latest release")}`,
       "",
       `  ${dim("Gallery & docs:")} ${pc.underline(PETDEX_URL)}`,
       "",
@@ -266,7 +267,7 @@ function printHelp() {
 // ─── commands ──────────────────────────────────────────────────────────────
 
 async function cmdLogin() {
-  p.intro(pc.bgMagenta(pc.white(" petdex login ")));
+  p.intro(pc.bgMagenta(pc.white(" agentpets login ")));
   const s = p.spinner();
   s.start("Opening your browser to sign in with Clerk");
   try {
@@ -275,7 +276,7 @@ async function cmdLogin() {
     const label = firstString(user.email, user.username, user.sub) ?? "unknown";
     s.stop(`${pc.green("✓ ")}Signed in as ${pc.cyan(label)}`);
     p.outro(
-      `Try ${pc.cyan("petdex submit ~/.codex/pets")} to share your pets.`,
+      `Try ${pc.cyan("npx @agentpets/cli submit ~/.codex/pets")} to share your pets.`,
     );
   } catch (err) {
     s.stop(pc.red("× login failed"));
@@ -307,7 +308,7 @@ async function cmdWhoami() {
       "Signed in",
     );
   } catch {
-    p.cancel(`Not signed in. Run ${pc.cyan("petdex login")}.`);
+    p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
     process.exit(1);
   }
 }
@@ -341,11 +342,14 @@ async function installOne(pet: ManifestPet): Promise<void> {
     );
   }
 
-  // Multi-target: ~/.petdex/pets and ~/.codex/pets so both Petdex
-  // Desktop and Codex Desktop see the pet immediately.
+  // Multi-target: ~/.agentpets/pets is the AgentPets home, ~/.petdex/pets is
+  // a legacy compatibility path, and ~/.codex/pets lets Codex Desktop see the
+  // pet immediately.
+  const agentpetsDir = path.join(homedir(), ".agentpets", "pets", slug);
   const petdexDir = path.join(homedir(), ".petdex", "pets", slug);
   const codexDir = path.join(homedir(), ".codex", "pets", slug);
   await Promise.all([
+    mkdir(agentpetsDir, { recursive: true }),
     mkdir(petdexDir, { recursive: true }),
     mkdir(codexDir, { recursive: true }),
   ]);
@@ -365,6 +369,11 @@ async function installOne(pet: ManifestPet): Promise<void> {
     fetchOrThrow(pet.spritesheetUrl),
   ]);
   await Promise.all([
+    writeFile(path.join(agentpetsDir, "pet.json"), Buffer.from(petJson)),
+    writeFile(
+      path.join(agentpetsDir, `spritesheet.${ext}`),
+      Buffer.from(spritesheet),
+    ),
     writeFile(path.join(petdexDir, "pet.json"), Buffer.from(petJson)),
     writeFile(
       path.join(petdexDir, `spritesheet.${ext}`),
@@ -387,7 +396,7 @@ async function cmdInstall(args: string[]) {
   const first = args[0];
   if (!first) {
     p.cancel(
-      `Usage: ${pc.cyan("petdex install <slug> [slug...]")} or ${pc.cyan("petdex install desktop")}`,
+      `Usage: ${pc.cyan("npx @agentpets/cli install <slug> [slug...]")} or ${pc.cyan("npx @agentpets/cli install desktop")}`,
     );
     process.exit(1);
   }
@@ -435,7 +444,7 @@ async function cmdInstall(args: string[]) {
   if (found.length === 0) {
     s.stop(pc.red("none found"));
     p.cancel(
-      `No pets matched. Try ${pc.cyan("petdex list")} to see what's available.`,
+      `No pets matched. Try ${pc.cyan("npx @agentpets/cli list")} to see what's available.`,
     );
     process.exit(1);
   }
@@ -482,6 +491,7 @@ async function cmdInstall(args: string[]) {
   const lines: string[] = [];
   if (installed.length > 0) {
     lines.push("Paths:");
+    lines.push(`  ${pc.dim("~/.agentpets/pets/")} (AgentPets Desktop)`);
     lines.push(`  ${pc.dim("~/.petdex/pets/")} (Petdex Desktop)`);
     lines.push(`  ${pc.dim("~/.codex/pets/")} (Codex Desktop)`);
     lines.push("");
@@ -540,7 +550,7 @@ async function cmdList() {
   });
   console.log(lines.join("\n"));
   console.log(
-    `\n${pc.dim("Install with")} ${pc.cyan("petdex install <slug>")}\n${pc.dim("Browse:")} ${pc.underline(PETDEX_URL)}`,
+    `\n${pc.dim("Install with")} ${pc.cyan("npx @agentpets/cli install <slug>")}\n${pc.dim("Browse:")} ${pc.underline(PETDEX_URL)}`,
   );
 }
 
@@ -548,7 +558,7 @@ async function cmdSubmit(args: string[]) {
   const positionals = args.filter((a) => !a.startsWith("--"));
   const target = positionals[0];
   if (!target) {
-    p.cancel(`Usage: ${pc.cyan("petdex submit <path> [--force]")}`);
+    p.cancel(`Usage: ${pc.cyan("npx @agentpets/cli submit <path> [--force]")}`);
     process.exit(1);
   }
 
@@ -558,12 +568,12 @@ async function cmdSubmit(args: string[]) {
   try {
     const t = await auth.getAccessToken();
     if (!t) {
-      p.cancel(`Not signed in. Run ${pc.cyan("petdex login")}.`);
+      p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
       process.exit(1);
     }
     token = t;
   } catch {
-    p.cancel(`Not signed in. Run ${pc.cyan("petdex login")}.`);
+    p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
     process.exit(1);
   }
   let profileUrl = PETDEX_URL;
@@ -580,7 +590,7 @@ async function cmdSubmit(args: string[]) {
     process.exit(1);
   }
 
-  p.intro(pc.bgMagenta(pc.white(" petdex submit ")));
+  p.intro(pc.bgMagenta(pc.white(" agentpets submit ")));
   const scan = p.spinner();
   scan.start(`Scanning ${absPath}`);
   const candidates = await collectCandidates(absPath, stats.isDirectory());
@@ -715,7 +725,7 @@ async function cmdEdit(args: string[]): Promise<void> {
   const slug = positionals[0];
   if (!slug) {
     p.cancel(
-      `Usage: ${pc.cyan('petdex edit <slug> [--desc "..."] [--displayName "..."] [--sprite ./new.webp] [--meta ./pet.json] [--zip ./pet.zip]')}`,
+      `Usage: ${pc.cyan('npx @agentpets/cli edit <slug> [--desc "..."] [--displayName "..."] [--sprite ./new.webp] [--meta ./pet.json] [--zip ./pet.zip]')}`,
     );
     process.exit(1);
   }
@@ -725,12 +735,12 @@ async function cmdEdit(args: string[]): Promise<void> {
   try {
     const t = await auth.getAccessToken();
     if (!t) {
-      p.cancel(`Not signed in. Run ${pc.cyan("petdex login")}.`);
+      p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
       process.exit(1);
     }
     token = t;
   } catch {
-    p.cancel(`Not signed in. Run ${pc.cyan("petdex login")}.`);
+    p.cancel(`Not signed in. Run ${pc.cyan("npx @agentpets/cli login")}.`);
     process.exit(1);
   }
 
@@ -752,7 +762,7 @@ async function cmdEdit(args: string[]): Promise<void> {
     process.exit(1);
   }
 
-  p.intro(pc.bgMagenta(pc.white(" petdex edit ")));
+  p.intro(pc.bgMagenta(pc.white(" agentpets edit ")));
   const s = p.spinner();
   s.start(`Resolving ${slug}`);
 
@@ -1192,7 +1202,7 @@ function translateLoginError(message: string): string {
     return [
       "Clerk OAuth rejected this CLI build (invalid_client).",
       "This usually means your installed CLI is out of date. Try:",
-      "  npm cache clean --force && npx -y petdex@latest login",
+      "  npm cache clean --force && npx -y @agentpets/cli@latest login",
       "If it still fails: https://github.com/agiagentsdev/agentpets-dev/issues",
     ].join("\n");
   }
@@ -1203,13 +1213,13 @@ function translateLoginError(message: string): string {
     return [
       "OAuth callback was rejected by Clerk (invalid_grant).",
       "Common cause: you closed the browser before approving, or the local",
-      "callback server timed out. Try `petdex login` again.",
+      "callback server timed out. Try `npx @agentpets/cli login` again.",
     ].join("\n");
   }
   if (m.includes("redirect_uri") && m.includes("pre-registered")) {
     return [
       "Clerk OAuth rejected the local callback URL.",
-      "The petdex OAuth Application needs http://127.0.0.1 in its allowed",
+      "The AgentPets OAuth Application needs http://127.0.0.1 in its allowed",
       "redirect URLs. Please file an issue:",
       "  https://github.com/agiagentsdev/agentpets-dev/issues",
     ].join("\n");
@@ -1393,7 +1403,7 @@ async function cmdHooks(args: string[]) {
       console.log("");
       if (totalRefreshed === 0) {
         console.log(
-          `${pc.dim("No wired agents found. Run")} ${pc.cyan("petdex init")} ${pc.dim("first.")}`,
+          `${pc.dim("No wired agents found. Run")} ${pc.cyan("npx @agentpets/cli init")} ${pc.dim("first.")}`,
         );
       } else {
         console.log(
@@ -1583,7 +1593,7 @@ async function cmdUp(): Promise<void> {
     console.log(`${pc.yellow("!")} ${result.reason}`);
     console.log(
       pc.dim(
-        `  Install the binary first: ${pc.cyan("petdex install desktop")}`,
+        `  Install the binary first: ${pc.cyan("npx @agentpets/cli install desktop")}`,
       ),
     );
   }

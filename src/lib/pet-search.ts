@@ -257,6 +257,8 @@ async function vibeSearch(args: {
       sp.id, sp.slug, sp.display_name, sp.description,
       sp.spritesheet_url, sp.pet_json_url, sp.zip_url, sp.sound_url,
       sp.kind, sp.vibes, sp.tags, sp.dominant_color, sp.color_family,
+      sp.seo_title, sp.seo_description, sp.seo_keywords, sp.seo_intro,
+      sp.seo_faq, sp.seo_updated_at,
       sp.featured, sp.dhash, sp.status, sp.source,
       sp.owner_id, sp.owner_email,
       sp.credit_name, sp.credit_url, sp.credit_image,
@@ -317,6 +319,16 @@ function rowToSchema(
     tags: row.tags as string[],
     dominantColor: (row.dominant_color as string | null) ?? null,
     colorFamily: (row.color_family as string | null) ?? null,
+    seoTitle: (row.seo_title as string | null) ?? null,
+    seoDescription: (row.seo_description as string | null) ?? null,
+    seoKeywords: (row.seo_keywords as string[] | null) ?? null,
+    seoIntro: (row.seo_intro as string | null) ?? null,
+    seoFaq:
+      (row.seo_faq as Array<{ question: string; answer: string }> | null) ??
+      null,
+    seoUpdatedAt: row.seo_updated_at
+      ? new Date(row.seo_updated_at as string)
+      : null,
     featured: row.featured as boolean,
     dhash: (row.dhash as string | null) ?? null,
     status: row.status as "approved" | "pending" | "rejected",

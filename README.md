@@ -35,7 +35,7 @@
 AgentPets is a developer pet gallery and CLI for AI coding workflows:
 
 1. **Web gallery** at [agentpets.dev](https://agentpets.dev) for browsing, previewing, and sharing animated pets.
-2. **CLI** published as [`@agentpets/cli`](https://www.npmjs.com/package/@agentpets/cli) for install, list, submit, and agent hooks.
+2. **CLI** published as [`petdex`](https://www.npmjs.com/package/@agentpets/cli) for install, list, submit, and agent hooks.
 3. **Pet format** compatible with the existing Codex/Petdex-style `pet.json` plus `spritesheet.webp` package shape.
 4. **Roadmap** toward multi-agent support for Codex, Claude Code, Cursor, Gemini CLI, creator tools, curated collections, and a public pet API.
 

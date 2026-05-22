@@ -10,7 +10,7 @@
  * location at install time.
  *
  * The persisted copy is a SNAPSHOT: it doesn't auto-update. Users who
- * upgrade petdex (npx petdex@latest) just re-run `petdex init` (or
+ * upgrade petdex (npx @agentpets/cli@latest) just re-run `petdex init` (or
  * `petdex hooks install`) to refresh the snapshot. Worse outcomes —
  * silently using a stale snapshot on `petdex update` — would surprise
  * us when behavior diverges between the running CLI and the hooks.

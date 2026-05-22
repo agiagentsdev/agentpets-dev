@@ -1,7 +1,9 @@
-// Server-side: PETDEX_ADMIN_USER_IDS (private env). Authoritative for any
+import { getAdminUserIdsRaw, getPublicAdminUserIdsRaw } from "@/lib/brand-env";
+
+// Server-side: AGENTPETS_ADMIN_USER_IDS (private env). Authoritative for any
 // gate that actually performs an admin action.
 export function getAdminUserIds(): Set<string> {
-  const raw = process.env.PETDEX_ADMIN_USER_IDS ?? "";
+  const raw = getAdminUserIdsRaw();
   return new Set(
     raw
       .split(",")
@@ -20,7 +22,7 @@ export function isAdmin(userId: string | null | undefined): boolean {
 // whether to show admin links. Visibility-only — every server route that
 // mutates state still re-checks via isAdmin().
 export function getPublicAdminUserIds(): Set<string> {
-  const raw = process.env.NEXT_PUBLIC_PETDEX_ADMIN_USER_IDS ?? "";
+  const raw = getPublicAdminUserIdsRaw();
   return new Set(
     raw
       .split(",")

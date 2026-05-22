@@ -16,25 +16,25 @@ cd /home/agentpets
 ADMIN_USER_ID="user_REPLACE_WITH_YOURS"
 
 sed -i 's/\r$//' .env.production
-grep -q '^PETDEX_ADMIN_USER_IDS=' .env.production \
-  && sed -i "s|^PETDEX_ADMIN_USER_IDS=.*|PETDEX_ADMIN_USER_IDS=${ADMIN_USER_ID}|" .env.production \
-  || printf '\nPETDEX_ADMIN_USER_IDS=%s\n' "$ADMIN_USER_ID" >> .env.production
-
-grep -q '^NEXT_PUBLIC_PETDEX_ADMIN_USER_IDS=' .env.production \
-  && sed -i "s|^NEXT_PUBLIC_PETDEX_ADMIN_USER_IDS=.*|NEXT_PUBLIC_PETDEX_ADMIN_USER_IDS=${ADMIN_USER_ID}|" .env.production \
-  || printf 'NEXT_PUBLIC_PETDEX_ADMIN_USER_IDS=%s\n' "$ADMIN_USER_ID" >> .env.production
+for key in AGENTPETS_ADMIN_USER_IDS PETDEX_ADMIN_USER_IDS NEXT_PUBLIC_AGENTPETS_ADMIN_USER_IDS NEXT_PUBLIC_PETDEX_ADMIN_USER_IDS; do
+  grep -q "^${key}=" .env.production \
+    && sed -i "s|^${key}=.*|${key}=${ADMIN_USER_ID}|" .env.production \
+    || printf '\n%s=%s\n' "$key" "$ADMIN_USER_ID" >> .env.production
+done
 ```
 
-`PETDEX_ADMIN_USER_IDS` is the real server-side gate. The
-`NEXT_PUBLIC_...` value only controls whether admin links appear in the UI, so
-it is safe but should still contain only admin ids.
+`AGENTPETS_ADMIN_USER_IDS` is the real server-side gate. `PETDEX_ADMIN_USER_IDS`
+is kept as a legacy alias for older scripts. The `NEXT_PUBLIC_...` values only
+control whether admin links appear in the UI, so they are safe but should still
+contain only admin ids.
 
-Rebuild once after changing `NEXT_PUBLIC_PETDEX_ADMIN_USER_IDS`:
+Rebuild once after changing `NEXT_PUBLIC_AGENTPETS_ADMIN_USER_IDS`:
 
 ```bash
 cd /home/agentpets
 /root/.bun/bin/bun install
-/root/.bun/bin/bun --env-file=.env.production run build
+/root/.bun/bin/bun run prod:check
+/root/.bun/bin/bun run build
 sudo systemctl restart agentpets
 ```
 
@@ -61,6 +61,13 @@ curl -I http://127.0.0.1:6996
 
 If the app returns 500 and journal logs say `password authentication failed`,
 run the sync block above again.
+
+After syncing, run:
+
+```bash
+cd /home/agentpets
+/root/.bun/bin/bun run prod:check
+```
 
 ## 3. Import Real Petdex Pets
 

@@ -26,8 +26,9 @@ function r2PublicHost(): string {
 //
 // Hosts allowed:
 // - self for everything we render
-// - clerk.petdex.crafter.run + *.clerk.com / *.clerk.accounts.dev for
-//   the Clerk client SDK
+// - clerk.agentpets.dev + *.clerk.com / *.clerk.accounts.dev for the
+//   Clerk client SDK. Legacy petdex.crafter.run Clerk hosts stay allowed
+//   until every production Clerk URL is migrated.
 // - vercel-scripts / vitals for Vercel analytics
 // - R2 public bucket + UploadThing host + Clerk image hosts + social
 //   avatar hosts for sprites and avatars
@@ -41,8 +42,8 @@ const cspDirectives = [
   // challenges.cloudflare.com (Turnstile). Without it on frame-src and
   // its bootstrap script on script-src, the CAPTCHA fails to load and
   // the user can't create an account.
-  "frame-src 'self' https://challenges.cloudflare.com https://*.clerk.com https://*.clerk.accounts.dev https://accounts.petdex.crafter.run https://clerk.petdex.crafter.run",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clerk.petdex.crafter.run https://accounts.petdex.crafter.run https://*.clerk.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://va.vercel-scripts.com https://vercel.live",
+  "frame-src 'self' https://challenges.cloudflare.com https://clerk.agentpets.dev https://accounts.agentpets.dev https://*.clerk.com https://*.clerk.accounts.dev https://accounts.petdex.crafter.run https://clerk.petdex.crafter.run",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clerk.agentpets.dev https://accounts.agentpets.dev https://clerk.petdex.crafter.run https://accounts.petdex.crafter.run https://*.clerk.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://va.vercel-scripts.com https://vercel.live",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev https://yu2vz9gndp.ufs.sh https://img.clerk.com https://images.clerk.dev https://avatars.githubusercontent.com https://pbs.twimg.com https://storage.googleapis.com",
   "media-src 'self' https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev",
@@ -51,10 +52,23 @@ const cspDirectives = [
   // S3 endpoint (*.r2.cloudflarestorage.com). Both must be on the
   // connect-src allowlist or browser fetch / XHR fail with a generic
   // network error (root cause of issues #22-#80+).
-  "connect-src 'self' https://clerk.petdex.crafter.run https://accounts.petdex.crafter.run https://*.clerk.com https://*.clerk.accounts.dev https://api.clerk.com https://api.github.com https://challenges.cloudflare.com https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev https://*.r2.cloudflarestorage.com https://yu2vz9gndp.ufs.sh https://utfs.io https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+  "connect-src 'self' https://clerk.agentpets.dev https://accounts.agentpets.dev https://clerk.petdex.crafter.run https://accounts.petdex.crafter.run https://*.clerk.com https://*.clerk.accounts.dev https://api.clerk.com https://api.github.com https://challenges.cloudflare.com https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev https://*.r2.cloudflarestorage.com https://yu2vz9gndp.ufs.sh https://utfs.io https://va.vercel-scripts.com https://vitals.vercel-insights.com",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
   "upgrade-insecure-requests",
+].join("; ");
+
+const embedCspDirectives = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "form-action 'none'",
+  "frame-ancestors *",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev https://yu2vz9gndp.ufs.sh https://storage.googleapis.com",
+  "font-src 'self' data:",
+  "connect-src 'self'",
 ].join("; ");
 
 const securityHeaders = [
@@ -82,6 +96,15 @@ const securityHeaders = [
   { key: "Content-Security-Policy", value: cspDirectives },
   // Cross-origin protections.
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+];
+
+const embedSecurityHeaders = [
+  {
+    key: "X-Content-Type-Options",
+    value: "nosniff",
+  },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Content-Security-Policy", value: embedCspDirectives },
 ];
 
 const mockRoot = path.resolve(__dirname, "src/lib/mock");
@@ -114,7 +137,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
+        source: "/embed/:path*",
+        headers: embedSecurityHeaders,
+      },
+      {
+        source: "/((?!embed(?:/|$)).*)",
         headers: securityHeaders,
       },
     ];

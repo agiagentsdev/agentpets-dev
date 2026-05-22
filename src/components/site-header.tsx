@@ -114,6 +114,13 @@ export function SiteHeader({ hideSubmitCta = false }: SiteHeaderProps) {
       icon: UploadSimpleIcon,
     },
     {
+      href: href("/pet-builder"),
+      title: t("petBuilder"),
+      description: t("petBuilderDesc"),
+      icon: PaintBrushIcon,
+      badge: "new",
+    },
+    {
       href: href("/create"),
       title: t("create"),
       description: t("createDesc"),
@@ -312,6 +319,17 @@ export function SiteHeader({ hideSubmitCta = false }: SiteHeaderProps) {
             </Button>
           </div>
           <nav className="mt-4 flex flex-col gap-1 px-5 text-lg">
+            <MobileLink
+              href={href("/pet-builder")}
+              onClick={() => setOpen(false)}
+            >
+              <span className="inline-flex items-center gap-2">
+                {t("petBuilder")}
+                <span className="rounded-full bg-brand-tint px-1.5 py-0.5 font-mono text-[9px] font-semibold tracking-[0.12em] text-brand uppercase ring-1 ring-brand/30 dark:bg-brand-tint-dark">
+                  new
+                </span>
+              </span>
+            </MobileLink>
             <MobileLink href={href("/create")} onClick={() => setOpen(false)}>
               {t("create")}
             </MobileLink>

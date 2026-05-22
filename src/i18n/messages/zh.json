@@ -65,6 +65,8 @@
     "vibesDesc": "舒适、酷感、神秘、英雄等风格",
     "build": "创作",
     "buildDesc": "制作并发布你的像素宠物",
+    "petBuilder": "Pet builder",
+    "petBuilderDesc": "Design, export, and submit browser-built pets",
     "createDesc": "用 Codex skill 孵化宠物，从想法到精灵图Sprite 只要几分钟",
     "submitDesc": "上传文件夹，AgentPets 为所有人托管",
     "docsDesc": "安装 AgentPets CLI，用 npm 分发宠物",
@@ -101,6 +103,8 @@
   },
   "footer": {
     "rightsNotice": "宠物是用户提交的同人作品。AgentPets 不主张拥有任何底层知识产权。",
+    "topics": "Topics",
+    "guides": "Guides",
     "topCreators": "创作者",
     "takedown": "下架请求",
     "advertise": "投放广告 Advertise",

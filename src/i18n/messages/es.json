@@ -62,6 +62,8 @@
     "vibesDesc": "Cozy, edgy, místico, heroico y más",
     "build": "Crear",
     "buildDesc": "Hacé y publicá tu pixel pet",
+    "petBuilder": "Pet builder",
+    "petBuilderDesc": "Diseña, exporta y envía pets desde el navegador",
     "createDesc": "Crea un pet con la skill de Codex, 5 min de idea a sprite",
     "submitDesc": "Subí tu carpeta y AgentPets lo hostea para todos",
     "docsDesc": "Instala el AgentPets CLI y publicá pets por npm",
@@ -98,6 +100,8 @@
   },
   "footer": {
     "rightsNotice": "Las mascotas son fan art enviado por usuarios. AgentPets no reclama derechos sobre ninguna propiedad intelectual subyacente.",
+    "topics": "Topics",
+    "guides": "Guides",
     "topCreators": "Creadores",
     "takedown": "Retiro de contenido",
     "advertise": "Anunciarse",

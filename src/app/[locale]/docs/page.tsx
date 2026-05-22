@@ -191,7 +191,7 @@ export default async function DocsPage({
             </h3>
             <p>{t("sections.install.powerBody")}</p>
             <CommandLine
-              command="npm install -g @agentpets/cli"
+              command="npm install -g petdex"
               source="docs-install-global"
               className="w-full max-w-xl"
             />

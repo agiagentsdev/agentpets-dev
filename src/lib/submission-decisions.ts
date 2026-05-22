@@ -19,6 +19,11 @@ export type SubmissionActionInput = {
   displayName?: string;
   description?: string;
   slug?: string;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  seoKeywords?: string[] | string | null;
+  seoIntro?: string | null;
+  seoFaq?: Array<{ question?: string; answer?: string }> | string | null;
 };
 
 export type SubmissionActionActor = "admin" | "auto-review";
@@ -73,6 +78,16 @@ export async function applySubmissionAction(
       editPatch.slug = newSlug;
     }
   }
+
+  const seoPatch = normalizeSeoPatch(body, now);
+  if (!seoPatch.ok) {
+    return {
+      ok: false,
+      status: 400,
+      body: { error: seoPatch.error, message: seoPatch.message },
+    };
+  }
+  Object.assign(editPatch, seoPatch.patch);
 
   const statusPatch =
     body.action === "approve"
@@ -309,4 +324,149 @@ function normalizeSlug(value: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 40);
+}
+
+function normalizeSeoPatch(
+  body: SubmissionActionInput,
+  now: Date,
+):
+  | { ok: true; patch: Record<string, unknown> }
+  | { ok: false; error: string; message: string } {
+  const patch: Record<string, unknown> = {};
+  let touched = false;
+  const textFields = [
+    ["seoTitle", "seoTitle", 70],
+    ["seoDescription", "seoDescription", 170],
+    ["seoIntro", "seoIntro", 700],
+  ] as const;
+
+  for (const [inputKey, columnKey, max] of textFields) {
+    if (!hasOwn(body, inputKey)) continue;
+    const value = body[inputKey];
+    if (value !== null && value !== undefined && typeof value !== "string") {
+      return {
+        ok: false,
+        error: `invalid_${inputKey}`,
+        message: `${inputKey} must be a string or null.`,
+      };
+    }
+    patch[columnKey] = cleanNullableText(value, max);
+    touched = true;
+  }
+
+  if (hasOwn(body, "seoKeywords")) {
+    const keywords = normalizeSeoKeywords(body.seoKeywords);
+    if (!keywords.ok) return keywords;
+    patch.seoKeywords = keywords.value.length > 0 ? keywords.value : null;
+    touched = true;
+  }
+
+  if (hasOwn(body, "seoFaq")) {
+    const faq = normalizeSeoFaq(body.seoFaq);
+    if (!faq.ok) return faq;
+    patch.seoFaq = faq.value.length > 0 ? faq.value : null;
+    touched = true;
+  }
+
+  if (touched) patch.seoUpdatedAt = now;
+  return { ok: true, patch };
+}
+
+function normalizeSeoKeywords(
+  value: SubmissionActionInput["seoKeywords"],
+):
+  | { ok: true; value: string[] }
+  | { ok: false; error: string; message: string } {
+  if (value === null || value === undefined || value === "") {
+    return { ok: true, value: [] };
+  }
+  const raw = Array.isArray(value)
+    ? value
+    : typeof value === "string"
+      ? value.split(",")
+      : null;
+  if (!raw) {
+    return {
+      ok: false,
+      error: "invalid_seo_keywords",
+      message: "seoKeywords must be an array, comma string, or null.",
+    };
+  }
+  const seen = new Set<string>();
+  const keywords: string[] = [];
+  for (const item of raw) {
+    if (typeof item !== "string") continue;
+    const clean = item.replace(/\s+/g, " ").trim().slice(0, 48);
+    if (!clean) continue;
+    const key = clean.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    keywords.push(clean);
+    if (keywords.length >= 20) break;
+  }
+  return { ok: true, value: keywords };
+}
+
+function normalizeSeoFaq(
+  value: SubmissionActionInput["seoFaq"],
+):
+  | { ok: true; value: Array<{ question: string; answer: string }> }
+  | { ok: false; error: string; message: string } {
+  if (value === null || value === undefined || value === "") {
+    return { ok: true, value: [] };
+  }
+  let raw: unknown = value;
+  if (typeof value === "string") {
+    try {
+      raw = JSON.parse(value);
+    } catch {
+      return {
+        ok: false,
+        error: "invalid_seo_faq",
+        message: "seoFaq JSON could not be parsed.",
+      };
+    }
+  }
+  if (!Array.isArray(raw)) {
+    return {
+      ok: false,
+      error: "invalid_seo_faq",
+      message: "seoFaq must be an array or null.",
+    };
+  }
+  const faq = raw
+    .map((item) => {
+      if (!item || typeof item !== "object") return null;
+      const record = item as Record<string, unknown>;
+      const question = cleanNullableText(
+        typeof record.question === "string" ? record.question : null,
+        140,
+      );
+      const answer = cleanNullableText(
+        typeof record.answer === "string" ? record.answer : null,
+        500,
+      );
+      return question && answer ? { question, answer } : null;
+    })
+    .filter((item): item is { question: string; answer: string } =>
+      Boolean(item),
+    )
+    .slice(0, 8);
+  return { ok: true, value: faq };
+}
+
+function cleanNullableText(
+  value: string | null | undefined,
+  max: number,
+): string | null {
+  const clean = value?.replace(/\s+/g, " ").trim();
+  if (!clean) return null;
+  return clean.slice(0, max);
+}
+
+function hasOwn<T extends object, K extends PropertyKey>(
+  obj: T,
+  key: K,
+): obj is T & Record<K, unknown> {
+  return Object.prototype.hasOwnProperty.call(obj, key);
 }

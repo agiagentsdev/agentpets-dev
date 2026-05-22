@@ -26,6 +26,11 @@ export type PetCredit = {
 
 export type PetSource = "submit" | "discover" | "claimed";
 
+export type PetSeoFaq = {
+  question: string;
+  answer: string;
+};
+
 export type PetdexPet = {
   id: string;
   slug: string;
@@ -43,6 +48,12 @@ export type PetdexPet = {
   tags: string[];
   dominantColor: string | null;
   colorFamily: ColorFamily | null;
+  seoTitle: string | null;
+  seoDescription: string | null;
+  seoKeywords: string[];
+  seoIntro: string | null;
+  seoFaq: PetSeoFaq[];
+  seoUpdatedAt: string | null;
   submittedBy?: PetCredit;
   /**
    * How the pet entered the catalog. 'submit' = uploaded through the

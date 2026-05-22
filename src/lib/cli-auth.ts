@@ -3,8 +3,9 @@
 // only the userId (sub) and email returned by Clerk — never any value the
 // client sent in the request body.
 
-const ISSUER =
-  process.env.CLERK_CLI_ISSUER ?? "https://clerk.agentpets.dev";
+import { getClerkCliIssuer } from "@/lib/brand-env";
+
+const ISSUER = getClerkCliIssuer();
 
 export type CliPrincipal = {
   userId: string;

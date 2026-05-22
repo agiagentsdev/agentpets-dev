@@ -112,7 +112,7 @@ const stateRateLimiter: RateLimiter = (() => {
 // Without this any website the user visits could fire
 // `fetch("http://127.0.0.1:7777/update", { method: "POST",
 // mode: "no-cors" })` and trigger a silent npm install of arbitrary
-// `petdex@latest` code — CORS only blocks the response, never the
+// `@agentpets/cli@latest` code — CORS only blocks the response, never the
 // request itself.
 //
 // The token lives in memory now and only gets persisted to disk
@@ -607,11 +607,15 @@ function spawnUpdate(): void {
     });
     return;
   }
-  const child = spawn(npxPath, ["-y", "petdex@latest", "update", "--silent"], {
-    detached: true,
-    stdio: ["ignore", "pipe", "pipe"],
-    env: process.env,
-  });
+  const child = spawn(
+    npxPath,
+    ["-y", "@agentpets/cli@latest", "update", "--silent"],
+    {
+      detached: true,
+      stdio: ["ignore", "pipe", "pipe"],
+      env: process.env,
+    },
+  );
   currentUpdateChild = child;
   // ENOENT on spawn surfaces via 'error', not 'exit'. Without this
   // listener, an absent npx leaves update.json stuck on "running"
@@ -626,7 +630,7 @@ function spawnUpdate(): void {
       status: "error",
       message:
         err.code === "ENOENT"
-          ? "Could not run npx. Install Node.js or run: npx petdex@latest update from a terminal."
+          ? "Could not run npx. Install Node.js or run: npx @agentpets/cli@latest update from a terminal."
           : `Update spawn failed: ${err.message}`,
       checkedAt: Date.now(),
     });

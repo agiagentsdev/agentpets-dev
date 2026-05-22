@@ -79,7 +79,7 @@ describe("parsePendingInstallSlugs", () => {
 
 describe("buildSetupSteps", () => {
   test("default flow is two steps: init + stay-updated", () => {
-    // The setup flow collapsed to a single user action (`npx petdex
+    // The setup flow collapsed to a single user action (`npx @agentpets/cli
     // init`) plus the always-optional "stay updated" reminder.
     // Anything that drifts from those two keys is a regression worth
     // catching early.

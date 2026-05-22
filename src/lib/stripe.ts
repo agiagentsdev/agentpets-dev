@@ -2,6 +2,8 @@ import "server-only";
 
 import Stripe from "stripe";
 
+import { getAppBaseUrl } from "@/lib/brand-env";
+
 let stripe: Stripe | undefined;
 
 export function getStripe(): Stripe {
@@ -14,8 +16,5 @@ export function getStripe(): Stripe {
 }
 
 export function getSiteUrl(): string {
-  const configured = process.env.PETDEX_URL;
-  if (configured) return configured.replace(/\/$/, "");
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "http://localhost:6996";
+  return getAppBaseUrl();
 }

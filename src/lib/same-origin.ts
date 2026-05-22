@@ -12,6 +12,8 @@
 // Allow same-origin, the canonical site URL, the Vercel preview URL of
 // the running deployment, and localhost for local dev.
 
+import { getAppBaseUrl } from "@/lib/brand-env";
+
 const SITE_HOSTS = new Set<string>([
   "agentpets.dev",
   "www.agentpets.dev",
@@ -25,6 +27,14 @@ function vercelHost(): string | null {
   return u ? u.split("/")[0] : null;
 }
 
+function configuredSiteHost(): string | null {
+  try {
+    return new URL(getAppBaseUrl()).host;
+  } catch {
+    return null;
+  }
+}
+
 export function isSameOrigin(req: Request): boolean {
   const origin = req.headers.get("origin");
   if (origin) {
@@ -35,6 +45,8 @@ export function isSameOrigin(req: Request): boolean {
       return false;
     }
     if (SITE_HOSTS.has(host)) return true;
+    const configured = configuredSiteHost();
+    if (configured && host === configured) return true;
     const vercel = vercelHost();
     if (vercel && host === vercel) return true;
     // Allow Vercel preview URLs (every PR gets a *.vercel.app subdomain).

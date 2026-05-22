@@ -28,29 +28,30 @@ type CommandLineProps = {
  * Display says `npx @agentpets/cli install desktop`, clipboard says
  * `npx @agentpets/cli@latest install desktop`. Pinning to @latest in the
  * copy keeps every paste resolving to the newest release without
- * cluttering the visual command. Also handles bare `agentpets`
+ * cluttering the visual command. Also handles bare `petdex` / `agentpets`
  * (without npx) so a user copying from a globally-installed
  * snippet still gets the latest tag.
  *
- * Only rewrites the FIRST occurrence — no risk of accidentally
+ * Only rewrites the FIRST occurrence, with no risk of accidentally
  * rewriting embedded references in flags or paths.
  */
 function pinToLatest(command: string): string {
   // Already pinned? Leave it alone.
   if (command.includes("@agentpets/cli@")) return command;
-  // npx petdex ... -> npx @agentpets/cli@latest ...
+  // npx @agentpets/cli ... -> npx @agentpets/cli@latest ...
   const scopedNpxMatch = command.match(/^(.*?\bnpx\s+)@agentpets\/cli(\b.*)$/);
   if (scopedNpxMatch) {
     return `${scopedNpxMatch[1]}@agentpets/cli@latest${scopedNpxMatch[2]}`;
   }
+  // npx petdex ... -> npx @agentpets/cli@latest ...
   const legacyNpxMatch = command.match(/^(.*?\bnpx\s+)petdex(\b.*)$/);
   if (legacyNpxMatch) {
     return `${legacyNpxMatch[1]}@agentpets/cli@latest${legacyNpxMatch[2]}`;
   }
-  // bare leading `petdex ...` (e.g. when the user has it on PATH)
+  // bare leading `petdex ...` / `agentpets ...` (e.g. when the user has it on PATH)
   // -> `npx @agentpets/cli@latest ...`. We add npx so the pinned form
   // works even without a global install.
-  const bareMatch = command.match(/^agentpets(\b.*)$/);
+  const bareMatch = command.match(/^(?:petdex|agentpets)(\b.*)$/);
   if (bareMatch) return `npx @agentpets/cli@latest${bareMatch[1]}`;
   return command;
 }

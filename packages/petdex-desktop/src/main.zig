@@ -514,10 +514,10 @@ const html_tail =
     \\      try { rep = JSON.parse(rep); } catch (_) { rep = null; }
     \\    }
     \\    const note = (r && r.issue_note) || installReportNote(rep);
-    \\    const cmd = 'npx petdex@latest install ' + installHint;
+    \\    const cmd = 'npx @agentpets/cli@latest install ' + installHint;
     \\    try { window.zero.invoke('petdex.set_mascot_state', { state: 'failed' }); } catch (_) {}
     \\    let text;
-    \\    if (err === 'cli_not_persisted') text = 'Run: npx petdex@latest init';
+    \\    if (err === 'cli_not_persisted') text = 'Run: npx @agentpets/cli@latest init';
     \\    else if (err === 'no_home') text = 'No HOME env. Run: ' + cmd;
     \\    else if (err === 'node_not_found') text = 'Node.js not found. Install from nodejs.org or via brew install node.';
     \\    else if (err === 'abnormal_exit') text = note + 'petdex install crashed. Try terminal: ' + cmd;
@@ -688,17 +688,17 @@ const html_tail =
     \\        if (r && r.ok === false) {
     \\          const code = (r.error || '');
     \\          if (code.indexOf('curl_exit_') === 0 || code === 'no_token' || code === 'token_read' || code === 'empty_token') {
-    \\            renderUpdate({ status: 'error', message: 'Sidecar offline. Run: npx petdex@latest update' });
+    \\            renderUpdate({ status: 'error', message: 'Sidecar offline. Run: npx @agentpets/cli@latest update' });
     \\            return;
     \\          }
-    \\          renderUpdate({ status: 'error', message: 'Update failed (' + code + '). Run: npx petdex@latest update' });
+    \\          renderUpdate({ status: 'error', message: 'Update failed (' + code + '). Run: npx @agentpets/cli@latest update' });
     \\          return;
     \\        }
     \\        renderUpdate({ status: 'running', message: 'Updating...' });
     \\      } catch (e) {
     \\        // Bridge crash. The invoke layer itself blew up — fall back
     \\        // to terminal instructions rather than a silent dead button.
-    \\        renderUpdate({ status: 'error', message: 'Update failed. Run: npx petdex@latest update' });
+    \\        renderUpdate({ status: 'error', message: 'Update failed. Run: npx @agentpets/cli@latest update' });
     \\      }
     \\    });
     \\    document.body.appendChild(updateCard);
@@ -738,7 +738,7 @@ const html_tail =
     \\  setInterval(pollUpdate, 5000);
     \\  pollUpdate();
     \\  // Init banner. Shown when ~/.petdex/bin/petdex.js does not exist,
-    \\  // meaning the user launched the .app without running `petdex init`.
+    \\  // meaning the user launched the .app without running `npx @agentpets/cli init`.
     \\  // Takes priority over the update banner (new users need init first).
     \\  let initCard = null;
     \\  let initToastTimer = null;
@@ -770,7 +770,7 @@ const html_tail =
     \\    needsInitFlag = needsInit;
     \\    const card = ensureInitCard();
     \\    if (needsInit) {
-    \\      card.textContent = 'Run `petdex init` to wire your agents';
+    \\      card.textContent = 'Run `npx @agentpets/cli init` to wire your agents';
     \\      card.style.display = 'block';
     \\      const uc = document.getElementById('update-card');
     \\      if (uc) uc.style.display = 'none';

@@ -10,6 +10,7 @@ import { eq } from "drizzle-orm";
 import { Resend } from "resend";
 
 import { db, schema } from "@/lib/db/client";
+import { getOwnerEmail } from "@/lib/brand-env";
 import type { SubmissionReview, SubmittedPet } from "@/lib/db/schema";
 import { renderNewSubmissionEmail } from "@/lib/email-templates/new-submission";
 import { fallbackHandle, handleForUser } from "@/lib/handles";
@@ -109,7 +110,7 @@ export async function persistSubmission(
 
   // Fire-and-forget admin notification.
   const resendKey = process.env.RESEND_API_KEY;
-  const ownerNotify = process.env.PETDEX_OWNER_EMAIL;
+  const ownerNotify = getOwnerEmail();
   if (resendKey && ownerNotify) {
     // SMTP header injection defense — strip control chars from anything
     // that could end up in a header. The Resend SDK probably escapes, but

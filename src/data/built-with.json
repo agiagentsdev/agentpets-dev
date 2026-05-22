@@ -89,7 +89,7 @@
       "tagline": "Desktop pet for Claude Code with 8-level progression, AI speech bubbles, and time-aware greetings. Pulls from 1,569+ Petdex pets.",
       "category": "desktop-companion",
       "repo": "devnomad-byte/petdex-cc",
-      "homepage": "https://www.npmjs.com/package/petdex-cc",
+      "homepage": "https://www.npmjs.com/package/@agentpets/cli-cc",
       "stars": 1,
       "language": "TypeScript",
       "platforms": ["macOS", "Windows", "Linux"],

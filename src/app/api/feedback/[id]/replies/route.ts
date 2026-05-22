@@ -5,6 +5,7 @@ import { asc, eq } from "drizzle-orm";
 import { Resend } from "resend";
 
 import { isAdmin } from "@/lib/admin";
+import { getAdminNotifyEmail } from "@/lib/brand-env";
 import { db, schema } from "@/lib/db/client";
 import { renderFeedbackAdminReplyEmail } from "@/lib/email-templates/feedback-admin-reply";
 import { renderFeedbackFollowUpEmail } from "@/lib/email-templates/feedback-follow-up";
@@ -201,7 +202,7 @@ export async function POST(
       } else {
         // User followed up → notify admin (Hunter).
         const adminEmail =
-          process.env.PETDEX_ADMIN_NOTIFY_EMAIL ?? "railly@clerk.dev";
+          getAdminNotifyEmail() ?? "hello@agentpets.dev";
         const excerpt = row.message.slice(0, 80);
         const email = renderFeedbackFollowUpEmail("en", {
           kindLabel: row.kind,
