@@ -136,7 +136,7 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       zh: "适用于 Codex、Claude Code、Cursor 和 Gemini CLI 的 AI 编码宠物",
     },
     metaDescription: {
-      en: "Install animated developer pets for AI coding agents with npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz. Browse, preview, submit, and share pets from AgentPets.dev.",
+      en: "Install animated developer pets for Codex, Claude Code, Cursor, Gemini CLI, and AI coding agents. Browse, preview, submit, and share on AgentPets.dev.",
       es: "Instala mascotas animadas para agentes de código con npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz. Explora, previsualiza, envía y comparte mascotas en AgentPets.dev.",
       zh: "使用 npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz 为 AI 编码智能体安装动画开发者宠物。在 AgentPets.dev 浏览、预览、提交和分享。",
     },
@@ -175,7 +175,7 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       zh: "Codex 宠物：OpenAI Codex 的动画伙伴",
     },
     metaDescription: {
-      en: "Browse and install Codex pets from AgentPets.dev. Use npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba to add an animated companion to Codex.",
+      en: "Browse and install Codex pets from AgentPets.dev. Copy one command, preview animated companions, and share badges or embeds with other developers.",
       es: "Explora e instala mascotas para Codex desde AgentPets.dev. Usa npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba para añadir un acompañante animado.",
       zh: "在 AgentPets.dev 浏览并安装 Codex 宠物。使用 npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba 添加动画伙伴。",
     },
@@ -286,7 +286,7 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       zh: "适用于终端 AI 工作流的 Gemini CLI 宠物",
     },
     metaDescription: {
-      en: "Discover terminal-friendly animated pets for Gemini CLI-style workflows. Install with npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz and share with devs.",
+      en: "Discover terminal-friendly animated pets for Gemini CLI-style workflows. Install a coding companion, copy badges, and share pet embeds with devs.",
       es: "Descubre mascotas animadas para flujos tipo Gemini CLI. Instala con npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz y compártelas con devs.",
       zh: "发现适用于 Gemini CLI 风格工作流的终端友好动画宠物。用 npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz 安装并分享。",
     },
@@ -441,7 +441,7 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
     },
     metaTitle: { en: "Codex Pet Generator: Build Animated AI Coding Pets" },
     metaDescription: {
-      en: "Plan, package, preview, and submit Codex pets with AgentPets. Install examples with npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz and follow the roadmap for the web pet generator.",
+      en: "Plan, package, preview, and submit Codex pets with AgentPets. Validate pet.json, export spritesheets, and follow the web pet generator roadmap.",
     },
     commandSlug: "boba",
     keywords: [

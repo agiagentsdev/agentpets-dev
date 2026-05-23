@@ -485,6 +485,7 @@
       "campaigns": "广告活动",
       "mailing": "邮件",
       "manifest": "Manifest",
+      "seo": "SEO",
       "insights": "数据",
       "telemetry": "Telemetry",
       "telemetry__fixme": true
