@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ArrowRight, Check, Code2, Share2, Sparkles } from "lucide-react";
 
 import { getDexNumberMap } from "@/lib/dex";
-import { buildLocaleAlternates } from "@/lib/locale-routing";
 import { searchPets } from "@/lib/pet-search";
 import { getApprovedPetCount } from "@/lib/pets";
 import {
@@ -15,6 +14,7 @@ import {
   seoAgentUrl,
   seoText,
 } from "@/lib/seo-agent-pages";
+import { createPageMetadata } from "@/lib/seo/metadata";
 import { siteConfig } from "@/lib/site-config";
 
 import { CommandLine } from "@/components/command-line";
@@ -27,6 +27,19 @@ import { hasLocale, type Locale } from "@/i18n/config";
 
 type Params = Promise<{ locale: string }>;
 
+const workflowLinks = [
+  { href: "/codex-pets", label: "Codex pets" },
+  { href: "/claude-code-pets", label: "Claude Code pets" },
+  { href: "/cursor-pets", label: "Cursor pets" },
+  { href: "/gemini-cli-pets", label: "Gemini CLI pets" },
+  { href: "/github-copilot-pets", label: "GitHub Copilot pets" },
+  { href: "/google-antigravity-pets", label: "Google Antigravity pets" },
+  { href: "/windsurf-pets", label: "Windsurf pets" },
+  { href: "/opencode-pets", label: "OpenCode pets" },
+  { href: "/terminal-ai-agent-pets", label: "Terminal AI agent pets" },
+  { href: "/ai-code-editor-pets", label: "AI code editor pets" },
+];
+
 export async function generateSeoAgentMetadata(
   slug: SeoAgentSlug,
   params: Params,
@@ -36,13 +49,14 @@ export async function generateSeoAgentMetadata(
   const page = getSeoAgentPage(slug);
   const title = seoText(page.metaTitle, localeValue);
   const description = seoText(page.metaDescription, localeValue);
-  const url = seoAgentUrl(slug);
 
-  return {
+  return createPageMetadata({
     title,
     description,
-    alternates: buildLocaleAlternates(`/${slug}`, localeValue),
+    path: `/${slug}`,
+    locale: localeValue,
     keywords: [
+      ...page.keywords,
       page.agentName,
       `${page.agentName} pets`,
       "AI coding pets",
@@ -50,28 +64,7 @@ export async function generateSeoAgentMetadata(
       "Codex pet",
       "AgentPets",
     ],
-    openGraph: {
-      title,
-      description,
-      url,
-      siteName: siteConfig.name,
-      type: "website",
-      images: [
-        {
-          url: `${siteConfig.url}/api/og`,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [`${siteConfig.url}/api/og`],
-    },
-  };
+  });
 }
 
 export async function SeoAgentPage({
@@ -208,6 +201,39 @@ export async function SeoAgentPage({
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-[1440px] px-5 py-8 md:px-8">
+        <div className="rounded-3xl border border-border-base bg-surface p-5 md:p-6">
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="font-mono text-xs tracking-[0.22em] text-brand uppercase">
+                Explore by workflow
+              </p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+                Internal links for every AI coding surface.
+              </h2>
+            </div>
+            <Link
+              href="/topics/agent-first-coding-tools"
+              className="inline-flex items-center gap-2 text-sm font-medium text-brand hover:underline"
+            >
+              View topic hub
+              <ArrowRight className="size-4" />
+            </Link>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {workflowLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-full border border-border-base bg-background px-3 py-1.5 text-sm text-muted-2 transition hover:border-border-strong hover:text-foreground"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

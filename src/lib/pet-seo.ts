@@ -27,6 +27,10 @@ export function resolvePetSeo(pet: PetdexPet): ResolvedPetSeo {
     "Claude Code pet",
     "Cursor pet",
     "Gemini CLI pet",
+    "GitHub Copilot pet",
+    "Google Antigravity pet",
+    "Windsurf pet",
+    "OpenCode pet",
     "developer mascot",
     ...pet.tags,
     ...pet.vibes,
@@ -98,6 +102,16 @@ function buildInternalLinks(pet: PetdexPet): ResolvedPetSeo["internalLinks"] {
       href: "/codex-pets",
       label: "Codex pets",
       description: "Install pets into Codex-compatible local folders.",
+    },
+    {
+      href: "/terminal-ai-agent-pets",
+      label: "Terminal AI agent pets",
+      description: "Explore pets for Codex, Claude Code, Gemini CLI, and OpenCode.",
+    },
+    {
+      href: "/ai-code-editor-pets",
+      label: "AI code editor pets",
+      description: "Find pets for Cursor, Windsurf, Antigravity, and agent IDEs.",
     },
     {
       href: "/download",

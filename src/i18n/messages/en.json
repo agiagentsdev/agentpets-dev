@@ -9,11 +9,11 @@
   },
   "metadata": {
     "root": {
-      "titleDefault": "AgentPets: Animated companions for AI coding agents",
+      "titleDefault": "AgentPets: AI Coding Pets for Codex, Claude Code, Cursor",
       "titleTemplate": "%s | AgentPets",
-      "description": "AgentPets is a clean developer gallery of animated companions for Codex, Claude Code, Cursor, Gemini CLI, and AI coding workflows. Browse pets, preview animations, and install one with a single command.",
-      "ogTitle": "AgentPets: Animated companions for AI coding agents",
-      "twitterTitle": "AgentPets: Animated companions for AI coding agents",
+      "description": "Browse, install, build, and share animated developer pets for Codex, Claude Code, Cursor, Gemini CLI, and AI coding agents with badges, embeds, and an API.",
+      "ogTitle": "AgentPets: AI Coding Pets for Codex, Claude Code, Cursor",
+      "twitterTitle": "AgentPets: AI Coding Pets for Codex, Claude Code, Cursor",
       "keywords": {
         "codexPet": "Codex pet",
         "codexCliPet": "Codex pet",

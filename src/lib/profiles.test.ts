@@ -28,6 +28,8 @@ describe("profile identity helpers", () => {
     expect(validateProfileHandle("my pets")).toBe("invalid_format");
     expect(validateProfileHandle("-kevwuzy")).toBe("invalid_format");
     expect(validateProfileHandle("admin")).toBe("reserved");
+    expect(validateProfileHandle("google-antigravity-pets")).toBe("reserved");
+    expect(validateProfileHandle("github-copilot-pets")).toBe("reserved");
   });
 
   it("classifies pin-only profile patches", () => {

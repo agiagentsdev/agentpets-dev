@@ -157,6 +157,68 @@ export const topicHubs = [
     ],
   },
   {
+    slug: "agent-first-coding-tools",
+    eyebrow: "Topic hub",
+    title: "Agent-first coding tools and the pets that make them shareable",
+    metaTitle: "Agent-first coding tools, pets, and developer mascots",
+    description:
+      "Explore AgentPets pages for Codex, Claude Code, Cursor, Gemini CLI, Google Antigravity, GitHub Copilot, Windsurf, and OpenCode.",
+    intro:
+      "AI coding tools are splitting across terminals, IDEs, cloud agents, and browser-controlled workspaces. AgentPets gives each workflow a lightweight mascot layer: a public page, install command, badge, embed, and API payload.",
+    keywords: [
+      "agent-first coding tools",
+      "AI coding pets",
+      "Codex pets",
+      "Google Antigravity pets",
+      "GitHub Copilot coding agent pets",
+      "Windsurf pets",
+      "OpenCode pets",
+    ],
+    primaryCta: { href: "/ai-coding-pets", label: "Browse AI coding pets" },
+    secondaryCta: { href: "/developers", label: "Developer API" },
+    sections: [
+      {
+        title: "Terminal-native agents",
+        body: "Terminal tools need pets that stay simple to install and easy to share in docs, READMEs, and team setup guides.",
+        links: [
+          { href: "/codex-pets", label: "Codex pets" },
+          { href: "/claude-code-pets", label: "Claude Code pets" },
+          { href: "/terminal-ai-agent-pets", label: "Terminal AI agent pets" },
+        ],
+      },
+      {
+        title: "AI IDE and editor workflows",
+        body: "Editor-native tools create new developer culture around pair programming, autonomous edits, and workspace-level agents.",
+        links: [
+          { href: "/cursor-pets", label: "Cursor pets" },
+          { href: "/windsurf-pets", label: "Windsurf pets" },
+          { href: "/ai-code-editor-pets", label: "AI code editor pets" },
+        ],
+      },
+      {
+        title: "Cloud and agent-first platforms",
+        body: "Cloud coding agents and agent-first IDEs benefit from portable badges, embeds, and public metadata because the pet can travel beyond the app.",
+        links: [
+          { href: "/github-copilot-pets", label: "GitHub Copilot pets" },
+          { href: "/google-antigravity-pets", label: "Google Antigravity pets" },
+          { href: "/opencode-pets", label: "OpenCode pets" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Should every AI coding tool have its own pet page?",
+        answer:
+          "Only when the page has a real search intent, real internal links, and a clear workflow angle. AgentPets keeps these pages data-driven so new tools can be added without thin duplicated content.",
+      },
+      {
+        question: "Can the same pet be reused across tools?",
+        answer:
+          "Yes. AgentPets keeps pets portable through a spritesheet, pet.json metadata, public URLs, badges, embeds, and API records.",
+      },
+    ],
+  },
+  {
     slug: "pet-builder-workflows",
     eyebrow: "Topic hub",
     title: "Pet builder workflows for fast browser-based AI agent pets",

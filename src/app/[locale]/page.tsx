@@ -10,9 +10,11 @@ import {
 } from "@/lib/collections";
 import { getDexNumberMap } from "@/lib/dex";
 import { formatLocalizedNumber } from "@/lib/format-number";
-import { buildLocaleAlternates, withLocale } from "@/lib/locale-routing";
+import { withLocale } from "@/lib/locale-routing";
 import { searchPets } from "@/lib/pet-search";
 import { getFeaturedPetsWithMetrics, type PetWithMetrics } from "@/lib/pets";
+import { clusterKeywords, seoKeywordClusters } from "@/lib/seo/keywords";
+import { createPageMetadata } from "@/lib/seo/metadata";
 import { installCommandFor, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -54,12 +56,23 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return {
-    alternates: buildLocaleAlternates(
-      "/",
-      hasLocale(locale) ? locale : undefined,
+  const localeValue = hasLocale(locale) ? locale : "en";
+
+  return createPageMetadata({
+    title: "AgentPets: AI Coding Pets for Codex, Claude Code, Cursor",
+    description:
+      "Browse, install, build, and share animated developer pets for Codex, Claude Code, Cursor, Gemini CLI, and AI coding agents with badges, embeds, and an API.",
+    path: "/",
+    locale: localeValue,
+    absoluteTitle: true,
+    keywords: clusterKeywords(
+      seoKeywordClusters.homepage,
+      seoKeywordClusters.codex,
+      seoKeywordClusters.claudeCode,
+      seoKeywordClusters.cursor,
+      seoKeywordClusters.geminiCli,
     ),
-  };
+  });
 }
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

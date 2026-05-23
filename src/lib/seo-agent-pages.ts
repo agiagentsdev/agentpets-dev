@@ -1,4 +1,5 @@
 import { installCommandFor, siteConfig, siteUrl } from "@/lib/site-config";
+import { seoKeywordClusters } from "@/lib/seo/keywords";
 
 import type { Locale } from "@/i18n/config";
 
@@ -8,6 +9,12 @@ export type SeoAgentSlug =
   | "claude-code-pets"
   | "cursor-pets"
   | "gemini-cli-pets"
+  | "google-antigravity-pets"
+  | "github-copilot-pets"
+  | "windsurf-pets"
+  | "opencode-pets"
+  | "terminal-ai-agent-pets"
+  | "ai-code-editor-pets"
   | "codex-pet-generator"
   | "ai-agent-pet-gallery"
   | "developer-pets"
@@ -25,6 +32,7 @@ type SeoAgentPage = {
   metaTitle: LocalizedText;
   metaDescription: LocalizedText;
   commandSlug: string;
+  keywords: string[];
   useCases: LocalizedText[];
   faq: { q: LocalizedText; a: LocalizedText }[];
 };
@@ -133,6 +141,13 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       zh: "使用 npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz 为 AI 编码智能体安装动画开发者宠物。在 AgentPets.dev 浏览、预览、提交和分享。",
     },
     commandSlug: "boba",
+    keywords: [
+      seoKeywordClusters.homepage.primary,
+      ...seoKeywordClusters.codex.secondary,
+      ...seoKeywordClusters.claudeCode.secondary,
+      ...seoKeywordClusters.cursor.secondary,
+      ...seoKeywordClusters.geminiCli.secondary,
+    ],
     useCases: sharedUseCases,
     faq: sharedFaq,
   },
@@ -165,6 +180,11 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       zh: "在 AgentPets.dev 浏览并安装 Codex 宠物。使用 npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba 添加动画伙伴。",
     },
     commandSlug: "boba",
+    keywords: [
+      seoKeywordClusters.codex.primary,
+      ...seoKeywordClusters.codex.secondary,
+      ...seoKeywordClusters.codex.aliases,
+    ],
     useCases: sharedUseCases,
     faq: sharedFaq,
   },
@@ -197,6 +217,11 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       zh: "发现适用于 Claude Code 工作流的动画开发者宠物。AgentPets 保持开放格式，并面向多智能体支持。",
     },
     commandSlug: "boxcat",
+    keywords: [
+      seoKeywordClusters.claudeCode.primary,
+      ...seoKeywordClusters.claudeCode.secondary,
+      ...seoKeywordClusters.claudeCode.aliases,
+    ],
     useCases: sharedUseCases,
     faq: sharedFaq,
   },
@@ -229,6 +254,11 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       zh: "浏览适用于 Cursor 风格 AI 编码工作流的动画宠物，并与开发者社区分享安装命令。",
     },
     commandSlug: "boba",
+    keywords: [
+      seoKeywordClusters.cursor.primary,
+      ...seoKeywordClusters.cursor.secondary,
+      ...seoKeywordClusters.cursor.aliases,
+    ],
     useCases: sharedUseCases,
     faq: sharedFaq,
   },
@@ -261,8 +291,145 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       zh: "发现适用于 Gemini CLI 风格工作流的终端友好动画宠物。用 npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz 安装并分享。",
     },
     commandSlug: "kebo",
+    keywords: [
+      seoKeywordClusters.geminiCli.primary,
+      ...seoKeywordClusters.geminiCli.secondary,
+      ...seoKeywordClusters.geminiCli.aliases,
+    ],
     useCases: sharedUseCases,
     faq: sharedFaq,
+  },
+  "google-antigravity-pets": {
+    slug: "google-antigravity-pets",
+    agentName: "Google Antigravity",
+    eyebrow: { en: "Google Antigravity pets" },
+    title: { en: "Google Antigravity pets for agent-first coding" },
+    description: {
+      en: "A focused page for animated developer pets that fit Google Antigravity, Gemini-powered coding agents, and agent-first IDE workflows.",
+    },
+    metaTitle: { en: "Google Antigravity Pets for Agent-First Coding" },
+    metaDescription: {
+      en: "Browse and share animated pets for Google Antigravity-style AI coding workflows. AgentPets gives every pet an install command, badge, embed, and API record.",
+    },
+    commandSlug: "kebo",
+    keywords: [
+      seoKeywordClusters.googleAntigravity.primary,
+      ...seoKeywordClusters.googleAntigravity.secondary,
+      ...seoKeywordClusters.googleAntigravity.aliases,
+    ],
+    useCases: sharedUseCases,
+    faq: productFaq("Google Antigravity Pets"),
+  },
+  "github-copilot-pets": {
+    slug: "github-copilot-pets",
+    agentName: "GitHub Copilot coding agent",
+    eyebrow: { en: "GitHub Copilot pets" },
+    title: { en: "GitHub Copilot coding agent pets for README-first sharing" },
+    description: {
+      en: "Give Copilot coding-agent workflows a shareable mascot layer with installable pets, README badges, embeds, and creator attribution.",
+    },
+    metaTitle: { en: "GitHub Copilot Coding Agent Pets and Mascots" },
+    metaDescription: {
+      en: "Explore animated pets and developer mascots for GitHub Copilot coding agent workflows. Share pets with badges, embeds, and AgentPets API links.",
+    },
+    commandSlug: "boba",
+    keywords: [
+      seoKeywordClusters.githubCopilot.primary,
+      ...seoKeywordClusters.githubCopilot.secondary,
+      ...seoKeywordClusters.githubCopilot.aliases,
+    ],
+    useCases: sharedUseCases,
+    faq: productFaq("GitHub Copilot Coding Agent Pets"),
+  },
+  "windsurf-pets": {
+    slug: "windsurf-pets",
+    agentName: "Windsurf",
+    eyebrow: { en: "Windsurf pets" },
+    title: { en: "Windsurf pets for AI IDE workflows" },
+    description: {
+      en: "Browse animated pets and developer mascots designed for AI IDE culture, demos, READMEs, and shareable Windsurf setups.",
+    },
+    metaTitle: { en: "Windsurf Pets for AI IDE Developer Workflows" },
+    metaDescription: {
+      en: "Find shareable Windsurf pets and AI IDE mascots with AgentPets. Copy install commands, README badges, embeds, and public API links.",
+    },
+    commandSlug: "byte-bunny",
+    keywords: [
+      seoKeywordClusters.windsurf.primary,
+      ...seoKeywordClusters.windsurf.secondary,
+      ...seoKeywordClusters.windsurf.aliases,
+    ],
+    useCases: sharedUseCases,
+    faq: productFaq("Windsurf Pets"),
+  },
+  "opencode-pets": {
+    slug: "opencode-pets",
+    agentName: "OpenCode",
+    eyebrow: { en: "OpenCode pets" },
+    title: { en: "OpenCode pets for open-source coding agents" },
+    description: {
+      en: "A landing page for terminal-native, open-source AI coding agent pets that can travel through install commands, embeds, and public metadata.",
+    },
+    metaTitle: { en: "OpenCode Pets for Open-Source AI Coding Agents" },
+    metaDescription: {
+      en: "Browse OpenCode pets and terminal AI coding mascots on AgentPets. Install, embed, badge, and reuse pet metadata through the public API.",
+    },
+    commandSlug: "boba",
+    keywords: [
+      seoKeywordClusters.opencode.primary,
+      ...seoKeywordClusters.opencode.secondary,
+      ...seoKeywordClusters.opencode.aliases,
+    ],
+    useCases: sharedUseCases,
+    faq: productFaq("OpenCode Pets"),
+  },
+  "terminal-ai-agent-pets": {
+    slug: "terminal-ai-agent-pets",
+    agentName: "terminal AI agents",
+    eyebrow: { en: "Terminal AI agent pets" },
+    title: { en: "Terminal AI agent pets for visible coding sessions" },
+    description: {
+      en: "Installable animated companions for developers who live in terminals and want Codex, Claude Code, Gemini CLI, and OpenCode sessions to feel visible.",
+    },
+    metaTitle: { en: "Terminal AI Agent Pets for Codex, Claude Code, and OpenCode" },
+    metaDescription: {
+      en: "Browse terminal AI agent pets for Codex, Claude Code, Gemini CLI, and OpenCode. AgentPets packages every mascot with install commands and share links.",
+    },
+    commandSlug: "kebo",
+    keywords: [
+      "terminal AI agent pets",
+      "terminal coding pets",
+      seoKeywordClusters.geminiCli.primary,
+      seoKeywordClusters.opencode.primary,
+      seoKeywordClusters.claudeCode.primary,
+      seoKeywordClusters.codex.primary,
+    ],
+    useCases: sharedUseCases,
+    faq: productFaq("Terminal AI Agent Pets"),
+  },
+  "ai-code-editor-pets": {
+    slug: "ai-code-editor-pets",
+    agentName: "AI code editors",
+    eyebrow: { en: "AI code editor pets" },
+    title: { en: "AI code editor pets for Cursor, Windsurf, and agent IDEs" },
+    description: {
+      en: "A discovery page for editor-native coding mascots that fit Cursor, Windsurf, Google Antigravity, and future AI IDE workflows.",
+    },
+    metaTitle: { en: "AI Code Editor Pets for Cursor, Windsurf, and Antigravity" },
+    metaDescription: {
+      en: "Browse AI code editor pets for Cursor, Windsurf, Google Antigravity, and agent IDEs. Share install commands, badges, embeds, and profile links.",
+    },
+    commandSlug: "byte-bunny",
+    keywords: [
+      "AI code editor pets",
+      "AI IDE pets",
+      seoKeywordClusters.cursor.primary,
+      seoKeywordClusters.windsurf.primary,
+      seoKeywordClusters.googleAntigravity.primary,
+      "developer mascot",
+    ],
+    useCases: sharedUseCases,
+    faq: productFaq("AI Code Editor Pets"),
   },
   "codex-pet-generator": {
     slug: "codex-pet-generator",
@@ -277,6 +444,12 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       en: "Plan, package, preview, and submit Codex pets with AgentPets. Install examples with npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz and follow the roadmap for the web pet generator.",
     },
     commandSlug: "boba",
+    keywords: [
+      seoKeywordClusters.petBuilder.primary,
+      ...seoKeywordClusters.petBuilder.secondary,
+      "Codex pet generator",
+      "Codex pet builder",
+    ],
     useCases: productUseCases,
     faq: productFaq("Codex Pet Generator"),
   },
@@ -293,6 +466,12 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       en: "Browse installable AI agent pets, copy CLI commands, preview animations, and submit your own developer mascot on AgentPets.dev.",
     },
     commandSlug: "boba",
+    keywords: [
+      seoKeywordClusters.homepage.primary,
+      "AI agent pet gallery",
+      "developer pet gallery",
+      "animated coding pets",
+    ],
     useCases: productUseCases,
     faq: productFaq("AI Agent Pet Gallery"),
   },
@@ -309,6 +488,12 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       en: "Find developer pets and animated coding mascots you can install, share, and submit. AgentPets is a gallery and CLI for AI coding companions.",
     },
     commandSlug: "byte-bunny",
+    keywords: [
+      "developer pets",
+      "developer mascot",
+      "coding mascot",
+      "animated developer pets",
+    ],
     useCases: productUseCases,
     faq: productFaq("Developer Pets"),
   },
@@ -325,6 +510,12 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       en: "Browse open-source Codex pets, inspect the AgentPets platform, and share one-command installs for animated AI coding companions.",
     },
     commandSlug: "boba",
+    keywords: [
+      "open source Codex pets",
+      "open-source AI coding pets",
+      "Codex pets GitHub",
+      seoKeywordClusters.codex.primary,
+    ],
     useCases: productUseCases,
     faq: productFaq("Open Source Codex Pets"),
   },
@@ -341,6 +532,11 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
       en: "Follow the AgentPets pet builder roadmap: design animated coding pets, validate pet packages, preview spritesheets, and submit them to the gallery.",
     },
     commandSlug: "boba",
+    keywords: [
+      seoKeywordClusters.petBuilder.primary,
+      ...seoKeywordClusters.petBuilder.secondary,
+      ...seoKeywordClusters.petBuilder.aliases,
+    ],
     useCases: productUseCases,
     faq: productFaq("Pet Builder"),
   },
