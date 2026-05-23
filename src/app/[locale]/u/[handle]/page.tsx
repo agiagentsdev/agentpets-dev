@@ -25,6 +25,7 @@ import { MAX_PINNED_PETS } from "@/lib/profiles";
 
 import { JsonLd } from "@/components/json-ld";
 import { CreatorShareKit } from "@/components/creator-share-kit";
+import { CreatorGrowthDashboard } from "@/components/creator-growth-dashboard";
 import type { Submission } from "@/components/my-pets-view";
 import { PetCard } from "@/components/pet-gallery";
 import { PetSprite } from "@/components/pet-sprite";
@@ -533,6 +534,19 @@ export default async function UserProfilePage({ params }: PageProps) {
                 ]
           }
         />
+
+        {isOwner ? (
+          <CreatorGrowthDashboard
+            handle={publicHandle}
+            pets={pets.map((pet) => ({
+              slug: pet.slug,
+              displayName: pet.displayName,
+              installs: pet.metrics.installCount,
+              likes: pet.metrics.likeCount,
+              downloads: pet.metrics.zipDownloadCount,
+            }))}
+          />
+        ) : null}
 
         <ProfileTabs
           isOwner={isOwner}

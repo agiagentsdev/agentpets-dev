@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { getAllCollections } from "@/lib/collections";
+import { allBestPages } from "@/lib/best-pages";
 import {
   buildAbsoluteLocaleAlternates,
   buildAbsoluteUrl,
@@ -123,6 +124,12 @@ export async function getSitemapEntries(
         changeFrequency: "weekly",
         priority: 0.75,
       },
+      ...allBestPages().map((page) => ({
+        pathname: `/best/${page.slug}`,
+        lastModified: now,
+        changeFrequency: "weekly" as const,
+        priority: page.slug === "codex-pets" ? 0.82 : 0.72,
+      })),
       {
         pathname: "/requests",
         lastModified: now,

@@ -104,6 +104,11 @@ function buildInternalLinks(pet: PetdexPet): ResolvedPetSeo["internalLinks"] {
       description: "Install pets into Codex-compatible local folders.",
     },
     {
+      href: "/best/codex-pets",
+      label: "Best Codex pets",
+      description: "Compare top install-ready pets for Codex workflows.",
+    },
+    {
       href: "/terminal-ai-agent-pets",
       label: "Terminal AI agent pets",
       description: "Explore pets for Codex, Claude Code, Gemini CLI, and OpenCode.",

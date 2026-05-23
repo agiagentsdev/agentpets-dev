@@ -7,6 +7,7 @@ import { SponsorButton } from "@/components/sponsor-button";
 import { siteConfig } from "@/lib/site-config";
 
 const agentSeoLinks = [
+  { href: "/best/codex-pets", label: "Best Codex pets" },
   { href: "/codex-pets", label: "Codex" },
   { href: "/claude-code-pets", label: "Claude Code" },
   { href: "/cursor-pets", label: "Cursor" },

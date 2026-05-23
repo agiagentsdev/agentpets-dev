@@ -8,6 +8,7 @@ import { buildLocaleAlternates } from "@/lib/locale-routing";
 import { siteConfig, siteUrl } from "@/lib/site-config";
 
 import { JsonLd } from "@/components/json-ld";
+import { ApiLiveExamples } from "@/components/api-live-examples";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -18,6 +19,15 @@ type Props = { params: Promise<{ locale: string }> };
 export const revalidate = 86400;
 
 const endpoints = [
+  {
+    method: "GET",
+    path: "/api/openapi.json",
+    title: "OpenAPI specification",
+    description:
+      "Machine-readable OpenAPI 3.1 document for SDK generation, docs tooling, and API audits.",
+    query: "none",
+    example: "https://agentpets.dev/api/openapi.json",
+  },
   {
     method: "GET",
     path: "/api/v1/pets",
@@ -174,6 +184,12 @@ export default function DevelopersPage() {
                 <ArrowRight className="size-4" />
               </Link>
               <Link
+                href="/api/openapi.json"
+                className="inline-flex h-11 items-center justify-center rounded-full border border-border-base bg-surface px-5 text-sm font-medium text-muted-2 transition hover:border-border-strong hover:text-foreground"
+              >
+                OpenAPI JSON
+              </Link>
+              <Link
                 href="/guides/embed-pet-widget"
                 className="inline-flex h-11 items-center justify-center rounded-full border border-border-base bg-surface px-5 text-sm font-medium text-muted-2 transition hover:border-border-strong hover:text-foreground"
               >
@@ -246,6 +262,8 @@ export default function DevelopersPage() {
           ))}
         </div>
       </section>
+
+      <ApiLiveExamples />
 
       <section className="mx-auto grid w-full max-w-6xl gap-4 px-5 pb-16 md:grid-cols-3 md:px-8">
         {snippets.map((snippet) => (
