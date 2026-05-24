@@ -1,6 +1,12 @@
 import Link from "next/link";
 
-import { BadgeCheck, Download, Heart, Share2, TerminalSquare } from "lucide-react";
+import {
+  BadgeCheck,
+  Download,
+  Heart,
+  Share2,
+  TerminalSquare,
+} from "lucide-react";
 
 import { siteConfig } from "@/lib/site-config";
 
@@ -29,7 +35,10 @@ export function CreatorGrowthDashboard({ handle, pets }: Props) {
   const topPets = [...pets]
     .sort(
       (a, b) =>
-        b.installs + b.likes * 2 + b.downloads - (a.installs + a.likes * 2 + a.downloads),
+        b.installs +
+        b.likes * 2 +
+        b.downloads -
+        (a.installs + a.likes * 2 + a.downloads),
     )
     .slice(0, 5);
   const featured = topPets[0] ?? pets[0] ?? null;
@@ -58,10 +67,22 @@ export function CreatorGrowthDashboard({ handle, pets }: Props) {
       </div>
 
       <div className="mt-5 grid gap-3 md:grid-cols-4">
-        <Metric icon={<TerminalSquare />} label="Installs" value={totals.installs} />
+        <Metric
+          icon={<TerminalSquare />}
+          label="Installs"
+          value={totals.installs}
+        />
         <Metric icon={<Heart />} label="Likes" value={totals.likes} />
-        <Metric icon={<Download />} label="Downloads" value={totals.downloads} />
-        <Metric icon={<BadgeCheck />} label="Approved pets" value={pets.length} />
+        <Metric
+          icon={<Download />}
+          label="Downloads"
+          value={totals.downloads}
+        />
+        <Metric
+          icon={<BadgeCheck />}
+          label="Approved pets"
+          value={pets.length}
+        />
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_360px]">
@@ -88,7 +109,8 @@ export function CreatorGrowthDashboard({ handle, pets }: Props) {
                     </span>
                   </span>
                   <span className="font-mono text-[11px] text-muted-3">
-                    {pet.installs} installs / {pet.likes} likes / {pet.downloads} downloads
+                    {pet.installs} installs / {pet.likes} likes /{" "}
+                    {pet.downloads} downloads
                   </span>
                 </Link>
               ))}
@@ -109,7 +131,7 @@ export function CreatorGrowthDashboard({ handle, pets }: Props) {
           </ul>
           {featured ? (
             <pre className="mt-4 overflow-x-auto rounded-xl border border-border-base bg-surface p-3 text-xs leading-5 text-muted-2">
-              <code>{`[![AgentPets: ${featured.displayName}](${siteConfig.url}/api/v1/badge/${featured.slug})](${siteConfig.url}/u/${handle})`}</code>
+              <code>{`[![AgentPets: ${featured.displayName}](${siteConfig.url}/api/v1/badge/${featured.slug})](${siteConfig.url}/u/${handle}?ref=badge)`}</code>
             </pre>
           ) : null}
         </div>
@@ -135,7 +157,9 @@ function Metric({
           {label}
         </span>
       </div>
-      <p className="mt-2 text-2xl font-semibold">{value.toLocaleString("en-US")}</p>
+      <p className="mt-2 text-2xl font-semibold">
+        {value.toLocaleString("en-US")}
+      </p>
     </div>
   );
 }

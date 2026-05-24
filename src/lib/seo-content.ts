@@ -44,7 +44,8 @@ export const topicHubs = [
   {
     slug: "ai-coding-agents",
     eyebrow: "Topic hub",
-    title: "AI coding agent pets for Codex, Claude Code, Cursor, and Gemini CLI",
+    title:
+      "AI coding agent pets for Codex, Claude Code, Cursor, and Gemini CLI",
     metaTitle: "AI coding agent pets for developer workflows",
     description:
       "Browse animated pets and developer mascots for AI coding agents, terminal workflows, and shareable coding setups.",
@@ -200,7 +201,10 @@ export const topicHubs = [
         body: "Cloud coding agents and agent-first IDEs benefit from portable badges, embeds, and public metadata because the pet can travel beyond the app.",
         links: [
           { href: "/github-copilot-pets", label: "GitHub Copilot pets" },
-          { href: "/google-antigravity-pets", label: "Google Antigravity pets" },
+          {
+            href: "/google-antigravity-pets",
+            label: "Google Antigravity pets",
+          },
           { href: "/opencode-pets", label: "OpenCode pets" },
         ],
       },
@@ -295,7 +299,8 @@ export const guides = [
       {
         title: "Run the install command",
         body: "The CLI downloads the pet package and places the assets into the local pet directories used by AgentPets-compatible workflows.",
-        command: "npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba",
+        command:
+          "npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz install boba",
       },
       {
         title: "Share the pet page",
@@ -420,7 +425,7 @@ export const guides = [
         title: "Add Markdown to your README",
         body: "The badge is an SVG image URL, so it works in GitHub README files and most docs systems.",
         command:
-          "[![AgentPets](https://agentpets.dev/api/v1/badge/boba)](https://agentpets.dev/pets/boba)",
+          "[![AgentPets](https://agentpets.dev/api/v1/badge/boba)](https://agentpets.dev/pets/boba?ref=badge)",
       },
       {
         title: "Track the sharing loop",

@@ -270,6 +270,21 @@ async function bootstrap(client: PGlite): Promise<void> {
     `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "seo_intro" text`,
     `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "seo_faq" jsonb`,
     `ALTER TABLE "submitted_pets" ADD COLUMN IF NOT EXISTS "seo_updated_at" timestamp with time zone`,
+    `CREATE TABLE IF NOT EXISTS "product_analytics_events" (
+      "id" serial PRIMARY KEY NOT NULL,
+      "event" text NOT NULL,
+      "pet_slug" text,
+      "path" text,
+      "source" text,
+      "referrer" text,
+      "referrer_host" text,
+      "user_agent_hash" text,
+      "ip_hash" text,
+      "created_at" timestamp with time zone NOT NULL DEFAULT now()
+    )`,
+    `CREATE INDEX IF NOT EXISTS "product_analytics_event_created_at_idx" ON "product_analytics_events" ("event", "created_at")`,
+    `CREATE INDEX IF NOT EXISTS "product_analytics_pet_event_created_at_idx" ON "product_analytics_events" ("pet_slug", "event", "created_at")`,
+    `CREATE INDEX IF NOT EXISTS "product_analytics_source_idx" ON "product_analytics_events" ("source")`,
     // ---- collection tables (no dedicated migration in PGlite context) ----
     `CREATE TABLE IF NOT EXISTS "pet_collections" (
       "id" text PRIMARY KEY NOT NULL,
@@ -409,16 +424,16 @@ async function seed(client: PGlite): Promise<void> {
   // pet_collection_items: add realistic LoL champion slugs to the collection.
   // These slugs show on the collection page; pages handle missing pets gracefully.
   const franchisePets = [
-    { slug: 'jinx',          pos: 1 },
-    { slug: 'garen',         pos: 2 },
-    { slug: 'ahri',          pos: 3 },
-    { slug: 'yasuo',         pos: 4 },
-    { slug: 'lux',           pos: 5 },
-    { slug: 'zed',           pos: 6 },
-    { slug: 'miss-fortune',  pos: 7 },
-    { slug: 'teemo',         pos: 8 },
-    { slug: 'darius',        pos: 9 },
-    { slug: 'nami',          pos: 10 },
+    { slug: "jinx", pos: 1 },
+    { slug: "garen", pos: 2 },
+    { slug: "ahri", pos: 3 },
+    { slug: "yasuo", pos: 4 },
+    { slug: "lux", pos: 5 },
+    { slug: "zed", pos: 6 },
+    { slug: "miss-fortune", pos: 7 },
+    { slug: "teemo", pos: 8 },
+    { slug: "darius", pos: 9 },
+    { slug: "nami", pos: 10 },
   ];
   for (const pet of franchisePets) {
     await client.query(
@@ -447,14 +462,14 @@ async function seed(client: PGlite): Promise<void> {
   );
 
   const acPets = [
-    { slug: 'isabelle',   pos: 1 },
-    { slug: 'tom-nook',   pos: 2 },
-    { slug: 'blathers',   pos: 3 },
-    { slug: 'celeste',    pos: 4 },
-    { slug: 'kk-slider',  pos: 5 },
-    { slug: 'rod',        pos: 6 },
-    { slug: 'sable',      pos: 7 },
-    { slug: 'harvey',     pos: 8 },
+    { slug: "isabelle", pos: 1 },
+    { slug: "tom-nook", pos: 2 },
+    { slug: "blathers", pos: 3 },
+    { slug: "celeste", pos: 4 },
+    { slug: "kk-slider", pos: 5 },
+    { slug: "rod", pos: 6 },
+    { slug: "sable", pos: 7 },
+    { slug: "harvey", pos: 8 },
   ];
   for (const pet of acPets) {
     await client.query(

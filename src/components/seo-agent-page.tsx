@@ -6,6 +6,7 @@ import { ArrowRight, Check, Code2, Share2, Sparkles } from "lucide-react";
 import { getDexNumberMap } from "@/lib/dex";
 import { searchPets } from "@/lib/pet-search";
 import { getApprovedPetCount } from "@/lib/pets";
+import { createPageMetadata } from "@/lib/seo/metadata";
 import {
   getSeoAgentPage,
   type SeoAgentSlug,
@@ -14,7 +15,6 @@ import {
   seoAgentUrl,
   seoText,
 } from "@/lib/seo-agent-pages";
-import { createPageMetadata } from "@/lib/seo/metadata";
 import { siteConfig } from "@/lib/site-config";
 
 import { CommandLine } from "@/components/command-line";
@@ -32,12 +32,15 @@ const workflowLinks = [
   { href: "/claude-code-pets", label: "Claude Code pets" },
   { href: "/cursor-pets", label: "Cursor pets" },
   { href: "/gemini-cli-pets", label: "Gemini CLI pets" },
+  { href: "/ai-agent-pets", label: "AI agent pets" },
   { href: "/github-copilot-pets", label: "GitHub Copilot pets" },
   { href: "/google-antigravity-pets", label: "Google Antigravity pets" },
   { href: "/windsurf-pets", label: "Windsurf pets" },
   { href: "/opencode-pets", label: "OpenCode pets" },
+  { href: "/terminal-pets", label: "Terminal pets" },
   { href: "/terminal-ai-agent-pets", label: "Terminal AI agent pets" },
   { href: "/ai-code-editor-pets", label: "AI code editor pets" },
+  { href: "/developer-mascots", label: "Developer mascots" },
 ];
 
 export async function generateSeoAgentMetadata(

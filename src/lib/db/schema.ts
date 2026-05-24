@@ -74,9 +74,10 @@ export const submittedPets = pgTable(
     seoDescription: text("seo_description"),
     seoKeywords: jsonb("seo_keywords").$type<string[] | null>(),
     seoIntro: text("seo_intro"),
-    seoFaq: jsonb("seo_faq").$type<
-      Array<{ question: string; answer: string }> | null
-    >(),
+    seoFaq: jsonb("seo_faq").$type<Array<{
+      question: string;
+      answer: string;
+    }> | null>(),
     seoUpdatedAt: timestamp("seo_updated_at", { withTimezone: true }),
     featured: boolean("featured").notNull().default(false),
     // 64-bit dHash of the first idle frame as a 16-char hex string. Used
@@ -834,6 +835,38 @@ export const telemetryEvents = pgTable(
 
 export type TelemetryEvent = typeof telemetryEvents.$inferSelect;
 export type NewTelemetryEvent = typeof telemetryEvents.$inferInsert;
+
+export const productAnalyticsEvents = pgTable(
+  "product_analytics_events",
+  {
+    id: serial("id").primaryKey(),
+    event: text("event").notNull(),
+    petSlug: text("pet_slug"),
+    path: text("path"),
+    source: text("source"),
+    referrer: text("referrer"),
+    referrerHost: text("referrer_host"),
+    userAgentHash: text("user_agent_hash"),
+    ipHash: text("ip_hash"),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (table) => ({
+    eventCreatedAtIdx: index("product_analytics_event_created_at_idx").on(
+      table.event,
+      table.createdAt,
+    ),
+    petEventCreatedAtIdx: index(
+      "product_analytics_pet_event_created_at_idx",
+    ).on(table.petSlug, table.event, table.createdAt),
+    sourceIdx: index("product_analytics_source_idx").on(table.source),
+  }),
+);
+
+export type ProductAnalyticsEvent = typeof productAnalyticsEvents.$inferSelect;
+export type NewProductAnalyticsEvent =
+  typeof productAnalyticsEvents.$inferInsert;
 
 export const wechatQrUploads = pgTable(
   "wechat_qr_uploads",

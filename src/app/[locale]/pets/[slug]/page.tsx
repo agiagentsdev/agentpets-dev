@@ -10,8 +10,8 @@ import { buildLocaleAlternates } from "@/lib/locale-routing";
 import { resolveStoredOwnerCreditForSlug } from "@/lib/owner-credit";
 import {
   petCanonicalUrl,
-  resolvePetSeo,
   type ResolvedPetSeo,
+  resolvePetSeo,
 } from "@/lib/pet-seo";
 import { getPet, getStaticPetSlugs } from "@/lib/pets";
 import { siteConfig } from "@/lib/site-config";
@@ -33,6 +33,7 @@ import {
 import { PetCountersBar } from "@/components/pet-counters-bar";
 import { PetFloater } from "@/components/pet-floater";
 import { PetKeyboardNav } from "@/components/pet-keyboard-nav";
+import { PetPageAnalytics } from "@/components/pet-page-analytics";
 import { PetRadarClient } from "@/components/pet-radar-client";
 import { PetSoundButton } from "@/components/pet-sound-button";
 import { PetSprite } from "@/components/pet-sprite";
@@ -103,9 +104,7 @@ export async function generateMetadata({ params }: PageProps) {
       `/pets/${pet.slug}`,
       hasLocale(locale) ? locale : undefined,
     ),
-    keywords: [
-      ...seo.keywords,
-    ],
+    keywords: [...seo.keywords],
     openGraph: {
       title,
       description,
@@ -248,12 +247,13 @@ export default async function PetPage({ params }: PageProps) {
 
   const shuffleHref = `/api/pets/random?exclude=${encodeURIComponent(pet.slug)}`;
   const petPageUrl = `${siteConfig.url}/pets/${pet.slug}`;
-  const badgeMarkdown = `[![AgentPets: ${pet.displayName}](${siteConfig.url}/api/v1/badge/${pet.slug})](${petPageUrl})`;
+  const badgeMarkdown = `[![AgentPets: ${pet.displayName}](${siteConfig.url}/api/v1/badge/${pet.slug})](${petPageUrl}?ref=badge)`;
   const embedHtml = `<iframe src="${siteConfig.url}/embed/${pet.slug}" width="320" height="420" title="${pet.displayName} on AgentPets" loading="lazy"></iframe>`;
 
   return (
     <main className="min-h-dvh bg-background">
       <JsonLd data={jsonLd} />
+      <PetPageAnalytics slug={pet.slug} />
 
       {/* Wire keyboard shortcuts: ←/→ for prev/next, Space for shuffle.
           Renders nothing — purely a side-effect listener. */}
@@ -497,13 +497,15 @@ export default async function PetPage({ params }: PageProps) {
             {
               id: "badge",
               label: "Add badge to README",
-              description: "Markdown badge that links back to the canonical pet page.",
+              description:
+                "Markdown badge that links back to the canonical pet page.",
               value: badgeMarkdown,
             },
             {
               id: "embed",
               label: "Embed this pet",
-              description: "Iframe card for docs, launch pages, and creator profiles.",
+              description:
+                "Iframe card for docs, launch pages, and creator profiles.",
               value: embedHtml,
             },
             {

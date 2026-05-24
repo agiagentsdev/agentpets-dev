@@ -7,8 +7,8 @@ import { ArrowRight, BadgeCheck, Code2, Database, Frame } from "lucide-react";
 import { buildLocaleAlternates } from "@/lib/locale-routing";
 import { siteConfig, siteUrl } from "@/lib/site-config";
 
-import { JsonLd } from "@/components/json-ld";
 import { ApiLiveExamples } from "@/components/api-live-examples";
+import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -82,7 +82,7 @@ const snippets = [
   },
   {
     title: "Add a README badge",
-    code: "[![AgentPets](https://agentpets.dev/api/v1/badge/boba)](https://agentpets.dev/pets/boba)",
+    code: "[![AgentPets](https://agentpets.dev/api/v1/badge/boba)](https://agentpets.dev/pets/boba?ref=badge)",
   },
   {
     title: "Embed a pet card",
@@ -172,8 +172,8 @@ export default function DevelopersPage() {
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-muted-1 md:text-lg">
               AgentPets exposes versioned public endpoints for pet discovery,
-              creator growth loops, README badges, and embeddable pet cards.
-              Use the API for bots, launch pages, docs, and developer tools.
+              creator growth loops, README badges, and embeddable pet cards. Use
+              the API for bots, launch pages, docs, and developer tools.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link

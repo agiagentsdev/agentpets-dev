@@ -1,5 +1,5 @@
-import { installCommandFor, siteConfig, siteUrl } from "@/lib/site-config";
 import { seoKeywordClusters } from "@/lib/seo/keywords";
+import { installCommandFor, siteConfig, siteUrl } from "@/lib/site-config";
 
 import type { Locale } from "@/i18n/config";
 
@@ -9,15 +9,18 @@ export type SeoAgentSlug =
   | "claude-code-pets"
   | "cursor-pets"
   | "gemini-cli-pets"
+  | "ai-agent-pets"
   | "google-antigravity-pets"
   | "github-copilot-pets"
   | "windsurf-pets"
   | "opencode-pets"
   | "terminal-ai-agent-pets"
+  | "terminal-pets"
   | "ai-code-editor-pets"
   | "codex-pet-generator"
   | "ai-agent-pet-gallery"
   | "developer-pets"
+  | "developer-mascots"
   | "open-source-codex-pets"
   | "pet-builder";
 
@@ -299,6 +302,44 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
     useCases: sharedUseCases,
     faq: sharedFaq,
   },
+  "ai-agent-pets": {
+    slug: "ai-agent-pets",
+    agentName: "AI agents",
+    eyebrow: { en: "AI agent pets" },
+    title: {
+      en: "AI agent pets for Codex, Claude Code, Cursor, and Gemini CLI",
+    },
+    description: {
+      en: "A focused hub for installable pets that travel across AI coding agents, terminal workflows, editor-native copilots, READMEs, demos, and developer profiles.",
+    },
+    metaTitle: { en: "AI Agent Pets for Developer Workflows" },
+    metaDescription: {
+      en: "Browse AI agent pets for Codex, Claude Code, Cursor, Gemini CLI, and terminal coding workflows. Install, share, badge, embed, and submit pets on AgentPets.dev.",
+    },
+    commandSlug: "boba",
+    keywords: [
+      "AI agent pets",
+      "AI agent mascot",
+      "AI coding companion",
+      seoKeywordClusters.homepage.primary,
+      seoKeywordClusters.codex.primary,
+      seoKeywordClusters.claudeCode.primary,
+      seoKeywordClusters.cursor.primary,
+      seoKeywordClusters.geminiCli.primary,
+    ],
+    useCases: [
+      {
+        en: "Give every AI agent workflow a recognizable mascot that can move from a local desktop setup to GitHub READMEs and launch posts.",
+      },
+      {
+        en: "Use one open pet package format across terminal agents, AI editors, demos, docs, and creator profile pages.",
+      },
+      {
+        en: "Build internal links from agent-specific pages into the same pet catalog so search demand compounds instead of fragmenting.",
+      },
+    ],
+    faq: productFaq("AI Agent Pets"),
+  },
   "google-antigravity-pets": {
     slug: "google-antigravity-pets",
     agentName: "Google Antigravity",
@@ -391,7 +432,9 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
     description: {
       en: "Installable animated companions for developers who live in terminals and want Codex, Claude Code, Gemini CLI, and OpenCode sessions to feel visible.",
     },
-    metaTitle: { en: "Terminal AI Agent Pets for Codex, Claude Code, and OpenCode" },
+    metaTitle: {
+      en: "Terminal AI Agent Pets for Codex, Claude Code, and OpenCode",
+    },
     metaDescription: {
       en: "Browse terminal AI agent pets for Codex, Claude Code, Gemini CLI, and OpenCode. AgentPets packages every mascot with install commands and share links.",
     },
@@ -407,6 +450,40 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
     useCases: sharedUseCases,
     faq: productFaq("Terminal AI Agent Pets"),
   },
+  "terminal-pets": {
+    slug: "terminal-pets",
+    agentName: "terminal coding workflows",
+    eyebrow: { en: "Terminal pets" },
+    title: { en: "Terminal pets for developers using AI coding agents" },
+    description: {
+      en: "Browse animated coding companions for terminal-heavy workflows, shell-driven AI agents, setup guides, README badges, and livestream overlays.",
+    },
+    metaTitle: { en: "Terminal Pets for AI Coding Agents and Developers" },
+    metaDescription: {
+      en: "Find terminal pets for Codex, Claude Code, Gemini CLI, OpenCode, and shell-first developer workflows. Copy install commands, badges, embeds, and API links.",
+    },
+    commandSlug: "kebo",
+    keywords: [
+      "terminal pets",
+      "terminal coding pets",
+      "terminal mascot",
+      "CLI pet",
+      seoKeywordClusters.codex.primary,
+      seoKeywordClusters.claudeCode.primary,
+      seoKeywordClusters.geminiCli.primary,
+      seoKeywordClusters.opencode.primary,
+    ],
+    useCases: [
+      { en: "Add a tiny visual identity to command-line coding sessions." },
+      {
+        en: "Share terminal-friendly pets in setup docs, READMEs, and team onboarding guides.",
+      },
+      {
+        en: "Connect CLI install commands with public pet pages, badges, embeds, and creator attribution.",
+      },
+    ],
+    faq: productFaq("Terminal Pets"),
+  },
   "ai-code-editor-pets": {
     slug: "ai-code-editor-pets",
     agentName: "AI code editors",
@@ -415,7 +492,9 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
     description: {
       en: "A discovery page for editor-native coding mascots that fit Cursor, Windsurf, Google Antigravity, and future AI IDE workflows.",
     },
-    metaTitle: { en: "AI Code Editor Pets for Cursor, Windsurf, and Antigravity" },
+    metaTitle: {
+      en: "AI Code Editor Pets for Cursor, Windsurf, and Antigravity",
+    },
     metaDescription: {
       en: "Browse AI code editor pets for Cursor, Windsurf, Google Antigravity, and agent IDEs. Share install commands, badges, embeds, and profile links.",
     },
@@ -496,6 +575,42 @@ export const seoAgentPages: Record<SeoAgentSlug, SeoAgentPage> = {
     ],
     useCases: productUseCases,
     faq: productFaq("Developer Pets"),
+  },
+  "developer-mascots": {
+    slug: "developer-mascots",
+    agentName: "Developer mascots",
+    eyebrow: { en: "Developer mascots" },
+    title: {
+      en: "Developer mascots that are installable, shareable, and API-ready",
+    },
+    description: {
+      en: "A hub for coding mascots that do more than decorate a hero: each one can have a pet page, install command, README badge, embed, API payload, and creator credit.",
+    },
+    metaTitle: { en: "Developer Mascots for AI Coding Tools and READMEs" },
+    metaDescription: {
+      en: "Browse developer mascots for AI coding tools, README badges, launch pages, docs, and creator profiles. Install, embed, share, and submit mascots on AgentPets.dev.",
+    },
+    commandSlug: "byte-bunny",
+    keywords: [
+      "developer mascots",
+      "developer mascot",
+      "coding mascot",
+      "open source mascot",
+      "GitHub README mascot",
+      "AI coding mascot",
+    ],
+    useCases: [
+      {
+        en: "Turn a project mascot into a durable developer asset with an install command, badge, embed, and public API record.",
+      },
+      {
+        en: "Give creators a reason to share their pet pages from READMEs, portfolios, docs, and community posts.",
+      },
+      {
+        en: "Use mascot pages as SEO targets for developer culture, AI coding tools, and open-source launch content.",
+      },
+    ],
+    faq: productFaq("Developer Mascots"),
   },
   "open-source-codex-pets": {
     slug: "open-source-codex-pets",

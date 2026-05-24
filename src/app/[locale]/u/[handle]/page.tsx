@@ -23,9 +23,9 @@ import { petStates } from "@/lib/pet-states";
 import { type PetWithMetrics, rowToPet } from "@/lib/pets";
 import { MAX_PINNED_PETS } from "@/lib/profiles";
 
-import { JsonLd } from "@/components/json-ld";
-import { CreatorShareKit } from "@/components/creator-share-kit";
 import { CreatorGrowthDashboard } from "@/components/creator-growth-dashboard";
+import { CreatorShareKit } from "@/components/creator-share-kit";
+import { JsonLd } from "@/components/json-ld";
 import type { Submission } from "@/components/my-pets-view";
 import { PetCard } from "@/components/pet-gallery";
 import { PetSprite } from "@/components/pet-sprite";
@@ -508,19 +508,22 @@ export default async function UserProfilePage({ params }: PageProps) {
                   {
                     id: "badge",
                     label: "Add badge to README",
-                    description: "Markdown badge for the creator's featured pet.",
-                    value: `[![AgentPets: ${sharePet.displayName}](${SITE_URL}/api/v1/badge/${sharePet.slug})](${profileUrl})`,
+                    description:
+                      "Markdown badge for the creator's featured pet.",
+                    value: `[![AgentPets: ${sharePet.displayName}](${SITE_URL}/api/v1/badge/${sharePet.slug})](${profileUrl}?ref=badge)`,
                   },
                   {
                     id: "embed",
                     label: "Embed this pet",
-                    description: "Iframe card that can sit inside a launch page or docs sidebar.",
+                    description:
+                      "Iframe card that can sit inside a launch page or docs sidebar.",
                     value: `<iframe src="${SITE_URL}/embed/${sharePet.slug}" width="320" height="420" title="${sharePet.displayName} on AgentPets" loading="lazy"></iframe>`,
                   },
                   {
                     id: "link",
                     label: "Creator profile link",
-                    description: "Canonical profile URL for social bios and community posts.",
+                    description:
+                      "Canonical profile URL for social bios and community posts.",
                     value: profileUrl,
                   },
                 ]
@@ -528,7 +531,8 @@ export default async function UserProfilePage({ params }: PageProps) {
                   {
                     id: "link",
                     label: "Creator profile link",
-                    description: "Canonical profile URL for social bios and community posts.",
+                    description:
+                      "Canonical profile URL for social bios and community posts.",
                     value: profileUrl,
                   },
                 ]

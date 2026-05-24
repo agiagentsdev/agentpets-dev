@@ -486,6 +486,7 @@
       "mailing": "邮件",
       "manifest": "Manifest",
       "seo": "SEO",
+      "analytics": "Analytics",
       "insights": "数据",
       "telemetry": "Telemetry",
       "telemetry__fixme": true

@@ -2,9 +2,10 @@ import Link from "next/link";
 
 import { useTranslations } from "next-intl";
 
+import { siteConfig } from "@/lib/site-config";
+
 import { DiscordLink } from "@/components/discord-link";
 import { SponsorButton } from "@/components/sponsor-button";
-import { siteConfig } from "@/lib/site-config";
 
 const agentSeoLinks = [
   { href: "/best/codex-pets", label: "Best Codex pets" },
@@ -12,6 +13,9 @@ const agentSeoLinks = [
   { href: "/claude-code-pets", label: "Claude Code" },
   { href: "/cursor-pets", label: "Cursor" },
   { href: "/gemini-cli-pets", label: "Gemini CLI" },
+  { href: "/ai-agent-pets", label: "AI agent pets" },
+  { href: "/terminal-pets", label: "Terminal pets" },
+  { href: "/developer-mascots", label: "Developer mascots" },
   { href: "/github-copilot-pets", label: "Copilot" },
   { href: "/google-antigravity-pets", label: "Antigravity" },
 ];

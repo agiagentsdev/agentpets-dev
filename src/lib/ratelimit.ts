@@ -173,6 +173,14 @@ export const telemetryRatelimit = createRatelimit({
   prefix: "petdex:telemetry",
 });
 
+// Product analytics ingestion. Browser page-view beacons and badge image
+// requests are intentionally low-value per event, so cap obvious loops while
+// allowing normal browsing and README badge cache misses.
+export const productAnalyticsRatelimit = createRatelimit({
+  limiter: Ratelimit.slidingWindow(240, "1 h"),
+  prefix: "petdex:product-analytics",
+});
+
 export const wechatQrUploadRatelimit = createRatelimit({
   limiter: Ratelimit.slidingWindow(5, "1 h"),
   prefix: "petdex:wechat-qr-upload",
