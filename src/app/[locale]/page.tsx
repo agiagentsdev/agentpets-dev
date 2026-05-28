@@ -234,13 +234,22 @@ export default async function Home({
       <section className="mx-auto grid w-full max-w-[1440px] gap-4 px-5 py-10 md:grid-cols-5 md:px-8">
         {[
           ["AI coding pets", "/ai-coding-pets"],
+          ["AI agent pets", "/ai-agent-pets"],
           ["Codex pets", "/codex-pets"],
           ["Claude Code pets", "/claude-code-pets"],
           ["Cursor pets", "/cursor-pets"],
           ["Gemini CLI pets", "/gemini-cli-pets"],
+          ["Terminal pets", "/terminal-pets"],
           ["Codex pet generator", "/codex-pet-generator"],
           ["AI agent pet gallery", "/ai-agent-pet-gallery"],
           ["Developer pets", "/developer-pets"],
+          ["Developer mascots", "/developer-mascots"],
+          ["Best Codex pets", "/best/codex-pets"],
+          ["Best terminal AI agent pets", "/best/terminal-ai-agent-pets"],
+          ["Best AI code editor pets", "/best/ai-code-editor-pets"],
+          ["Best cute coding pets", "/best/cute-coding-pets"],
+          ["Best focus pets", "/best/focus-pets"],
+          ["Best developer mascots", "/best/developer-mascots"],
           ["Open-source Codex pets", "/open-source-codex-pets"],
           ["Pet builder", "/pet-builder"],
         ].map(([label, href]) => (

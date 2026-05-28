@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
-import { sitemapSections, splitSitemapUrl } from "@/lib/sitemap-split";
 import { siteConfig } from "@/lib/site-config";
+import { sitemapSections, splitSitemapUrl } from "@/lib/sitemap-split";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -16,7 +16,6 @@ export default function robots(): MetadataRoute.Robots {
           "/embed/",
           "/my-feedback",
           "/submit",
-          "/create",
         ],
       },
     ],

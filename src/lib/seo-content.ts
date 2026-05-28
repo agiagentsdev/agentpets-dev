@@ -286,7 +286,7 @@ export const guides = [
     slug: "install-codex-pet",
     eyebrow: "Guide",
     title: "Install a Codex pet with AgentPets CLI",
-    metaTitle: "How to install a Codex pet",
+    metaTitle: "How to Install a Codex Pet with AgentPets",
     description:
       "Install an animated coding pet from AgentPets with one CLI command and verify that the package is available locally.",
     minutes: 3,
@@ -331,7 +331,7 @@ export const guides = [
     title: "Create a valid pet.json for an AgentPets package",
     metaTitle: "Create a valid pet.json for AgentPets",
     description:
-      "Learn the fields a pet package needs so it can be validated, exported, embedded, and installed.",
+      "Learn the required pet.json fields for AgentPets packages, including stable ids, spritesheet metadata, discovery tags, creator credit, and install-ready URLs.",
     minutes: 6,
     keywords: ["pet.json", "AgentPets package", "spritesheet metadata"],
     steps: [
@@ -413,7 +413,7 @@ export const guides = [
     title: "Add an AgentPets badge to a README or launch post",
     metaTitle: "Add an AgentPets badge to GitHub README",
     description:
-      "Use the public badge endpoint to show a pet install badge in README files, docs, and launch posts.",
+      "Use the public AgentPets badge endpoint to add install badges to GitHub README files, docs, launch posts, and creator pages with trackable pet links.",
     minutes: 4,
     keywords: ["AgentPets badge", "GitHub README badge", "developer badge"],
     steps: [
@@ -454,7 +454,7 @@ export const guides = [
     slug: "embed-pet-widget",
     eyebrow: "Guide",
     title: "Embed an AgentPets pet on a website",
-    metaTitle: "Embed an AgentPets pet widget",
+    metaTitle: "Embed an AgentPets Pet Widget on Developer Sites",
     description:
       "Add an animated pet widget to a docs page, product launch, or creator profile with a public embed URL.",
     minutes: 5,
