@@ -1,14 +1,8 @@
 name: cli-auth-smoke
 
 on:
-  schedule:
-    - cron: "17 */6 * * *"
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/cli-auth-smoke.yml"
-      - "packages/petdex-cli/**"
-      - "src/app/api/cli/**"
+  # Temporarily manual-only while the production Clerk custom domains are being
+  # configured. Re-enable schedule/push after clerk.agentpets.dev resolves.
   workflow_dispatch:
 
 permissions:

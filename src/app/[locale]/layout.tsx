@@ -11,6 +11,8 @@ import {
   setRequestLocale,
 } from "next-intl/server";
 
+import { siteConfig } from "@/lib/site-config";
+
 import { AnnouncementQueue } from "@/components/announcement-queue";
 import { BuildVersionWatcher } from "@/components/build-version-watcher";
 import { FeedbackWidget } from "@/components/feedback-widget";
@@ -21,7 +23,6 @@ import { TopPromoStrip } from "@/components/zh/top-promo-strip";
 import { ZhLayoutSpacer } from "@/components/zh/zh-layout-spacer";
 
 import { hasLocale, locales } from "@/i18n/config";
-import { siteConfig } from "@/lib/site-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,6 +61,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       template: t("titleTemplate"),
     },
     description: t("description"),
+    verification: {
+      google: "LYqp7fh0rQMCHepXjNOCPWDAXpw41q4PPhlj0jWmB0s",
+    },
     keywords: [
       t("keywords.codexPet"),
       t("keywords.codexCliPet"),
