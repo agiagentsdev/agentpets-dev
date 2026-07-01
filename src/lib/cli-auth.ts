@@ -3,9 +3,10 @@
 // only the userId (sub) and email returned by Clerk — never any value the
 // client sent in the request body.
 
+import { isAuthDisabled } from "@/lib/auth-disabled";
 import { getClerkCliIssuer } from "@/lib/brand-env";
 
-const ISSUER = getClerkCliIssuer();
+const ISSUER = isAuthDisabled() ? null : getClerkCliIssuer();
 
 export type CliPrincipal = {
   userId: string;
@@ -24,6 +25,7 @@ export async function verifyCliBearer(
   if (!match) return null;
   const token = match[1].trim();
   if (!token) return null;
+  if (!ISSUER) return null;
 
   const url = `${ISSUER.replace(/\/+$/, "")}/oauth/userinfo`;
   const res = await fetch(url, {

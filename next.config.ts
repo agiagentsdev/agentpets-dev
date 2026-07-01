@@ -6,6 +6,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const IS_MOCK = process.env.PETDEX_MOCK === "1";
 const IS_MOCK_AUTH = IS_MOCK || process.env.PETDEX_MOCK_AUTH === "1";
+const IS_AUTH_DISABLED =
+  process.env.AGENTPETS_AUTH_DISABLED === "1" ||
+  process.env.NEXT_PUBLIC_AGENTPETS_AUTH_DISABLED === "1";
 
 const DEFAULT_R2_PUBLIC_HOST = "pub-94495283df974cfea5e98d6a9e3fa462.r2.dev";
 
@@ -32,6 +35,18 @@ function r2PublicHost(): string {
 // - vercel-scripts / vitals for Vercel analytics
 // - R2 public bucket + UploadThing host + Clerk image hosts + social
 //   avatar hosts for sprites and avatars
+const clerkFrameSources = IS_AUTH_DISABLED
+  ? "https://challenges.cloudflare.com"
+  : "https://challenges.cloudflare.com https://clerk.agentpets.dev https://accounts.agentpets.dev https://*.clerk.com https://*.clerk.accounts.dev https://accounts.petdex.crafter.run https://clerk.petdex.crafter.run";
+
+const clerkScriptSources = IS_AUTH_DISABLED
+  ? "https://challenges.cloudflare.com"
+  : "https://clerk.agentpets.dev https://accounts.agentpets.dev https://clerk.petdex.crafter.run https://accounts.petdex.crafter.run https://*.clerk.com https://*.clerk.accounts.dev https://challenges.cloudflare.com";
+
+const clerkConnectSources = IS_AUTH_DISABLED
+  ? "https://challenges.cloudflare.com"
+  : "https://clerk.agentpets.dev https://accounts.agentpets.dev https://clerk.petdex.crafter.run https://accounts.petdex.crafter.run https://*.clerk.com https://*.clerk.accounts.dev https://api.clerk.com https://challenges.cloudflare.com";
+
 const cspDirectives = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -42,8 +57,8 @@ const cspDirectives = [
   // challenges.cloudflare.com (Turnstile). Without it on frame-src and
   // its bootstrap script on script-src, the CAPTCHA fails to load and
   // the user can't create an account.
-  "frame-src 'self' https://challenges.cloudflare.com https://clerk.agentpets.dev https://accounts.agentpets.dev https://*.clerk.com https://*.clerk.accounts.dev https://accounts.petdex.crafter.run https://clerk.petdex.crafter.run",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clerk.agentpets.dev https://accounts.agentpets.dev https://clerk.petdex.crafter.run https://accounts.petdex.crafter.run https://*.clerk.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://va.vercel-scripts.com https://vercel.live",
+  `frame-src 'self' ${clerkFrameSources}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${clerkScriptSources} https://va.vercel-scripts.com https://vercel.live`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev https://yu2vz9gndp.ufs.sh https://img.clerk.com https://images.clerk.dev https://avatars.githubusercontent.com https://pbs.twimg.com https://storage.googleapis.com",
   "media-src 'self' https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev",
@@ -52,7 +67,7 @@ const cspDirectives = [
   // S3 endpoint (*.r2.cloudflarestorage.com). Both must be on the
   // connect-src allowlist or browser fetch / XHR fail with a generic
   // network error (root cause of issues #22-#80+).
-  "connect-src 'self' https://clerk.agentpets.dev https://accounts.agentpets.dev https://clerk.petdex.crafter.run https://accounts.petdex.crafter.run https://*.clerk.com https://*.clerk.accounts.dev https://api.clerk.com https://api.github.com https://challenges.cloudflare.com https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev https://*.r2.cloudflarestorage.com https://yu2vz9gndp.ufs.sh https://utfs.io https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+  `connect-src 'self' ${clerkConnectSources} https://api.github.com https://pub-94495283df974cfea5e98d6a9e3fa462.r2.dev https://*.r2.cloudflarestorage.com https://yu2vz9gndp.ufs.sh https://utfs.io https://va.vercel-scripts.com https://vitals.vercel-insights.com`,
   "worker-src 'self' blob:",
   "manifest-src 'self'",
   "upgrade-insecure-requests",
@@ -108,6 +123,7 @@ const embedSecurityHeaders = [
 ];
 
 const mockRoot = path.resolve(__dirname, "src/lib/mock");
+const disabledAuthRoot = path.resolve(__dirname, "src/lib/auth-disabled");
 
 const nextConfig: NextConfig = {
   // Hide the framework banner on every response.
@@ -146,27 +162,31 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // In mock auth mode, redirect every Clerk import to in-process mocks
-  // so contributors can boot without a Clerk backend secret. We set both
-  // webpack and turbopack aliases since `next dev` defaults to turbopack
-  // on recent versions.
-  ...(IS_MOCK_AUTH
+  // In mock/disabled auth modes, redirect every Clerk import to in-process
+  // shims so builds and public pages never contact Clerk. Disabled auth wins
+  // over mock auth because production outage mitigation should be explicit.
+  ...(IS_AUTH_DISABLED || IS_MOCK_AUTH
     ? {
         turbopack: {
           // Turbopack expects relative paths (with leading "./") rooted at
           // the project. Absolute paths get re-resolved as file paths
           // under cwd and 404. See nextjs/issues/turbopack-aliases.
           resolveAlias: {
-            "@clerk/nextjs/server": "./src/lib/mock/clerk-server.ts",
-            "@clerk/nextjs": "./src/lib/mock/clerk-client.tsx",
+            "@clerk/nextjs/server": IS_AUTH_DISABLED
+              ? "./src/lib/auth-disabled/clerk-server.ts"
+              : "./src/lib/mock/clerk-server.ts",
+            "@clerk/nextjs": IS_AUTH_DISABLED
+              ? "./src/lib/auth-disabled/clerk-client.tsx"
+              : "./src/lib/mock/clerk-client.tsx",
           },
         },
         webpack: (config: { resolve?: { alias?: Record<string, string> } }) => {
           config.resolve = config.resolve ?? {};
+          const aliasRoot = IS_AUTH_DISABLED ? disabledAuthRoot : mockRoot;
           config.resolve.alias = {
             ...(config.resolve.alias ?? {}),
-            "@clerk/nextjs/server$": path.join(mockRoot, "clerk-server.ts"),
-            "@clerk/nextjs$": path.join(mockRoot, "clerk-client.tsx"),
+            "@clerk/nextjs/server$": path.join(aliasRoot, "clerk-server.ts"),
+            "@clerk/nextjs$": path.join(aliasRoot, "clerk-client.tsx"),
           };
           return config;
         },

@@ -5,7 +5,9 @@
 
 import { NextResponse } from "next/server";
 
+import { isAuthDisabled } from "@/lib/auth-disabled";
 import { firstEnv, getClerkCliIssuer } from "@/lib/brand-env";
+import { siteConfig } from "@/lib/site-config";
 
 export const runtime = "nodejs";
 
@@ -13,6 +15,21 @@ const DEFAULT_CLIENT_ID = "LcThwEayl6KAA1Qm";
 const DEFAULT_SCOPES = ["profile", "email", "openid", "offline_access"];
 
 export async function GET(): Promise<Response> {
+  if (isAuthDisabled()) {
+    return NextResponse.json(
+      {
+        issuer: `${siteConfig.url}/api/cli/auth-disabled`,
+        clientId: "auth-disabled",
+        scopes: [] as string[],
+      },
+      {
+        headers: {
+          "Cache-Control": "public, max-age=60, s-maxage=300",
+        },
+      },
+    );
+  }
+
   const issuer = getClerkCliIssuer();
   const clientId =
     firstEnv("AGENTPETS_CLERK_CLI_CLIENT_ID", "CLERK_CLI_CLIENT_ID") ??

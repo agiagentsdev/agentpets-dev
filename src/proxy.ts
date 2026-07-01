@@ -1,12 +1,15 @@
-import { NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import createMiddleware from "next-intl/middleware";
+
+import { isAuthDisabled } from "@/lib/auth-disabled";
 
 import { defaultLocale, locales } from "@/i18n/config";
 
 const IS_MOCK_AUTH =
   process.env.PETDEX_MOCK === "1" || process.env.PETDEX_MOCK_AUTH === "1";
+const IS_AUTH_DISABLED = isAuthDisabled();
 
 const isProtected = createRouteMatcher([
   "/submit",
@@ -37,26 +40,48 @@ const handleI18nRouting = createMiddleware({
 // clerkMiddleware entirely (it would otherwise try to validate a real
 // backend secret before our shims have a chance to short-circuit).
 // Everything else — next-intl routing, the shuffle cookie — keeps working.
-const baseMiddleware = (req: Request) => {
+const baseMiddleware = (req: NextRequest) => {
   if (new URL(req.url).pathname.startsWith("/api")) {
     return NextResponse.next();
   }
-  return handleI18nRouting(req as Parameters<typeof handleI18nRouting>[0]);
+  return handleI18nRouting(req);
+};
+
+const disabledAuthMiddleware = (req: NextRequest) => {
+  if (isProtected(req)) {
+    const url = new URL(req.url);
+
+    if (url.pathname.startsWith("/api")) {
+      return NextResponse.json(
+        {
+          error: "auth_disabled",
+          message: "AgentPets login is temporarily disabled.",
+        },
+        { status: 503 },
+      );
+    }
+
+    return NextResponse.redirect(new URL("/", url));
+  }
+
+  return baseMiddleware(req);
 };
 
 export default IS_MOCK_AUTH
   ? baseMiddleware
-  : clerkMiddleware(async (auth, req) => {
-      if (isProtected(req)) {
-        await auth.protect();
-      }
+  : IS_AUTH_DISABLED
+    ? disabledAuthMiddleware
+    : clerkMiddleware(async (auth, req) => {
+        if (isProtected(req)) {
+          await auth.protect();
+        }
 
-      if (req.nextUrl.pathname.startsWith("/api")) {
-        return NextResponse.next();
-      }
+        if (req.nextUrl.pathname.startsWith("/api")) {
+          return NextResponse.next();
+        }
 
-      return handleI18nRouting(req);
-    });
+        return handleI18nRouting(req);
+      });
 
 export const config = {
   matcher: [
