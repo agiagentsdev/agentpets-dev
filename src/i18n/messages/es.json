@@ -2092,7 +2092,7 @@
         "title": "Configuration",
         "intro": "The CLI ships with sensible defaults pointing at production. You only need to override env vars if you are testing against a non-production deployment.",
         "agentpetsUrl": "<code>PETDEX_URL</code>: base URL, default <code>https://agentpets.dev</code>",
-        "clerkIssuer": "<code>CLERK_ISSUER</code>: OAuth issuer, default <code>https://clerk.agentpets.dev</code>",
+        "clerkIssuer": "<code>CLERK_ISSUER</code>: override opcional del issuer OAuth. El inicio de sesion esta temporalmente desactivado en produccion mientras se reconfigura la autenticacion de AgentPets.",
         "clerkClientId": "<code>CLERK_OAUTH_CLIENT_ID</code>: public client id (baked into the CLI binary)"
       },
       "contribute": {

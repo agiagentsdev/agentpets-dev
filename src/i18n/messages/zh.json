@@ -2331,7 +2331,7 @@
         "title": "配置",
         "intro": "CLI 内置了指向生产环境的默认配置。只有在测试非生产部署时，才需要覆盖环境变量。",
         "agentpetsUrl": "<code>PETDEX_URL</code>：基础 URL，默认 <code>https://agentpets.dev</code>",
-        "clerkIssuer": "<code>CLERK_ISSUER</code>：OAuth issuer，默认 <code>https://clerk.agentpets.dev</code>",
+        "clerkIssuer": "<code>CLERK_ISSUER</code>: optional OAuth issuer override. Production login is temporarily disabled while AgentPets auth is being reconfigured.",
         "clerkClientId": "<code>CLERK_OAUTH_CLIENT_ID</code>：公开 client id（内置在 CLI 二进制文件里）"
       },
       "contribute": {

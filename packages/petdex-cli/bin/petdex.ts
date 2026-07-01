@@ -39,8 +39,10 @@ import {
 
 // ─── config ────────────────────────────────────────────────────────────────
 const PETDEX_URL =
-  process.env.AGENTPETS_URL ?? process.env.PETDEX_URL ?? "https://agentpets.dev";
-const FALLBACK_ISSUER = "https://clerk.agentpets.dev";
+  process.env.AGENTPETS_URL ??
+  process.env.PETDEX_URL ??
+  "https://agentpets.dev";
+const FALLBACK_ISSUER = `${PETDEX_URL.replace(/\/+$/, "")}/api/cli/auth-disabled`;
 const FALLBACK_CLIENT_ID = "LcThwEayl6KAA1Qm";
 const DEFAULT_SCOPES = ["profile", "email", "openid", "offline_access"];
 
@@ -308,7 +310,9 @@ async function cmdWhoami() {
       "Signed in",
     );
   } catch {
-    p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
+    p.cancel(
+      `Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`,
+    );
     process.exit(1);
   }
 }
@@ -558,7 +562,9 @@ async function cmdSubmit(args: string[]) {
   const positionals = args.filter((a) => !a.startsWith("--"));
   const target = positionals[0];
   if (!target) {
-    p.cancel(`Usage: ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit <path> [--force]")}`);
+    p.cancel(
+      `Usage: ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz submit <path> [--force]")}`,
+    );
     process.exit(1);
   }
 
@@ -568,12 +574,16 @@ async function cmdSubmit(args: string[]) {
   try {
     const t = await auth.getAccessToken();
     if (!t) {
-      p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
+      p.cancel(
+        `Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`,
+      );
       process.exit(1);
     }
     token = t;
   } catch {
-    p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
+    p.cancel(
+      `Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`,
+    );
     process.exit(1);
   }
   let profileUrl = PETDEX_URL;
@@ -735,12 +745,16 @@ async function cmdEdit(args: string[]): Promise<void> {
   try {
     const t = await auth.getAccessToken();
     if (!t) {
-      p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
+      p.cancel(
+        `Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`,
+      );
       process.exit(1);
     }
     token = t;
   } catch {
-    p.cancel(`Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`);
+    p.cancel(
+      `Not signed in. Run ${pc.cyan("npx -y https://github.com/agiagentsdev/agentpets-dev/releases/latest/download/agentpets-cli.tgz login")}.`,
+    );
     process.exit(1);
   }
 
