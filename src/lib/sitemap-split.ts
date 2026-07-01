@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
 
-import { getAllCollections } from "@/lib/collections";
 import { allBestPages } from "@/lib/best-pages";
+import { getAllCollections } from "@/lib/collections";
 import {
   buildAbsoluteLocaleAlternates,
   buildAbsoluteUrl,
 } from "@/lib/locale-routing";
 import { getAllApprovedPets } from "@/lib/pets";
-import { guides, topicHubs } from "@/lib/seo-content";
 import { seoAgentPages } from "@/lib/seo-agent-pages";
+import { guides, topicHubs } from "@/lib/seo-content";
 import { siteConfig } from "@/lib/site-config";
 import { PET_KINDS, PET_VIBES } from "@/lib/types";
 
@@ -75,7 +75,12 @@ export async function getSitemapEntries(
 
   if (section === "static") {
     return [
-      { pathname: "/", lastModified: now, changeFrequency: "daily", priority: 1 },
+      {
+        pathname: "/",
+        lastModified: now,
+        changeFrequency: "daily",
+        priority: 1,
+      },
       {
         pathname: "/about",
         lastModified: now,
@@ -172,14 +177,18 @@ export async function getSitemapEntries(
   }
 
   if (section === "facets") {
+    const pets = await getAllApprovedPets();
+    const activeVibes = new Set(pets.flatMap((pet) => pet.vibes));
+    const activeKinds = new Set(pets.map((pet) => pet.kind));
+
     return [
-      ...PET_VIBES.map((vibe) => ({
+      ...PET_VIBES.filter((vibe) => activeVibes.has(vibe)).map((vibe) => ({
         pathname: `/vibe/${vibe}`,
         lastModified: now,
         changeFrequency: "weekly" as const,
         priority: 0.7,
       })),
-      ...PET_KINDS.map((kind) => ({
+      ...PET_KINDS.filter((kind) => activeKinds.has(kind)).map((kind) => ({
         pathname: `/kind/${kind}`,
         lastModified: now,
         changeFrequency: "weekly" as const,
