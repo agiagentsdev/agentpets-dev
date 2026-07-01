@@ -42,12 +42,12 @@ export function useClerk() {
   };
 }
 
-export function SignInButton({ children }: AnyPropsWithChildren) {
-  return <>{children ?? null}</>;
+export function SignInButton(_: AnyPropsWithChildren) {
+  return null;
 }
 
-export function SignUpButton({ children }: AnyPropsWithChildren) {
-  return <>{children ?? null}</>;
+export function SignUpButton(_: AnyPropsWithChildren) {
+  return null;
 }
 
 export function UserButton() {
